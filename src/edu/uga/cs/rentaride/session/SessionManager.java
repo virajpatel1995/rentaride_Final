@@ -67,7 +67,7 @@ public class SessionManager
     public static String storeSession( Session session ) 
             throws RARException
     {
-        Person person = session.getUser();
+        Customer person = session.getCustomer();
         
         if( loggedIn.containsKey(person.getUserName()) ) {
             Session qs = loggedIn.get(person.getUserName());
@@ -127,7 +127,7 @@ public class SessionManager
             throw new RARException( "SessionManager.removeSession: Cannot close connection" );
         } // try
         sessions.remove( s.getSessionId() );
-        loggedIn.remove( s.getUser().getUserName() );
+        loggedIn.remove( s.getCustomer().getUserName() );
     }
     
     /****************************************************
