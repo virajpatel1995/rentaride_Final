@@ -7,7 +7,6 @@ import edu.uga.cs.rentaride.entity.Customer;
 import edu.uga.cs.rentaride.object.ObjectLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
-import edu.uga.cs.rentaride.RARException;
 
 public class LoginCtrl
 { 
