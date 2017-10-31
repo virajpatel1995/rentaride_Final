@@ -1,12 +1,12 @@
-package edu.uga.clubs.logic.impl;
+package edu.uga.cs.rentaride.logic.impl;
 
 import java.util.List;
 
-import edu.uga.cs.rentaride.RARException;
-import edu.uga.cs.entity.Person;
-import edu.uga.cs.rentaride.object.ObjectLayer;
-import edu.uga.cs.session.Session;
-import edu.uga.cs.session.SessionManager;
+import edu.uga.clubs.ClubsException;
+import edu.uga.clubs.entity.Person;
+import edu.uga.clubs.object.ObjectLayer;
+import edu.uga.clubs.session.Session;
+import edu.uga.clubs.session.SessionManager;
 
 public class LoginCtrl
 { 
@@ -32,7 +32,7 @@ public class LoginCtrl
             ssid = SessionManager.storeSession( session );
         }
         else
-            throw new RARException( "SessionManager.login: Invalid User Name or Password" );
+            throw new ClubsException( "SessionManager.login: Invalid User Name or Password" );
         
         return ssid;
     }
