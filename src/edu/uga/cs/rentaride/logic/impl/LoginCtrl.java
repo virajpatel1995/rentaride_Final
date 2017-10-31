@@ -2,11 +2,11 @@ package edu.uga.cs.rentaride.logic.impl;
 
 import java.util.List;
 
-import edu.uga.clubs.ClubsException;
-import edu.uga.clubs.entity.Person;
-import edu.uga.clubs.object.ObjectLayer;
-import edu.uga.clubs.session.Session;
-import edu.uga.clubs.session.SessionManager;
+import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.Customer;
+import edu.uga.cs.rentaride.object.ObjectLayer;
+import edu.uga.cs.rentaride.session.Session;
+import edu.uga.cs.rentaride.session.SessionManager;
 import edu.uga.cs.rentaride.RARException;
 
 public class LoginCtrl
@@ -19,18 +19,18 @@ public class LoginCtrl
     }
     
     public String login( Session session, String userName, String password )
-            throws ClubsException
+            throws RARException
     {
         String ssid = null;
         
-        Person modelPerson = objectLayer.createPerson();
-        modelPerson.setUserName( userName );
-        modelPerson.setPassword( password );
-        List<Person> persons = objectLayer.findPerson( modelPerson );
-        if( persons.size() > 0 ) {
-            Person person = persons.get( 0 );
-            session.setUser( person );
-            ssid = SessionManager.storeSession( session );
+        Customer modelCustomer = objectLayer.createCustomer();
+        modelCustomer.setUserName( userName );
+        modelCustomer.setPassword( password );
+        List<Customer> customers = objectLayer.findCustomer( modelCustomer );
+        if( customers.size() > 0 ) {
+            Customer customer = customer.get( 0 );//???
+            session.set( customer );//??
+            ssid = SessionManager.storeSession( session );//??
         }
         else
             throw new RARException( "SessionManager.login: Invalid User Name or Password" );
