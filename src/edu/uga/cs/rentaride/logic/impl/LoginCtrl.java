@@ -27,9 +27,9 @@ public class LoginCtrl
         modelCustomer.setPassword( password );
         List<Customer> customers = objectLayer.findCustomer( modelCustomer );
         if( customers.size() > 0 ) {
-            Customer customer = customer.get( 0 );//???
-            session.set( customer );//??
-            ssid = SessionManager.storeSession( session );//??
+            Customer customer = customers.get( 0 );
+            session.setCustomer( customer );
+            ssid = SessionManager.storeSession( session );
         }
         else
             throw new RARException( "SessionManager.login: Invalid User Name or Password" );
