@@ -1,6 +1,6 @@
 // Gnu Emacs C++ mode:  -*- Java -*-
 //
-// Class:       CreateClub
+// Class:       JoinClub
 //
 // Type:        Servlet
 //
@@ -34,24 +34,25 @@ import freemarker.template.TemplateException;
 
 
 
-// Servlet class CreateClub
+
+
+// Servlet class JoinClub
 //
-// doPost starts the execution of the Create Club Use Case
+// doPost starts the execution of the Join a Club Use Case
 //
 //   parameters:
 //
-//	club_name    string
-//	club_address string
-//      founder_id   long (as a string)
+//	person_id   string representing a person id (long value)
+//	club_name   string
 //
-public class CreateClub
+public class JoinRAR
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
-    static  String         templateDir = "WEB-INF/templates";
-    static  String         resultTemplateName = "CreateClub-Result.ftl";
+    static  String            templateDir = "WEB-INF/templates";
+    static  String            resultTemplateName = "JoinClub-Result.ftl";
 
-    private Configuration  cfg; 
+    private Configuration  cfg;
 
     public void init() 
     {
@@ -65,20 +66,39 @@ public class CreateClub
                 );
     }
 
-    public void doPost( HttpServletRequest req, HttpServletResponse res )
+    public void doPost( HttpServletRequest  req, HttpServletResponse res )
             throws ServletException, IOException
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
-        String	       club_name = null;
-        String	       club_addr = null;
-        String         person_id_str;
-        long           founder_id;
-        long	       club_id = 0;
         LogicLayer     logicLayer = null;
+        String	       person_id_str = null;
+        long	       person_id = 0;
+        String         club_name  = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
+
+        httpSession = req.getSession();
+
+        ssid = (String) httpSession.getAttribute( "ssid" );
+
+        if( ssid == null ) {       // not logged in!
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            return;
+        }
+
+        session = SessionManager.getSessionById( ssid );
+        if( session == null ) {
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            return; 
+        }
+        
+        logicLayer = session.getLogicLayer();
+        if( logicLayer == null ) {
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            return; 
+        }
 
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
@@ -100,64 +120,40 @@ public class CreateClub
 
         res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
-        httpSession = req.getSession();
-        if( httpSession == null ) {       // assume not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return;
-        }
-
-        ssid = (String) httpSession.getAttribute( "ssid" );
-        if( ssid == null ) {       // not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return;
-        }
-
-        session = SessionManager.getSessionById( ssid );
-        if( session == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return; 
-        }
-        
-        logicLayer = session.getLogicLayer();
-        if( logicLayer == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return; 
-        }
-
         // Get the form parameters
         //
-        club_name = req.getParameter( "club_name" );
-        club_addr = req.getParameter( "club_address" );
-        person_id_str = req.getParameter( "founder_id" );
-
-        if( club_name == null || club_addr == null ) {
-            ClubsError.error( cfg, toClient, "Unspecified club name or club address" );
-            return;
-        }
+        person_id_str = req.getParameter( "person_id" );
 
         if( person_id_str == null ) {
-            ClubsError.error( cfg, toClient, "Unspecified founder_id" );
+            RARError.error( cfg, toClient, "Unspecified person_id" );
             return;
         }
 
         try {
-            founder_id = Long.parseLong( person_id_str );
+            person_id = Long.parseLong( person_id_str );
         }
         catch( Exception e ) {
-            ClubsError.error( cfg, toClient, "founder_id should be a number and is: " + person_id_str );
+            RARError.error( cfg, toClient, "person_id should be a number and is: " + person_id_str );
             return;
         }
 
-        if( founder_id <= 0 ) {
-            ClubsError.error( cfg, toClient, "Non-positive founder_id: " + founder_id );
+        if( person_id <= 0 ) {
+            RARError.error( cfg, toClient, "Non-positive person_id: " + person_id );
+            return;
+        }
+
+        club_name = req.getParameter( "club_name" );
+
+        if( club_name == null ) {
+            RARError.error( cfg, toClient, "Unspecified club name or club address" );
             return;
         }
 
         try {
-            club_id = logicLayer.createClub( club_name, club_addr, founder_id );
+            logicLayer.joinClub( person_id, club_name );
         } 
-        catch ( Exception e ) {
-            ClubsError.error( cfg, toClient, e );
+        catch( Exception e ) {
+            RARError.error( cfg, toClient, e );
             return;
         }
 
@@ -168,7 +164,7 @@ public class CreateClub
         // Build the data-model
         //
         root.put( "club_name", club_name );
-        root.put( "club_id", new Long( club_id ) );
+        root.put( "person_id", new Long( person_id ) );
 
         // Merge the data-model and the template
         //
@@ -182,6 +178,5 @@ public class CreateClub
 
         toClient.close();
 
-  }
+    }
 }
-

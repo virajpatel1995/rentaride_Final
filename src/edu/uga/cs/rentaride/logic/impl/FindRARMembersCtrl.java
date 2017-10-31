@@ -18,11 +18,11 @@ import edu.uga.cs.rentaride.object.ObjectLayer;
 
 
 
-public class FindClubMembersCtrl 
+public class FindRARMembersCtrl 
 {
     private ObjectLayer objectLayer = null;
     
-    public FindClubMembersCtrl( ObjectLayer objectModel )
+    public FindRARMembersCtrl( ObjectLayer objectModel )
     {
         this.objectLayer = objectModel;
     }

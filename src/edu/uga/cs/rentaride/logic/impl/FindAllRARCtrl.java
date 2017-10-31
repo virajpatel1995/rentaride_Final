@@ -17,11 +17,11 @@ import edu.uga.cs.rentaride.object.ObjectLayer;
 
 
 
-public class FindAllClubsCtrl {
+public class FindAllRARCtrl {
     
     private ObjectLayer objectLayer = null;
     
-    public FindAllClubsCtrl( ObjectLayer objectModel )
+    public FindAllRARCtrl( ObjectLayer objectModel )
     {
         this.objectLayer = objectModel;
     }

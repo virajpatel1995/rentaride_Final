@@ -102,25 +102,25 @@ public class FindAllPersons
 
         httpSession = req.getSession();
         if( httpSession == null ) {       // not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
 
         ssid = (String) httpSession.getAttribute( "ssid" );
         if( ssid == null ) {       // not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
 
         session = SessionManager.getSessionById( ssid );
         if( session == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return; 
         }
 
         logicLayer = session.getLogicLayer();
         if( logicLayer == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return; 
         }
 
@@ -154,7 +154,7 @@ public class FindAllPersons
             }
         } 
         catch( Exception e) {
-            ClubsError.error( cfg, toClient, e );
+            RARError.error( cfg, toClient, e );
             return;
         }
 

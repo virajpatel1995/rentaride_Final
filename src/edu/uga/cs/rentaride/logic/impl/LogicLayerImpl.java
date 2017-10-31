@@ -48,7 +48,7 @@ public class LogicLayerImpl
     public List<Club> findAllClubs() 
             throws RARException
     {
-        FindAllClubsCtrl ctrlFindAllClubs = new FindAllClubsCtrl( objectLayer );
+        FindAllRARCtrl ctrlFindAllClubs = new FindAllRARCtrl( objectLayer );
         return ctrlFindAllClubs.findAllClubs();
     }
 
@@ -66,14 +66,14 @@ public class LogicLayerImpl
 
     public long joinClub(long personId, String clubName) throws RARException
     {
-        JoinClubCtrl ctrlJoinClub = new JoinClubCtrl( objectLayer );
+        JoinRARCtrl ctrlJoinClub = new JoinRARCtrl( objectLayer );
         return ctrlJoinClub.joinClub( personId, clubName );
     }
 
     public long createClub(String clubName, String address, long founderId)
             throws RARException
     {
-        CreateClubCtrl ctrlCreateClub = new CreateClubCtrl( objectLayer );
+        CreatRARCtrl ctrlCreateClub = new CreatRARCtrl( objectLayer );
         return ctrlCreateClub.createClub( clubName, address, founderId );
     }
 
@@ -88,7 +88,7 @@ public class LogicLayerImpl
 
     public List<Person> findClubMembers(String clubName) throws RARException
     {
-        FindClubMembersCtrl ctrlFindClubMembers = new FindClubMembersCtrl( objectLayer );
+        FindRARMembersCtrl ctrlFindClubMembers = new FindRARMembersCtrl( objectLayer );
         return ctrlFindClubMembers.findClubMembers( clubName );
     }
 

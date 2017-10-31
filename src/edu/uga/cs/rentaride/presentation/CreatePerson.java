@@ -109,25 +109,25 @@ static  String         templateDir = "WEB-INF/templates";
 
       httpSession = req.getSession();
       if( httpSession == null ) {       // assume not logged in!
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return;
       }
 
       ssid = (String) httpSession.getAttribute( "ssid" );
       if( ssid == null ) {       // not logged in!
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return;
       }
 
       session = SessionManager.getSessionById( ssid );
       if( session == null ) {
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return; 
       }
       
       logicLayer = session.getLogicLayer();
       if( logicLayer == null ) {
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return; 
       }
 
@@ -143,22 +143,22 @@ static  String         templateDir = "WEB-INF/templates";
 
       // validate the parameters
       if( user_name == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified user name" );
+          RARError.error( cfg, toClient, "Unspecified user name" );
           return;
       }
 
       if( password == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified password" );
+          RARError.error( cfg, toClient, "Unspecified password" );
           return;
       }
 
       if( first_name == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified first name" );
+          RARError.error( cfg, toClient, "Unspecified first name" );
           return;
       }
 
       if( last_name == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified last name" );
+          RARError.error( cfg, toClient, "Unspecified last name" );
           return;
       }
 
@@ -169,7 +169,7 @@ static  String         templateDir = "WEB-INF/templates";
           phone = "";
 
       if( email == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified email" );
+          RARError.error( cfg, toClient, "Unspecified email" );
           return;
       }
 
@@ -177,7 +177,7 @@ static  String         templateDir = "WEB-INF/templates";
           person_id = logicLayer.createPerson( user_name, password, email, first_name, last_name, address, phone );
       } 
       catch ( Exception e ) {
-          ClubsError.error( cfg, toClient, e );
+          RARError.error( cfg, toClient, e );
           return;
       }
 

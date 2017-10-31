@@ -68,7 +68,7 @@ public class Logout
                 System.out.println( "Already have ssid: " + ssid );
                 Session session = SessionManager.getSessionById( ssid );
                 if( session == null ) {
-                    ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+                    RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
                     return; 
                 }
                 LogicLayer logicLayer = session.getLogicLayer();

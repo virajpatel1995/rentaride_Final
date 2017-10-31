@@ -16,11 +16,11 @@ import edu.uga.cs.rentaride.object.ObjectLayer;
 
 
 
-public class CreateClubCtrl {
+public class CreatRARCtrl {
     
     private ObjectLayer objectLayer = null;
     
-    public CreateClubCtrl( ObjectLayer objectModel )
+    public CreatRARCtrl( ObjectLayer objectModel )
     {
         this.objectLayer = objectModel;
     }
