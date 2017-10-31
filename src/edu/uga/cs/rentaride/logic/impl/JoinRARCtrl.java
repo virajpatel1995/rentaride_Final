@@ -19,11 +19,11 @@ import edu.uga.cs.rentaride.object.ObjectLayer;
 
 
 
-public class JoinClubCtrl {
+public class JoinRARCtrl {
     
     private ObjectLayer objectLayer = null;
 
-    public JoinClubCtrl( ObjectLayer objectModel )
+    public JoinRARCtrl( ObjectLayer objectModel )
     {
         this.objectLayer = objectModel;
     }

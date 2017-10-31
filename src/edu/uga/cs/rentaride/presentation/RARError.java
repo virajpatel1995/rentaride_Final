@@ -23,7 +23,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 
-public class ClubsError
+public class RARError
 {
     static  String   errorTemplateName = "ClubsError-Result.ftl";
 
