@@ -53,7 +53,7 @@ public class ClubsError
 	if( msg.indexOf( "log in" ) == -1 )
 	    root.put( "followup", "<p></p><p>Back to the <a href=\"ShowMainWindow\"> main window</a></p>" );
 	else
-	    root.put( "followup", "<p></p><p>Back to the <a href=\"login.html\"> login window</a></p>" );
+	    root.put( "followup", "<p></p><p>Back to the <a href=\"Login.html\"> login window</a></p>" );
 
         try {
             errorTemplate.process( root, toClient );

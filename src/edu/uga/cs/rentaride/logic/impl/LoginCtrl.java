@@ -7,6 +7,7 @@ import edu.uga.clubs.entity.Person;
 import edu.uga.clubs.object.ObjectLayer;
 import edu.uga.clubs.session.Session;
 import edu.uga.clubs.session.SessionManager;
+import edu.uga.cs.rentaride.RARException;
 
 public class LoginCtrl
 { 
@@ -32,7 +33,7 @@ public class LoginCtrl
             ssid = SessionManager.storeSession( session );
         }
         else
-            throw new ClubsException( "SessionManager.login: Invalid User Name or Password" );
+            throw new RARException( "SessionManager.login: Invalid User Name or Password" );
         
         return ssid;
     }
