@@ -53,25 +53,25 @@ public class LogicLayerImpl
     }
 
     public List<Person> findAllPersons() 
-            throws ClubsException
+            throws RARException
     {
         FindAllPersonsCtrl ctrlFindAllPersons = new FindAllPersonsCtrl( objectLayer );
         return ctrlFindAllPersons.findAllPersons();
     }
 
-    public long joinClub(Person person, Club club) throws ClubsException
+    public long joinClub(Person person, Club club) throws RARException
     {
         return 0;
     }
 
-    public long joinClub(long personId, String clubName) throws ClubsException
+    public long joinClub(long personId, String clubName) throws RARException
     {
         JoinClubCtrl ctrlJoinClub = new JoinClubCtrl( objectLayer );
         return ctrlJoinClub.joinClub( personId, clubName );
     }
 
     public long createClub(String clubName, String address, long founderId)
-            throws ClubsException
+            throws RARException
     {
         CreateClubCtrl ctrlCreateClub = new CreateClubCtrl( objectLayer );
         return ctrlCreateClub.createClub( clubName, address, founderId );
@@ -79,26 +79,26 @@ public class LogicLayerImpl
 
     public long createPerson(String userName, String password, String email,
             String firstName, String lastName, String address, String phone)
-            throws ClubsException
+            throws RARException
     {
         CreatePersonCtrl ctrlCreatePerson = new CreatePersonCtrl( objectLayer );
         return ctrlCreatePerson.createPerson( userName, password, email, firstName,
                                               lastName, address, phone );
     }
 
-    public List<Person> findClubMembers(String clubName) throws ClubsException
+    public List<Person> findClubMembers(String clubName) throws RARException
     {
         FindClubMembersCtrl ctrlFindClubMembers = new FindClubMembersCtrl( objectLayer );
         return ctrlFindClubMembers.findClubMembers( clubName );
     }
 
-    public void logout( String ssid ) throws ClubsException
+    public void logout( String ssid ) throws RARException
     {
         SessionManager.logout( ssid );
     }
 
     public String login( Session session, String userName, String password ) 
-            throws ClubsException
+            throws RARException
     {
         LoginCtrl ctrlVerifyPerson = new LoginCtrl( objectLayer );
         return ctrlVerifyPerson.login( session, userName, password );
