@@ -1,21 +1,19 @@
 /**
  * 
  */
-package edu.uga.clubs.logic.impl;
+package edu.uga.cs.rentaride.logic.impl;
 
 import java.sql.Connection;
 import java.util.List;
 
-import edu.uga.clubs.ClubsException;
-import edu.uga.clubs.entity.Club;
-import edu.uga.clubs.entity.Person;
-import edu.uga.clubs.logic.LogicLayer;
-import edu.uga.clubs.object.ObjectLayer;
-import edu.uga.clubs.object.impl.ObjectLayerImpl;
-import edu.uga.clubs.persistence.PersistenceLayer;
-import edu.uga.clubs.persistence.impl.PersistenceLayerImpl;
-import edu.uga.clubs.session.Session;
-import edu.uga.clubs.session.SessionManager;
+import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.*;
+import edu.uga.cs.rentaride.logic.*;
+import edu.uga.cs.rentaride.object.*;
+import edu.uga.cs.rentaride.object.impl.*;
+import edu.uga.cs.rentaride.persistence.*;
+import edu.uga.cs.rentaride.persistence.impl.*;
+import edu.uga.cs.rentaride.session.*;
 
 
 /**
@@ -30,7 +28,13 @@ public class LogicLayerImpl
     public LogicLayerImpl( Connection conn )
     {
         objectLayer = new ObjectLayerImpl();
-        PersistenceLayer persistenceLayer = new PersistenceLayerImpl( conn, objectLayer );
+        PersistenceLayer persistenceLayer = null;
+		try {
+			persistenceLayer = new PersistenceLayerImpl( conn, objectLayer );
+		} catch (RARException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         objectLayer.setPersistence( persistenceLayer );
         System.out.println( "LogicLayerImpl.LogicLayerImpl(conn): initialized" );
     }
@@ -42,7 +46,7 @@ public class LogicLayerImpl
     }
 
     public List<Club> findAllClubs() 
-            throws ClubsException
+            throws RARException
     {
         FindAllClubsCtrl ctrlFindAllClubs = new FindAllClubsCtrl( objectLayer );
         return ctrlFindAllClubs.findAllClubs();

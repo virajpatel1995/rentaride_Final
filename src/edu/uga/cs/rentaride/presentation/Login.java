@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< Updated upstream
 import edu.uga.cs.rentaride.logic.impl.LoginCtrl;
+=======
+import edu.uga.cs.rentaride.logic.LogicLayer;
+>>>>>>> Stashed changes
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;

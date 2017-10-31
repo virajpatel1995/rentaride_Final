@@ -9,7 +9,7 @@
 //
 //
 
-package edu.uga.clubs.presentation;
+package edu.uga.cs.rentaride.presentation;
 
 
 
