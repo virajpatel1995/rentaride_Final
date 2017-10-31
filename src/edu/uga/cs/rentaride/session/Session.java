@@ -36,7 +36,7 @@ public class Session
     private Connection conn;
     private ObjectLayer objectLayer;
     private LogicLayer logicLayer;
-    private User person;
+    private Customer person;
     private String id;
     private Date expiration;
     // private static Logger log = SessionManager.getLog();
@@ -49,7 +49,13 @@ public class Session
     {
         this.conn = conn;
         objectLayer = new ObjectLayerImpl();
-        PersistenceLayer persistence = new PersistenceLayerImpl( conn, objectLayer ); 
+        PersistenceLayer persistence = null;
+		try {
+			persistence = new PersistenceLayerImpl( conn, objectLayer );
+		} catch (RARException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
         objectLayer.setPersistence( persistence ); 
         logicLayer = new LogicLayerImpl( objectLayer );
         extendExpiration();
@@ -69,7 +75,7 @@ public class Session
      * Gets the GVUser for which the session is created.
      * @return the loggedIn user
      */
-    public User getUser()
+    public Customer getCustomer() //changed from User getUser to this
     {
         extendExpiration();
         return person;
@@ -79,7 +85,7 @@ public class Session
      * Sets the loggedIn user to the new created session.
      * @param  person the user to be associated with the session.
      */
-    public void setUser(User person) 
+    public void setCustomer(Customer person) //Changed from setUser(User person) to setCustomer(Customer person)
             throws RARException
     {
         extendExpiration();
