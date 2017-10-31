@@ -46,7 +46,7 @@ import freemarker.template.TemplateException;
 //
 //	club_name   string
 //
-public class FindClubMembers
+public class FindRARMembers
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -102,25 +102,25 @@ public class FindClubMembers
 
       httpSession = req.getSession();
       if( httpSession == null ) {       // assume not logged in!
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return;
       }
 
       ssid = (String) httpSession.getAttribute( "ssid" );
       if( ssid == null ) {       // not logged in!
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return;
       }
 
       session = SessionManager.getSessionById( ssid );
       if( session == null ) {
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return; 
       }
       
       logicLayer = session.getLogicLayer();
       if( logicLayer == null ) {
-          ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+          RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
           return; 
       }
 
@@ -128,7 +128,7 @@ public class FindClubMembers
       //
       club_name = req.getParameter( "club_name" );
       if( club_name == null ) {
-          ClubsError.error( cfg, toClient, "Unspecified club name" );
+          RARError.error( cfg, toClient, "Unspecified club name" );
           return;
       }
 
@@ -136,7 +136,7 @@ public class FindClubMembers
           members = logicLayer.findClubMembers( club_name );
       } 
       catch (Exception e) {
-          ClubsError.error( cfg, toClient, e );
+          RARError.error( cfg, toClient, e );
           return;
       }
 

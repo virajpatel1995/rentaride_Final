@@ -1,17 +1,4 @@
-// Gnu Emacs C++ mode:  -*- Java -*-
-//
-// Class:	FindAllClubs
-//
-// Type:	Servlet
-//
-// K.J. Kochut
-//
-//
-//
-
 package edu.uga.cs.rentaride.presentation;
-
-
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -35,56 +22,55 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 
-// Boundary class FindAllClubs (servlet)
+// doGet starts the execution of the Create Club, selecting from a persons list Use Case
+// it invokes the findAllPersons use case (using its control class)
 //
-// doGet starts the execution of the List All Clubs Use Case
+// parameters:
 //
-//   parameters:
+// none
 //
-//	none
-//
-public class FindAllClubs
-
-extends HttpServlet 
-
+public class CreateRARPersonsList 
+    extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
+    static  String         templateDir = "WEB-INF/templates";
+    static  String         resultTemplateName = "CreateClubPersonsList-Result.ftl";
 
-    static  String            templateDir = "WEB-INF/templates";
-    static  String            resultTemplateName = "FindAllClubs-Result.ftl";
+    private Configuration  cfg;
 
-    private Configuration     cfg;
-
-    public void init() 
+    public void init()
     {
         // Prepare the FreeMarker configuration;
         // - Load templates from the WEB-INF/templates directory of the Web app.
         //
         cfg = new Configuration();
-        cfg.setServletContextForTemplateLoading( getServletContext(), "WEB-INF/templates" );
+        cfg.setServletContextForTemplateLoading(
+                getServletContext(), 
+                "WEB-INF/templates"
+                );
     }
 
-    public void doGet( HttpServletRequest  req, HttpServletResponse res )
+    public void doGet( HttpServletRequest req, HttpServletResponse res )
             throws ServletException, IOException
     {
-        Template            resultTemplate = null;
-        BufferedWriter      toClient = null;
-        LogicLayer          logicLayer = null;
-        List<Club>          rv = null;
-        List<List<Object>>  clubs = null;
-        List<Object>        club = null;
-        Club   	            c  = null;
-        HttpSession         httpSession;
-        Session             session;
-        String              ssid;
+        Template               resultTemplate = null;
+        BufferedWriter         toClient = null;
+        LogicLayer             logicLayer = null;
+        List<Person>           rvPerson = null;
+        List<List<Object>>     persons = null;
+        List<Object>           person = null;
+        Person                 p  = null;
+        HttpSession            httpSession;
+        Session                session;
+        String                 ssid;
 
-        
+
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
         try {
             resultTemplate = cfg.getTemplate( resultTemplateName );
         } 
-        catch( IOException e ) {
+        catch (IOException e) {
             throw new ServletException( 
                     "Can't load template in: " + templateDir + ": " + e.toString());
         }
@@ -100,61 +86,59 @@ extends HttpServlet
         res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
         
         httpSession = req.getSession();
-        if( httpSession == null ) {       // assume not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+        if( httpSession == null ) {       // not logged in!
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
         
         ssid = (String) httpSession.getAttribute( "ssid" );
-        if( ssid == null ) {       // not logged in!
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+        if( ssid == null ) {       // assume not logged in!
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
 
         session = SessionManager.getSessionById( ssid );
         if( session == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return; 
         }
         
         logicLayer = session.getLogicLayer();
         if( logicLayer == null ) {
-            ClubsError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return; 
         }
-        
-        // Get the servlet parameters
+
+        // Get the parameters
         //
         // No parameters here
+
 
         // Setup the data-model
         //
         Map<String,Object> root = new HashMap<String,Object>();
-        
+
+        // Build the data-model
+        //
+        persons = new LinkedList<List<Object>>();
+
         try {
-            rv = logicLayer.findAllClubs();
-
-            // Build the data-model
-            //
-            clubs = new LinkedList<List<Object>>();
-            root.put( "clubs", clubs );
-
-            for( int i = 0; i < rv.size(); i++ ) {
-                c = (Club) rv.get( i );
-                //Person founder = objectModel.findEstablishedBy( c );
-                Person founder = c.getPersonFounder();
-                club = new LinkedList<Object>();
-                club.add( c.getId() );
-                club.add( c.getName() );
-                club.add( c.getAddress() );
-                club.add( c.getEstablishedOn().toString() );
-                club.add( founder.getFirstName() + " " + founder.getLastName() );
-                clubs.add( club );
-            }
+            rvPerson = logicLayer.findAllPersons();
         } 
-        catch( Exception e) {
-            ClubsError.error( cfg, toClient, e );
+        catch( Exception e ) {
+            RARError.error( cfg, toClient, e );
             return;
+        }
+
+        root.put( "persons", persons );
+
+        for( int i = 0; i < rvPerson.size(); i++ ) {
+            p = (Person) rvPerson.get( i );
+            person = new LinkedList<Object>();
+            person.add( new Long( p.getId() ) );
+            person.add( p.getFirstName() );
+            person.add( p.getLastName() );
+            persons.add( person );
         }
 
         // Merge the data-model and the template
@@ -171,4 +155,3 @@ extends HttpServlet
 
     }
 }
-
