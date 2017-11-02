@@ -9,9 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.persistence.impl.DbUtils;
-
-
 
 
 
@@ -67,7 +66,7 @@ public class SessionManager
     public static String storeSession( Session session ) 
             throws RARException
     {
-        Customer person = session.getCustomer();
+        User person = session.getUser();
         
         if( loggedIn.containsKey(person.getUserName()) ) {
             Session qs = loggedIn.get(person.getUserName());
@@ -127,7 +126,7 @@ public class SessionManager
             throw new RARException( "SessionManager.removeSession: Cannot close connection" );
         } // try
         sessions.remove( s.getSessionId() );
-        loggedIn.remove( s.getCustomer().getUserName() );
+        loggedIn.remove( s.getUser().getUserName() );
     }
     
     /****************************************************

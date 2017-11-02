@@ -36,7 +36,7 @@ public class Session
     private Connection conn;
     private ObjectLayer objectLayer;
     private LogicLayer logicLayer;
-    private Customer person;
+    private User person;
     private String id;
     private Date expiration;
     // private static Logger log = SessionManager.getLog();
@@ -75,7 +75,8 @@ public class Session
      * Gets the GVUser for which the session is created.
      * @return the loggedIn user
      */
-    public Customer getCustomer() //changed from User getUser to this
+//    public Customer getCustomer() //changed from User getUser to this
+    public User getUser() //changed from User getUser to this
     {
         extendExpiration();
         return person;
@@ -85,7 +86,7 @@ public class Session
      * Sets the loggedIn user to the new created session.
      * @param  person the user to be associated with the session.
      */
-    public void setCustomer(Customer person) //Changed from setUser(User person) to setCustomer(Customer person)
+    public void setUser(User person) //Changed from setUser(User person) to setCustomer(Customer person)
             throws RARException
     {
         extendExpiration();
