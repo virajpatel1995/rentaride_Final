@@ -64,7 +64,7 @@ public class SessionManager
     }
     
     public static String storeSession( Session session ) 
-            throws RARException
+    		throws RARException
     {
         User person = session.getUser();
         
