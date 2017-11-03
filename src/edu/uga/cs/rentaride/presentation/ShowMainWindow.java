@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uga.cs.rentaride.entity.Customer;
+import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
@@ -87,7 +87,7 @@ public class ShowMainWindow
             return;
         }
         
-        Customer person = session.getCustomer();
+        User person = session.getUser();
         if( person == null ) {
             RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;   
