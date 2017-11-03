@@ -3,7 +3,9 @@ package edu.uga.cs.rentaride.logic.impl;
 import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.Administrator;
 import edu.uga.cs.rentaride.entity.Customer;
+import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.object.ObjectLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
@@ -26,14 +28,21 @@ public class LoginCtrl
         modelCustomer.setUserName( userName );
         modelCustomer.setPassword( password );
         List<Customer> customers = objectLayer.findCustomer( modelCustomer );
+        Administrator modelAdmin = objectLayer.createAdministrator();
+        modelAdmin.setUserName( userName );
+        modelAdmin.setPassword( password );
+        List<Administrator> administrators = objectLayer.findAdministrator( modelAdmin );
+        User user;
         if( customers.size() > 0 ) {
-            Customer customer = customers.get( 0 );
-            session.setCustomer( customer );
-            ssid = SessionManager.storeSession( session );
+            user = customers.get( 0 );
+        }else if(administrators.size() > 0) {
+            user = administrators.get(0);
+        }else {
+            throw new RARException("SessionManager.login: Invalid User Name or Password");
         }
-        else
-            throw new RARException( "SessionManager.login: Invalid User Name or Password" );
-        
+        session.setUser(user);
+        ssid = SessionManager.storeSession(session);
+
         return ssid;
     }
 }
