@@ -9,9 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.persistence.impl.DbUtils;
-
-
 
 
 
@@ -65,9 +64,9 @@ public class SessionManager
     }
     
     public static String storeSession( Session session ) 
-            throws RARException
+    		throws RARException
     {
-        Person person = session.getUser();
+        User person = session.getUser();
         
         if( loggedIn.containsKey(person.getUserName()) ) {
             Session qs = loggedIn.get(person.getUserName());
