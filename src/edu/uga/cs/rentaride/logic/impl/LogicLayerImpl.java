@@ -44,7 +44,7 @@ public class LogicLayerImpl
         this.objectLayer = objectLayer;
         System.out.println( "LogicLayerImpl.LogicLayerImpl(objectLayer): initialized" );
     }
-
+/*
     public List<Club> findAllClubs() 
             throws RARException
     {
@@ -91,7 +91,7 @@ public class LogicLayerImpl
         FindRARMembersCtrl ctrlFindClubMembers = new FindRARMembersCtrl( objectLayer );
         return ctrlFindClubMembers.findClubMembers( clubName );
     }
-
+*/
     public void logout( String ssid ) throws RARException
     {
         SessionManager.logout( ssid );
