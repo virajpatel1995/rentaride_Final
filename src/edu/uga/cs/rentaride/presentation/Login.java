@@ -134,5 +134,14 @@ public class Login
 
         toClient.close();
     }
+    
+    
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws IOException, ServletException {
+    		doPost(req,res);
+}
+    
+    
+    
 }
 
