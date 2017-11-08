@@ -1,11 +1,13 @@
 package edu.uga.cs.rentaride.logic;
 
 
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.util.List;
 
+=======
+>>>>>>> viraj_v1.1
 import edu.uga.cs.rentaride.RARException;
-import edu.uga.cs.rentaride.entity.*;
 import edu.uga.cs.rentaride.session.*;
 
 import edu.uga.cs.rentaride.RARException;

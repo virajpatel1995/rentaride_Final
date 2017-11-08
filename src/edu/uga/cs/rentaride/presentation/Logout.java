@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 
-
+@WebServlet("Logout")
 public class Logout 
     extends HttpServlet
 {
@@ -61,7 +62,7 @@ public class Logout
             throw new ServletException( "Logout.doGet: Can't load template in: " + templateDir + ": " + e.toString());
         }
 
-        httpSession = req.getSession( false );
+        httpSession = req.getSession();
         if( httpSession != null ) {
             ssid = (String) httpSession.getAttribute( "ssid" );
             if( ssid != null ) {

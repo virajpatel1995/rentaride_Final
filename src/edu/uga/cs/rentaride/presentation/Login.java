@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;//
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,14 +21,14 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 
-
+@WebServlet("Login")
 public class Login 
     extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
     
     static  String  templateDir = "WEB-INF/templates";
-    static  String  resultTemplateName = "MainWindow.ftl";
+    static  String  resultTemplateName = "index.ftl";
 
     private Configuration  cfg; 
 
@@ -96,7 +97,7 @@ public class Login
         // Get the parameters
         //
         username = req.getParameter( "username" );
-        password = req.getParameter( "password" );
+        password = req.getParameter( "passwordlogin" );
 
         if( username == null || password == null ) {
             RARError.error( cfg, toClient, "Missing user name or password" );

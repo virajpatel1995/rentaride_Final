@@ -102,6 +102,7 @@ public class LogicLayerImpl
         return ctrlVerifyPerson.login(session, userName, password);
     }
 
+<<<<<<< HEAD
     @Override
     public long registerAccount(String fName, String lName, String email, String password, String username, String licNumber,
                                 String cardNo, String expDate, String address, String state, String zip) throws RARException, ParseException {
@@ -110,4 +111,11 @@ public class LogicLayerImpl
         objectLayer.storeCustomer(customer);
         return customer.getId();
     }
+=======
+	public long registerAccount(String fName, String lName, String email, String password, String driverNo,
+			String cardNo, String expDate, String address, String state, String zip) throws RARException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+>>>>>>> viraj_v1.1
 }
