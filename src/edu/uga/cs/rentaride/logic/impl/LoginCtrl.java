@@ -28,6 +28,7 @@ public class LoginCtrl
         modelCustomer.setUserName( userName );
         modelCustomer.setPassword( password );
         List<Customer> customers = objectLayer.findCustomer( modelCustomer );
+        
         Administrator modelAdmin = objectLayer.createAdministrator();
         modelAdmin.setUserName( userName );
         modelAdmin.setPassword( password );
