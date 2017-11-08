@@ -103,4 +103,11 @@ public class LogicLayerImpl
         LoginCtrl ctrlVerifyPerson = new LoginCtrl( objectLayer );
         return ctrlVerifyPerson.login( session, userName, password );
     }
+
+	@Override
+	public long registerAccount(String fName, String lName, String email, String password, String driverNo,
+			String cardNo, String expDate, String address, String state, String zip) throws RARException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
