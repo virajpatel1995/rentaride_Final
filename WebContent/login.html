@@ -14,23 +14,6 @@
 <body>
 
 
-<form method="post" action="Login">
-
-<p>User name: <input name="username" type=text size="20">
-
-<p>Password: <input name="password" type=password size="20">
-
-<p><input type=submit> <input type=reset>
-
-</form>
-
-
-
-
-
-
-
-
 
 <!-- Header -->
 <div class="allcontain">
@@ -109,7 +92,7 @@
 			
 			
 			<!-- ****************************************** -->
-				<form method=post action="Login">
+				<form action="Login" method=post >
 					<div class="control-group">
 						<input type="text" name="username" class="login-field" value="" placeholder="username" id="login-name">
 						<label class="login-field-icon fui-user" for="login-name"></label>
@@ -120,7 +103,11 @@
 						<label class="login-field-icon fui-lock" for="login-pass"></label>
 					</div>
 
-					<a class="btn btn-primary btn-large btn-block" href="#">login</a>
+<!--  
+					<a class="btn btn-primary btn-large btn-block" href="#">login</a> -->
+						<input type="Submit" name="login" class="btn btn-primary btn-md btn-block">
+										
+					
 			</form>	
 			<!-- ****************************************** -->
 						
