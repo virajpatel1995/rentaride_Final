@@ -83,8 +83,8 @@ public class registerAccount extends HttpServlet {
 		
 		//Getting the user value from the template
 		String status = "";
-		String fname = request.getParameter("first-name");
-		String lname = request.getParameter("last-name");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
@@ -120,8 +120,8 @@ public class registerAccount extends HttpServlet {
 		}
 		
 		//We are setting the attribute from user into the session
-		httpSession.setAttribute("fname", fname);
-		httpSession.setAttribute("lname", lname);
+		httpSession.setAttribute("firstName", firstName);
+		httpSession.setAttribute("lastName", lastName);
 		httpSession.setAttribute("email", email);
 		httpSession.setAttribute("password", password);
 		
@@ -140,12 +140,12 @@ public class registerAccount extends HttpServlet {
 		
 		//Getting the user value from the template
 		String status = "";
-		String drive = request.getParameter("drive");
-		String card = request.getParameter("card");
-		String exp = request.getParameter("exp");
-		String add = request.getParameter("add");
+		String licenseNumber = request.getParameter("licenseNumber");
+		String creditCard = request.getParameter("creditCard");
+		String expDate = request.getParameter("expDate");
+		String address = request.getParameter("address");
 		String state = request.getParameter("state");
-		String zip = request.getParameter("zip");
+		String zipCode = request.getParameter("zipCode");
 		
 		//Setting the session to null
 		HttpSession    httpSession = null;
@@ -177,8 +177,8 @@ public class registerAccount extends HttpServlet {
 		}
 		
 		//Here we will retrieve the attribute which was stored in previous form into the session
-		String fname = (String) httpSession.getAttribute("fname");
-		String lname = (String) httpSession.getAttribute("lname");
+		String fname = (String) httpSession.getAttribute("firstName");
+		String lname = (String) httpSession.getAttribute("lastName");
 		String email = (String) httpSession.getAttribute("email");
 		String password = (String) httpSession.getAttribute("password");
 
@@ -188,7 +188,7 @@ public class registerAccount extends HttpServlet {
 		long num;
 		try {
 			
-			num = logicLayer.registerAccount(fname, lname, email, password, drive, card, exp, add, state, zip);
+			num = logicLayer.registerAccount(fname, lname, email, password, license, card, exp, add, state, zip);
 		} catch (RARException e) {
 			
 			e.printStackTrace();
