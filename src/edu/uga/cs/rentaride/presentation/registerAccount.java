@@ -177,8 +177,8 @@ public class registerAccount extends HttpServlet {
 		}
 		
 		//Here we will retrieve the attribute which was stored in previous form into the session
-		String fname = (String) httpSession.getAttribute("firstName");
-		String lname = (String) httpSession.getAttribute("lastName");
+		String firstName = (String) httpSession.getAttribute("firstName");
+		String lastName = (String) httpSession.getAttribute("lastName");
 		String email = (String) httpSession.getAttribute("email");
 		String password = (String) httpSession.getAttribute("password");
 
@@ -188,7 +188,7 @@ public class registerAccount extends HttpServlet {
 		long num;
 		try {
 			
-			num = logicLayer.registerAccount(fname, lname, email, password, license, card, exp, add, state, zip);
+			num = logicLayer.registerAccount(firstName, lastName, email, password, licenseNumber, creditCard, expDate, address, state, zipCode);
 		} catch (RARException e) {
 			
 			e.printStackTrace();
