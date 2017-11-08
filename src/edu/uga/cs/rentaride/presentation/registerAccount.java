@@ -28,7 +28,7 @@ import freemarker.template.TemplateExceptionHandler;
 /**
  * Servlet implementation class signin
  */
-@WebServlet("/CreateAccount")
+@WebServlet("/registerAccount")
 public class registerAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

@@ -27,7 +27,7 @@ public class templateProcessor {
 		templateDir = "/WEB-INF/signinTemplates";
 		cfg.setServletContextForTemplateLoading(servletContext, templateDir);
     	cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
-		db = new DefaultObjectWrapperBuilder(Configuration.getVersion());
+		db = new DefaultObjectWrapperBuilder(Configuration.getVersionNumber());
 		root = new SimpleHash(db.build());
 	} // TemplateProcessor
 	
@@ -58,7 +58,7 @@ public class templateProcessor {
 		try {
 			response.setContentType("text/html");
 			template.process(root, response.getWriter());
-			db = new DefaultObjectWrapperBuilder(Configuration.getVersion());
+			db = new DefaultObjectWrapper(Configuration.getVersionNumber());
 			root = new SimpleHash(db.build());
 		} catch (IOException e) {
 			e.printStackTrace();
