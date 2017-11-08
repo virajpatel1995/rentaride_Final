@@ -155,9 +155,9 @@ public class CustomerManager {
 			if(customer != null){
 				if(customer.getId() >= 0)		//customer id is unique
 					query.append(" and id = " + customer.getId());
-				else if (customer.getUserName() != null) // customer username is unique
-					query.append(" and username = '" + customer.getUserName() + "'");
 				else {
+					if (customer.getUserName() != null) // customer username is unique
+						condition.append(" and username = '" + customer.getUserName() + "'");
 					if( customer.getPassword() != null )
 						condition.append( " and password = '" + customer.getPassword() + "'" );
 
