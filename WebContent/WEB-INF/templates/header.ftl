@@ -52,7 +52,11 @@
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="index.html">Home</a> </li>
+				<li class="active">
+				<form action="LoadHomePage" method="post">
+				<input type="submit" value="Home">
+				</form>
+				</li>
                 <li><a href="pricing.html">Pricing</a> </li>
                 <li><a href="rentNow.html">RentNow</a> </li>
                 <li><a href="contact.html">Contact</a> </li>
