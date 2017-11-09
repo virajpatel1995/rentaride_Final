@@ -131,11 +131,11 @@ public class AdministratorManager {
 		if(administrator != null){
 			if(administrator.getId() >= 0)
 				query.append(" and id = " + administrator.getId());
-			else if (administrator.getUserName() != null)
-				query.append(" and username = '" + administrator.getUserName() + "'");
             else {
-
-                    if( administrator.getPassword() != null )
+					if (administrator.getUserName() != null) {
+						condition.append(" and username = '" + administrator.getUserName() + "'");
+					}
+					if( administrator.getPassword() != null )
                         condition.append( " and password = '" + administrator.getPassword() + "'" );
 
 					if( administrator.getEmail() != null ) {
