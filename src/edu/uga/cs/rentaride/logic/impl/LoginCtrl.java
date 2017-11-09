@@ -39,7 +39,7 @@ public class LoginCtrl
         }else if(administrators.size() > 0) {
             user = administrators.get(0);
         }else {
-            throw new RARException("SessionManager.login: Invalid User Name or Password");
+            throw new RARException("SessionManager.login: Invalid User Name or Password PLZ");
         }
         session.setUser(user);
         ssid = SessionManager.storeSession(session);
