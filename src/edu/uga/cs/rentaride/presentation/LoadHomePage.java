@@ -76,7 +76,7 @@ public class LoadHomePage extends HttpServlet {
 	        Map<String, Object> root = new HashMap<String, Object>();
 	        
 	        // Session Tracking
-			httpSession = request.getSession();
+			httpSession = request.getSession(false);
 			ssid = (String) httpSession.getAttribute( "ssid" );
 	        if( ssid != null ) {
 	            System.out.println( "Already have ssid: " + ssid );
