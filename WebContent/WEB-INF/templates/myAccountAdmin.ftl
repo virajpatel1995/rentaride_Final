@@ -12,66 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
-<!-- Header -->
-<div class="allcontain">
-	<div class="header">
-        
-<!-- Login and Register -->
-			<ul class="logreg">
-                <li>Welcome (Username)</li>
-			</ul>
-        <ul class="logreg">
-            <a href="index.html">Logout</a>
-			</ul>
-	</div>
-	<!-- Navbar Up -->
-	<nav class="topnavbar navbar-default topnav">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
-					<span class="sr-only"> Toggle navigaion</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/logo.svg" alt="logo"></a>
-			</div>	 
-		</div>
-		<div class="collapse navbar-collapse" id="upmenu">
-			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="index.html">Home</a> </li>
-                <li><a href="pricing.html">Pricing</a> </li>
-                <li><a href="rentNow.html">RentNow</a> </li>
-                <li><a href="contact.html">Contact</a> </li>
-                <li><a href="about.html">About</a> </li>
-
-
-
-
-<!--
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="#">Sport</a></li>
-						<li><a href="#">Old</a></li>
-						<li><a href="#">New</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DEALERS <span class="caret"></span></a>
-						<ul class="dropdown-menu dropdowncostume">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="3">3</a></li>
-						</ul>
-				</li>
--->
-				
-			</ul>
-		</div>
-	</nav>
-</div>
-
+<#include "header.ftl">
     
     <div style="    position: relative;
     width: 100%;
