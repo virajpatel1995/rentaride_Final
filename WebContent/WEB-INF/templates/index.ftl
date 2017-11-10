@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<#include "header.ftl">
+<#include "customerHeader.ftl">
 
 
 

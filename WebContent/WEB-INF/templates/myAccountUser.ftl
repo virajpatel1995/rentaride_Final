@@ -12,7 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
-${username}    
+
+
+${'username'}
+
     <div style="    position: relative;
     width: 100%;
     height: 650px;

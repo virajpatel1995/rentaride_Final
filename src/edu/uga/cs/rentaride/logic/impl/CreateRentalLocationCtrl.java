@@ -3,7 +3,7 @@
 //
 //
 
-package edu.uga.clubs.logic.impl;
+package edu.uga.cs.rentaride.logic.impl;
 
 
 import java.util.Date;
