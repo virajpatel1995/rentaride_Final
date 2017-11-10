@@ -12,9 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
-<#include "header.ftl">
-
-    
+${username}    
     <div style="    position: relative;
     width: 100%;
     height: 650px;
