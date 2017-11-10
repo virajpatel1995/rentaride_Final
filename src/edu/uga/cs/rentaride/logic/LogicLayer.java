@@ -18,7 +18,7 @@ public interface LogicLayer
 
 	public void               logout( String ssid ) throws RARException;
     public String             login( Session session, String userName, String password ) throws RARException;
-    public long               createRentalLocation( String clubName, String address, long founderId ) throws RARException;
+    public long               createRentalLocation( String locationName, String address, int locationCapacity ) throws RARException;
 
 
 }

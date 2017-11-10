@@ -112,5 +112,11 @@ public class LogicLayerImpl
     		return ctrlVerifyAccount.createAccount(fName, lName, username, email, password, licNumber, cardNo, expDate, address, state, zip);
     }
 
+	@Override
+	public long createRentalLocation(String locationName, String address, int locationCapacity) throws RARException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }

@@ -21,17 +21,19 @@
 
 <!-- Login and Register -->
  ${username}
+ 
+<#if (session.username)??>
 
-//<#if username?has_content>
 
 			<ul class="logreg">
 				<li>
-				<form action="Logout" method="get">
-				<button type="submit" name="Logout"> Logout</button>
-
-				</form>
+					<form action="Logout" method="post">
+						<button type="submit" name="Logout"> Logout</button>
+					</form>
 				</li>
-				<li><a href="myAccountUser.html">Account</a> </li>
+				<li>
+				<a href="myAccountUser.html">Account</a> 
+				</li>
 			</ul>
 <#else>
 		<ul class="logreg">
@@ -59,7 +61,7 @@
 			
 				<li class="active">
 				<form action="LoadHomePage" method="post">
-				<input type="submit" value="Test">
+				<input type="submit" value="myAccountTest">
 				</form>
 				</li>
 				

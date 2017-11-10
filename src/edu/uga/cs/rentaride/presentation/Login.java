@@ -29,7 +29,7 @@ public class Login
     private static final long serialVersionUID = 1L;
     
     static  String  templateDir = "WEB-INF/templates";
-    static  String  resultTemplateName = "indexCustomer.ftl";
+    static  String  resultTemplateName = "index.ftl";
     
 
 
