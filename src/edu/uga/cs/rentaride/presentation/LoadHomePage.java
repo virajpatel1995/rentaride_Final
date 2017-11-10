@@ -31,7 +31,7 @@ public class LoadHomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Configuration cfg;
     static  String          templateDir = "/WEB-INF/templates";
-    static  String          resultTemplateName = "index.ftl";
+    static  String          resultTemplateName = "myAccountUser.ftl";
     
     
     public void init() 
@@ -76,7 +76,7 @@ public class LoadHomePage extends HttpServlet {
 	        Map<String, Object> root = new HashMap<String, Object>();
 	        
 	        // Session Tracking
-			httpSession = request.getSession(false);
+			httpSession = request.getSession();
 			ssid = (String) httpSession.getAttribute( "ssid" );
 	        if( ssid != null ) {
 	            System.out.println( "Already have ssid: " + ssid );
@@ -88,6 +88,8 @@ public class LoadHomePage extends HttpServlet {
 			if(httpSession.getAttribute("user") != null) {
 			User user = (User) httpSession.getAttribute( "username");
 		    root.put("username", user.getUserName());
+	       
+
 			}
 	        // connect template with data model
 	        try {

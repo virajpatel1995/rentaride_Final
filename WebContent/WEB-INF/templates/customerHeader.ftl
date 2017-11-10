@@ -14,13 +14,13 @@
 </head>
 <body> 
 
- ${username}
 
 <!-- Header -->
 <div class="allcontain">
 	<div class="header">
 
 <!-- Login and Register -->
+ ${username}
 
 //<#if username?has_content>
 
@@ -58,7 +58,7 @@
 			<ul class="nav navbar-nav" id="navbarontop">
 			
 				<li class="active">
-				<form action="LoadHomePage" method="get">
+				<form action="LoadHomePage" method="post">
 				<input type="submit" value="Test">
 				</form>
 				</li>
