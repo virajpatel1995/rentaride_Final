@@ -106,10 +106,10 @@ public class LogicLayerImpl
     @Override
     public long registerAccount(String fName, String lName, String email, String password, String username, String licNumber,
                                 String cardNo, String expDate, String address, String state, String zip) throws RARException, ParseException {
-        Customer customer = objectLayer.createCustomer(fName, lName, username, password, email, address, new Date(), new Date(),
-                state, licNumber, cardNo, new SimpleDateFormat("dd-mm-yyy").parse(expDate), UserStatus.ACTIVE);
-        objectLayer.storeCustomer(customer);
-        return customer.getId();
+        //objectLayer.storeCustomer(customer);
+        //return customer.getId();
+    		registerAccountCtrl ctrlVerifyAccount = new registerAccountCtrl(objectLayer);
+    		return ctrlVerifyAccount.createAccount(fName, lName, username, email, password, licNumber, cardNo, expDate, address, state, zip);
     }
 
 	

@@ -19,6 +19,7 @@ import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import edu.uga.cs.rentaride.RARException;
 
 
 @WebServlet("Login")
@@ -29,6 +30,8 @@ public class Login
     
     static  String  templateDir = "WEB-INF/templates";
     static  String  resultTemplateName = "indexCustomer.ftl";
+    
+
 
     private Configuration  cfg; 
 
@@ -55,16 +58,8 @@ public class Login
         String         ssid = null;
         Session        session = null;
         LogicLayer     logicLayer = null;
-
-        // Load templates from the WEB-INF/templates directory of the Web app.
-        //
-        try {
-            resultTemplate = cfg.getTemplate( resultTemplateName );
-        } 
-        catch (IOException e) {
-            throw new ServletException( "Login.doPost: Can't load template in: " + templateDir + ": " + e.toString());
-        }
-
+        String  resultTemplateName = "index.ftl";
+        
         httpSession = req.getSession();
         ssid = (String) httpSession.getAttribute( "ssid" );
         if( ssid != null ) {
@@ -74,13 +69,6 @@ public class Login
         }
         else
             System.out.println( "ssid is null" );
-
-        // Prepare the HTTP response:
-        // - Use the charset of template for the output
-        // - Use text/html MIME-type
-        //
-        toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
-        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
         
         if( session == null ) {
             try {
@@ -93,7 +81,7 @@ public class Login
         }
         
         logicLayer = session.getLogicLayer();
-
+        
         // Get the parameters
         //
         username = req.getParameter( "username" );
@@ -103,17 +91,43 @@ public class Login
             RARError.error( cfg, toClient, "Missing user name or password" );
             return;
         }
-
+        
         try {          
             ssid = logicLayer.login( session, username, password );
             System.out.println( "Obtained ssid: " + ssid );
             httpSession.setAttribute( "ssid", ssid );
             System.out.println( "Connection: " + session.getConnection() );
         } 
-        catch ( Exception e ) {
+        catch( RARException e) {
+        		resultTemplateName = "loginRegister.ftl";
+        } catch ( Exception e ) {
             RARError.error( cfg, toClient, e );
-            return;
+        		return;
         }
+        
+        // Load templates from the WEB-INF/templates directory of the Web app.
+        //
+        try {
+            resultTemplate = cfg.getTemplate( resultTemplateName );
+        } 
+        catch (IOException e) {
+            throw new ServletException( "Login.doPost: Can't load template in: " + templateDir + ": " + e.toString());
+        }
+
+       
+
+        // Prepare the HTTP response:
+        // - Use the charset of template for the output
+        // - Use text/html MIME-type
+        //
+        toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
+        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+        
+       
+
+       
+
+    
 
         // Setup the data-model
         //
