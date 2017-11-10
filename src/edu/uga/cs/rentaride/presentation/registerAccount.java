@@ -45,7 +45,6 @@ public class registerAccount extends HttpServlet {
 	
 	//This is the folder it will return too
 	private String templateDir = "/WEB-INF/templates";
-	private String resultTemplateName = "loginRegister-Result.ftl";
 
 	
     /**
@@ -90,19 +89,11 @@ public class registerAccount extends HttpServlet {
 		//Getting the user value from the template
 		Template resultTemplate = null;
 		BufferedWriter toClient = null;
-		try {
-			resultTemplate = cfg.getTemplate( resultTemplateName );
-		}
-		catch (IOException e) {
-			throw new ServletException(
-					"Can't load template in: " + templateDir + ": " + e.toString());
-		}
-		toClient = new BufferedWriter(
-				new OutputStreamWriter( response.getOutputStream(), resultTemplate.getEncoding() )
-		);
 
-		response.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-
+		String resultTemplateName = "loginRegister-Result.ftl";
+		
+		
+		
 		String retMessage = "";
 		String username = request.getParameter("userName");
 		String firstName = request.getParameter("firstName");
@@ -163,9 +154,31 @@ public class registerAccount extends HttpServlet {
 			}
 			return;
 		}
-		long userid = logicLayer.registerAccount(firstName, lastName, email, password, username, licenseNumber, creditCard, expDate, address, state, zipCode);
+		
+		//creates account
+		try {
+			long userid = logicLayer.registerAccount(firstName, lastName, email, password, username, licenseNumber, creditCard, expDate, address, state, zipCode);
+			retMessage = "Successfully registered account!";
+		}catch(RARException e) {
+			retMessage = "Failed to Register account, username already in use.";
+			//resultTemplateName = "loginRegister2.ftl";
+		}//try catch
+		
+		//sets up template
+		try {
+			resultTemplate = cfg.getTemplate( resultTemplateName );
+		}
+		catch (IOException e) {
+			throw new ServletException(
+					"Can't load template in: " + templateDir + ": " + e.toString());
+		}
+		toClient = new BufferedWriter(
+				new OutputStreamWriter( response.getOutputStream(), resultTemplate.getEncoding() )
+		);
 
-		retMessage = "Successfully registered account!";
+		response.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
+		
 		Map<String,String> root = new HashMap<String,String>();
 		root.put("registerMessage", retMessage);
 
