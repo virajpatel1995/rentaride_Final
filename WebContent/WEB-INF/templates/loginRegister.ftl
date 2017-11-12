@@ -69,7 +69,7 @@ h5
 
 
 
-<h4 style = "text-align:center;">Invalid username or Password</h4>
+<h4 style = "text-align:center;">${message}</h4>
 
 <div class="container white z-depth-2">
 	<ul class="tabs teal">
@@ -85,7 +85,7 @@ h5
 						<input name="username"  type="text" required="required">
 
 						<!--   <input name="username" id="email" type="email" class="validate"> -->
-						<label for="user_name">username</label>
+						<label >username</label>
 					</div>
 				</div>
 				<div class="row">
