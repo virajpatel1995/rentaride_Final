@@ -21,9 +21,8 @@
 
 <!-- Login and Register -->
  ${username}
- 
-<#if (session.username)??>
 
+<#if username?has_content>
 
 			<ul class="logreg">
 				<li>

@@ -76,7 +76,7 @@ public class LoadHomePage extends HttpServlet {
 	        Map<String, Object> root = new HashMap<String, Object>();
 	        
 	        // Session Tracking
-			httpSession = request.getSession();
+			httpSession = request.getSession(false);
 			ssid = (String) httpSession.getAttribute( "ssid" );
 	        if( ssid != null ) {
 	            System.out.println( "Already have ssid: " + ssid );
@@ -86,9 +86,11 @@ public class LoadHomePage extends HttpServlet {
 	        else
 	            System.out.println( "ssid is null" );
 			if(httpSession.getAttribute("user") != null) {
-			User user = (User) httpSession.getAttribute( "username");
+			//User user = (User) httpSession.getAttribute( "username");
+			User user = session.getUser();
+			System.out.println(user);
 		    root.put("username", user.getUserName());
-	       
+	       System.out.println(httpSession.getAttribute("username"));
 
 			}
 	        // connect template with data model
