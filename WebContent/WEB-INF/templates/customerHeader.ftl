@@ -16,7 +16,7 @@
 
 
 
- 
+
 <#if username ??>
  welcome ${username}
 			<ul class="logreg">
