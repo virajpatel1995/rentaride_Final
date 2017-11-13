@@ -10,6 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="style/slider.css">
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+
+    <script>
+        function myFunction(){
+            alert("Added Location Successfully")
+        }
+    </script>
+
 </head>
 <body>
 <!-- Header -->
@@ -289,7 +296,7 @@
   <input id="carColor" name="locationCapacity" type="text" placeholder="Capacity" class="form-control input-md" required="required"> 
   </div>
 </div>
-                  <button type="submit" name="action" class="buttonx">Add Rental Location</button>
+                  <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add Rental Location</button>
 
 </form>
  </div>

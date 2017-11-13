@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
@@ -76,21 +77,23 @@ public class CreateRentalLocation
         BufferedWriter toClient = null;
         String	       name = null;
         String	       addr = null;
+        String capacityS = null;
         int      	   capacity = 0;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
         long			rentalLocationId = 0;
+        Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
 
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
         try {
             resultTemplate = cfg.getTemplate( resultTemplateName );
-        } 
+        }
         catch (IOException e) {
-            throw new ServletException( 
+            throw new ServletException(
                     "Can't load template in: " + templateDir + ": " + e.toString());
         }
 
@@ -104,69 +107,48 @@ public class CreateRentalLocation
 
         res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
+
+
+        // Session Tracking
         httpSession = req.getSession();
-        if( httpSession == null ) {       // assume not logged in!
-            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+        ssid = (String) httpSession.getAttribute("ssid");
+        if (ssid != null) {
+            System.out.println("Already have ssid: " + ssid);
+            session = SessionManager.getSessionById(ssid);
+            System.out.println("Connection: " + session.getConnection());
+        } else
+            System.out.println("ssid is null");
+
+        session = SessionManager.getSessionById(ssid);
+        if(session == null){
+            RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
         }
+        User user = session.getUser();
+        root.put("username", user.getUserName());
 
-        ssid = (String) httpSession.getAttribute( "ssid" );
-        if( ssid == null ) {       // not logged in!
-            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return;
-        }
-
-        session = SessionManager.getSessionById( ssid );
-        if( session == null ) {
-            RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return; 
-        }
-        
         logicLayer = session.getLogicLayer();
         if( logicLayer == null ) {
         		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return; 
+            return;
         }
 
         // Get the form parameters
         //
         name = req.getParameter( "locationName" );
         addr = req.getParameter( "locationAddress" );
-        String capacityS = req.getParameter( "locationCapacity" );
-        
+        String zip = req.getParameter( "locationZip" );
+        String state = req.getParameter( "locationState" );
+        capacityS = req.getParameter( "locationCapacity" );
+
         try{
-        		capacity = Integer.valueOf(capacityS);
+            capacity = Integer.valueOf(capacityS);
+            rentalLocationId = logicLayer.createRentalLocation( name, addr + " " + state + " " + zip, capacity );
         }catch(Exception e) {
-        		capacity = 1;
+        		capacity = 0;
         }
 
-        if( name == null || addr == null ) {
-            RARError.error( cfg, toClient, "Unspecified name or address" );
-            return;
-        }
 
-        
-        try {
-            rentalLocationId = logicLayer.createRentalLocation( name, addr, capacity );
-            retMessage = "Location Created Successfully";
-        } 
-        catch ( RARException e ) {
-        		retMessage = "Location is already in system.";
-        }
-
-        // Setup the data-model
-        //
-        Map<String,Object> root = new HashMap<String,Object>();
-
-        // Build the data-model
-        //
-        
-        root.put("locationMessage", retMessage);
-        root.put( "name", name );
-        root.put( "club_id", new Long( rentalLocationId ) );
-
-        // Merge the data-model and the template
-        //
         try {
             resultTemplate.process( root, toClient );
             toClient.flush();
