@@ -14,14 +14,9 @@
 </head>
 <body> 
 
-<!-- Header -->
-<div class="allcontain">
-	<div class="header">
-
-<!-- Login and Register -->
-
 
  welcome ${username}
+
  
 <#if username ??>
 			<ul class="logreg">
