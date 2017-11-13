@@ -61,13 +61,35 @@
 				<#--</form>-->
 				<#--</li>-->
 				
-                <li><a href="pricing.html">Pricing</a> </li>
+				<li>
+				<form action="LoadHomePage" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Home">Home</button>
+				</form>
+				</li>
+				
+                <#--<li>
+				<form action="LoadPricing" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Pricing">Pricing</button>
+				</form>
+				</li>-->
                 
-                <li><a href="rentNow.html">RentNow</a> </li>
+                <li>
+				<form action="LoadRentNow" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="RentNow">Rent Now</button>
+				</form>
+				</li>
                 
-                <li><a href="contact.html">Contact</a> </li>
+                <li>
+				<form action="LoadContact" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Contact">Contact</button>
+				</form>
+				</li>
                 
-                <li><a href="about.html">About</a> </li>
+                <li>
+				<form action="LoadAbout" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="About">About</button>
+				</form>
+				</li>
 
 			</ul>
 		</div>

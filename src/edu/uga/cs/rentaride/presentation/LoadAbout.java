@@ -24,12 +24,12 @@ import freemarker.template.TemplateException;
 /**
  * Servlet implementation class LoadHomePage
  */
-@WebServlet("LoadHomePage")
-public class LoadHomePage extends HttpServlet {
+@WebServlet("LoadAbout")
+public class LoadAbout extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Configuration cfg;
     static String templateDir = "/WEB-INF/templates";
-    String destination = "index.ftl";
+    String destination = "about.ftl";
 
 
 
@@ -81,7 +81,7 @@ public class LoadHomePage extends HttpServlet {
         try {
             resultTemplate = cfg.getTemplate(resultTemplateName);
         } catch (IOException e) {
-            throw new ServletException("LoadHomePage.doGet: Can't load template in: " + templateDir + ": " + e.toString());
+            throw new ServletException("LoadAbout.doGet: Can't load template in: " + templateDir + ": " + e.toString());
         }
         BufferedWriter toClient = new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), resultTemplate.getEncoding()));
         response.setContentType("text/html; charset=" + resultTemplate.getEncoding());
