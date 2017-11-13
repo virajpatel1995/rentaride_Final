@@ -14,7 +14,7 @@
 <body>
 
 
-${'username'}
+<#include "customerHeader.ftl">
 
     <div style="    position: relative;
     width: 100%;

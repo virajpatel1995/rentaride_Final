@@ -29,8 +29,7 @@ public class Login
     private static final long serialVersionUID = 1L;
     
     static  String  templateDir = "WEB-INF/templates";
-    static  String  resultTemplateName = "index.ftl";
-    
+
 
 
     private Configuration  cfg; 
@@ -56,6 +55,7 @@ public class Login
         String         username = null;
         String         password = null;
         String         ssid = null;
+        String msg = null;
         Session        session = null;
         LogicLayer     logicLayer = null;
         String  resultTemplateName = "index.ftl";
@@ -69,7 +69,22 @@ public class Login
         }
         else
             System.out.println( "ssid is null" );
-        
+        // Load templates from the WEB-INF/templates directory of the Web app.
+        //
+
+        try {
+            resultTemplate = cfg.getTemplate( resultTemplateName );
+        }
+        catch (IOException e) {
+            throw new ServletException( "Login.doPost: Can't load template in: " + templateDir + ": " + e.toString());
+        }
+        // Prepare the HTTP response:
+        // - Use the charset of template for the output
+        // - Use text/html MIME-type
+        //
+        toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
+        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
         if( session == null ) {
             try {
                 session = SessionManager.createSession();
@@ -99,30 +114,22 @@ public class Login
             System.out.println( "Connection: " + session.getConnection() );
         } 
         catch( RARException e) {
-        		resultTemplateName = "loginRegister.ftl";
+            resultTemplateName = "loginRegister.ftl";
+            msg = "Invalid username or Password";
+            resultTemplate = cfg.getTemplate( resultTemplateName );
+            toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
+            res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
         } catch ( Exception e ) {
             RARError.error( cfg, toClient, e );
         		return;
         }
         
-        // Load templates from the WEB-INF/templates directory of the Web app.
-        //
-        try {
-            resultTemplate = cfg.getTemplate( resultTemplateName );
-        } 
-        catch (IOException e) {
-            throw new ServletException( "Login.doPost: Can't load template in: " + templateDir + ": " + e.toString());
-        }
+
 
        
 
-        // Prepare the HTTP response:
-        // - Use the charset of template for the output
-        // - Use text/html MIME-type
-        //
-        toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
-        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-        
+
        
 
        
@@ -136,6 +143,7 @@ public class Login
         // Build the data-model
         //
         root.put( "username", username );
+        root.put( "message", msg );
 
         // Merge the data-model and the template
         //
