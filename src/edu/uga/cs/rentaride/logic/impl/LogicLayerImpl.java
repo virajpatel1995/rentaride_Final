@@ -16,6 +16,7 @@ import edu.uga.cs.rentaride.object.*;
 import edu.uga.cs.rentaride.object.impl.*;
 import edu.uga.cs.rentaride.persistence.*;
 import edu.uga.cs.rentaride.persistence.impl.*;
+import edu.uga.cs.rentaride.presentation.CreateRentalLocation;
 import edu.uga.cs.rentaride.session.*;
 
 
@@ -112,10 +113,11 @@ public class LogicLayerImpl
     		return ctrlVerifyAccount.createAccount(fName, lName, username, email, password, licNumber, cardNo, expDate, address, state, zip);
     }
 
+    //
 	@Override
 	public long createRentalLocation(String locationName, String address, int locationCapacity) throws RARException {
-		// TODO Auto-generated method stub
-		return 0;
+		CreateRentalLocationCtrl ctrlRentalLocation = null;// = new CreateRentalLocation(objectLayer);
+		return ctrlRentalLocation.createRentalLocation(locationName, address, locationCapacity);
 	}
 
 	

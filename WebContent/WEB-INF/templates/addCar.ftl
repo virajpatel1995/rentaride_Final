@@ -13,7 +13,7 @@ Z<!doctype html>
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
-<#include "header.ftl">
+<#include "customerHeader.ftl">
     <div style="    position: relative;
     width: 100%;
     height: 500px;

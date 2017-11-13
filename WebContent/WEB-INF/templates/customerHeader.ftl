@@ -20,18 +20,26 @@
 	<div class="header">
 
 <!-- Login and Register -->
+<<<<<<< HEAD
  ${username}
 
 <#if username?has_content>
 
+=======
+ welcome ${username}
+ 
+<#if username ??>
+>>>>>>> master
 			<ul class="logreg">
 				<li>
-					<form action="Logout" method="post">
+					<form action="Logout" method="get">
 						<button type="submit" name="Logout"> Logout</button>
 					</form>
 				</li>
 				<li>
-				<a href="myAccountUser.html">Account</a> 
+                    <form action="LoadAccount" method="post">
+                        <button type="submit" name="Account"> Account</button>
+                    </form>
 				</li>
 			</ul>
 <#else>
@@ -58,11 +66,11 @@
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
 			
-				<li class="active">
-				<form action="LoadHomePage" method="post">
-				<input type="submit" value="myAccountTest">
-				</form>
-				</li>
+				<#--<li class="active">-->
+				<#--<form action="LoadHomePage" method="post">-->
+				<#--<input type="submit" value="myAccountTest">-->
+				<#--</form>-->
+				<#--</li>-->
 				
                 <li><a href="pricing.html">Pricing</a> </li>
                 

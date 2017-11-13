@@ -29,7 +29,7 @@ public class Logout
     private static final long serialVersionUID = 1L;
     
     static  String  templateDir = "WEB-INF/templates";
-    static  String  resultTemplateName = "Goodbye.ftl";
+    static  String  resultTemplateName = "loginRegister.ftl";
 
     private Configuration  cfg; 
 
@@ -100,6 +100,7 @@ public class Logout
         // Setup the data-model
         //
         Map<String, String> root = new HashMap<String, String>();
+        root.put("message", "You have been logged out from Rent A Ride");
 
         // Merge the data-model and the template
         //

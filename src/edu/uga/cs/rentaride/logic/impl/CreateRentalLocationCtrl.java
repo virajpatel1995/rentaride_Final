@@ -9,58 +9,40 @@ package edu.uga.cs.rentaride.logic.impl;
 import java.util.Date;
 import java.util.List;
 
-import edu.uga.clubs.ClubsException;
-import edu.uga.clubs.entity.Club;
-import edu.uga.clubs.entity.Person;
-import edu.uga.clubs.object.ObjectLayer;
+import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.RentalLocation;
+import edu.uga.cs.rentaride.object.ObjectLayer;
 
 
 
-public class CreateClubCtrl {
+public class CreateRentalLocationCtrl {
     
     private ObjectLayer objectLayer = null;
     
-    public CreateClubCtrl( ObjectLayer objectModel )
+    public CreateRentalLocationCtrl( ObjectLayer objectModel )
     {
         this.objectLayer = objectModel;
     }
     
-    public long createClub( String club_name, String club_addr, long founderId )
-            throws ClubsException
+    public long createRentalLocation( String name, String addr, int capacity )
+            throws RARException
     { 
-        Date 		    estab = null;
-        Club 		    club  = null;
-        Club                modelClub = null;
-        List<Club>          clubs = null;
-        Person              founder = null;
-        Person              modelPerson = null;
-        List<Person>        persons = null;
+        RentalLocation 		    location  = null;
+        RentalLocation                modelLocation = null;
+        List<RentalLocation>          rentalLocations= null;
 
         // check if a club with this name already exists (name is unique)
-        modelClub = objectLayer.createClub();
-        modelClub.setName( club_name );
-        clubs = objectLayer.findClub( modelClub );
-        if( clubs.size() > 0 )
-            throw new ClubsException( "A club with this name already exists: " + club_name );
+        modelLocation = objectLayer.createRentalLocation();
+        modelLocation.setName( name );
+        rentalLocations = objectLayer.findRentalLocation( modelLocation );
+        if( rentalLocations.size() > 0 )
+            throw new RARException( "A Location with this name already exists: " + name );
 
-        // retrieve the founder person
-        modelPerson = objectLayer.createPerson();
-        modelPerson.setId( founderId );
-        persons = objectLayer.findPerson( modelPerson );
-        if( persons.size() > 0 ) {
-            founder = persons.get( 0 );
-        }
+        // create the location
+        location = objectLayer.createRentalLocation( name, addr, capacity );
+        objectLayer.storeRentalLocation( location );
 
-        // check if the person (founder) actually exists
-        if( founder == null )
-            throw new ClubsException( "A person with this id does not exist: " + founderId );
-
-        // create the club
-        estab = new Date();		// mark it as created now
-        club = objectLayer.createClub( club_name, club_addr, estab, founder );
-        objectLayer.storeClub( club );
-
-        return club.getId();
+        return location.getId();
     }
 }
 
