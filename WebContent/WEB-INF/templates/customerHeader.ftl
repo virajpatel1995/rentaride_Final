@@ -15,10 +15,10 @@
 <body> 
 
 
- welcome ${username}
 
- 
+
 <#if username ??>
+ welcome ${username}
 			<ul class="logreg">
 				<li>
 					<form action="Logout" method="get">
