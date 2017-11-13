@@ -35,9 +35,14 @@ public class CreateRentalLocationCtrl {
         modelLocation = objectLayer.createRentalLocation();
         modelLocation.setName( name );
         rentalLocations = objectLayer.findRentalLocation( modelLocation );
-        if( rentalLocations.size() > 0 )
-            throw new RARException( "A Location with this name already exists: " + name );
-
+        if( rentalLocations.size() > 0 ) {
+            RentalLocation newRentalLocation = rentalLocations.get(0);
+            newRentalLocation.setAddress(addr);
+            newRentalLocation.setCapacity(capacity);
+            objectLayer.storeRentalLocation(newRentalLocation);
+            return newRentalLocation.getId();
+//            throw new RARException("A Location with this name already exists: " + name);
+        }
         // create the location
         location = objectLayer.createRentalLocation( name, addr, capacity );
         objectLayer.storeRentalLocation( location );

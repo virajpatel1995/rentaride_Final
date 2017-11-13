@@ -30,7 +30,7 @@ public class RentalLocationManager {
 	
 	public void store(RentalLocation rentalLocation) throws RARException{
 		String insertRentalLocationSql = "insert into rentalLocation ( name, address, capacity) values ( ?, ?, ?)";
-		String updateRentalLocationSql = "update person  set name = ?, address = ?, capacity = ?, where id = ?";
+		String updateRentalLocationSql = "update rentalLocation  set name = ?, address = ?, capacity = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long rentalLocationId;
