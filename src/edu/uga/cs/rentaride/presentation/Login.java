@@ -145,12 +145,9 @@ public class Login
         // Build the data-model
         //
         root.put( "username", username );
-<<<<<<< HEAD
         httpSession.setAttribute( "username", username );
 
-=======
         root.put( "message", msg );
->>>>>>> master
 
         // Merge the data-model and the template
         //
