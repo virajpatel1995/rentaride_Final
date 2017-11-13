@@ -296,7 +296,7 @@
   <input id="carColor" name="locationCapacity" type="text" placeholder="Capacity" class="form-control input-md" required="required"> 
   </div>
 </div>
-                  <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add Rental Location</button>
+                  <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental Location</button>
 
 </form>
  </div>
