@@ -14,11 +14,8 @@
 <body>
 
 
-<<<<<<< HEAD
-=======
 <#include "customerHeader.ftl">
 
->>>>>>> master
     <div style="    position: relative;
     width: 100%;
     height: 650px;
