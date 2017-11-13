@@ -20,6 +20,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.User;
 
 
 @WebServlet("Login")
@@ -111,6 +112,7 @@ public class Login
             ssid = logicLayer.login( session, username, password );
             System.out.println( "Obtained ssid: " + ssid );
             httpSession.setAttribute( "ssid", ssid );
+            User user = session.getUser();
             System.out.println( "Connection: " + session.getConnection() );
         } 
         catch( RARException e) {
@@ -143,7 +145,12 @@ public class Login
         // Build the data-model
         //
         root.put( "username", username );
+<<<<<<< HEAD
+        httpSession.setAttribute( "username", username );
+
+=======
         root.put( "message", msg );
+>>>>>>> master
 
         // Merge the data-model and the template
         //
