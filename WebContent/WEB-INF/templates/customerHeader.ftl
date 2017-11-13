@@ -15,11 +15,6 @@
 <body> 
 
 
-<!-- Header -->
-<div class="allcontain">
-	<div class="header">
-
-
  welcome ${username}
 
  

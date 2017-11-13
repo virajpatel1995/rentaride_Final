@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,12 +46,14 @@ import edu.uga.cs.rentaride.RARException;
 //	club_address string
 //      founder_id   long (as a string)
 //
+@WebServlet("CreateRentalLocation")
+
 public class CreateRentalLocation
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
     static  String         templateDir = "WEB-INF/templates";
-    static  String         resultTemplateName = "createRentalLocation.ftl";
+    static  String         resultTemplateName = "myAccountAdmin.ftl";
 
     private Configuration  cfg; 
 

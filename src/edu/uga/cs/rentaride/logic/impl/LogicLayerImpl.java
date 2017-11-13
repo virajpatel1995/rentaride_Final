@@ -116,7 +116,7 @@ public class LogicLayerImpl
     //
 	@Override
 	public long createRentalLocation(String locationName, String address, int locationCapacity) throws RARException {
-		CreateRentalLocationCtrl ctrlRentalLocation = null;// = new CreateRentalLocation(objectLayer);
+		CreateRentalLocationCtrl ctrlRentalLocation = new CreateRentalLocationCtrl(objectLayer);
 		return ctrlRentalLocation.createRentalLocation(locationName, address, locationCapacity);
 	}
 

@@ -12,8 +12,9 @@
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
+<!-- Header -->
 <#include "customerHeader.ftl">
-    
+
     <div style="    position: relative;
     width: 100%;
     height: 500px;
@@ -239,6 +240,68 @@
 </div>
 </div>
 
+<!--*****************************************************************************-->
+<!--*****************************************************************************-->
+
+
+  <div class="panel-heading text-center"><h1>Add Rental Location</h1></div>
+  <div class="panel-body">
+      <div class="container"> 
+          <div class="row">
+              <div class="col-xs-5">
+              <form class="form-horizontal" action="CreateRentalLocation" method="post" >
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="carName">Rental Location Name: </label>  
+  <div class="col-md-6">
+  <input id="carName" name="locationName" type="text" placeholder="Location Name" class="form-control input-md" required="required">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="carType">Address: </label>  
+  <div class="col-md-4">
+  <input id="carType" name="locationAddress" type="text" placeholder="Address" class="form-control input-md" required="required"> 
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="carType">Zip: </label>  
+  <div class="col-md-4">
+  <input id="carType" name="locationZip" type="text" placeholder="ZipCode" class="form-control input-md" required="required"> 
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="carType">State: </label>  
+  <div class="col-md-4">
+  <input id="carType" name="locationState" type="text" placeholder="State" class="form-control input-md" required="required"> 
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="carColor">Capacity: </label>  
+  <div class="col-md-4">
+  <input id="carColor" name="locationCapacity" type="text" placeholder="Capacity" class="form-control input-md" required="required"> 
+  </div>
+</div>
+                  <button type="submit" name="action" class="buttonx">Add Rental Location</button>
+
+</form>
+ </div>
+            
+         
+      </div>
+   
+    
+    
+    
+    
+    
     
     
     
