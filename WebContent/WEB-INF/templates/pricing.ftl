@@ -14,13 +14,21 @@
 
 </head>
 <body>
-
 <#include "customerHeader.ftl">
     
+     <div style="    position: relative;
+    width: 100%;
+    height: 850px;
+    overflow: hidden;
+    z-index: 1;
+    background: white;
+    margin: 20px 3px 0 0;" >
         
-        
-        
-       <div id="pricing" align = "center">
+ <div class="container">
+     <br>
+     <br>
+     <br>
+   <div id="pricing" align = "center">
 	<div class="price_card bravo">
 		<div class="header">
 			<span class="price">$50 </span>
@@ -51,11 +59,9 @@
 		</ul>
 		<button><a href = rentNow.html>Rent Now</a></button>
 	</div>   
-        
-        
-        
-           
-    
+    </div>
+    </div>
+    </div>
     
     
 			<div class="footer">
@@ -66,6 +72,7 @@
 					 Designed by <a href="http://www.webdomus.net/">Team 10 </a> 
 				</div>
 			</div>
+
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="source/js/isotope.js"></script>
