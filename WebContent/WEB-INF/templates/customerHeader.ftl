@@ -19,17 +19,11 @@
 <div class="allcontain">
 	<div class="header">
 
-<!-- Login and Register -->
-<<<<<<< HEAD
- ${username}
 
-<#if username?has_content>
-
-=======
  welcome ${username}
+
  
 <#if username ??>
->>>>>>> master
 			<ul class="logreg">
 				<li>
 					<form action="Logout" method="get">
