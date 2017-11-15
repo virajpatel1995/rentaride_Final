@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.javaws.Cache6UpgradeHelper;
 import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.*;
 import edu.uga.cs.rentaride.logic.*;
@@ -120,5 +121,34 @@ public class LogicLayerImpl
 		return ctrlRentalLocation.createRentalLocation(locationName, address, locationCapacity);
 	}
 
-	
+    @Override
+    public User checkUser(String username, String email) throws RARException {
+        Customer customer = objectLayer.createCustomer();
+        customer.setUserName(username);
+        customer.setEmail(email);
+        Administrator administrator = objectLayer.createAdministrator();
+        administrator.setUserName(username);
+        administrator.setEmail(email);
+
+        User user = null;
+        List<Customer> customers = objectLayer.findCustomer(customer);
+        List<Administrator> administrators = objectLayer.findAdministrator(administrator);
+
+        if (customers.size() > 0) {
+            user = customers.get(0);
+        } else if (administrators.size() > 0) {
+            user = administrators.get(0);
+        }
+        return user;
+    }
+
+    @Override
+    public void updatePassword(String password, User user) throws RARException {
+        user.setPassword(password);
+        if (user instanceof Administrator) {
+            objectLayer.storeAdministrator((Administrator) user);
+        } else if (user instanceof Customer) {
+            objectLayer.storeCustomer((Customer) user);
+        }
+    }
 }
