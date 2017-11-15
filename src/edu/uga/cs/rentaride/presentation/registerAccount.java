@@ -119,7 +119,6 @@ public class registerAccount extends HttpServlet {
 		
 		//Here it will get the existing id
 		if( ssid != null ) {
-
             session = SessionManager.getSessionById( ssid );
         }
 
@@ -130,19 +129,9 @@ public class registerAccount extends HttpServlet {
 			try {
 				session = SessionManager.createSession();
 			} catch ( Exception e ){
-				
-//				retMessage = e.toString();
-//				templateProcessor.setTemplate("SigninCreateForm.ftl");
-//				templateProcessor.addToRoot("retMessage", retMessage);
-//				templateProcessor.processTemplate(response);
+
 			}
 		}
-		
-		//We are setting the attribute from user into the session
-//		httpSession.setAttribute("firstName", firstName);
-//		httpSession.setAttribute("lastName", lastName);
-//		httpSession.setAttribute("email", email);
-//		httpSession.setAttribute("password", password);
 
 		logicLayer = session.getLogicLayer();
 		if( logicLayer == null ) {
@@ -161,7 +150,6 @@ public class registerAccount extends HttpServlet {
 			retMessage = "Successfully registered account!";
 		}catch(RARException e) {
 			retMessage = "Failed to Register account, username already in use.";
-			//resultTemplateName = "loginRegister2.ftl";
 		}//try catch
 		
 		//sets up template
@@ -193,91 +181,9 @@ public class registerAccount extends HttpServlet {
 		}
 
 		toClient.close();
-
-//		templateProcessor.addToRoot("retMessage", retMessage);
-		
-		//Here it will process the response
-//		templateProcessor.processTemplate(response);
     }
 	
-	
-//	public void registerUser2(HttpServletRequest request, HttpServletResponse response){
-//
-//		//This is the file it will sent after it stores all the inputs
-//		templateProcessor.setTemplate("SigninCreateForm.ftl");
-//
-//		//Getting the user value from the template
-//		String status = "";
-////		String licenseNumber = request.getParameter("licenseNumber");
-////		String creditCard = request.getParameter("creditCard");
-////		String expDate = request.getParameter("expDate");
-////		String address = request.getParameter("address");
-////		String state = request.getParameter("state");
-////		String zipCode = request.getParameter("zipCode");
-//
-//		//Setting the session to null
-//		HttpSession    httpSession = null;
-//        Session        session = null;
-//        String         ssid;
-//
-//        //Getting the http session and store it into the ssid
-//        httpSession = request.getSession();
-//		ssid = (String) httpSession.getAttribute( "ssid" );
-//
-//		//Here it will get the existing id
-//		if( ssid != null ) {
-//
-//            session = SessionManager.getSessionById( ssid );
-//        }
-//
-//		//Here it will create the session id
-//		if( session == null ){
-//			try {
-//
-//				session = SessionManager.createSession();
-//			} catch ( Exception e ){
-//
-//				status = e.toString();
-//				templateProcessor.setTemplate("SigninCreateForm.ftl");
-//				templateProcessor.addToRoot("status", status);
-//				templateProcessor.processTemplate(response);
-//			}
-//		}
-//
-//		//Here we will retrieve the attribute which was stored in previous form into the session
-//		String firstName = (String) httpSession.getAttribute("firstName");
-//		String lastName = (String) httpSession.getAttribute("lastName");
-//		String email = (String) httpSession.getAttribute("email");
-//		String password = (String) httpSession.getAttribute("password");
-//
-//		logicLayer = session.getLogicLayer();
-//
-//		//Passing the all the values from user into the logic layer
-//		long num;
-//		try {
-//
-//			num = logicLayer.registerAccount(firstName, lastName, email, password, licenseNumber, creditCard, expDate, address, state, zipCode);
-//		} catch (RARException e) {
-//
-//			e.printStackTrace();
-//		} finally {
-//
-//			templateProcessor.addToRoot("status", status);
-//			templateProcessor.processTemplate(response);
-//		}
-//    }
-	
-//	public void toSigninMenu(HttpServletResponse response) {
-//
-//		//This is the file it will sent after it stores all the inputs
-//		templateProcessor.setTemplate("SigninCreateForm.ftl");
-//		templateProcessor.processTemplate(response);
-//	} // toSigninOne
-	
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//This will check the user state in sign in or create account
