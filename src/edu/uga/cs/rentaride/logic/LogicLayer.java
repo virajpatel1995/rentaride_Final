@@ -22,6 +22,10 @@ public interface LogicLayer
     public long               createRentalLocation( String locationName, String address, int locationCapacity ) throws RARException;
     public User checkUser(String username, String email) throws RARException;
     public void updatePassword(String password, User user) throws RARException;
-  //  public RentARideParams membershipPrice(RentARideParams membershipPrice) throws RARException;
-	public double membershipPrice(double price)throws RARException;
+
+
+    public  RentARideParams getRenARideParams() throws RARException;
+
+    void updateRenARideParams(RentARideParams rentARideParams) throws RARException;
+
 }

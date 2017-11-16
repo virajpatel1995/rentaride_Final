@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.Administrator;
 import edu.uga.cs.rentaride.entity.Customer;
+import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
@@ -73,6 +75,7 @@ public class LoadAccount extends HttpServlet {
             System.out.println("ssid is null");
 
         session = SessionManager.getSessionById(ssid);
+        LogicLayer logicLayer = session.getLogicLayer();
         if(session == null){
             RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
@@ -80,7 +83,19 @@ public class LoadAccount extends HttpServlet {
         User user = session.getUser();
         root.put("username", user.getUserName());
 
-        if (user instanceof Administrator) resultTemplateName = adminPage;
+        if (user instanceof Administrator){
+            resultTemplateName = adminPage;
+            try {
+                RentARideParams rentARideParams = logicLayer.getRenARideParams();
+                if(rentARideParams != null){
+//                String mp = (rentARideParams.getMembershipPrice()*100);
+                root.put("mprice", rentARideParams.getMembershipPrice()/100.0);
+                root.put("latefee", rentARideParams.getLateFee()/100.0);
+                }
+            } catch (RARException e) {
+                e.printStackTrace();
+            }
+        }
         else if(user instanceof Customer) resultTemplateName = customerPage;
         // init the template
         try {
