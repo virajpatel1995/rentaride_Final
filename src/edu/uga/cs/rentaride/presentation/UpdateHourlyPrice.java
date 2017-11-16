@@ -23,9 +23,9 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateMembershipPrice")
+@WebServlet("UpdateHourlyPrice")
 
-public class UpdateMembershipPrice
+public class UpdateHourlyPrice
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -51,6 +51,7 @@ public class UpdateMembershipPrice
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
+        String		   vehicleType = null;
         String	       priceS = null;
         double		   price = 0.0;
         LogicLayer     logicLayer = null;
@@ -108,11 +109,12 @@ public class UpdateMembershipPrice
 
         // Get the form parameters
         //
-        priceS = req.getParameter( "membershipPrice" );
+        vehicleType = req.getParameter( "vehicleType" );
+        priceS = req.getParameter( "hourlyPrice" );
 
         try{
             price = Integer.valueOf(priceS);
-            
+            logicLayer.
         }catch(Exception e) {
 
         }

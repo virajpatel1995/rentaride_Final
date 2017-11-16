@@ -23,9 +23,9 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateMembershipPrice")
+@WebServlet("UpdateLateFee")
 
-public class UpdateMembershipPrice
+public class UpdateLateFee
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -112,7 +112,6 @@ public class UpdateMembershipPrice
 
         try{
             price = Integer.valueOf(priceS);
-            
         }catch(Exception e) {
 
         }
