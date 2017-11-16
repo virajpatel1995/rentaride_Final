@@ -345,7 +345,6 @@ public class ObjectLayerImpl implements ObjectLayer {
 	@Override
 	public void storeRentARideParams(RentARideParams rentARideParams) throws RARException {
 		persistence.storeRentARideConfig(rentARideParams);
-
 	}
 	
 	@Override
