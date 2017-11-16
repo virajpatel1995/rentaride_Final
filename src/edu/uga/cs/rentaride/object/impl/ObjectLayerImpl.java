@@ -347,11 +347,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 		persistence.deleteCustomer(customer);
 	}//deleteCustoemr
 
-//	@Override
-//	public double storeRentARideParams(double membershipPrice) throws RARException {
-//		persistence.storeRentARideConfig(rentARideParams);
-//		return 0;
-//	}
+
 
 	
 

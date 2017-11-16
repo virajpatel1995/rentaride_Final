@@ -15,11 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.User;
-<<<<<<< HEAD
-=======
+
 import edu.uga.cs.rentaride.entity.impl.RentARideParamsImpl;
 import edu.uga.cs.rentaride.logic.LogicLayer;
->>>>>>> junwei_branch
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
@@ -63,7 +61,6 @@ public class UpdateMembershipPrice
         String	       lateFee = null;
         double		   price = 0.0;
         LogicLayer     logicLayer = null;
-        HttpSession    httpSession;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
@@ -131,22 +128,12 @@ public class UpdateMembershipPrice
         }catch(Exception e) {
             msg = "Something goes wrong";
         }
-        catch( RARException e) {
-
+       
 
         res.setContentType("text/plain");
         res.getWriter().write(msg);
 
-//        try {
-//            resultTemplate.process( root, toClient );
-//            toClient.flush();
-//        }
-//        catch (TemplateException e) {
-//            throw new ServletException( "Error while processing FreeMarker template", e);
-//        }
-
-//        toClient.close();
-
+    }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
