@@ -111,7 +111,7 @@ public class UpdateMembershipPrice
         priceS = req.getParameter( "membershipPrice" );
 
         try{
-            price = Integer.valueOf(priceS);
+            price = Double.valueOf(priceS);
             
         }catch(Exception e) {
 
