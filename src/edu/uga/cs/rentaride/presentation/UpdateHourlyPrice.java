@@ -113,7 +113,7 @@ public class UpdateHourlyPrice
         priceS = req.getParameter( "hourlyPrice" );
 
         try{
-            price = Integer.valueOf(priceS);
+            price = Double.valueOf(priceS);
             logicLayer.
         }catch(Exception e) {
 
