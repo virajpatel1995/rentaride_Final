@@ -268,13 +268,14 @@
      
            <div style="float:left">
                <#if mprice ?? && (latefee ??)>
-            Membership Price:<input id="membershipPrice" type="number" value = ${mprice}  placeholder="price" step="0.01"/>
-            Late Fee:<input id="lateFee" type="number" value = ${latefee}  placeholder="price" step="0.01"/>
-
+                   <p>${mprice} and ${latefee}</p>
+            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" value = ${mprice} step="0.01" />
+                   <br>
+            Late Fee:<input id="lateFee" type="number" onClick="this.select();"  value = ${latefee} step="0.01" />
                    <#else >
 
             Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
-            Late Fee:<input type="number" id="lateFee" placeholder="price" step="0.01"/>
+            Late Fee:<input type="number" id="lateFee" step="0.01"/>
                    </#if>
             </div>
                 
