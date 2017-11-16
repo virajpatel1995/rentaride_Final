@@ -88,9 +88,10 @@ public class LoadAccount extends HttpServlet {
             try {
                 RentARideParams rentARideParams = logicLayer.getRenARideParams();
                 if(rentARideParams != null){
-//                String mp = (rentARideParams.getMembershipPrice()*100);
-                root.put("mprice", rentARideParams.getMembershipPrice()/100.0);
-                root.put("latefee", rentARideParams.getLateFee()/100.0);
+                String mp = (rentARideParams.getMembershipPrice()/100.0)+"";
+                String lf = (rentARideParams.getLateFee()/100.0)+"";
+                root.put("mprice", mp);
+                root.put("latefee", lf);
                 }
             } catch (RARException e) {
                 e.printStackTrace();
