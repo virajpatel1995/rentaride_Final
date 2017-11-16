@@ -14,13 +14,13 @@ public interface RentARideParams
     /** Return the current price of the Rent-A-Ride membership.
      * @return the Rent-A-Ride current price (in cents) of the Rent-A-Ride membership
      */
-    public int getMembershipPrice();
+    public double getMembershipPrice();
     
     /** Set the price of the Rent-A-Ride membership.
      * @param membershipPrice the new price (in cents) of the Rent-A-Ride membership
      * @throws RARException in case membershipPrice is non-positive
      */
-    public void setMembershipPrice( int membershipPrice ) throws RARException;
+    public void setMembershipPrice( double membershipPrice ) throws RARException;
     
     /** Return the current late fee of the Rent-A-Ride membership.
      * @return the Rent-A-Ride current late fee (in cents)
@@ -32,4 +32,5 @@ public interface RentARideParams
      * @throws RARException in case membershipPrice is negative
      */
     public void setLateFee( int lateFee ) throws RARException;
+
 }

@@ -445,10 +445,12 @@ public interface ObjectLayer
     
     /**
      * Store a given RentARideConfig object in persistent data store.
-     * @param rentARideParams the object to be persisted
+     * @param membershipPrice the object to be persisted
+     * @return 
      * @throws RARException in case there was an error while persisting the object
      */
-    public void storeRentARideParams( RentARideParams rentARideParams ) throws RARException;
+    //public void storeRentARideParams( RentARideParams rentARideParams ) throws RARException;
+    public double storeRentARideParams( double membershipPrice ) throws RARException;
 
     public void deleteCustomer(Customer customer) throws RARException;
 }

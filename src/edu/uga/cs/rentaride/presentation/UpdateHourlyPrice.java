@@ -114,7 +114,7 @@ public class UpdateHourlyPrice
 
         try{
             price = Double.valueOf(priceS);
-            logicLayer.
+          //  logicLayer.
         }catch(Exception e) {
 
         }

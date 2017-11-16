@@ -150,4 +150,13 @@ public class LogicLayerImpl
             objectLayer.storeCustomer((Customer) user);
         }
     }
+
+	@Override
+	public double membershipPrice(double price) throws RARException {
+		return objectLayer.storeRentARideParams(price);
+		
+	}
+
+
+    
 }
