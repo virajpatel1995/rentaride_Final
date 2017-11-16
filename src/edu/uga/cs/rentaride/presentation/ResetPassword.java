@@ -55,7 +55,7 @@ public class ResetPassword extends HttpServlet
             String         email = null;
             String         password = null;
             String         ssid = null;
-            String msg = null;
+            String 		   msg = null;
             Session session = null;
             LogicLayer logicLayer = null;
             String  resultTemplateName = "index.ftl";
@@ -87,18 +87,10 @@ public class ResetPassword extends HttpServlet
             catch (IOException e) {
                 throw new ServletException( "ResetPassword.doPost: Can't load template in: " + templateDir + ": " + e.toString());
             }
-            // Prepare the HTTP response:
-            // - Use the charset of template for the output
-            // - Use text/html MIME-type
-            //
-//            toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
-//            res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-
 
             username = req.getParameter( "username" );
             email = req.getParameter( "email" );
             password = req.getParameter( "pass" );
-
 
             try {
                 User user = logicLayer.checkUser(username, email );
@@ -110,11 +102,6 @@ public class ResetPassword extends HttpServlet
                 }
             }
             catch( RARException e) {
-//                resultTemplateName = "loginRegister.ftl";
-//                msg = "Invalid username or Password";
-//                resultTemplate = cfg.getTemplate( resultTemplateName );
-//                toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
-//                res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
             } catch ( Exception e ) {
                 RARError.error( cfg, toClient, e );
@@ -124,50 +111,10 @@ public class ResetPassword extends HttpServlet
             res.setContentType("text/plain");
             res.getWriter().write(msg);
 
-
-
-
-
-
-
-
-
-
-
-
-//            // Setup the data-model
-//            //
-//            Map<String, String> root = new HashMap<String, String>();
-//
-//            // Build the data-model
-//            //
-//            root.put( "username", username );
-//            httpSession.setAttribute( "username", username );
-//
-//            root.put( "message", msg );
-//
-//            // Merge the data-model and the template
-//            //
-//            try {
-//                resultTemplate.process( root, toClient );
-//                toClient.flush();
-//            }
-//            catch (TemplateException e) {
-//                throw new ServletException( "Error while processing FreeMarker template", e);
-//            }
-//
-           // toClient.close();
         }
-
 
         public void doGet(HttpServletRequest req, HttpServletResponse res)
                 throws IOException, ServletException {
             doPost(req,res);
         }
-
-
-
-
-
-
 }
