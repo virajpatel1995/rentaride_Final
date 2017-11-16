@@ -10,13 +10,6 @@ import edu.uga.cs.rentaride.object.ObjectLayer;
 import edu.uga.cs.rentaride.persistence.PersistenceLayer;
 import edu.uga.cs.rentaride.persistence.impl.Persistence;
 
-import edu.uga.cs.rentaride.entity.impl.AdministratorImpl;
-import edu.uga.cs.rentaride.entity.impl.CustomerImpl;
-import edu.uga.cs.rentaride.entity.impl.RentalImp;
-import edu.uga.cs.rentaride.entity.impl.RentalLocationImpl;
-import edu.uga.cs.rentaride.entity.impl.ReservationImpl;
-import edu.uga.cs.rentaride.entity.impl.VehicleTypeImpl;
-
 
 
 public class ObjectLayerImpl implements ObjectLayer {
@@ -342,15 +335,18 @@ public class ObjectLayerImpl implements ObjectLayer {
 		return persistence.restoreRentARideConfig();
 	}
 
-	@Override
-	public void storeRentARideParams(RentARideParams rentARideParams) throws RARException {
-		persistence.storeRentARideConfig(rentARideParams);
-
-	}
 	
 	@Override
 	public void deleteCustomer(Customer customer) throws RARException{
 		persistence.deleteCustomer(customer);
 	}//deleteCustoemr
+
+//	@Override
+//	public double storeRentARideParams(double membershipPrice) throws RARException {
+//		persistence.storeRentARideConfig(rentARideParams);
+//		return 0;
+//	}
+
+	
 
 }

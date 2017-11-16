@@ -6,7 +6,7 @@ import edu.uga.cs.rentaride.persistence.impl.Persistence;
 
 public class RentARideParamsImpl extends Persistence implements RentARideParams{
 
-	private int membershipPrice;
+	private double membershipPrice;
 	private int lateFee;
 
 	public RentARideParamsImpl(){
@@ -23,13 +23,8 @@ public class RentARideParamsImpl extends Persistence implements RentARideParams{
 
 
 	@Override
-	public int getMembershipPrice() {
+	public double getMembershipPrice() {
 		return membershipPrice;
-	}
-
-	@Override
-	public void setMembershipPrice(int membershipPrice) throws RARException {
-		this.membershipPrice = membershipPrice;
 	}
 
 	@Override
@@ -40,5 +35,10 @@ public class RentARideParamsImpl extends Persistence implements RentARideParams{
 	@Override
 	public void setLateFee(int lateFee) throws RARException {
 		this.lateFee = lateFee;
+	}
+
+	@Override
+	public void setMembershipPrice(double membershipPrice) throws RARException {
+		this.membershipPrice = membershipPrice;		
 	}
 }

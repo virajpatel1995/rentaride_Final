@@ -48,7 +48,8 @@ public class RentARideParamsManager {
 				stmt = (PreparedStatement) conn.prepareStatement(updateParamsTypeSql);
 
 			if(rentARideParams.getMembershipPrice() > 0)
-				stmt.setInt(1,rentARideParams.getMembershipPrice());
+				//stmt.setInt(1,rentARideParams.getMembershipPrice());
+				stmt.setInt(1,(int) rentARideParams.getMembershipPrice());
 			else
 				stmt.setNull(1, java.sql.Types.INTEGER);
 			if(rentARideParams.getLateFee() > 0)
