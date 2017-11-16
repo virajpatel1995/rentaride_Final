@@ -150,4 +150,10 @@ public class LogicLayerImpl
             objectLayer.storeCustomer((Customer) user);
         }
     }
+
+	@Override
+	public long createVehicleType(String vehicleType) throws RARException {
+		CreateVehicleTypeCtrl ctrlVehicleType = new CreateVehicleTypeCtrl(objectLayer);
+		return ctrlVehicleType.createVehicleType( vehicleType );
+	}
 }

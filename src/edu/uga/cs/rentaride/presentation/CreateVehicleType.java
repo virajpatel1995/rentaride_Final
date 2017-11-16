@@ -1,3 +1,7 @@
+/*
+ * Author: Shepherd Ogden 11/15/17
+ * 
+ */
 package edu.uga.cs.rentaride.presentation;
 
 import java.io.BufferedWriter;
@@ -51,12 +55,12 @@ public class CreateVehicleType
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
-        String	       priceS = null;
-        double		   price = 0.0;
+        String	       vehicleType = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
+        long		   vehicleTypeId = 0;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
 
@@ -108,10 +112,10 @@ public class CreateVehicleType
 
         // Get the form parameters
         //
-        priceS = req.getParameter( "membershipPrice" );
+        vehicleType = req.getParameter( "vehicleType" );
 
         try{
-            price = Double.valueOf(priceS);
+            vehicleTypeId = logicLayer.createVehicleType(vehicleType);
         }catch(Exception e) {
 
         }
@@ -125,7 +129,7 @@ public class CreateVehicleType
             throw new ServletException( "Error while processing FreeMarker template", e);
         }
 
-        toClient.close();
+       toClient.close();
 
   }
 }
