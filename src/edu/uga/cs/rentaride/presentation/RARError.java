@@ -25,7 +25,7 @@ import freemarker.template.Template;
 
 public class RARError
 {
-    static  String   errorTemplateName = "ClubsError-Result.ftl";
+    static  String   errorTemplateName = "RARError-page.ftl";
 
     public static void error( Configuration cfg, BufferedWriter toClient, Exception e )
             throws ServletException
@@ -53,7 +53,7 @@ public class RARError
 	if( msg.indexOf( "log in" ) == -1 )
 	    root.put( "followup", "<p></p><p>Back to the <a href=\"ShowMainWindow\"> main window</a></p>" );
 	else
-	    root.put( "followup", "<p></p><p>Back to the <a href=\"Login.html\"> login window</a></p>" );
+	    root.put( "followup", "<p></p><p>Back to the <a href=\"index.html\"> login window</a></p>" );
 
         try {
             errorTemplate.process( root, toClient );

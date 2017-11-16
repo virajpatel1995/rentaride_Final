@@ -67,7 +67,7 @@ body {
   height: 0;
   border-style: solid;
   border-width: 60px 60px 0 0;
-  border-color: #264989 transparent transparent transparent;
+  border-color: #ff6861 transparent transparent transparent;
 }
 .product-card h2 {
   width: 100%;
@@ -102,7 +102,7 @@ body {
   margin-bottom: 20px;
   font-size: 36px;
   display: block;
-  color: #feca16;
+  color: #ff6861;
   font-weight: 400;
 }
 .product-card:hover {
