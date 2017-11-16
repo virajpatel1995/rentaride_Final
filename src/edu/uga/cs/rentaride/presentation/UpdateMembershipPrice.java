@@ -15,6 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.User;
+<<<<<<< HEAD
+=======
+import edu.uga.cs.rentaride.entity.impl.RentARideParamsImpl;
+import edu.uga.cs.rentaride.logic.LogicLayer;
+>>>>>>> junwei_branch
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
@@ -53,68 +58,95 @@ public class UpdateMembershipPrice
         Template       resultTemplate = null;
         HttpSession    httpSession = null;
         BufferedWriter toClient = null;
-        String	       priceS = "";
-       LogicLayer     logicLayer = null;
-        String         ssid = null;
-        String	msg = null;
-        String  resultTemplateName = "index.ftl";
-        Session session = null;
-        
+
+        String	       membershipPrice = null;
+        String	       lateFee = null;
+        double		   price = 0.0;
+        LogicLayer     logicLayer = null;
+        HttpSession    httpSession;
+        Session        session;
+        String         ssid;
+        Map<String,Object> root = new HashMap<String,Object>();
+        String retMessage = "";
+
+        // Load templates from the WEB-INF/templates directory of the Web app.
+        //
+//        try {
+//            resultTemplate = cfg.getTemplate( resultTemplateName );
+//        }
+//        catch (IOException e) {
+//            throw new ServletException(
+//                    "Can't load template in: " + templateDir + ": " + e.toString());
+//        }
+//
+//        // Prepare the HTTP response:
+//        // - Use the charset of template for the output
+//        // - Use text/html MIME-type
+//        //
+//        toClient = new BufferedWriter(
+//                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
+//                );
+//
+//        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
+
+
+        // Session Tracking
         httpSession = req.getSession();
         ssid = (String) httpSession.getAttribute("ssid");
-        
-  System.out.println("I'm here!");
-       
-		if (ssid != null) {
-            session = SessionManager.getSessionById(ssid);
+//        if (ssid != null) {
+//            System.out.println("Already have ssid: " + ssid);
+//            session = SessionManager.getSessionById(ssid);
+//            System.out.println("Connection: " + session.getConnection());
+//        } else
+//            System.out.println("ssid is null");
+//
+        session = SessionManager.getSessionById(ssid);
+        if(session == null){
+            RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
+            return;
         }
-		
-		if( session == null ){
-            try {
-                session = SessionManager.createSession();
-            } catch ( Exception e ){
-                RARError.error( cfg, toClient, e );
-            }
-        }
-		
         logicLayer = session.getLogicLayer();
-        
-        try {
-            resultTemplate = cfg.getTemplate( resultTemplateName );
-        }
-        catch (IOException e) {
-            throw new ServletException( "ResetPassword.doPost: Can't load template in: " + templateDir + ": " + e.toString());
-        }
+//        User user = session.getUser();
+//        root.put("username", user.getUserName());
+//
+//        if( logicLayer == null ) {
+//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+//            return;
+//        }
 
         // Get the form parameters
-        
-        priceS = req.getParameter( "membershipPrice" );
-        System.out.println(priceS);
-        double price = Double.parseDouble(priceS);
-        System.out.println("Testinggggggg " + price);
-
-        try {
-        	double membershipPrice = logicLayer.membershipPrice(price);
-          //  System.out.println("Heloooooooooooooo " + price);
-
-//            if (membershipPrice != null) { 
-//                msg = "Invalid price";
-//            } else {
-                logicLayer.membershipPrice(membershipPrice);
-                msg = "Price Successfully Updated";
-           // }
+        //
+        membershipPrice = req.getParameter( "membershipPrice" );
+        lateFee = req.getParameter( "lateFee" );
+        String msg = null;
+        try{
+            double mprice = Double.valueOf(membershipPrice);
+            double latefee = Double.valueOf(lateFee);
+            RentARideParams rentARideParams = new RentARideParamsImpl();
+            rentARideParams.setLateFee((int) (latefee*100));
+            rentARideParams.setMembershipPrice((int) (mprice*100));
+            logicLayer.updateRenARideParams(rentARideParams);
+            msg = "All fees has been successfully updated";
+        }catch(Exception e) {
+            msg = "Something goes wrong";
         }
         catch( RARException e) {
 
-        } catch ( Exception e ) {
-            RARError.error( cfg, toClient, e );
-            return;
-        }
 
         res.setContentType("text/plain");
         res.getWriter().write(msg);
 
-    }
+//        try {
+//            resultTemplate.process( root, toClient );
+//            toClient.flush();
+//        }
+//        catch (TemplateException e) {
+//            throw new ServletException( "Error while processing FreeMarker template", e);
+//        }
+
+//        toClient.close();
+
 
     public void doGet(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {

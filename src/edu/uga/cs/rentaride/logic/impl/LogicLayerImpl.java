@@ -151,12 +151,14 @@ public class LogicLayerImpl
         }
     }
 
-	@Override
-	public double membershipPrice(double price) throws RARException {
-		return objectLayer.storeRentARideParams(price);
-		
-	}
 
+    @Override
+    public RentARideParams getRenARideParams() throws RARException {
+        return objectLayer.findRentARideParams();
+    }
 
-    
+    @Override
+    public void updateRenARideParams(RentARideParams rentARideParams) throws RARException {
+        objectLayer.storeRentARideParams(rentARideParams);
+    }
 }
