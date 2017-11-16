@@ -335,6 +335,12 @@ public class ObjectLayerImpl implements ObjectLayer {
 		return persistence.restoreRentARideConfig();
 	}
 
+
+	@Override
+	public void storeRentARideParams(RentARideParams rentARideParams) throws RARException {
+		persistence.storeRentARideConfig(rentARideParams);
+	}
+
 	
 	@Override
 	public void deleteCustomer(Customer customer) throws RARException{
