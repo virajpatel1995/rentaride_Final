@@ -268,9 +268,10 @@
      
            <div style="float:left">
                <#if mprice ?? && (latefee ??)>
-            Membership Price:<input id="membershipPrice" onclick="highlight()" maxlength="20" type="number" value = ${mprice} />
+                   <p>${mprice} and ${latefee}</p>
+            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" value = ${mprice} step="0.01" />
                    <br>
-            Late Fee:<input id="lateFee" type="text" onclick="highlight()"  value = ${latefee} />
+            Late Fee:<input id="lateFee" type="number" onClick="this.select();"  value = ${latefee} step="0.01" />
                    <#else >
 
             Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
