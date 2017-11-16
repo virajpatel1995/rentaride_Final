@@ -450,7 +450,8 @@ public interface ObjectLayer
      * @throws RARException in case there was an error while persisting the object
      */
     //public void storeRentARideParams( RentARideParams rentARideParams ) throws RARException;
-    public double storeRentARideParams( double membershipPrice ) throws RARException;
 
     public void deleteCustomer(Customer customer) throws RARException;
+
+	public void storeRentARideParams(RentARideParams rentARideParams) throws RARException;
 }
