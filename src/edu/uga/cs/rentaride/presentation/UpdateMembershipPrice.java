@@ -120,7 +120,7 @@ public class UpdateMembershipPrice
         try{
             double mprice = Double.valueOf(membershipPrice);
             double latefee = Double.valueOf(lateFee);
-            RentARideParams rentARideParams = new RentARideParamsImpl();
+            RentARideParams rentARideParams = logicLayer.getRenARideParams();
             rentARideParams.setLateFee((int) (latefee*100));
             rentARideParams.setMembershipPrice((int) (mprice*100));
             logicLayer.updateRenARideParams(rentARideParams);
