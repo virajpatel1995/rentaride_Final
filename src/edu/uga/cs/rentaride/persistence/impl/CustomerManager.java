@@ -26,7 +26,7 @@ public class CustomerManager {
 	
 	public void store(Customer customer) throws RARException{
 		String insertCustomerSql = "insert into user ( type, firstName, lastName, userName, password, email, address, createdDate, memberUntil, licState, licNumber, ccNumber, ccExpiration, status ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-		String updateCustomerSql = "update user  set type = ? firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, address = ?, createdDate = ?, memberUntil = ?, licState = ?, licNumber = ?, ccNumber = ?, ccExpiration = ?, status = ? where id = ?";
+		String updateCustomerSql = "update user  set type = ?, firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, address = ?, createdDate = ?, memberUntil = ?, licState = ?, licNumber = ?, ccNumber = ?, ccExpiration = ?, status = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long userId;
@@ -108,8 +108,8 @@ public class CustomerManager {
 			if(customer.isPersistent())
 				stmt.setLong(15,  customer.getId());
 		
+			String query = stmt.toString();
 			inscnt = stmt.executeUpdate();
-			
 			if(!customer.isPersistent()) {
 				if(inscnt == 1) {
 					String sql = "select last_insert_id()";
