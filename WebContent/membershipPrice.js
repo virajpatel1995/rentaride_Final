@@ -11,8 +11,6 @@ $(document).ready(function() {
                 $.post('UpdateMembershipPrice', {
                 	membershipPrice : membershipPrice,
                 	lateFee : latefee
-
-                        
                 }, function(responseText) {
                         $('#membershipPriceError').text(responseText);
                 });
