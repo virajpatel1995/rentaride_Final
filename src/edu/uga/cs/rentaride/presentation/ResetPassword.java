@@ -95,9 +95,9 @@ public class ResetPassword extends HttpServlet
 //            res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
 
-            username = req.getParameter( "userName" );
+            username = req.getParameter( "username" );
             email = req.getParameter( "email" );
-            password = req.getParameter( "newPassword" );
+            password = req.getParameter( "pass" );
 
 
             try {
@@ -156,7 +156,7 @@ public class ResetPassword extends HttpServlet
 //                throw new ServletException( "Error while processing FreeMarker template", e);
 //            }
 //
-            toClient.close();
+           // toClient.close();
         }
 
 

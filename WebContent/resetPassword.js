@@ -5,13 +5,13 @@
 
 $(document).ready(function() {
         $('#submitP').click(function(event) {
-                var username = $('#userName').val();
+                var username = $('#username').val();
                 var email = $('#email').val();
-                var newPassword = $('#pass')
+                var pass = $('#pass').val();
                 $.get('ResetPassword', {
-                        userName : username,
+                        username : username,
                         email : email,
-                        pass : newPassword
+                        pass : pass
                         
                 }, function(responseText) {
                         $('#errorMsg').text(responseText);
