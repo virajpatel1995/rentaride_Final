@@ -150,4 +150,14 @@ public class LogicLayerImpl
             objectLayer.storeCustomer((Customer) user);
         }
     }
+
+    @Override
+    public RentARideParams getRenARideParams() throws RARException {
+        return objectLayer.findRentARideParams();
+    }
+
+    @Override
+    public void updateRenARideParams(RentARideParams rentARideParams) throws RARException {
+        objectLayer.storeRentARideParams(rentARideParams);
+    }
 }

@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.session.*;
 
@@ -22,4 +23,7 @@ public interface LogicLayer
     public User checkUser(String username, String email) throws RARException;
     public void updatePassword(String password, User user) throws RARException;
 
+    public  RentARideParams getRenARideParams() throws RARException;
+
+    void updateRenARideParams(RentARideParams rentARideParams) throws RARException;
 }
