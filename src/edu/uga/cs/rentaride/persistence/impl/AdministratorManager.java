@@ -34,7 +34,7 @@ public class AdministratorManager {
 	
 	public void store(Administrator administrator) throws RARException {
 		String insertAdministratorSql = "insert into user ( type, firstName, lastName, userName, password, email, address, createdDate ) values ( ?, ?, ?, ?, ?, ?, ?, ? )";
-		String updateAdministratorSql = "update user  set type = ? firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, address = ?, createdDate = ? where id = ?";
+		String updateAdministratorSql = "update user  set type = ?, firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, address = ?, createdDate = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long userId;
