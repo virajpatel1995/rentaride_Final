@@ -12,54 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 </head>
 <body>
-<!-- Header -->
-<div class="allcontain">
-	<div class="header">
-<!--
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
--->
-        
-<!-- Login and Register -->
-			<ol class="logreg">
-				<li><a href="loginRegister.html">Login/Register</a> </li>
-			</ol>
-	</div>
-	<!-- Navbar Up -->
-	<nav class="topnavbar navbar-default topnav">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
-					<span class="sr-only"> Toggle navigaion</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand logo" href="#"><img src="image/logo.svg" alt="logo"></a>
-			</div>	 
-		</div>
-		<div class="collapse navbar-collapse" id="upmenu">
-			<ul class="nav navbar-nav" id="navbarontop">
-				<li><a href="index.html">Home</a> </li>
-                <!-- <li><a href="pricing.html">Pricing</a> </li> -->
-                <li><a href="rentNow.html">RentNow</a> </li>
-                <li><a href="Rent.html">Rent</a> </li>
-                
-                <li><a href="contact.html">Contact</a> </li>
-                <li class="active"><a href="about.html">About</a> </li>
-                
-              
-			</ul>
-		</div>
-	</nav>
-</div>
-
-        
-    
+<#include "customerHeader.ftl">
     
     <div style="    position: relative;
     width: 100%;

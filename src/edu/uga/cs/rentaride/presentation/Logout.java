@@ -101,16 +101,16 @@ public class Logout
         //
         Map<String, String> root = new HashMap<String, String>();
         root.put("message", "You have been logged out from Rent A Ride");
-
+//res.sendRedirect("index.html");
         // Merge the data-model and the template
         //
         try {
             resultTemplate.process( root, toClient );
             toClient.flush();
         } 
-        catch (TemplateException e) {
+       catch (TemplateException e) {
             throw new ServletException( "Error while processing FreeMarker template", e);
-        }
+       }
 
         toClient.close();
     }
