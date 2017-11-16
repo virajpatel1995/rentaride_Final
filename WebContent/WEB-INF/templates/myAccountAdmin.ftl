@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="style/slider.css">
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+	<script src="membershipPrice.js"></script>
 
     <script>
         function myFunction(){
@@ -246,6 +247,36 @@
   
 </div>
 </div>
+
+
+
+
+
+<!--******************************UPDATE Membership Price*************************************-->
+<!--*****************************************************************************-->
+
+
+<div class="container">
+  <div class="row header">
+  
+    <h3  style="padding:25px;">Set | Update Membership Price</h3>
+    <hr/>
+  </div>
+    <form action="UpdateMembershipPrice" method="post">
+     
+           <div style="float:left">
+            Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/> 
+            </div>
+                
+         <div style="float:left">
+         <input id="submitPrice" class="btn btn-submit" type="button" value="Set / Update membershipPrice" />
+         </div>
+         <div style="float: left" id="membershipPriceError"></div>
+               </form>  
+</div>
+
+
+
 
 <!--*****************************************************************************-->
 <!--*****************************************************************************-->
