@@ -26,7 +26,7 @@ public class VehicleManager {
 	
 	public void store(Vehicle vehicle) throws RARException{
 		String insertVehicleSql = "insert into vehicle (make, model, year, mileage, tag, lastServiced, status, maintenance, rentalLocationid, vehicleTypeid) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		String updateVehicleSql = "update person  set  make = ?, model = ?, year = ?, mileage = ?, tag = ?, lastServiced = ?, status = ?, maintenance = ?, rentalLocationid = ?, vehicleTypeid = ? where id = ?";
+		String updateVehicleSql = "update vehicle  set  make = ?, model = ?, year = ?, mileage = ?, tag = ?, lastServiced = ?, status = ?, maintenance = ?, rentalLocationid = ?, vehicleTypeid = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long vehicleId;
