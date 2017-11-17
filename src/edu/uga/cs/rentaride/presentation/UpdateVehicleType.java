@@ -23,9 +23,9 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("CreateVehicleType")
+@WebServlet("UpdateVehicleType")
 
-public class CreateVehicleType
+public class UpdateVehicleType
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -51,7 +51,8 @@ public class CreateVehicleType
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
-        String	       vehicleType = null;
+        String	       oldVehicleType = null;
+        String	       newVehicleType = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
@@ -108,10 +109,11 @@ public class CreateVehicleType
 
         // Get the form parameters
         //
-        vehicleType = req.getParameter( "vehicleType" );
+        oldVehicleType = req.getParameter( "oldVehicleType" );
+        newVehicleType = req.getParameter( "newVehicleType" );
 
         try{
-            vehicleTypeId = logicLayer.CreateVehicleType(vehicleType);
+            vehicleTypeId = logicLayer.UpdateVehicleType(oldVehicleType, newVehicleType);
 
         }catch(Exception e) {
         	e.printStackTrace();

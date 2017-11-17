@@ -225,7 +225,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
 	@Override
 	public void storeVehicleType(VehicleType vehicleType) throws RARException {
-		  persistence.restoreVehicleType(vehicleType);
+		  persistence.storeVehicleType(vehicleType);
 		
 	}
 
