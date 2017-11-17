@@ -22,26 +22,17 @@
     background: white;
     margin: 20px 3px 0 0;" >
         
-       <h1>About</h1> 
-
         
  <div class="container">
      <br>
      <br>
      <br>
-  <h1>CSCI 4050 Software engineering</h1>
-  <div class="row">
-    <div class="col-sm-5">
-        <h2>Team 10</h2>
-        <p>RentNow is the term Project that will be finshed by the end of the Semester.</p>
-        
-      </div>
-
-  </div>
+  <h1>Amigo ERROR! Go to Different Page Dude.</h1>
+  
 </div>
-	</div>
 
-     
+        
+
 
 
 			<div class="footer">

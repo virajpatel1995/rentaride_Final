@@ -11,22 +11,45 @@
   <link rel="stylesheet" type="text/css" href="style/slider.css">
   <link rel="stylesheet" type="text/css" href="style/mystyle.css">
   	<script src="membershipPrice.js"></script>
-  
-  <script>
-        function myFunction(){
-            alert("Added Location Successfully")
-        }
-    </script>	
-  		
-  			
-  				
-  						
+  	
 </head>
 
 <body>
-
-<#include "customerHeader.ftl">
-
+<!-- Header -->
+<div class="allcontain">
+	<div class="header">
+        
+<!-- Login and Register -->
+			<ol class="logreg">
+				<li><a href="loginRegister.html">Login/Register</a> </li>
+			</ol>
+	</div>
+	<!-- Navbar Up -->
+	<nav class="topnavbar navbar-default topnav">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
+					<span class="sr-only"> Toggle navigaion</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand logo" href="#"><img src="image/logo.svg" alt="logo"></a>
+			</div>	 
+		</div>
+		<div class="collapse navbar-collapse" id="upmenu">
+			<ul class="nav navbar-nav" id="navbarontop">
+				<li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="rentNow.html">RentNow</a> </li>
+                <li><a href="contact.html">Contact</a> </li>
+                <li><a href="about.html">About</a> </li>
+				
+			</ul>
+		</div>
+	</nav>
+</div>
+<br>
+<br>
 <div class="container">
   
   <ul class="nav nav-tabs">
@@ -52,14 +75,9 @@
   <div>
   		
     		<form action="UpdateMembershipPrice" method="post">
-  <#if mprice ?? && (latefee ??)>
+  
             Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" value = ${mprice} step="0.01" /> <br>       
             Late Fee:<input id="lateFee" type="number" onClick="this.select();"  value = ${latefee} step="0.01" />
-            <#else >
-
-            Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
-            Late Fee:<input type="number" id="lateFee" step="0.01"/>
-                   </#if>
             <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
             
          </form>
@@ -75,14 +93,13 @@
         	  <div class="container">
         		
     		<form action="CreateRentalLocation" method="post">
-            Location Name:<input name="locationName" type="text" placeholder="Name" required="required">
-            Address:<input name="locationAddress" type="text" placeholder="Address" required="required"> <br>
-           	Zip:<input name="locationZip" type="text" placeholder="ZipCode" required="required">
-            State:<input name="locationState" type="text" placeholder="State" required="required"><br>
-            Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
+            Location Name:<input id="carName" name="locationName" type="text" placeholder="Name" required="required">
+            Address:<input id="carType" name="locationAddress" type="text" placeholder="Address" required="required"> <br>
+           	Zip:<input id="carType" name="locationZip" type="text" placeholder="ZipCode" required="required">
+            State:<input id="carType" name="locationState" type="text" placeholder="State" required="required"><br>
+            Capacity:<input id="carColor" name="locationCapacity" type="text" placeholder="Capacity" required="required">
             
-                              <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental Location</button>
-
+            <input id="submitPrice" class="btn btn-submit" type="button" value="Add | Update Rental Location" />
             
             <div style="float: left" id="rentalLocationMsg"></div>
             </form>
@@ -123,12 +140,14 @@
       
    <div class="container">
   		
-    		<form action="UpdateVehicle" method="post">
+    		<form action="UpdateVehicle.java" method="post">
+   
             Mileage:<input type="text" name="mileage" placeholder="mileage"/>
             Tag:<input type="text" name="tag" placeholder="tag"/><br>
             Location:<input type="text" name="location" placeholder="location"/>
             Maintenance:<input type="text" name="type" placeholder="maintenance"/><br><br>
          <input class="btn btn-submit" type="submit" value="Update Vehicle" />
+
         	<div style="float:center" id="updateVehicleMsg"></div>
          </form>
 </div>
