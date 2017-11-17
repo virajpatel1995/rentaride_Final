@@ -127,7 +127,7 @@ public class LogicLayerImpl
 	}
 	
 	@Override
-	public long CreateVehicle(String make, String model, String year, String mileage, String tag, String location, String type) throws RARException{
+	public long CreateVehicle(String make, String model, int year, int mileage, String tag, String location, String type) throws RARException{
 		CreateVehicleCtrl ctrlVehicle = new CreateVehicleCtrl(objectLayer);
 		return ctrlVehicle.createVehicle(  make,  model,  year,  mileage , tag,  location, type);
         
