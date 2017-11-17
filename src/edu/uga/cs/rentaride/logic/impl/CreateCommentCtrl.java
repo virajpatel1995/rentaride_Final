@@ -29,7 +29,6 @@ private ObjectLayer objectLayer = null;
         modelRental.setId(ren);
         List<Rental> rentals = objectLayer.findRental( modelRental );
 
-
         if( rentals.size() > 0 ) {
         
         	//Creating the comment
@@ -37,9 +36,8 @@ private ObjectLayer objectLayer = null;
 			
 	   Comment comment = null;
 	   comment  = objectLayer.createComment(comm, new Date(), rental, rental.getCustomer());
-	    
+	
 	    	objectLayer.storeComment(comment);
-	    
 
 	    	return comment.getId();
 	    	
