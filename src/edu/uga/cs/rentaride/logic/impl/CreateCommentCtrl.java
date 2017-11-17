@@ -22,11 +22,11 @@ private ObjectLayer objectLayer = null;
         this.objectLayer = objectModel;
     }
     
-	public long createComment( String comm, String ren) throws RARException{
+	public long createComment( String comm, long ren) throws RARException{
 
 		//cheack if customer exists
 		Rental modelRental = objectLayer.createRental();
-        modelRental.setId(Long.parseLong(ren));
+        modelRental.setId(ren);
         List<Rental> rentals = objectLayer.findRental( modelRental );
 
 

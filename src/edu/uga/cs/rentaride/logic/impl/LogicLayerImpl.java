@@ -121,7 +121,7 @@ public class LogicLayerImpl
 	}
 	
 	@Override
-	public long createComment(String comm, String ren) throws RARException{
+	public long createComment(String comm, Long ren) throws RARException{
 		CreateCommentCtrl ctrlComment = new CreateCommentCtrl(objectLayer);
 		return ctrlComment.createComment(comm, ren);
 	}
