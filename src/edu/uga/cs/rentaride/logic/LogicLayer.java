@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.RentARideParams;
+import edu.uga.cs.rentaride.entity.RentalLocation;
 import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.session.*;
 
@@ -30,5 +31,5 @@ public interface LogicLayer
     public  RentARideParams getRenARideParams() throws RARException;
 
     void updateRenARideParams(RentARideParams rentARideParams) throws RARException;
-
+    List<RentalLocation> getAllRentalLocations() throws RARException;
 }

@@ -141,6 +141,7 @@ public class CreateComment
             rentalId = Integer.valueOf(rentalIdS);
             commentId = logicLayer.createComment(comm, rentalId);
         }catch(Exception e) {
+        		System.out.println(e);
         		rentalId = 0;
         }
 
