@@ -29,7 +29,7 @@ public class LoadJacobTest extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Configuration cfg;
     static String templateDir = "/WEB-INF/templates";
-    String destination = "JacobTest.ftl";
+    String destination = "jacobTest.ftl";
 
 
 
