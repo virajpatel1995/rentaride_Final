@@ -28,19 +28,30 @@ private ObjectLayer objectLayer = null;
 		Rental modelRental = objectLayer.createRental();
         modelRental.setId(ren);
         List<Rental> rentals = objectLayer.findRental( modelRental );
+        
 
         if( rentals.size() > 0 ) {
-        
-        	//Creating the comment
-	   Rental rental = rentals.get(0);
-			
-	   Comment comment = null;
-	   comment  = objectLayer.createComment(comm, new Date(), rental, rental.getCustomer());
-	
-	    	objectLayer.storeComment(comment);
 
-	    	return comment.getId();
-	    	
+    			Comment modelComment = objectLayer.createComment();
+            modelComment.setRental(rentals.get(0));
+            List<Comment> comments = objectLayer.findComment( modelComment );
+        
+            if(comments.size() > 0) {
+            		comments.get(0).setText(comm);
+            		objectLayer.storeComment(comments.get(0));
+            		return comments.get(0).getId();
+            }else {
+
+            	//Creating the comment
+    	   Rental rental = rentals.get(0);
+    			
+    	   Comment comment = null;
+    	   comment  = objectLayer.createComment(comm, new Date(), rental, rental.getCustomer());
+    	
+    	    	objectLayer.storeComment(comment);
+
+    	    	return comment.getId();
+            }
         }else{
         		throw new RARException("SessionManager.CreateComment: Invalid Rental Location ");
         }

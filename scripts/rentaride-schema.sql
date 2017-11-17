@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS vehicle;
 DROP TABLE IF EXISTS rentalLocation;
 DROP TABLE IF EXISTS vehicleType;
+DROP TABLE IF EXISTS rentARideParams;
 
 #Table definition for table 'user'
 CREATE TABLE user (

@@ -111,15 +111,15 @@ WHERE rl.name = 'MLC' AND vt.name = 'Pick-up Truck'AND u.firstName = 'David'AND 
 # calculate the rental charges or late fees but include some “made-up” values.
 
 # Hardcoded rental
-INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, comment, commentdate, userid) 
-VALUES (default, '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 1, 1, 'Nice car. Good experience.', '2017-11-06 11:00:00', 1);
-INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, comment, commentdate, userid) 
-VALUES (default, '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 4, 2, 'Good car. Nice experience.', '2017-11-06 11:00:00', 2);
+INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, userid) 
+VALUES (default, '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 1, 1, 1);
+INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, userid) 
+VALUES (default, '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 4, 2, 2);
 
 
 # Need help
-INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, comment, commentdate, userid) 
-SELECT 'default', '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 1, v.id, 'Nice car. Good experience.', '2017-11-06 11:00:00', 
+INSERT INTO rental(id, pickup, dropoff, late, charges, reservationid, vehicleid, userid) 
+SELECT 'default', '2017-11-05 10:00:00','2017-11-06 10:00:00', 0, 70, 1, v.id,  
 	(SELECT id FROM user u WHERE  u.firstName = 'David'AND u.lastName = 'Salmon') as userid
 FROM reservation r, vehicle v , user u
 WHERE  v.model = 'F150' ;
