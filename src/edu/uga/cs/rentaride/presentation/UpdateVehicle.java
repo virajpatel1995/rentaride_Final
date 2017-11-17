@@ -80,8 +80,8 @@ public class UpdateVehicle
         int mileage = 0;
         String tag = null;
         String location = null;
-        String maintenceS = null;
-        boolean maintence = false;
+        String maintenanceS = null;
+        boolean maintenance = false;
         
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
@@ -139,16 +139,17 @@ public class UpdateVehicle
 
         // Get the form parameters
         //
-        mileageS = req.getParameter( "milage" );
+        mileageS = req.getParameter( "mileage" );
         tag = req.getParameter( "tag" );
         location = req.getParameter( "location" );
-        maintenceS = req.getParameter( "maintence" );
+        maintenanceS = req.getParameter( "maintenance" );
 
         try{
             mileage = Integer.valueOf(mileageS);
-            if (maintenceS == "True") maintence = true;
-            vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintence);
+            if (maintenanceS == "True") maintenance = true;
+            vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintenance);
         }catch(Exception e) {
+        	e.printStackTrace();
         }
 
 

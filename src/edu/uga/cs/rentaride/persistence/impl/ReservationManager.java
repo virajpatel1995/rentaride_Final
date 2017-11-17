@@ -28,7 +28,7 @@ public class ReservationManager {
 	
 	public void store(Reservation reservation) throws RARException{
 		String insertReservationSql = "insert into reservation (pickup, length, canceled, userid, rentalLocationid, vehicleTypeid) values ( ?, ?, ?, ?, ?, ? )";
-		String updateReservationSql = "update person  set  pickup = ?, length = ?, canceled = ?, userid = ?, rentalLocationid = ?, vehicleTypeid = ? where id = ?";
+		String updateReservationSql = "update reservation  set  pickup = ?, length = ?, canceled = ?, userid = ?, rentalLocationid = ?, vehicleTypeid = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long reservationId;

@@ -36,7 +36,7 @@ public class CommentManager {
 	
 	public void store(Comment comment) throws RARException{
 		String insertCommentSql = "insert into comment ( comment, commentDate, rentalid ) values ( ?, ?, ? )";
-		String updateCommentSql = "update person  set comment = ?, commentDate = ?, rentalid = ? where id = ?";
+		String updateCommentSql = "update comment  set comment = ?, commentDate = ?, rentalid = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long commentId;
