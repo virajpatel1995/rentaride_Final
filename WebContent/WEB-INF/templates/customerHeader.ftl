@@ -95,6 +95,16 @@
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="ShepTest">ShepTest</button>
 				</form>
 				</li>
+				<li>
+				<form action="LoadJacobTest" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="JacobTest">Test</button>
+				</form>
+				</li>
+				<li>
+				<form action="LoadVirajTest" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="VirajTest">VirajTest</button>
+				</form>
+				</li>
 
 			</ul>
 		</div>
