@@ -268,7 +268,7 @@
      
            <div style="float:left">
                <#if mprice ?? && (latefee ??)>
-                   <p>${mprice} and ${latefee}</p>
+                   <#--<p>${mprice} and ${latefee}</p>-->
             Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" value = ${mprice} step="0.01" />
                    <br>
             Late Fee:<input id="lateFee" type="number" onClick="this.select();"  value = ${latefee} step="0.01" />
@@ -283,11 +283,16 @@
          <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
          </div>
          <div style="float: left" id="membershipPriceError"></div>
-               </form>  
+    <#if rentalLocationMap ??>
+    <select>
+        <#list rentalLocationMap as key>
+            <option value="${key}">${key}</option>
+        </#list>
+
+    </select>
+    </#if>
+               </form>
 </div>
-
-
-
 
 <!--*****************************************************************************-->
 <!--*****************************************************************************-->
