@@ -145,7 +145,7 @@ public class CreateVehicle
         make = req.getParameter( "make" );
         model = req.getParameter( "model" ); 
         yearS = req.getParameter( "year" ); 
-        mileageS = req.getParameter( "milage" );
+        mileageS = req.getParameter( "mileage" );
         tag = req.getParameter( "tag" );
         location = req.getParameter( "location" );
         type = req.getParameter( "type" );
@@ -155,6 +155,8 @@ public class CreateVehicle
             mileage = Integer.valueOf(mileageS);
             vehicleId = logicLayer.CreateVehicle(make, model, year, mileage, tag, location, type);
         }catch(Exception e) {
+        	e.printStackTrace();
+//        	System.out.println(e);
         }
 
 
