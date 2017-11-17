@@ -35,7 +35,7 @@ public class VehicleTypeManager {
 	
 	public void store(VehicleType vehicleType) throws RARException{
 		String insertVehicleTypeSql = "insert into vehicleType ( name) values ( ?)";
-		String updateVehicleTypeSql = "update person  set name = ? where id = ?";
+		String updateVehicleTypeSql = "update vehicleType  set name = ? where id = ?";
 		java.sql.PreparedStatement stmt = null;
 		int inscnt;
 		long vehicleTypeId;
