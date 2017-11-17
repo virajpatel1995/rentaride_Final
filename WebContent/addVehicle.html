@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    
+</head>
+<body>
+
+<div data-role="page">
+  
+
+  <div data-role="main" class="ui-content">
+    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Add New Vehicle</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:350px;">
+      <form method="post" action="addVehicle.java">
+        
+          <h3>ADD VEHICLE</h3>
+          <input type="text" name="make" id="make" placeholder="Make">
+          <input type="text" name="model" id="model" placeholder="Model">
+			<select name="Year" id="year" placeholder="Select Year">
+			<option>-Select Year-</option>
+   			 	<option value="2017">2017</option>
+    			<option value="2016">2016</option>
+    			<option value="2015">2015</option>
+    			<option value="2014">2014</option>
+            <option value="2013">2013</option>
+    			<option value="2012">2012</option>
+    			<option value="2011">2011</option>
+    			<option value="2010">2010</option>
+			<option value="2009">2009</option>
+    			<option value="2008">2008</option>
+    			<option value="2007">2007</option>
+    			<option value="2006">2006</option>
+    			<option value="2005">2005</option>
+  			</select>
+        <input type="number" name="mileage" id="mileage" placeholder="Mileage">
+        <input type="text" name="tag" id="tag" placeholder="Tag#">
+        <input type="text" name="type" id="type" placeholder="Type">
+           
+           
+          
+ 		<input type="submit" data-inline="true" value="ADD VEHICLE">
+
+       </form> 
+        
+    </div>
+</div> 
+</div>
+      
+  
+
+</body>
+</html>
+

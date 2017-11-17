@@ -35,6 +35,7 @@ public class LoadAccount extends HttpServlet {
     static String templateDir = "/WEB-INF/templates";
     String adminPage = "myAccountAdmin.ftl";
     String customerPage = "myAccountUser.ftl";
+   // String adminPage = "virajTest.ftl";
 
 
     public void init() {
