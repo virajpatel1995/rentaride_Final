@@ -39,6 +39,7 @@ public class CreateVehicleCtrl {
         modelVehicle = objectLayer.createVehicle();
         modelVehicle.setRegistrationTag(tag);
         vehicles = objectLayer.findVehicle( modelVehicle );
+//        objectLayer.createVehicle(make, model, year, registrationTag, mileage, lastServiced, vehicleType, rentalLocation, vehicleCondition, vehicleStatus)
         if( vehicles.size() > 0 ) {
         	throw new RARException("A Vehicle with this tage already exists: " + tag);
         }
