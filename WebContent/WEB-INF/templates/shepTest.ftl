@@ -36,5 +36,13 @@
             New Vehicle Type<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
          <input class="btn btn-submit" type="submit" value="Update Type" />
          </form> 
+         
+<form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price<input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available<input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set/Update" />
+         </form> 
 </body>
 </html>

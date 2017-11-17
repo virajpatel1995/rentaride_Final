@@ -65,7 +65,7 @@ public class HourlyPriceManager {
 			stmt.setLong(3,  hourlyPrice.getVehicleType().getId());
 			
 			if(hourlyPrice.isPersistent())
-				stmt.setLong(3,  hourlyPrice.getId());
+				stmt.setLong(4,  hourlyPrice.getId());
 		
 			inscnt = stmt.executeUpdate();
 			

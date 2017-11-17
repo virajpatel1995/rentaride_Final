@@ -182,7 +182,12 @@ public class LogicLayerImpl
         }
     }
 
-
+    @Override
+    public long UpdateHourlyPrice(String vehicleType, int hourlyPrice, int maxHours) throws RARException {
+    	UpdateHourlyPriceCtrl ctrlHourlyPrice = new UpdateHourlyPriceCtrl(objectLayer);
+		return ctrlHourlyPrice.updateHourlyPrice(vehicleType, hourlyPrice, maxHours);
+    }
+    
     @Override
     public RentARideParams getRenARideParams() throws RARException {
         return objectLayer.findRentARideParams();
