@@ -29,7 +29,7 @@ public interface LogicLayer
     public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException;
     public long CreateVehicleType( String vehicleType ) throws RARException;
     public long UpdateVehicleType( String oldVehicleType, String newVehicleType ) throws RARException;
-
+    public long UpdateHourlyPrice( String vehicleType, int hourlyPrice, int maxHours ) throws RARException;
     
     public  RentARideParams getRenARideParams() throws RARException;
 
