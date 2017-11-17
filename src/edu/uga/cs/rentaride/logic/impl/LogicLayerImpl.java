@@ -119,7 +119,26 @@ public class LogicLayerImpl
 		CreateRentalLocationCtrl ctrlRentalLocation = new CreateRentalLocationCtrl(objectLayer);
 		return ctrlRentalLocation.createRentalLocation(locationName, address, locationCapacity);
 	}
-
+	
+	@Override
+	public long createComment(String comm, Long ren) throws RARException{
+		CreateCommentCtrl ctrlComment = new CreateCommentCtrl(objectLayer);
+		return ctrlComment.createComment(comm, ren);
+	}
+	
+	@Override
+	public long CreateVehicle(String make, String model, int year, int mileage, String tag, String location, String type) throws RARException{
+		CreateVehicleCtrl ctrlVehicle = new CreateVehicleCtrl(objectLayer);
+		return ctrlVehicle.createVehicle(  make,  model,  year,  mileage , tag,  location, type);
+        
+	}
+	
+	@Override
+	public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException{
+		UpdateVehicleCtrl ctrlVehicle = new UpdateVehicleCtrl(objectLayer);
+		return ctrlVehicle.UpdateVehicle(mileage, tag, location,maintence);
+	}
+	
     @Override
     public User checkUser(String username, String email) throws RARException {
         Customer customer = objectLayer.createCustomer();

@@ -28,7 +28,7 @@ public class UpdateVehicleCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long UpdateVehicle( String mileage, String tag, String location, boolean maintence)
+    public long UpdateVehicle( int mileage, String tag, String location, boolean maintence)
             throws RARException
     { 
         Vehicle 		    vehicle  = null;
@@ -41,7 +41,7 @@ public class UpdateVehicleCtrl {
         vehicles = objectLayer.findVehicle( modelVehicle );
         if( vehicles.size() > 0 ) {
         vehicle = vehicles.get(0);
-            vehicle.setMileage(Integer.parseInt(mileage));
+            vehicle.setMileage(mileage);
             RentalLocation                modelLocation = null;
             List<RentalLocation>          rentalLocations= null;
             modelLocation = objectLayer.createRentalLocation();

@@ -22,8 +22,11 @@ public interface LogicLayer
     public long               createRentalLocation( String locationName, String address, int locationCapacity ) throws RARException;
     public User checkUser(String username, String email) throws RARException;
     public void updatePassword(String password, User user) throws RARException;
-
-
+    
+    public long createComment(String comm, Long ren) throws RARException;
+    public long CreateVehicle(String make, String model, int year, int mileage, String tag, String location, String type) throws RARException;
+    public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException;
+    	
     public  RentARideParams getRenARideParams() throws RARException;
 
     void updateRenARideParams(RentARideParams rentARideParams) throws RARException;

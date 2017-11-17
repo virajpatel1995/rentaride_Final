@@ -28,7 +28,7 @@ public class CreateVehicleCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long createVehicle( String make, String model, String year, String mileage, String tag, String location, String type)
+    public long createVehicle( String make, String model, int year, int mileage, String tag, String location, String type)
             throws RARException
     { 
         Vehicle 		    vehicle  = null;
@@ -53,7 +53,7 @@ public class CreateVehicleCtrl {
         modelVehicleType = objectLayer.createVehicleType();
         modelVehicleType.setName( type );
         vehicleTypes = objectLayer.findVehicleType( modelVehicleType );
-        vehicle = objectLayer.createVehicle(make, model, Integer.parseInt(year), tag, Integer.parseInt(mileage), new Date(), vehicleTypes.get(0), rentalLocations.get(0), VehicleCondition.GOOD, VehicleStatus.INLOCATION);
+        vehicle = objectLayer.createVehicle(make, model, year, tag, mileage, new Date(), vehicleTypes.get(0), rentalLocations.get(0), VehicleCondition.GOOD, VehicleStatus.INLOCATION);
         objectLayer.storeVehicle( vehicle );
         return vehicle.getId();
     }
