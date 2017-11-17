@@ -304,8 +304,9 @@ public class ObjectLayerImpl implements ObjectLayer {
 
 	@Override
 	public HourlyPrice createHourlyPrice() {
+		HourlyPrice hp = new HourlyPriceImpl();
 		Persistence.setPersistencvalayer(persistence);
-		return null;
+		return hp;
 	}
 
 	@Override

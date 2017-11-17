@@ -56,6 +56,8 @@ public class UpdateHourlyPrice
         BufferedWriter toClient = null;
         String		   vehicleType = null;
         String	       priceS = null;
+        String		   maxHoursS = null;
+        int			   maxHours = 0;
         double		   price = 0.0;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
@@ -114,13 +116,15 @@ public class UpdateHourlyPrice
         //
         vehicleType = req.getParameter( "vehicleType" );
         priceS = req.getParameter( "hourlyPrice" );
+        maxHoursS = req.getParameter( "maxHours" );
 
         try{
             price = Double.valueOf(priceS);
+            maxHours = Integer.valueOf(maxHoursS);
             int priceI = (int) (price * 100);
-            logicLayer.UpdateHourlyPrice(vehicleType, price);
+            logicLayer.UpdateHourlyPrice(vehicleType, priceI, maxHours);
         }catch(Exception e) {
-
+        	e.printStackTrace();
         }
 
 
