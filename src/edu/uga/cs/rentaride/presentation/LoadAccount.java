@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,10 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.uga.cs.rentaride.RARException;
-import edu.uga.cs.rentaride.entity.Administrator;
-import edu.uga.cs.rentaride.entity.Customer;
-import edu.uga.cs.rentaride.entity.RentARideParams;
-import edu.uga.cs.rentaride.entity.User;
+import edu.uga.cs.rentaride.entity.*;
 import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
@@ -93,6 +92,18 @@ public class LoadAccount extends HttpServlet {
                 root.put("mprice", mp);
                 root.put("latefee", lf);
                 }
+            } catch (RARException e) {
+                e.printStackTrace();
+            }
+
+//            Map<String, String> rlMap = new HashMap<>();
+            try {
+                List<RentalLocation> rentalLocationList = logicLayer.getAllRentalLocations();
+                List<String> rlnames = new ArrayList<String>();
+                for (RentalLocation rl: rentalLocationList) {
+                    rlnames.add(rl.getName());
+                }
+                root.put("rentalLocationMap", rlnames);
             } catch (RARException e) {
                 e.printStackTrace();
             }

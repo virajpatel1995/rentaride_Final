@@ -180,4 +180,9 @@ public class LogicLayerImpl
     public void updateRenARideParams(RentARideParams rentARideParams) throws RARException {
         objectLayer.storeRentARideParams(rentARideParams);
     }
+
+    @Override
+    public List<RentalLocation> getAllRentalLocations() throws RARException {
+        return objectLayer.findRentalLocation(null);
+    }
 }
