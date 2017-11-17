@@ -47,9 +47,9 @@ import edu.uga.cs.rentaride.RARException;
 //	club_address string
 //      founder_id   long (as a string)
 //
-@WebServlet("CreateVehicle")
+@WebServlet("UpdateVehicle")
 
-public class CreateVehicle
+public class UpdateVehicle
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -76,15 +76,12 @@ public class CreateVehicle
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
         
-        String make = null;
-        String model = null; 
-        String yearS = null; 
-        int year = 0;
         String mileageS = null;
         int mileage = 0;
         String tag = null;
         String location = null;
-        String type = null;
+        String maintenceS = null;
+        boolean maintence = false;
         
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
@@ -142,18 +139,15 @@ public class CreateVehicle
 
         // Get the form parameters
         //
-        make = req.getParameter( "make" );
-        model = req.getParameter( "model" ); 
-        yearS = req.getParameter( "year" ); 
         mileageS = req.getParameter( "milage" );
         tag = req.getParameter( "tag" );
         location = req.getParameter( "location" );
-        type = req.getParameter( "type" );
+        maintenceS = req.getParameter( "maintence" );
 
         try{
-            year = Integer.valueOf(yearS);
             mileage = Integer.valueOf(mileageS);
-            vehicleId = logicLayer.CreateVehicle(make, model, year, mileage, tag, location, type);
+            if (maintenceS == "True") maintence = true;
+            vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintence);
         }catch(Exception e) {
         }
 

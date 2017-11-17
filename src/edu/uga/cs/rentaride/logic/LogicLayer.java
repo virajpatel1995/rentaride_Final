@@ -25,7 +25,7 @@ public interface LogicLayer
     
     public long createComment(String comm, Long ren) throws RARException;
     public long CreateVehicle(String make, String model, int year, int mileage, String tag, String location, String type) throws RARException;
-    public long UpdateVehicle( String mileage, String tag, String location, boolean maintence) throws RARException;
+    public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException;
     	
     public  RentARideParams getRenARideParams() throws RARException;
 

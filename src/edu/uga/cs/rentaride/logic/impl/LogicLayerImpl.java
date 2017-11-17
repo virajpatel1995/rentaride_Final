@@ -134,7 +134,7 @@ public class LogicLayerImpl
 	}
 	
 	@Override
-	public long UpdateVehicle( String mileage, String tag, String location, boolean maintence) throws RARException{
+	public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException{
 		UpdateVehicleCtrl ctrlVehicle = new UpdateVehicleCtrl(objectLayer);
 		return ctrlVehicle.UpdateVehicle(mileage, tag, location,maintence);
 	}
