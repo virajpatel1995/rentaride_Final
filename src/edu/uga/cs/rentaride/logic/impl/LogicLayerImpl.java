@@ -139,6 +139,18 @@ public class LogicLayerImpl
 		return ctrlVehicle.UpdateVehicle(mileage, tag, location,maintence);
 	}
 	
+	@Override
+	public long CreateVehicleType( String vehicleType ) throws RARException{
+		CreateVehicleTypeCtrl ctrlVehicleType = new CreateVehicleTypeCtrl(objectLayer);
+		return ctrlVehicleType.CreateVehicleType( vehicleType );
+	}
+	
+	@Override
+	public long UpdateVehicleType( String oldVehicleType, String newVehicleType ) throws RARException{
+		UpdateVehicleTypeCtrl ctrlVehicleType = new UpdateVehicleTypeCtrl(objectLayer);
+		return ctrlVehicleType.UpdateVehicleType( oldVehicleType, newVehicleType );
+	}
+	
     @Override
     public User checkUser(String username, String email) throws RARException {
         Customer customer = objectLayer.createCustomer();

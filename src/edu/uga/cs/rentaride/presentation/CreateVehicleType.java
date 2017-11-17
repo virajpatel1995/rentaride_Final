@@ -51,14 +51,14 @@ public class CreateVehicleType
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
-        String	       priceS = null;
-        double		   price = 0.0;
+        String	       vehicleType = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
+        long		   vehicleTypeId = 0;
 
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
@@ -108,12 +108,13 @@ public class CreateVehicleType
 
         // Get the form parameters
         //
-        priceS = req.getParameter( "membershipPrice" );
+        vehicleType = req.getParameter( "vehicleType" );
 
         try{
-            price = Double.valueOf(priceS);
-        }catch(Exception e) {
+            vehicleTypeId = logicLayer.CreateVehicleType(vehicleType);
 
+        }catch(Exception e) {
+        	e.printStackTrace();
         }
 
 

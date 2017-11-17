@@ -23,9 +23,9 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateLateFee")
+@WebServlet("UpdateVehicleType")
 
-public class UpdateLateFee
+public class UpdateVehicleType
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -51,14 +51,15 @@ public class UpdateLateFee
     {
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
-        String	       priceS = null;
-        double		   price = 0.0;
+        String	       oldVehicleType = null;
+        String	       newVehicleType = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
+        long		   vehicleTypeId = 0;
 
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
@@ -108,12 +109,14 @@ public class UpdateLateFee
 
         // Get the form parameters
         //
-        priceS = req.getParameter( "membershipPrice" );
+        oldVehicleType = req.getParameter( "oldVehicleType" );
+        newVehicleType = req.getParameter( "newVehicleType" );
 
         try{
-            price = Double.valueOf(priceS);
-        }catch(Exception e) {
+            vehicleTypeId = logicLayer.UpdateVehicleType(oldVehicleType, newVehicleType);
 
+        }catch(Exception e) {
+        	e.printStackTrace();
         }
 
 
