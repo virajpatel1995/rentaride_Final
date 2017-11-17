@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="style/slider.css">
 	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="membershipPrice.js"></script>
 	
 </head>
@@ -320,7 +321,17 @@
 
 
 
- <div  id="membershipPriceError"></div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -382,11 +393,45 @@
             
          
       </div>
-   
-    
-    
-    
-    
+
+    </div>
+     
+    <div data-role="main" class="ui-content">
+    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Add New Vehicle</a>
+
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:350px;">
+      <form method="post" action="addVehicle.java">
+        <div>
+          <h3>ADD VEHICLE</h3>
+          <input type="text" name="make" id="make" placeholder="Make">
+          <input type="text" name="model" id="model" placeholder="Model">
+			<select name="Year" placeholder="Select Year">
+   			 	<option value="2017">2017</option>
+    			<option value="2016">2016</option>
+    			<option value="2015">2015</option>
+    			<option value="2014">2014</option>
+                <option value="2013">2013</option>
+    			<option value="2012">2012</option>
+    			<option value="2011">2011</option>
+    			<option value="2010">2010</option>
+				<option value="2009">2009</option>
+    			<option value="2008">2008</option>
+    			<option value="2007">2007</option>
+    			<option value="2006">2006</option>
+    			<option value="2005">2005</option>
+  			</select>
+
+        <input type="number" name="mileage" id="mileage" placeholder="Mileage">
+        <input type="text" name="tag" id="tag" placeholder="Tag#">
+		<input id="date" type="datetime">
+
+
+          
+          <input class="buttonx"type="submit" data-inline="true" value="ADD VEHICLE">
+        </div>
+      </form>
+    </div>
+  </div>
     
     
     
@@ -402,7 +447,8 @@
 				</div>
 			</div>
 	</div>
-</div>
+
+
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="source/js/isotope.js"></script>
