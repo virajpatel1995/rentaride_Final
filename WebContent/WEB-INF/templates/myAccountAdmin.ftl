@@ -11,6 +11,8 @@
   <link rel="stylesheet" type="text/css" href="style/slider.css">
   <link rel="stylesheet" type="text/css" href="style/mystyle.css">
   	<script src="membershipPrice.js"></script>
+  	  	<script src="alert.js"></script>
+
   
   <script>
         function myFunction(){
@@ -35,13 +37,31 @@
     <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
     <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
     <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
+
     
   </ul>
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>Profile</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="container">
+        		
+    		<form action="UpdateProfile" method="post">
+            First Name:<input id="fName" name="fName" type="text" placeholder="FirstName">
+            Last Name:<input id="lName" name="lName" type="text" placeholder="LastName"><br>
+           	Email:<input id="email" name="email" type="text" placeholder="Email">
+            Address:<input id="address" name="address" type="text" placeholder="Address"><br>
+            City:<input id="city" name="city" type="text" placeholder="City">
+            Zip:<input id="zip" name="zip" type="text" placeholder="Zip"><br>
+            State:<input id="state" name="state" type="text" placeholder="State">
+            
+            <input id="updateProfile" class="btn btn-submit" type="button" value="Update Profile" />
+            
+            <div style="float: left" id="updatedMsg"></div>
+            </form>
+       </div>     
+      
     </div>
     
    <!-- **********MEMBERSHIP PRICE and LATE FEES --> 
@@ -135,7 +155,29 @@
         
         
  </div>
-    
+    <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
+     <div id="menu5" class="tab-pane fade">
+      <h3>Add | Update Vehicle</h3>
+      
+   <div class="container">
+  		
+    		<form action="CreateVehicleType" method="post">
+
+            New Vehicle Type:<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+         <input class="btn btn-submit" type="submit" value="Add Type" />
+         </form> 
+         
+         
+			<form action="UpdateVehicleType" method="post">
+
+            Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
+            New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
+         <input class="btn btn-submit" type="submit" value="Update Type" />
+         </form> 
+</div>
+        
+        
+ </div>
  
     
   </div>
