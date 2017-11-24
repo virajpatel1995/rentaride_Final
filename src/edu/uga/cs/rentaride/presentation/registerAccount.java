@@ -125,7 +125,6 @@ public class registerAccount extends HttpServlet {
 		
 		//Here it will create the session id 
 		if( session == null ){
-			
 			try {
 				session = SessionManager.createSession();
 			} catch ( Exception e ){

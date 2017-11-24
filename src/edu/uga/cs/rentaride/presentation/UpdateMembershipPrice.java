@@ -104,16 +104,6 @@ public class UpdateMembershipPrice
             return;
         }
         logicLayer = session.getLogicLayer();
-//        User user = session.getUser();
-//        root.put("username", user.getUserName());
-//
-//        if( logicLayer == null ) {
-//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-//            return;
-//        }
-
-        // Get the form parameters
-        //
         membershipPrice = req.getParameter( "membershipPrice" );
         lateFee = req.getParameter( "lateFee" );
         String msg = null;
@@ -128,8 +118,6 @@ public class UpdateMembershipPrice
         }catch(Exception e) {
             msg = "Something goes wrong";
         }
-       
-
         res.setContentType("text/plain");
         res.getWriter().write(msg);
 

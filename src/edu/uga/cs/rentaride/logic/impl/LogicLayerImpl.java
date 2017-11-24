@@ -202,4 +202,9 @@ public class LogicLayerImpl
     public List<RentalLocation> getAllRentalLocations() throws RARException {
         return objectLayer.findRentalLocation(null);
     }
+
+    @Override
+    public List<VehicleType> getAllVehicleTypes() throws RARException {
+        return objectLayer.findVehicleType(null);
+    }
 }
