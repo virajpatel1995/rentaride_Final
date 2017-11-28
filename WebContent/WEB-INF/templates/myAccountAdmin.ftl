@@ -153,35 +153,33 @@
 
 
         </div>
-       
- </div>
+ 
+ 
+ 
     <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
      <div id="menu5" class="tab-pane fade">
       <h3>Add | Update Vehicle</h3>
       
-   <div class="container">
+   		<div class="container">
   		
-    		<form action="CreateVehicleType" method="post">
+    			<form action="CreateVehicleType" method="post">
 
-            New Vehicle Type:<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
-         <input class="btn btn-submit" type="submit" value="Add Type" />
-         </form> 
+            	New Vehicle Type:<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+         					<input class="btn btn-submit" type="submit" value="Add Type" />
+         	</form> 
          
          
 			<form action="UpdateVehicleType" method="post">
 
-            Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
-            New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
-         <input class="btn btn-submit" type="submit" value="Update Type" />
-         </form> 
-</div>
-        
-        
+            		Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
+            		New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
+         		<input class="btn btn-submit" type="submit" value="Update Type" />
+         	</form> 
+		</div>
+               
  </div>
+</div>
  
-      </div>
-  
-  </div>
  
 </div>
 
