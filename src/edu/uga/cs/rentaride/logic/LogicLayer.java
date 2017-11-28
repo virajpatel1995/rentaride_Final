@@ -37,4 +37,7 @@ public interface LogicLayer
     void updateRenARideParams(RentARideParams rentARideParams) throws RARException;
     List<RentalLocation> getAllRentalLocations() throws RARException;
     List<VehicleType> getAllVehicleTypes() throws RARException;
+
+    
+	public long updateProfile ( String fName, String lName, String email, String address, String city, String state, String zip ) throws RARException;
 }

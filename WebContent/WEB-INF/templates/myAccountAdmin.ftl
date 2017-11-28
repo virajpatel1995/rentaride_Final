@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="style/slider.css">
-    <link rel="stylesheet" type="text/css" href="style/mystyle.css">
-    <script src="membershipPrice.js"></script>
 
-    <script>
-        function myFunction() {
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="style/slider.css">
+  <link rel="stylesheet" type="text/css" href="style/mystyle.css">
+  	<script src="membershipPrice.js"></script>
+  	  	<script src="alert.js"></script>
+
+  
+  <script>
+        function myFunction(){
             alert("Added Location Successfully")
         }
     </script>
@@ -33,6 +36,7 @@
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
         <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
+          <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
 
     </ul>
 
@@ -149,9 +153,36 @@
 
 
         </div>
+       
+ </div>
+    <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
+     <div id="menu5" class="tab-pane fade">
+      <h3>Add | Update Vehicle</h3>
+      
+   <div class="container">
+  		
+    		<form action="CreateVehicleType" method="post">
 
+            New Vehicle Type:<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+         <input class="btn btn-submit" type="submit" value="Add Type" />
+         </form> 
+         
+         
+			<form action="UpdateVehicleType" method="post">
 
-    </div>
+            Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
+            New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
+         <input class="btn btn-submit" type="submit" value="Update Type" />
+         </form> 
+</div>
+        
+        
+ </div>
+ 
+      </div>
+  
+  </div>
+ 
 </div>
 
 </body>
