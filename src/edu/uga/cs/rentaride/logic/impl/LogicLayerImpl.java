@@ -215,4 +215,12 @@ public class LogicLayerImpl
 		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip);
  
 	}
+	@Override
+	public long updateAdministrator(String username, String fName, String lName, String email, String address, String city, String state,
+			String zip) throws RARException {
+
+		UpdateAdministratorCtrl ctrlAdministrator = new UpdateAdministratorCtrl(objectLayer);
+		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address, city, state, zip);
+ 
+	}
 }

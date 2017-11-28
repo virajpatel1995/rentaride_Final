@@ -107,6 +107,7 @@ public class LoadAccount extends HttpServlet {
                     rlnames.add(rl.getName());
                 }
                 root.put("rentalLocationList", rlnames);
+                root.put("rentalLocations", rentalLocationList);
                 List<VehicleType> vehicleTypeList = logicLayer.getAllVehicleTypes();
                 List<String> vtnames = new ArrayList<String>();
                 for (VehicleType vt: vehicleTypeList) {

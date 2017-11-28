@@ -92,6 +92,26 @@
 
                     <div style="float: left" id="rentalLocationMsg"></div>
                 </form>
+
+            <table class="table table-inverse">
+                <tr>
+                    <td><b>Id</b></td>
+                    <td><b>Name</b></td>
+                    <td><b>Address</b></td>
+                    <td><b>Capacity</b></td>
+                </tr>
+            <#if rentalLocations??>
+                <#list rentalLocations as rl>
+                    <tr>
+                        <td>${rl.getId()}</td>
+                        <td>${rl.getName()}</td>
+                        <td>${rl.getAddress()}</td>
+                        <td>${rl.getCapacity()}</td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                </#list></table>
+
+            </#if>
             </div>
 
 
@@ -170,7 +190,16 @@
 
                 <form action="UpdateVehicleType" method="post">
 
-                    Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
+                    Old Vehicle Type:
+                <#if vehicleTypeList ??>
+                    <select name="oldVehicleType">
+                        <#list vehicleTypeList as element>
+                            <option value="${element}">${element}</option>
+                        </#list>
+                    </select>
+                <#--<#else >-->
+                <#--<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>-->
+                </#if>
                     New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
                     <input class="btn btn-submit" type="submit" value="Update Type"/>
                 </form>
