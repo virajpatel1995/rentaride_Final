@@ -61,6 +61,7 @@ public class UpdateProfile
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
+        long customerId = 0;
 
         
         String fName = "";
@@ -138,13 +139,15 @@ public class UpdateProfile
         
         try{
             
-        	//call logic layer to update profile 
+        	
+        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip);
             
             
             
             msg = "Your Profile has been successfully updated";
         }catch(Exception e) {
             msg = "Something goes wrong";
+            e.printStackTrace();
         }
        
 
