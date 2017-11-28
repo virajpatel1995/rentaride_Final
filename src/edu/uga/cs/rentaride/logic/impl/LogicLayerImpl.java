@@ -210,8 +210,13 @@ public class LogicLayerImpl
 	@Override
 	public long updateCustomer(String username, String fName, String lName, String email, String address, String city, String state,
 			String zip) throws RARException {
+<<<<<<< HEAD
 		UpdateCustomerCtrl ctrlCustomer = new UpdateCustomerCtrl(objectLayer);
 		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip);
         
+=======
+		// TODO Auto-generated method stub
+		return 0;
+>>>>>>> 66f147da191817fbdb9333c636a6f10df4fb4d1a
 	}
 }
