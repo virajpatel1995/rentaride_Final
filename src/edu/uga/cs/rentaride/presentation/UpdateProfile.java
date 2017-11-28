@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateMembershipPrice")
+@WebServlet("UpdateProfile")
 
-public class UpdateMembershipPrice
+public class UpdateProfile
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -56,16 +56,23 @@ public class UpdateMembershipPrice
         Template       resultTemplate = null;
         HttpSession    httpSession = null;
         BufferedWriter toClient = null;
-
-        String	       membershipPrice = null;
-        String	       lateFee = null;
-        double		   price = 0.0;
         LogicLayer     logicLayer = null;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
 
+        
+        String fName = "";
+        String lName = "";
+        String email = "";
+        String address = "";
+        String city = "";
+        String state = "";
+       String  zip = "";
+        
+        
+        
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
 //        try {
@@ -104,20 +111,43 @@ public class UpdateMembershipPrice
             return;
         }
         logicLayer = session.getLogicLayer();
-        membershipPrice = req.getParameter( "membershipPrice" );
-        lateFee = req.getParameter( "lateFee" );
+//        User user = session.getUser();
+//        root.put("username", user.getUserName());
+//
+//        if( logicLayer == null ) {
+//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+//            return;
+//        }
+
+        // Get the form parameters
+        //
+        fName = req.getParameter( "fName" );
+        lName = req.getParameter( "lName" );
+        email = req.getParameter( "email" );
+        address = req.getParameter( "address" );
+        city = req.getParameter( "city" );
+        state = req.getParameter( "state" );
+        zip = req.getParameter( "zip" );
         String msg = null;
+        
+        
+        
+        
+        
+        
+        
         try{
-            double mprice = Double.valueOf(membershipPrice);
-            double latefee = Double.valueOf(lateFee);
-            RentARideParams rentARideParams = logicLayer.getRenARideParams();
-            rentARideParams.setLateFee((int) (latefee*100));
-            rentARideParams.setMembershipPrice((int) (mprice*100));
-            logicLayer.updateRenARideParams(rentARideParams);
-            msg = "All fees has been successfully updated";
+            
+        	//call logic layer to update profile 
+            
+            
+            
+            msg = "Your Profile has been successfully updated";
         }catch(Exception e) {
             msg = "Something goes wrong";
         }
+       
+
         res.setContentType("text/plain");
         res.getWriter().write(msg);
 
