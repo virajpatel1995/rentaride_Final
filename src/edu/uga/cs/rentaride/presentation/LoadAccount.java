@@ -90,6 +90,8 @@ public class LoadAccount extends HttpServlet {
                 if(rentARideParams != null){
                 String mp = (rentARideParams.getMembershipPrice()/100.0)+"";
                 String lf = (rentARideParams.getLateFee()/100.0)+"";
+                    System.out.println("membership price is " + mp);
+                    System.out.println("late fee is " + lf);
                 root.put("mprice", mp);
                 root.put("latefee", lf);
                 }
