@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,11 +19,9 @@
         function myFunction(){
             alert("Added Location Successfully")
         }
-    </script>	
-  		
-  			
-  				
-  						
+    </script>
+
+
 </head>
 
 <body>
@@ -30,130 +29,131 @@
 <#include "customerHeader.ftl">
 
 <div class="container">
-  
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
-    <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
-    <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
-    <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
-    <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
-        <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
 
-    
-  </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
+        <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
+        <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
+        <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
+          <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>Profile</h3>
-      <div class="container">
-        		
-    		<form action="UpdateProfile" method="post">
-            First Name:<input id="fName" name="fName" type="text" placeholder="FirstName">
-            Last Name:<input id="lName" name="lName" type="text" placeholder="LastName"><br>
-           	Email:<input id="email" name="email" type="text" placeholder="Email">
-            Address:<input id="address" name="address" type="text" placeholder="Address"><br>
-            City:<input id="city" name="city" type="text" placeholder="City">
-            Zip:<input id="zip" name="zip" type="text" placeholder="Zip"><br>
-            State:<input id="state" name="state" type="text" placeholder="State">
-            
-            <input id="updateProfile" class="btn btn-submit" type="button" value="Update Profile" />
-            
-            <div style="float: left" id="updatedMsg"></div>
-            </form>
-       </div>     
-      
-    </div>
-    
-   <!-- **********MEMBERSHIP PRICE and LATE FEES --> 
-    
-    <div id="menu1" class="tab-pane fade">
-      <h3>Membership Price | Late Fees</h3>
-      
-  <div>
-  		
-    		<form action="UpdateMembershipPrice" method="post">
-  <#if mprice ?? && (latefee ??)>
-            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" value = ${mprice} step="0.01" /> <br>       
-            Late Fee:<input id="lateFee" type="number" onClick="this.select();"  value = ${latefee} step="0.01" />
-            <#else >
+    </ul>
 
-            Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
-            Late Fee:<input type="number" id="lateFee" step="0.01"/>
-                   </#if>
-            <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
-            
-         </form>
-         <p style="float: left" id="membershipPriceError"></p>
-</div>
-        
-        
-    </div>
-    
-     <!-- ********ADD | Update Location************** --> 
-    <div id="menu2" class="tab-pane fade">
-      <h3> Add|Update Rental Location</h3>
-        	  <div class="container">
-        		
-    		<form action="CreateRentalLocation" method="post">
-            Location Name:<input name="locationName" type="text" placeholder="Name" required="required">
-            Address:<input name="locationAddress" type="text" placeholder="Address" required="required"> <br>
-           	Zip:<input name="locationZip" type="text" placeholder="ZipCode" required="required">
-            State:<input name="locationState" type="text" placeholder="State" required="required"><br>
-            Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
-            
-                              <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental Location</button>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Profile</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+        </div>
 
-            
-            <div style="float: left" id="rentalLocationMsg"></div>
-            </form>
-       </div>     
-            
+        <!-- **********MEMBERSHIP PRICE and LATE FEES -->
 
-   
-    </div>
-    
-     <!-- ********ADD VEHICLE************** --> 
-    <div id="menu3" class="tab-pane fade">
-      <h3>Add Vehicle</h3>
-        <div class="container">
-      
-      <form action="CreateVehicle" method="post">
-			Make:<input type="text" name="make" placeholder="make"/>
-            Model:<input type="text" name="model" placeholder="model"/> <br>
-            Year:<input type="text" name="year" placeholder="year"/>
-            Mileage:<input type="text" name="mileage" placeholder="mileage"/><br>
-            Tag:<input type="text" name="tag" placeholder="tag"/>
-            Location:<input type="text" name="location" placeholder="location"/><br>
-            Type:<input type="text" name="type" placeholder="type"/>
-         <input class="btn btn-submit" type="submit" value="Add Vehicle" />
-         
-                 	<div style="float:center" id="createVehicleMsg"></div>
-         
-         </form>   
-      </div>
-      
-      
-      
-      
-    </div>
-    
-  <!-- ******UPDATE VEHICLE**************** -->
-     <div id="menu4" class="tab-pane fade">
-      <h3>Update Vehicle</h3>
-      
-   <div class="container">
-  		
-    		<form action="UpdateVehicle" method="post">
-            Mileage:<input type="text" name="mileage" placeholder="mileage"/>
-            Tag:<input type="text" name="tag" placeholder="tag"/><br>
-            Location:<input type="text" name="location" placeholder="location"/>
-            Maintenance:<input type="text" name="type" placeholder="maintenance"/><br><br>
-         <input class="btn btn-submit" type="submit" value="Update Vehicle" />
-        	<div style="float:center" id="updateVehicleMsg"></div>
-         </form>
-</div>
-        
-        
+        <div id="menu1" class="tab-pane fade">
+            <h3>Membership Price | Late Fees</h3>
+
+            <div>
+
+                <form action="UpdateMembershipPrice" method="post">
+                <#if mprice ?? && (latefee ??)>
+                    Membership Price:<input id="membershipPrice" onClick="this.select();" type="number"
+                                            value=${mprice}step="0.01"/> <br>
+                    Late Fee:<input id="lateFee" type="number" onClick="this.select();" value=${latefee}step="0.01"/>
+                <#else >
+
+                    Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
+                    Late Fee:<input type="number" id="lateFee" step="0.01"/>
+                </#if>
+                    <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees"/>
+
+                </form>
+                <p style="float: left" id="membershipPriceError"></p>
+            </div>
+
+
+        </div>
+
+        <!-- ********ADD | Update Location************** -->
+        <div id="menu2" class="tab-pane fade">
+            <h3> Add|Update Rental Location</h3>
+            <div class="container">
+
+                <form action="CreateRentalLocation" method="post">
+                    Location Name:<input name="locationName" type="text" placeholder="Name" required="required">
+                    Address:<input name="locationAddress" type="text" placeholder="Address" required="required"> <br>
+                    Zip:<input name="locationZip" type="text" placeholder="ZipCode" required="required">
+                    State:<input name="locationState" type="text" placeholder="State" required="required"><br>
+                    Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
+
+                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental
+                        Location
+                    </button>
+
+
+                    <div style="float: left" id="rentalLocationMsg"></div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <!-- ********ADD VEHICLE************** -->
+        <div id="menu3" class="tab-pane fade">
+            <h3>Add Vehicle</h3>
+            <div class="container">
+
+                <form action="CreateVehicle" method="post">
+                    Make:<input type="text" name="make" placeholder="make"/>
+                    Model:<input type="text" name="model" placeholder="model"/> <br>
+                    Year:<input type="text" name="year" placeholder="year"/>
+                    Mileage:<input type="text" name="mileage" placeholder="mileage"/><br>
+                    Tag:<input type="text" name="tag" placeholder="tag"/>
+                <#if rentalLocationList?? && (vehicleTypeList ??)>
+
+                    Location:<select name="location">
+                    <#list rentalLocationList as element>
+                        <option value="${element}">${element}</option>
+                    </#list>
+                </select><br>
+                    Vehicle Type:<select name="type">
+                    <#list vehicleTypeList as element>
+                        <option value="${element}">${element}</option>
+                    </#list>
+                </select>
+                <#else>
+                    Location:<input type="text" name="location" placeholder="location"/><br>
+                    Type:<input type="text" name="type" placeholder="type"/>
+
+                </#if>
+                    <input class="btn btn-submit" type="submit" value="Add Vehicle"/>
+
+                    <div style="float:center" id="createVehicleMsg"></div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+        <!-- ******UPDATE VEHICLE**************** -->
+        <div id="menu4" class="tab-pane fade">
+            <h3>Update Vehicle</h3>
+
+            <div class="container">
+
+                <form action="UpdateVehicle" method="post">
+                    Mileage:<input type="text" name="mileage" placeholder="mileage"/>
+                    Tag:<input type="text" name="tag" placeholder="tag"/><br>
+                    Location:<input type="text" name="location" placeholder="location"/>
+                    Maintenance:<input type="text" name="type" placeholder="maintenance"/><br><br>
+                    <input class="btn btn-submit" type="submit" value="Update Vehicle"/>
+                    <div style="float:center" id="updateVehicleMsg"></div>
+                </form>
+            </div>
+
+
+        </div>
+       
  </div>
     <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
      <div id="menu5" class="tab-pane fade">
@@ -179,8 +179,10 @@
         
  </div>
  
-    
+      </div>
+  
   </div>
+ 
 </div>
 
 </body>
