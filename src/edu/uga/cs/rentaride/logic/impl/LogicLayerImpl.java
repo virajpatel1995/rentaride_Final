@@ -211,6 +211,6 @@ public class LogicLayerImpl
 	public long updateProfile(String fName, String lName, String email, String address, String city, String state,
 			String zip) throws RARException {
 		// TODO Auto-generated method stub
-		return null;
+		return -1;
 	}
 }
