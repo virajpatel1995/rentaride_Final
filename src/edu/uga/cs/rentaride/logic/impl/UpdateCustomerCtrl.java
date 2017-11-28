@@ -6,6 +6,8 @@
 package edu.uga.cs.rentaride.logic.impl;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class UpdateCustomerCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long updateCustomer( String username, String fName, String lName, String email, String address, String city, String state, String zip)
+    public long updateCustomer( String username, String fName, String lName, String email, String address, String city, String state, String zip, String card, String expire)
             throws RARException
     { 
         Customer 		   customer  = null;
@@ -45,7 +47,12 @@ public class UpdateCustomerCtrl {
             customer.setLastName(lName);
             customer.setEmail(email);
             customer.setAddress(address + ", " + city +", "+ state+", " + zip);
-           
+            customer.setCreditCardNumber(card);
+            try {
+            customer.setCreditCardExpiration(new SimpleDateFormat("dd-mm-yyy").parse(expire));
+            }catch(ParseException e) {
+            		throw new RARException("Date not valid for this Customer: "+ expire);
+           }
             objectLayer.storeCustomer(customer);
             return customer.getId();
         }
