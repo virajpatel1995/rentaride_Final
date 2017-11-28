@@ -203,6 +203,10 @@ public class LogicLayerImpl
         return objectLayer.findRentalLocation(null);
     }
 
+    @Override
+    public List<VehicleType> getAllVehicleTypes() throws RARException {
+        return objectLayer.findVehicleType(null);
+    }
 	@Override
 	public long updateProfile(String fName, String lName, String email, String address, String city, String state,
 			String zip) throws RARException {
