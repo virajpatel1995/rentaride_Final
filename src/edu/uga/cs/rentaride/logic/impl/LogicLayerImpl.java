@@ -208,9 +208,11 @@ public class LogicLayerImpl
         return objectLayer.findVehicleType(null);
     }
 	@Override
-	public long updateProfile(String fName, String lName, String email, String address, String city, String state,
+	public long updateCustomer(String username, String fName, String lName, String email, String address, String city, String state,
 			String zip) throws RARException {
-		// TODO Auto-generated method stub
-		return 0;
+
+		UpdateCustomerCtrl ctrlCustomer = new UpdateCustomerCtrl(objectLayer);
+		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip);
+ 
 	}
 }
