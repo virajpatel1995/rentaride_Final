@@ -7,7 +7,6 @@ import java.util.List;
 import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.RentalLocation;
-import edu.uga.cs.rentaride.entity.Reservation;
 import edu.uga.cs.rentaride.entity.User;
 import edu.uga.cs.rentaride.entity.VehicleType;
 import edu.uga.cs.rentaride.session.*;
@@ -43,5 +42,5 @@ public interface LogicLayer
 
 	public long updateCustomer (String username, String fName, String lName, String email, String address, String city, String state, String zip , String card, String expire) throws RARException;
 
-	public long placeRental(String reservationIdS, String vehicleTag);
+	public long placeRental(String reservationIdS, String vehicleTag) throws RARException;
 }

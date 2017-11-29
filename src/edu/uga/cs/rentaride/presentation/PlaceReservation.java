@@ -63,7 +63,6 @@ public class PlaceReservation
         String retMessage = "";
         String reservationIdS = null;
         String vehicleTag = null;
-        String rentalLocation = null;
         long rentalId = 0;
 
         
@@ -125,12 +124,11 @@ public class PlaceReservation
         
         reservationIdS =req.getParameter("res");
         vehicleTag = req.getParameter("tag");
-        rentalLocation = req.getParameter("rentalLocation");
         
         try{
             
         	
-        	rentalId = logicLayer.placeRental(reservationIdS, vehicleTag, rentalLocation);
+        	rentalId = logicLayer.placeRental(reservationIdS, vehicleTag);
             
             
             

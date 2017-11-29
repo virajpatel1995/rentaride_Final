@@ -55,7 +55,15 @@ public class PlaceRentalCtrl {
         
         if(!vehicle.getRentalLocation().equals(reservation.getRentalLocation())) throw new RARException("Vehicle is not at the correct Rental Location");
         
+        if((reservation.getPickupTime().getTime()+1800000 > new Date().getTime()) && (reservation.getPickupTime().getTime()-1800000 < new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
         
+        	Rental rental = objectLayer.createRental();
+        	rental.setCustomer(reservation.getCustomer());
+        	rental.setPickupTime(reservation.getPickupTime());
+        	rental.setReservation(reservation);
+        	rental.setReturnTime(new Date(reservation.getPickupTime().getTime() + reservation.getLength()));
+        	rental.setVehicle(vehicle);
+        	objectLayer.storeRental(rental);
         return rental.getId();
         /*
         // check if a club with this name already exists (name is unique)
