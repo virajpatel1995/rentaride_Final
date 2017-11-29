@@ -141,6 +141,7 @@ public class CreateRentalLocation
         String state = req.getParameter( "locationState" );
         capacityS = req.getParameter( "locationCapacity" );
 
+
         try{
             capacity = Integer.valueOf(capacityS);
             rentalLocationId = logicLayer.createRentalLocation( name, addr + " " + state + " " + zip, capacity );

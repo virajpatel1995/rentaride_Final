@@ -11,6 +11,7 @@ import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.*;
+import edu.uga.cs.rentaride.entity.impl.RentalLocationImpl;
 import edu.uga.cs.rentaride.logic.*;
 import edu.uga.cs.rentaride.object.*;
 import edu.uga.cs.rentaride.object.impl.*;
@@ -119,38 +120,38 @@ public class LogicLayerImpl
 		CreateRentalLocationCtrl ctrlRentalLocation = new CreateRentalLocationCtrl(objectLayer);
 		return ctrlRentalLocation.createRentalLocation(locationName, address, locationCapacity);
 	}
-	
+
 	@Override
 	public long createComment(String comm, Long ren) throws RARException{
 		CreateCommentCtrl ctrlComment = new CreateCommentCtrl(objectLayer);
 		return ctrlComment.createComment(comm, ren);
 	}
-	
+
 	@Override
 	public long CreateVehicle(String make, String model, int year, int mileage, String tag, String location, String type) throws RARException{
 		CreateVehicleCtrl ctrlVehicle = new CreateVehicleCtrl(objectLayer);
 		return ctrlVehicle.createVehicle(  make,  model,  year,  mileage , tag,  location, type);
-        
+
 	}
-	
+
 	@Override
 	public long UpdateVehicle( int mileage, String tag, String location, boolean maintence) throws RARException{
 		UpdateVehicleCtrl ctrlVehicle = new UpdateVehicleCtrl(objectLayer);
 		return ctrlVehicle.UpdateVehicle(mileage, tag, location,maintence);
 	}
-	
+
 	@Override
 	public long CreateVehicleType( String vehicleType ) throws RARException{
 		CreateVehicleTypeCtrl ctrlVehicleType = new CreateVehicleTypeCtrl(objectLayer);
 		return ctrlVehicleType.CreateVehicleType( vehicleType );
 	}
-	
+
 	@Override
 	public long UpdateVehicleType( String oldVehicleType, String newVehicleType ) throws RARException{
 		UpdateVehicleTypeCtrl ctrlVehicleType = new UpdateVehicleTypeCtrl(objectLayer);
 		return ctrlVehicleType.UpdateVehicleType( oldVehicleType, newVehicleType );
 	}
-	
+
     @Override
     public User checkUser(String username, String email) throws RARException {
         Customer customer = objectLayer.createCustomer();
@@ -187,7 +188,7 @@ public class LogicLayerImpl
     	UpdateHourlyPriceCtrl ctrlHourlyPrice = new UpdateHourlyPriceCtrl(objectLayer);
 		return ctrlHourlyPrice.updateHourlyPrice(vehicleType, hourlyPrice, maxHours);
     }
-    
+
     @Override
     public RentARideParams getRenARideParams() throws RARException {
         return objectLayer.findRentARideParams();
@@ -213,7 +214,7 @@ public class LogicLayerImpl
 
 		UpdateCustomerCtrl ctrlCustomer = new UpdateCustomerCtrl(objectLayer);
 		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip, card, expire);
- 
+
 	}
 	@Override
 	public long updateAdministrator(String username, String fName, String lName, String email, String address, String city, String state,
@@ -221,6 +222,18 @@ public class LogicLayerImpl
 
 		UpdateAdministratorCtrl ctrlAdministrator = new UpdateAdministratorCtrl(objectLayer);
 		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address, city, state, zip);
- 
+
 	}
+
+    @Override
+    public RentalLocation getRentalLocationById(long id) throws RARException {
+        RentalLocation rentalLocation = objectLayer.createRentalLocation();
+        rentalLocation.setId(id);
+        return objectLayer.findRentalLocation(rentalLocation).get(0);
+    }
+
+    @Override
+    public void updateRentalLocation(RentalLocation rl) throws RARException {
+        objectLayer.storeRentalLocation(rl);
+    }
 }
