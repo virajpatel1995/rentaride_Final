@@ -125,11 +125,7 @@ public class UpdateAdmin
         address = req.getParameter( "address" );
         String msg = null;
         
-        
-        
-        
-        
-        
+       
         
         try{
             

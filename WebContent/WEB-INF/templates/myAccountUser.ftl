@@ -91,7 +91,7 @@
          <input id="updateProfilebtn" class="btn btn-submit" type="button" value="Update Profile" />
          <#--</#if>-->
          </form>
-                <p style="float: left" id="UpdateProfileError"></p>
+                <p style="float: left color:Red" id="UpdateProfileError"></p>
             </div>
 
 
