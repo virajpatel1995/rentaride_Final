@@ -34,7 +34,7 @@
         <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
-        <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
 
@@ -165,7 +165,7 @@
                     Mileage:<input type="text" name="mileage" placeholder="mileage"/>
                     Tag:<input type="text" name="tag" placeholder="tag"/><br>
                     Location:<input type="text" name="location" placeholder="location"/>
-                    Maintenance:<input type="text" name="type" placeholder="maintenance"/><br><br>
+                    Maintenance:<input type="text" name="maintenance" placeholder="maintenance"/><br><br>
                     <input class="btn btn-submit" type="submit" value="Update Vehicle"/>
                     <div style="float:center" id="updateVehicleMsg"></div>
                 </form>
