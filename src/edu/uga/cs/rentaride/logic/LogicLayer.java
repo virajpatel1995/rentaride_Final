@@ -41,6 +41,10 @@ public interface LogicLayer
     public long updateAdministrator (String username, String fName, String lName, String email, String address) throws RARException;
 
 	public long updateCustomer (String username, String fName, String lName, String email, String address, String city, String state, String zip , String card, String expire) throws RARException;
+
+    RentalLocation getRentalLocationById(long id) throws RARException;
+
+    void updateRentalLocation(RentalLocation rl) throws RARException;
 	public long CancelReservation(String res) throws RARException;
 	public long placeRental(String reservationIdS, String vehicleTag) throws RARException;
 }
