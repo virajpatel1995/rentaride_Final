@@ -3,7 +3,7 @@
  */
 
 
-//$(document).ready(function () {
+$(document).ready(function () {
 //    $('#updateProfile').click(function (event) {
 //
 //        var fName = $("#fName").val();
@@ -67,7 +67,7 @@
     
     
 
-    $(document).ready(function() {
+//    $(document).ready(function() {
         $('#updateProfilebtn').click(function(event) {
         	
                 var firstName = $('#fName').val();
@@ -91,11 +91,37 @@
                         $('#UpdateProfileError').text(responseText);
                  });
          });
+//    });   
+    
+    
+    
+    //Admin profile update
+    
+    
+    
+//    $(document).ready(function() {
+        $('#updateAdminProfile').click(function(event) {
+        	
+                var firstName = $('#fName').val();
+                var lastName = $('#lName').val();
+                var email = $('#email').val();
+                var address = $('#address').val();
+                
+
+               
+                $.post('UpdateAdmin', {
+                	fName : firstName,
+                lName :	lastName,
+                	email : email,
+                	address : address
+               
+                	
+                
+                }, function(responseText) {
+                        $('#UpdateProfileErrorAdmin').text(responseText);
+                 });
+         });
     });   
-    
-    
-    
-    
     
 
 
