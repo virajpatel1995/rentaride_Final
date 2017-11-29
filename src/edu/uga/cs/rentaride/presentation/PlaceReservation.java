@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateAdmin")
+@WebServlet("PlaceReservation")
 
-public class UpdateAdmin
+public class PlaceReservation
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -61,13 +61,12 @@ public class UpdateAdmin
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        long adminId = 0;
+        String reservationIdS = null;
+        String vehicleTag = null;
+        long rentalId = 0;
 
         
-        String fName = "";
-        String lName = "";
-        String email = "";
-        String address = "";
+       
         
         
         
@@ -119,28 +118,23 @@ public class UpdateAdmin
 
         // Get the form parameters
         //
-        fName = req.getParameter( "fName" );
-        lName = req.getParameter( "lName" );
-        email = req.getParameter( "email" );
-        address = req.getParameter( "address" );
         String msg = null;
         
         
         
-        
-        
-        
+        reservationIdS =req.getParameter("res");
+        vehicleTag = req.getParameter("tag");
         
         try{
             
         	
-        	adminId = logicLayer.updateAdministrator(	session.getUser().getUserName(), fName, lName, email, address);
+        	rentalId = logicLayer.placeRental(reservationIdS, vehicleTag);
             
             
             
-            msg = "Your Profile has been successfully updated";
+            msg = "Your Reservation has been successfully placed";
         }catch(Exception e) {
-            msg = "Something goes wrong";
+            msg = "Unable to place reservation. See log.";
             e.printStackTrace();
         }
        

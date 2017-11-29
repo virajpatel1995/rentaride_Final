@@ -44,5 +44,14 @@
             Max Hours Available<input type="text" name="maxHours" placeholder="Max Hours"/>
          <input class="btn btn-submit" type="submit" value="Set/Update" />
          </form> 
+         
+<form action="CancelMembership" method="post">
+         <input class="btn btn-submit" type="submit" value="Cancel Membership" />
+         </form> 
+         
+<form action="CancelReservation" method="post">
+		 Reservation ID<input type="text" name="reservationID" placeholder="Reservation ID"/>
+         <input class="btn btn-submit" type="submit" value="Cancel Reservation" />
+         </form> 
 </body>
 </html>

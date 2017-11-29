@@ -13,28 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uga.cs.rentaride.entity.RentARideParams;
 import edu.uga.cs.rentaride.entity.User;
-
-import edu.uga.cs.rentaride.entity.impl.RentARideParamsImpl;
 import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateProfile")
+@WebServlet("CancelReservation")
 
-public class UpdateProfile
+public class CancelReservation
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
     static  String         templateDir = "WEB-INF/templates";
-  //  static  String         resultTemplateName = "myAccountAdmin.ftl";
+    static  String         resultTemplateName = "index.ftl";
 
     private Configuration  cfg; 
 
@@ -53,90 +49,87 @@ public class UpdateProfile
     public void doPost( HttpServletRequest req, HttpServletResponse res )
             throws ServletException, IOException
     {
+
+
+
         Template       resultTemplate = null;
-        HttpSession    httpSession = null;
         BufferedWriter toClient = null;
+        String		   reservation = null;
         LogicLayer     logicLayer = null;
+        HttpSession    httpSession;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        long customerId = 0;
 
-        
-        String fName = "";
-        String lName = "";
-        String email = "";
-        String address = "";
-        String city = "";
-        String state = "";
-       String  zip = "";
-       String creditCardNum = "";
-       String expirationDate = "";
-        
-        
+        // Load templates from the WEB-INF/templates directory of the Web app.
+        //
+        try {
+            resultTemplate = cfg.getTemplate( resultTemplateName );
+        }
+        catch (IOException e) {
+            throw new ServletException(
+                    "Can't load template in: " + templateDir + ": " + e.toString());
+        }
+
+        // Prepare the HTTP response:
+        // - Use the charset of template for the output
+        // - Use text/html MIME-type
+        //
+        toClient = new BufferedWriter(
+                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
+                );
+
+        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
+
 
         // Session Tracking
         httpSession = req.getSession();
         ssid = (String) httpSession.getAttribute("ssid");
-//        if (ssid != null) {
-//            System.out.println("Already have ssid: " + ssid);
-//            session = SessionManager.getSessionById(ssid);
-//            System.out.println("Connection: " + session.getConnection());
-//        } else
-//            System.out.println("ssid is null");
-//
+        if (ssid != null) {
+            System.out.println("Already have ssid: " + ssid);
+            session = SessionManager.getSessionById(ssid);
+            System.out.println("Connection: " + session.getConnection());
+        } else
+            System.out.println("ssid is null");
+
         session = SessionManager.getSessionById(ssid);
         if(session == null){
             RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
         }
-        logicLayer = session.getLogicLayer();
-//        User user = session.getUser();
-//        root.put("username", user.getUserName());
-//
-//        if( logicLayer == null ) {
-//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-//            return;
-//        }
+        User user = session.getUser();
+        root.put("username", user.getUserName());
 
+        logicLayer = session.getLogicLayer();
+        if( logicLayer == null ) {
+        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            return;
+        }
         // Get the form parameters
         //
-        fName = req.getParameter( "fName" );
-        lName = req.getParameter( "lName" );
-        email = req.getParameter( "email" );
-        address = req.getParameter( "address" );
-        
-        creditCardNum = req.getParameter("credit");
-        expirationDate = req.getParameter("expire");
-        String msg = null;
-        
-       
-        
+        reservation = req.getParameter( "reservationID" );
+
         try{
-            
-        	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
-            
-            
-            
-            msg = "Your Profile has been successfully updated";
+           logicLayer.CancelReservation(reservation);
+
         }catch(Exception e) {
-            msg = "Something goes wrong";
-            e.printStackTrace();
+        	e.printStackTrace();
         }
-       
 
-        res.setContentType("text/plain");
-        res.getWriter().write(msg);
 
-    }
+        try {
+            resultTemplate.process( root, toClient );
+            toClient.flush();
+        }
+        catch (TemplateException e) {
+            throw new ServletException( "Error while processing FreeMarker template", e);
+        }
+        
+        toClient.close();
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res)
-            throws IOException, ServletException {
-        doPost(req,res);
-    }
+
+  }
 }
 
-
-//test

@@ -31,20 +31,34 @@
 <div class="container">
 
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
+        <li class="active"><a data-toggle="tab" href="#home">MyAccount</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
         <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
 
+        <li><a data-toggle="tab" href="#menu8">Update Profile</a></li>
+       
+		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
+		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+
+
     </ul>
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Profile</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
+            <h3>Welcome</h3>
+            
+            <div class="tab-pane fade">
+            <h3>Welcome to your Account </h3>
+
+          
+
+
+        </div>
+
+            
         </div>
 
         <!-- **********MEMBERSHIP PRICE and LATE FEES -->
@@ -68,6 +82,29 @@
 
                 </form>
                 <p style="float: left" id="membershipPriceError"></p>
+            </div>
+
+
+        </div>
+        
+        <!-- **********Update Profile -->
+
+        <div id="menu8" class="tab-pane fade">
+            <h3>Update Profile</h3>
+
+            <div>
+
+                <form action="UpdateAdmin" method="post">
+	<#if firstName?? && (lastName??) && (email??) && (address??)>
+			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
+			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
+			Email<input type="text" value="${email}" name="email" placeholder="email"/>
+			Address<input type="text" value="${address}" name="address" placeholder="address"/>
+			
+         <input class="btn btn-submit" type="submit" value="Update Profile" />
+         </#if>
+         </form>  
+                <p style="float: left" id="UpdateProfileError"></p>
             </div>
 
 
@@ -207,6 +244,53 @@
         </div>
         
         
+        
+        <!-- ******HOURLY RENTAL PRICE**************** -->
+        <div id="menu6" class="tab-pane fade">
+            <h3>Set and Update Hourly Price</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+        <!-- ******CUSTOMERS**************** -->
+        <div id="menu7" class="tab-pane fade">
+            <h3>Customers</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+         
+        
+        
+        
+        
+       
         
     </div>
 </div>

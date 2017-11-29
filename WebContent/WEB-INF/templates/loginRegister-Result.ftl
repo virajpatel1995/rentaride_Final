@@ -59,17 +59,7 @@
 
 
 
-
-
-
-
-
-
-
-<h2><tt>${registerMessage}</tt></h2>
-
-
-
+<h3><tt>${registerMessage}</tt></h3>
 
 <div class="container white z-depth-2">
     <ul class="tabs teal">
@@ -168,8 +158,7 @@
                         <label>Credit Card Number</label>
                     </div>
                     <div class="input-field col s4">
-                        <input name="expDate" type="text">
-                        <label>Expiration Date</label>
+                        <input name="expDate" type="date">
                     </div>
                     <div class="input-field col s4">
                         <input name="licenseNumber" type="text">
@@ -200,6 +189,7 @@
             </div>
         </form>
     </div>
+
 </div>
 </body>
 </html>
