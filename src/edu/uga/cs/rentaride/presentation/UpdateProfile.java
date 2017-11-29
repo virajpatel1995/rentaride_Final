@@ -71,6 +71,8 @@ public class UpdateProfile
         String city = "";
         String state = "";
        String  zip = "";
+       String creditCardNum = "";
+       String expirationDate = "";
         
         
         
@@ -129,6 +131,8 @@ public class UpdateProfile
         city = req.getParameter( "city" );
         state = req.getParameter( "state" );
         zip = req.getParameter( "zip" );
+        creditCardNum = req.getParameter("credit");
+        expirationDate = req.getParameter("expire");
         String msg = null;
         
         
@@ -140,7 +144,7 @@ public class UpdateProfile
         try{
             
         	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip);
+        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
             
             
             

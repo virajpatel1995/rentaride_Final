@@ -209,10 +209,10 @@ public class LogicLayerImpl
     }
 	@Override
 	public long updateCustomer(String username, String fName, String lName, String email, String address, String city, String state,
-			String zip) throws RARException {
+			String zip, String card, String expire) throws RARException {
 
 		UpdateCustomerCtrl ctrlCustomer = new UpdateCustomerCtrl(objectLayer);
-		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip);
+		return ctrlCustomer.updateCustomer(username, fName, lName, email, address, city, state, zip, card, expire);
  
 	}
 	@Override
