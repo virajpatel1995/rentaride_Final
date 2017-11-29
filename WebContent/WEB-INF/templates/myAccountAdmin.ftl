@@ -37,6 +37,9 @@
         <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
+		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
+		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+
 
     </ul>
 
@@ -207,6 +210,53 @@
         </div>
         
         
+        
+        <!-- ******HOURLY RENTAL PRICE**************** -->
+        <div id="menu6" class="tab-pane fade">
+            <h3>Set and Update Hourly Price</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+        <!-- ******CUSTOMERS**************** -->
+        <div id="menu7" class="tab-pane fade">
+            <h3>Customers</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+         
+        
+        
+        
+        
+       
         
     </div>
 </div>
