@@ -152,13 +152,17 @@ public class LogicLayerImpl
 	}
 	
     @Override
-    public User checkUser(String username, String email) throws RARException {
+    public User checkUser(String username, String firstName, String lastName) throws RARException {
         Customer customer = objectLayer.createCustomer();
         customer.setUserName(username);
-        customer.setEmail(email);
+        //customer.setEmail(email);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
         Administrator administrator = objectLayer.createAdministrator();
         administrator.setUserName(username);
-        administrator.setEmail(email);
+       // administrator.setEmail(email);
+        administrator.setFirstName(firstName);
+        administrator.setLastName(lastName);
 
         User user = null;
         List<Customer> customers = objectLayer.findCustomer(customer);
@@ -216,11 +220,10 @@ public class LogicLayerImpl
  
 	}
 	@Override
-	public long updateAdministrator(String username, String fName, String lName, String email, String address, String city, String state,
-			String zip) throws RARException {
+	public long updateAdministrator(String username, String fName, String lName, String email, String address) throws RARException {
 
 		UpdateAdministratorCtrl ctrlAdministrator = new UpdateAdministratorCtrl(objectLayer);
-		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address, city, state, zip);
+		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address);
  
 	}
 }
