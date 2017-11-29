@@ -224,7 +224,7 @@ public class LogicLayerImpl
 	public long updateAdministrator(String username, String fName, String lName, String email, String address) throws RARException {
 
 		UpdateAdministratorCtrl ctrlAdministrator = new UpdateAdministratorCtrl(objectLayer);
-		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address, city, state, zip);
+		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address);
 
 	}
 
@@ -239,9 +239,7 @@ public class LogicLayerImpl
     public void updateRentalLocation(RentalLocation rl) throws RARException {
         objectLayer.storeRentalLocation(rl);
     }
-		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address);
- 
-	}
+		
 
 	@Override
 	public long placeRental(String reservationIdS, String vehicleTag) throws RARException {
@@ -254,4 +252,10 @@ public class LogicLayerImpl
 		user.setUserStatus(UserStatus.CANCELLED);
 		objectLayer.storeCustomer((Customer)user);
 	}
+
+		@Override
+		public long CancelReservation(String res) throws RARException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 }
