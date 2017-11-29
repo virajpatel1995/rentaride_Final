@@ -228,14 +228,14 @@ public class LogicLayerImpl
 	}
 
 	@Override
-<<<<<<< HEAD
-	public long placeRental(String reservationIdS, String vehicleTag, String rentalLocation) {
+	public long placeRental(String reservationIdS, String vehicleTag) {
 		PlaceRentalCtrl ctrlPlacer = new PlaceRentalCtrl(objectLayer);
-		return ctrlPlacer.placeRental(reservationIdS, vehicleTag, rentalLocation);
-=======
+		return ctrlPlacer.placeRental(reservationIdS, vehicleTag );
+	}
+
+		@Override
 	public void CancelMembership(User user) throws RARException {
 		user.setUserStatus(UserStatus.CANCELLED);
 		objectLayer.storeCustomer((Customer)user);
->>>>>>> 4d6ce929eca7564aff7b2bb69a2ceea62c3a0bbf
 	}
 }

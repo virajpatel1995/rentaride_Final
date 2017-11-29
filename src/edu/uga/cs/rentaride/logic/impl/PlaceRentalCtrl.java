@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.Rental;
+import edu.uga.cs.rentaride.entity.Reservation;
 import edu.uga.cs.rentaride.entity.Vehicle;
 import edu.uga.cs.rentaride.entity.RentalLocation;
 import edu.uga.cs.rentaride.entity.VehicleType;
@@ -28,13 +30,34 @@ public class PlaceRentalCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long createVehicle( String make, String model, int year, int mileage, String tag, String location, String type)
+    public long placeRental( String reservationIdS, String vehicleTag)
             throws RARException
     { 
+        Reservation 		    reservation  = null;
+        Reservation                modelReservation = null;
+        List<Reservation>          reservations= null;
+        modelReservation = objectLayer.createReservation();
+        modelReservation.setId(Integer.parseInt(reservationIdS));
+        reservations = objectLayer.findReservation(modelReservation);
+        if(reservations.size()<1) throw new RARException("Reservation does not exists");
+        reservation = reservations.get(0);
+        
         Vehicle 		    vehicle  = null;
-        Vehicle                modelVehicle = null;
+        Vehicle                modelVehicle= null;
         List<Vehicle>          vehicles= null;
-
+        modelVehicle = objectLayer.createVehicle();
+        modelVehicle.setRegistrationTag(vehicleTag);
+        vehicles = objectLayer.findVehicle(modelVehicle);
+        if(vehicles.size()<1) throw new RARException("Vehicle does not exists");
+        vehicle = vehicles.get(0);
+        
+        if(!vehicle.getVehicleType().equals(reservation.getVehicleType())) throw new RARException("Vehicle does not match reservation");
+        
+        if(!vehicle.getRentalLocation().equals(reservation.getRentalLocation())) throw new RARException("Vehicle is not at the correct Rental Location");
+        
+        
+        return rental.getId();
+        /*
         // check if a club with this name already exists (name is unique)
         modelVehicle = objectLayer.createVehicle();
         modelVehicle.setRegistrationTag(tag);
@@ -57,6 +80,7 @@ public class PlaceRentalCtrl {
         vehicle = objectLayer.createVehicle(make, model, year, tag, mileage, new Date(), vehicleTypes.get(0), rentalLocations.get(0), VehicleCondition.GOOD, VehicleStatus.INLOCATION);
         objectLayer.storeVehicle( vehicle );
         return vehicle.getId();
+        */
     }
 }
 
