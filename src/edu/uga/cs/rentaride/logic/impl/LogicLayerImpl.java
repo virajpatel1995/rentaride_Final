@@ -226,4 +226,10 @@ public class LogicLayerImpl
 		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address);
  
 	}
+
+	@Override
+	public long placeRental(String reservationIdS, String vehicleTag, String rentalLocation) {
+		PlaceRentalCtrl ctrlPlacer = new PlaceRentalCtrl(objectLayer);
+		return ctrlPlacer.placeRental(reservationIdS, vehicleTag, rentalLocation);
+	}
 }
