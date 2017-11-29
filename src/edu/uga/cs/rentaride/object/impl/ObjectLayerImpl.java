@@ -347,6 +347,9 @@ public class ObjectLayerImpl implements ObjectLayer {
 	public void deleteCustomer(Customer customer) throws RARException{
 		persistence.deleteCustomer(customer);
 	}//deleteCustoemr
+	
+	@Override
+	public void cancel
 
 
 

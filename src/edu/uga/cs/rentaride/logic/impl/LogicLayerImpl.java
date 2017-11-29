@@ -238,4 +238,10 @@ public class LogicLayerImpl
 		user.setUserStatus(UserStatus.CANCELLED);
 		objectLayer.storeCustomer((Customer)user);
 	}
+
+		@Override
+		public long CancelReservation(String res) throws RARException {
+			CancelReservationCtrl ctrlCancelReservation = new CancelReservationCtrl(objectLayer);
+			return ctrlCancelReservation.cancelReservation(res);
+		}
 }
