@@ -85,7 +85,7 @@ public class UpdateRentalLocation extends HttpServlet
                 RentalLocation rl = logicLayer.getRentalLocationById(lid);
                 rl.setName(name);
                 rl.setAddress(addr);
-                rl.setCapacity(Integer.valueOf(capacityS));
+                rl.setCapacity(Integer.valueOf(capacityS.replace(",","")));
                 logicLayer.updateRentalLocation(rl);
                 msg = "Update successfully";
             }catch(RARException e) {
@@ -98,7 +98,7 @@ public class UpdateRentalLocation extends HttpServlet
             res.getWriter().write(msg);
 
 
-            toClient.close();
+//            toClient.close();
 
 
     }
