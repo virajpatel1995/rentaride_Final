@@ -226,4 +226,10 @@ public class LogicLayerImpl
 		return ctrlAdministrator.updateAdministrator(username, fName, lName, email, address);
  
 	}
+
+	@Override
+	public void CancelMembership(User user) throws RARException {
+		user.setUserStatus(UserStatus.CANCELLED);
+		objectLayer.storeCustomer((Customer)user);
+	}
 }

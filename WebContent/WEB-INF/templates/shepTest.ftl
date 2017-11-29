@@ -44,5 +44,14 @@
             Max Hours Available<input type="text" name="maxHours" placeholder="Max Hours"/>
          <input class="btn btn-submit" type="submit" value="Set/Update" />
          </form> 
+         
+<form action="CancelMembership" method="post">
+         <input class="btn btn-submit" type="submit" value="Cancel Membership" />
+         </form> 
+         
+<form action="ReturnVehicle" method="post">
+		 Vehicle ID<input type="text" name="VehicleID" placeholder="Vehicle ID"/>
+         <input class="btn btn-submit" type="submit" value="Return Vehicle" />
+         </form> 
 </body>
 </html>
