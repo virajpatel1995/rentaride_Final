@@ -68,9 +68,7 @@ public class UpdateProfile
         String lName = "";
         String email = "";
         String address = "";
-        String city = "";
-        String state = "";
-       String  zip = "";
+        
        String creditCardNum = "";
        String expirationDate = "";
         
@@ -111,12 +109,17 @@ public class UpdateProfile
         expirationDate = req.getParameter("expire");
         String msg = null;
         
-       
-        
+       System.out.println(fName);
+       System.out.println(lName);
+       System.out.println(email);
+       System.out.println(address);
+       System.out.println(creditCardNum);
+       System.out.println(expirationDate);
+
         try{
             
         	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
+        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, creditCardNum, expirationDate);
             
             
             
