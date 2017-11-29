@@ -40,5 +40,5 @@ public interface LogicLayer
 
     public long updateAdministrator (String username, String fName, String lName, String email, String address) throws RARException;
 
-	public long updateCustomer (String username, String fName, String lName, String email, String address, String city, String state, String zip , String card, String expire) throws RARException;
+	public long updateCustomer (String username, String fName, String lName, String email, String address, String card, String expire) throws RARException;
 }

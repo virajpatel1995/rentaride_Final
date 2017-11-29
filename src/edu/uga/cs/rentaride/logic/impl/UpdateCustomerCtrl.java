@@ -30,7 +30,7 @@ public class UpdateCustomerCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long updateCustomer( String username, String fName, String lName, String email, String address, String city, String state, String zip, String card, String expire)
+    public long updateCustomer( String username, String fName, String lName, String email, String address, String card, String expire)
             throws RARException
     { 
         Customer 		   customer  = null;
@@ -46,7 +46,7 @@ public class UpdateCustomerCtrl {
             customer.setFirstName(fName);
             customer.setLastName(lName);
             customer.setEmail(email);
-            customer.setAddress(address + ", " + city +", "+ state+". " + zip);
+            customer.setAddress(address);
             customer.setCreditCardNumber(card);
             try {
             customer.setCreditCardExpiration(new SimpleDateFormat("dd-mm-yyy").parse(expire));

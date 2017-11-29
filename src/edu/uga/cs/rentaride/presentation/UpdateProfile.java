@@ -116,7 +116,7 @@ public class UpdateProfile
         try{
             
         	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
+        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, creditCardNum, expirationDate);
             
             
             
