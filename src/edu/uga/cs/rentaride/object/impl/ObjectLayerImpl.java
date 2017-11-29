@@ -190,7 +190,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
 	@Override
 	public void storeRental(Rental rental) throws RARException {
-		  persistence.restoreRental(rental);
+		  persistence.storeRental(rental);
 	
 	}
 
@@ -347,6 +347,11 @@ public class ObjectLayerImpl implements ObjectLayer {
 	public void deleteCustomer(Customer customer) throws RARException{
 		persistence.deleteCustomer(customer);
 	}//deleteCustoemr
+	
+	@Override
+	public void cancelReservation(Reservation res) throws RARException{
+		persistence.cancelReservation(res);
+	}
 
 
 

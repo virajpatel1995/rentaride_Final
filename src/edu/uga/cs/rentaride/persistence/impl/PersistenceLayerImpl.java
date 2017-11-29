@@ -427,4 +427,9 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 		customerManager.delete(customer);
 	}//deleteCustomer
 
+	@Override
+	public void cancelReservation(Reservation res) throws RARException{
+		reservationManager.cancel(res);
+	}
+	
 }

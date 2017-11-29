@@ -140,11 +140,11 @@
             <#if rentalLocations??>
                 <#list rentalLocations as rl>
                     <tr>
-                        <td onClick="this.select();" >${rl.getId()}</td>
+                        <td>${rl.getId()}</td>
                         <td>${rl.getName()}</td>
                         <td>${rl.getAddress()}</td>
                         <td>${rl.getCapacity()}</td>
-                        <td><button id="editbtn">Edit</button></td>
+                        <td><button class="editbtn">Edit</button></td>
                     </tr>
                 </#list></table>
 

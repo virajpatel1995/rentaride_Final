@@ -50,10 +50,14 @@ public class PlaceRentalCtrl {
         vehicles = objectLayer.findVehicle(modelVehicle);
         if(vehicles.size()<1) throw new RARException("Vehicle does not exists");
         vehicle = vehicles.get(0);
+        if(!vehicle.getVehicleType().getName().equals(reservation.getVehicleType().getName())) throw new RARException("Vehicle does not match reservation");
         
-        if(!vehicle.getVehicleType().equals(reservation.getVehicleType())) throw new RARException("Vehicle does not match reservation");
+        if(!vehicle.getRentalLocation().getName().equals(reservation.getRentalLocation().getName())) throw new RARException("Vehicle is not at the correct Rental Location");
         
-        if(!vehicle.getRentalLocation().equals(reservation.getRentalLocation())) throw new RARException("Vehicle is not at the correct Rental Location");
+        System.out.println(new Date().getTime());
+        System.out.println(reservation.getPickupTime().getTime());
+        System.out.println(reservation.getPickupTime().getTime()+1800000);
+        System.out.println(reservation.getPickupTime().getTime()-1800000);
         
         if((reservation.getPickupTime().getTime()+1800000 < new Date().getTime()) || (reservation.getPickupTime().getTime()-1800000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
         

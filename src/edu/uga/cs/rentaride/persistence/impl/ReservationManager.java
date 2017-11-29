@@ -26,6 +26,22 @@ public class ReservationManager {
 		this.objectLayer = objectLayer;
 	}//constructor
 	
+	public void cancel(Reservation res) throws RARException{
+		String update = "update reservation set canceled = 1 where id = ?";
+		java.sql.PreparedStatement stmt = null;
+		int inscnt;
+		long reservationId;
+		try {
+		stmt = (java.sql.PreparedStatement) conn.prepareStatement(update);
+		stmt.setLong(1, res.getId());
+		inscnt = stmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+			throw new RARException("ReservationManager.save: Failed to save a Reservation: " + e);
+	
+		}
+	}
+	
 	public void store(Reservation reservation) throws RARException{
 		String insertReservationSql = "insert into reservation (pickup, length, canceled, userid, rentalLocationid, vehicleTypeid) values ( ?, ?, ?, ?, ?, ? )";
 		String updateReservationSql = "update reservation  set  pickup = ?, length = ?, canceled = ?, userid = ?, rentalLocationid = ?, vehicleTypeid = ? where id = ?";

@@ -98,4 +98,6 @@ public class ReservationImpl extends Persistence implements Reservation {
 	public void setRental(Rental rental){
 		this.rental = rental;
 	}
+	
+	
 }

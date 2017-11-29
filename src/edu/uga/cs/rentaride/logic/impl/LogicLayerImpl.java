@@ -255,7 +255,7 @@ public class LogicLayerImpl
 
 		@Override
 		public long CancelReservation(String res) throws RARException {
-			// TODO Auto-generated method stub
-			return 0;
+			CancelReservationCtrl ctrlCancelReservation = new CancelReservationCtrl(objectLayer);
+			return ctrlCancelReservation.cancelReservation(res);
 		}
 }

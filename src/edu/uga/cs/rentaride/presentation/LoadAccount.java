@@ -132,7 +132,8 @@ public class LoadAccount extends HttpServlet {
     		root.put("email", user.getEmail());
     		root.put("address", user.getAddress());
     		root.put("card", ((Customer) user).getCreditCardNumber());
-    		root.put("expire", ((Customer) user).getCreditCardExpiration());
+    		String date = ((Customer) user).getCreditCardExpiration().toString();
+    		root.put("expire", date);
         }
         // init the template
         try {
