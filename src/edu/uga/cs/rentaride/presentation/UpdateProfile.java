@@ -90,45 +90,23 @@ public class UpdateProfile
             return;
         }
         logicLayer = session.getLogicLayer();
-//        User user = session.getUser();
-//        root.put("username", user.getUserName());
-//
-//        if( logicLayer == null ) {
-//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-//            return;
-//        }
-
-        // Get the form parameters
-        //
         fName = req.getParameter( "fName" );
         lName = req.getParameter( "lName" );
         email = req.getParameter( "email" );
         address = req.getParameter( "address" );
-        
         creditCardNum = req.getParameter("credit");
         expirationDate = req.getParameter("expire");
         String msg = null;
-        
-       System.out.println(fName);
-       System.out.println(lName);
-       System.out.println(email);
-       System.out.println(address);
-       System.out.println(creditCardNum);
-       System.out.println(expirationDate);
 
         try{
             
         	
         	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, creditCardNum, expirationDate);
-            
-            
-            
             msg = "Your Profile has been successfully updated";
         }catch(Exception e) {
             msg = "Something goes wrong";
             e.printStackTrace();
         }
-       
 
         res.setContentType("text/plain");
         res.getWriter().write(msg);
@@ -140,6 +118,3 @@ public class UpdateProfile
         doPost(req,res);
     }
 }
-
-
-//test
