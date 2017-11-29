@@ -228,7 +228,7 @@ public class LogicLayerImpl
 	}
 
 	@Override
-	public long placeRental(String reservationIdS, String vehicleTag) {
+	public long placeRental(String reservationIdS, String vehicleTag) throws RARException {
 		PlaceRentalCtrl ctrlPlacer = new PlaceRentalCtrl(objectLayer);
 		return ctrlPlacer.placeRental(reservationIdS, vehicleTag );
 	}
