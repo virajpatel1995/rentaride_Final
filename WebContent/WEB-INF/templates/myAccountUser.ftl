@@ -66,19 +66,30 @@
             <div>
 
                 <form action="UpdateProfile" method="post">
-                
-			<#if firstName?? && (lastName??) && (email??) && (credit??) && (expire??)>
-			
+
+			<#if firstName??>
 			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
+         </#if>
+			<#if lastName??>
 			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
+         </#if>
+			<#if email??>
 			Email<input type="text" value="${email}" name="email" placeholder="email"/>
+         </#if>
+
+			<#if address??>
 			Address<input type="text" value="${address}" name="address" placeholder="address"/>
-			Credit Card Number<input type="text" value="${credit}" name="credit" placeholder="Credit Card #"/>
-			Expire Date <input type="date" value="${expire}" name="expire"/>
+         </#if>
+			<#if card??>
+			Credit Card Number<input type="text" value="${card}" name="credit" placeholder="Credit Card #"/>
+         </#if>
+			<#if expire??>
+			Expire Date <input type="text" value="${expire}" name="expire"/>
+         </#if>
 
          <input class="btn btn-submit" type="submit" value="Update Profile" />
-         </#if>
-         </form>  
+         <#--</#if>-->
+         </form>
                 <p style="float: left" id="UpdateProfileError"></p>
             </div>
 
