@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateProfile")
+@WebServlet("UpdateAdmin")
 
-public class UpdateProfile
+public class UpdateAdmin
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -61,7 +61,7 @@ public class UpdateProfile
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        long customerId = 0;
+        long adminId = 0;
 
         
         String fName = "";
@@ -71,8 +71,6 @@ public class UpdateProfile
         String city = "";
         String state = "";
        String  zip = "";
-       String creditCardNum = "";
-       String expirationDate = "";
         
         
         
@@ -131,8 +129,6 @@ public class UpdateProfile
         city = req.getParameter( "city" );
         state = req.getParameter( "state" );
         zip = req.getParameter( "zip" );
-        creditCardNum = req.getParameter("credit");
-        expirationDate = req.getParameter("expire");
         String msg = null;
         
         
@@ -144,7 +140,7 @@ public class UpdateProfile
         try{
             
         	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
+        	adminId = logicLayer.updateAdministrator(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip);
             
             
             

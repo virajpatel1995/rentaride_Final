@@ -57,12 +57,12 @@
                 <form action="UpdateMembershipPrice" method="post">
                 <#if mprice?? && (latefee??)>
                     Membership Price:
-                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"/> <br>
+                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"onkeypress="return event.charCode >= 48" min="1" /> <br>
                     Late Fee:
-                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"/>
+                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"onkeypress="return event.charCode >= 48" min="1"/>
                 <#else >
-                    Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
-                    Late Fee:<input type="number" id="lateFee" step="0.01"/>
+                    Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
+                    Late Fee:<input type="number" id="lateFee" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
                 </#if>
                     <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees"/>
 
@@ -85,13 +85,33 @@
                     State:<input name="locationState" type="text" placeholder="State" required="required"><br>
                     Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
 
-                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental
+                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add Rental
                         Location
                     </button>
 
 
                     <div style="float: left" id="rentalLocationMsg"></div>
                 </form>
+
+            <table class="table table-inverse">
+                <tr>
+                    <td><b>Id</b></td>
+                    <td><b>Name</b></td>
+                    <td><b>Address</b></td>
+                    <td><b>Capacity</b></td>
+                </tr>
+            <#if rentalLocations??>
+                <#list rentalLocations as rl>
+                    <tr>
+                        <td onClick="this.select();" >${rl.getId()}</td>
+                        <td>${rl.getName()}</td>
+                        <td>${rl.getAddress()}</td>
+                        <td>${rl.getCapacity()}</td>
+                        <td><button id="editbtn">Edit</button></td>
+                    </tr>
+                </#list></table>
+
+            </#if>
             </div>
 
 
@@ -170,16 +190,25 @@
 
                 <form action="UpdateVehicleType" method="post">
 
-                    Old Vehicle Type:<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>
+                    Old Vehicle Type:
+                <#if vehicleTypeList ??>
+                    <select name="oldVehicleType">
+                        <#list vehicleTypeList as element>
+                            <option value="${element}">${element}</option>
+                        </#list>
+                    </select>
+                <#--<#else >-->
+                <#--<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>-->
+                </#if>
                     New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
                     <input class="btn btn-submit" type="submit" value="Update Type"/>
                 </form>
             </div>
-
         </div>
+        
+        
+        
     </div>
-
-
 </div>
 
 </body>
