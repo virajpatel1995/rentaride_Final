@@ -31,7 +31,7 @@
 <div class="container">
 
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
+        <li class="active"><a data-toggle="tab" href="#home">MyAccount</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
         <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
@@ -48,9 +48,17 @@
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Profile</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
+            <h3>Welcome</h3>
+            
+            <div class="tab-pane fade">
+            <h3>Welcome to your Account </h3>
+
+          
+
+
+        </div>
+
+            
         </div>
 
         <!-- **********MEMBERSHIP PRICE and LATE FEES -->

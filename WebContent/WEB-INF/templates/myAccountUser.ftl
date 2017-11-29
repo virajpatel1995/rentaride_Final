@@ -1,121 +1,72 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>RentNow </title>
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="style/slider.css">
-	<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="style/slider.css">
+  <link rel="stylesheet" type="text/css" href="style/mystyle.css">
+  	<script src="membershipPrice.js"></script>
+  	
 </head>
+
 <body>
-
-
 <#include "customerHeader.ftl">
 
-    <div style="    position: relative;
-    width: 100%;
-    height: 650px;
-    overflow: hidden;
-    z-index: 1;
-    background: white;
-    margin: 20px 3px 0 0;" >
-        
- <div class="container">
-     <br>
-  <h1 class="text-center">My Account</h1>
-     <br>
-    <div class="col-xs-3">
-    <div style="background-color: whitesmoke;">
-      <h3 class="text-center">Change Password</h3>
-        <form><div class="form-group">
-            <input type="password" class="form-control" id="currentPassword" placeholder="Current Password">
-            <input type="password" class="form-control" id="newPassword" placeholder="New Password">
-            <div class="text-center"> 
-            <button type="submit" class="buttonb">Submit</button>
-            </div>
-            </div>
-        </form>
+<div class="container">
+  
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">My Account</a></li>
+    <li><a data-toggle="tab" href="#menu1">My Rental</a></li>
+    <li><a data-toggle="tab" href="#menu2">Update Profile</a></li>
+    <li><a data-toggle="tab" href="#menu3">Feedback</a></li>
+    
+  </ul>
+
+   <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Welcome</h3>
+            
+            <div class="tab-pane fade">
+            <h3>Welcome to your Account </h3>
         </div>
-    <div style="background-color: whitesmoke;">
-      <h3 class="text-center">Change Email</h3>
-        <form><div class="form-group">
-            <input type="email" class="form-control" id="currentEmail" placeholder="Current Email">
-            <input type="email" class="form-control" id="newEmail" placeholder="New Email">
-            </div>
-            <div class="text-center"> 
-            <button type="submit" class="buttonb">Submit</button>
-            </div>
-        </form>
-        </div>
-      </div>
+   </div>
+    
+    
+    
+    
+   <!-- **********MY RENTAL*********************** --> 
+    
+    <div id="menu1" class="tab-pane fade">
+      <h3>My Rental</h3>
       
-      <div class="col-xs-8 col-xs-offset-1" style="background-color: whitesmoke;">
-        <div class="col-xs-12">
-                <h2 class="text-center">My Rentals</h2>
-            </div>
-        <div class="row">
-        <div class="col-xs-1">
-            <span>Code</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>Car</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>Type</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>Date</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span class="text-center">Location</span>
-        </div>
-        <div class="col-xs-1">
-            <span>Rent Time</span>
-        </div>
-        <div class="col-xs-1">
-            <span>Price</span>
-        </div>
-      </div>
-          <div class="row">
-        <div class="col-xs-1">
-            <span>1234</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>Nissan</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>Altima</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span>09/05/17</span>
-        </div>
-        <div class="col-xs-1 col-xs-offset-1">
-            <span class="text-center">Tate Deck</span>
-        </div>
-        <div class="col-xs-1">
-            <span>24hr</span>
-        </div>
-        <div class="col-xs-1">
-            <span>$29.99</span>
-        </div>
-        <div class="col-xs-1">
-            <label style="color:red">Cancel</label>
-        </div>
-      </div>
-
-  </div>
-  
-  
-  
-  
   <div>
+  		
+    		<form action="UpdateMembershipPrice" method="post">
+  
+            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" step="0.01" /> <br>       
+            Late Fee:<input id="lateFee" type="number" onClick="this.select();" step="0.01" />
+            <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
+            
+         </form>
+         <p style="float: left" id="membershipPriceError"></p>
+</div>
+        
+        
+    </div>
+    
+     <!-- ********Update Profile************** --> 
+   <div id="menu2" class="tab-pane fade">
+            <h3>Update Profile</h3>
 
-                <form action="UpdateProfile" method="post">
-	<#if firstName?? && (lastName??) && (email??) && (address??)>
+            <div>
+
+                <form action="UpdateAdmin" method="post">
+			<#if firstName?? && (lastName??) && (email??) && (address??)>
 			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
 			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
 			Email<input type="text" value="${email}" name="email" placeholder="email"/>
@@ -126,37 +77,36 @@
          </form>  
                 <p style="float: left" id="UpdateProfileError"></p>
             </div>
-     <br>
-     <br>
-  
-
-     <br>
 
 
+        </div>
+ 
+ 
+    
+     <!-- ********FEEDBACK************** --> 
+    <div id="menu3" class="tab-pane fade">
+      <h3>Feedback</h3>
+        <div class="container">
+      
+      <form action="CreateComment" method="post">
+            Rental ID:<input type="text" name="rental" placeholder="rental ID"/> <br>
+            Comment:<input type="text" name="comment" placeholder="Comment"/>
+           
+         <input class="btn btn-submit" type="submit" value="Comment" />
+         
+                 	<div style="float:center" id="createVehicleMsg"></div>
+         
+         </form>   
+      </div>
+ 
+    </div>
+    
          
 
+
+  </div>
 </div>
 
-    
-    
-    
-    
-	
-			<div class="footer">
-				<div class="copyright">
-				  &copy; Copy right 2017 | <a href="#">Privacy </a>| <a href="#">Policy</a>
-				</div>
-				<div class="atisda">
-					 Designed by <a href="http://www.webdomus.net/">Team 10 </a> 
-				</div>
-			</div>
-	</div>
-</div>
-
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="source/js/isotope.js"></script>
-<script type="text/javascript" src="source/js/myscript.js"></script> 
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
 </html>
+
