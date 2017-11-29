@@ -152,13 +152,17 @@ public class LogicLayerImpl
 	}
 	
     @Override
-    public User checkUser(String username, String email) throws RARException {
+    public User checkUser(String username, String firstName, String lastName) throws RARException {
         Customer customer = objectLayer.createCustomer();
         customer.setUserName(username);
-        customer.setEmail(email);
+        //customer.setEmail(email);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
         Administrator administrator = objectLayer.createAdministrator();
         administrator.setUserName(username);
-        administrator.setEmail(email);
+       // administrator.setEmail(email);
+        administrator.setFirstName(firstName);
+        administrator.setLastName(lastName);
 
         User user = null;
         List<Customer> customers = objectLayer.findCustomer(customer);

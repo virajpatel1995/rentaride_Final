@@ -22,7 +22,7 @@ public interface LogicLayer
 	public void               logout( String ssid ) throws RARException;
     public String             login( Session session, String userName, String password ) throws RARException;
     public long               createRentalLocation( String locationName, String address, int locationCapacity ) throws RARException;
-    public User checkUser(String username, String email) throws RARException;
+    public User checkUser(String username, String firstName, String lastName) throws RARException;
     public void updatePassword(String password, User user) throws RARException;
     
     public long createComment(String comm, Long ren) throws RARException;

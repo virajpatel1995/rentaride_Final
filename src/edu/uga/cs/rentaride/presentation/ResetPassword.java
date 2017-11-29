@@ -53,6 +53,8 @@ public class ResetPassword extends HttpServlet
             BufferedWriter toClient = null;
             String         username = null;
             String         email = null;
+            String firstName = null;
+            String lastName = null;
             String         password = null;
             String         ssid = null;
             String 		   msg = null;
@@ -89,11 +91,13 @@ public class ResetPassword extends HttpServlet
             }
 
             username = req.getParameter( "username" );
-            email = req.getParameter( "email" );
+           // email = req.getParameter( "email" );
             password = req.getParameter( "pass" );
+            firstName = req.getParameter("firstName");
+            lastName = req.getParameter("lastName");
 
             try {
-                User user = logicLayer.checkUser(username, email );
+                User user = logicLayer.checkUser(username, firstName, lastName );
                 if (user == null) { //username and email must be match
                     msg = "Invalid username or email";
                 } else {
