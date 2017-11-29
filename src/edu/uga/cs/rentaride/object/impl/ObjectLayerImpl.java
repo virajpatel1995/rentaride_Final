@@ -190,7 +190,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
 	@Override
 	public void storeRental(Rental rental) throws RARException {
-		  persistence.restoreRental(rental);
+		  persistence.storeRental(rental);
 	
 	}
 
