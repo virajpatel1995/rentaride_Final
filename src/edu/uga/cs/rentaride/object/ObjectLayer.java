@@ -452,6 +452,6 @@ public interface ObjectLayer
     //public void storeRentARideParams( RentARideParams rentARideParams ) throws RARException;
 
     public void deleteCustomer(Customer customer) throws RARException;
-
+    public void cancelReservation(Reservation res) throws RARException;
 	public void storeRentARideParams(RentARideParams rentARideParams) throws RARException;
 }

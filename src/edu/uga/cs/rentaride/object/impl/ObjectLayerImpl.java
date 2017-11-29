@@ -349,7 +349,9 @@ public class ObjectLayerImpl implements ObjectLayer {
 	}//deleteCustoemr
 	
 	@Override
-	public void cancel
+	public void cancelReservation(Reservation res) throws RARException{
+		persistence.cancelReservation(res);
+	}
 
 
 
