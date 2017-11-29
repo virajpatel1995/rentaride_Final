@@ -1,14 +1,17 @@
 <html>
 <body>
+ 
 <form action="UpdateAdmin" method="post">
-			firstName<input type="text" name="fName" placeholder="fristName"/>
-			lastName<input type="text" name="lName" placeholder="lastName"/>
-			email<input type="text" name="email" placeholder="email"/>
-			address<input type="text" name="address" placeholder="address"/>
-			city<input type="text" name="city" placeholder="city"/>
-			state<input type="text" name="state" placeholder="state"/>
-			zip<input type="text" name="zip" placeholder="zip"/>
+	<#if firstName?? && (lastName??) && (email??) && (address??)>
+			First Name<input type="text" value=${firstName} name="fName" placeholder="fristName"/>
+			Last Name<input type="text" value=${lastName} name="lName" placeholder="lastName"/>
+			Email<input type="text" value=${email} name="email" placeholder="email"/>
+			Address<input type="text" value=${address} name="address" placeholder="address"/>
+			City<input type="text" name="city" placeholder="city"/>
+			State<input type="text" name="state" placeholder="state"/>
+			Zip<input type="text" name="zip" placeholder="zip"/>
          <input class="btn btn-submit" type="submit" value="Update Profile" />
+         </#if>
          </form>  
 </body>
 </html>

@@ -28,7 +28,7 @@ public class UpdateAdministratorCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long updateAdministrator( String username, String fName, String lName, String email, String address, String city, String state, String zip)
+    public long updateAdministrator( String username, String fName, String lName, String email, String address)
             throws RARException
     { 
         Administrator 		   administrator  = null;
@@ -44,7 +44,7 @@ public class UpdateAdministratorCtrl {
         	administrator.setFirstName(fName);
         administrator.setLastName(lName);
         administrator.setEmail(email);
-        administrator.setAddress(address + ", " + city +", "+ state+", " + zip);
+        administrator.setAddress(address);
            
             objectLayer.storeAdministrator(administrator);
             return administrator.getId();

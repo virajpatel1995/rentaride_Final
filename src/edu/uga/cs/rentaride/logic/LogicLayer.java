@@ -38,7 +38,7 @@ public interface LogicLayer
     List<RentalLocation> getAllRentalLocations() throws RARException;
     List<VehicleType> getAllVehicleTypes() throws RARException;
 
-    public long updateAdministrator (String username, String fName, String lName, String email, String address, String city, String state, String zip ) throws RARException;
+    public long updateAdministrator (String username, String fName, String lName, String email, String address) throws RARException;
 
 	public long updateCustomer (String username, String fName, String lName, String email, String address, String city, String state, String zip , String card, String expire) throws RARException;
 }

@@ -118,8 +118,13 @@ public class LoadAccount extends HttpServlet {
             } catch (RARException e) {
                 e.printStackTrace();
             }
-        }
-        else if(user instanceof Customer) resultTemplateName = customerPage;
+            
+            		root.put("firstName", user.getFirstName());
+            		root.put("lastName", user.getLastName());
+            		root.put("email", user.getEmail());
+            		root.put("address", user.getAddress());
+                    
+        } else if(user instanceof Customer) resultTemplateName = customerPage;
         // init the template
         try {
             resultTemplate = cfg.getTemplate(resultTemplateName);
