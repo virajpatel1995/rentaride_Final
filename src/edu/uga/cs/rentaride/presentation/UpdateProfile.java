@@ -75,28 +75,6 @@ public class UpdateProfile
        String expirationDate = "";
         
         
-        
-        // Load templates from the WEB-INF/templates directory of the Web app.
-        //
-//        try {
-//            resultTemplate = cfg.getTemplate( resultTemplateName );
-//        }
-//        catch (IOException e) {
-//            throw new ServletException(
-//                    "Can't load template in: " + templateDir + ": " + e.toString());
-//        }
-//
-//        // Prepare the HTTP response:
-//        // - Use the charset of template for the output
-//        // - Use text/html MIME-type
-//        //
-//        toClient = new BufferedWriter(
-//                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
-//                );
-//
-//        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-
-
 
         // Session Tracking
         httpSession = req.getSession();
@@ -128,18 +106,12 @@ public class UpdateProfile
         lName = req.getParameter( "lName" );
         email = req.getParameter( "email" );
         address = req.getParameter( "address" );
-        city = req.getParameter( "city" );
-        state = req.getParameter( "state" );
-        zip = req.getParameter( "zip" );
+        
         creditCardNum = req.getParameter("credit");
         expirationDate = req.getParameter("expire");
         String msg = null;
         
-        
-        
-        
-        
-        
+       
         
         try{
             
