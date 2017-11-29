@@ -65,13 +65,17 @@
 
             <div>
 
-                <form action="UpdateAdmin" method="post">
-			<#if firstName?? && (lastName??) && (email??) && (address??)>
+                <form action="UpdateProfile" method="post">
+                
+			<#if firstName?? && (lastName??) && (email??) && (address??) && (credit??) && (expire??)>
+			
 			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
 			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
 			Email<input type="text" value="${email}" name="email" placeholder="email"/>
 			Address<input type="text" value="${address}" name="address" placeholder="address"/>
-			
+			Credit Card Number<input type="text" value="${credit}" name="credit" placeholder="Credit Card #"/>
+			Expire Date <input type="date" value="${expire}" name="expire"/>
+
          <input class="btn btn-submit" type="submit" value="Update Profile" />
          </#if>
          </form>  

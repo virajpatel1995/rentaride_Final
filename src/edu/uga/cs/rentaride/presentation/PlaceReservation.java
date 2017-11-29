@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("UpdateProfile")
+@WebServlet("PlaceReservation")
 
-public class UpdateProfile
+public class PlaceReservation
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -61,20 +61,37 @@ public class UpdateProfile
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        long customerId = 0;
+        String reservationIdS = null;
+        String vehicleTag = null;
+        String rentalLocation = null;
+        long rentalId = 0;
 
         
-        String fName = "";
-        String lName = "";
-        String email = "";
-        String address = "";
-        String city = "";
-        String state = "";
-       String  zip = "";
-       String creditCardNum = "";
-       String expirationDate = "";
+       
         
         
+        
+        // Load templates from the WEB-INF/templates directory of the Web app.
+        //
+//        try {
+//            resultTemplate = cfg.getTemplate( resultTemplateName );
+//        }
+//        catch (IOException e) {
+//            throw new ServletException(
+//                    "Can't load template in: " + templateDir + ": " + e.toString());
+//        }
+//
+//        // Prepare the HTTP response:
+//        // - Use the charset of template for the output
+//        // - Use text/html MIME-type
+//        //
+//        toClient = new BufferedWriter(
+//                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
+//                );
+//
+//        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+
+
 
         // Session Tracking
         httpSession = req.getSession();
@@ -102,27 +119,24 @@ public class UpdateProfile
 
         // Get the form parameters
         //
-        fName = req.getParameter( "fName" );
-        lName = req.getParameter( "lName" );
-        email = req.getParameter( "email" );
-        address = req.getParameter( "address" );
-        
-        creditCardNum = req.getParameter("credit");
-        expirationDate = req.getParameter("expire");
         String msg = null;
         
-       
+        
+        
+        reservationIdS =req.getParameter("res");
+        vehicleTag = req.getParameter("tag");
+        rentalLocation = req.getParameter("rentalLocation");
         
         try{
             
         	
-        	customerId = logicLayer.updateCustomer(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip, creditCardNum, expirationDate);
+        	rentalId = logicLayer.placeRental(reservationIdS, vehicleTag, rentalLocation);
             
             
             
-            msg = "Your Profile has been successfully updated";
+            msg = "Your Reservation has been successfully placed";
         }catch(Exception e) {
-            msg = "Something goes wrong";
+            msg = "Unable to place reservation. See log.";
             e.printStackTrace();
         }
        
