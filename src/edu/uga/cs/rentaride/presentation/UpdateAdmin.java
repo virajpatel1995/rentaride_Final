@@ -68,9 +68,6 @@ public class UpdateAdmin
         String lName = "";
         String email = "";
         String address = "";
-        String city = "";
-        String state = "";
-       String  zip = "";
         
         
         
@@ -126,9 +123,6 @@ public class UpdateAdmin
         lName = req.getParameter( "lName" );
         email = req.getParameter( "email" );
         address = req.getParameter( "address" );
-        city = req.getParameter( "city" );
-        state = req.getParameter( "state" );
-        zip = req.getParameter( "zip" );
         String msg = null;
         
         
@@ -140,7 +134,7 @@ public class UpdateAdmin
         try{
             
         	
-        	adminId = logicLayer.updateAdministrator(	session.getUser().getUserName(), fName, lName, email, address, city, state, zip);
+        	adminId = logicLayer.updateAdministrator(	session.getUser().getUserName(), fName, lName, email, address);
             
             
             

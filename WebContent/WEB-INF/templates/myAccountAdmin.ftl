@@ -37,6 +37,9 @@
         <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
+
+        <li><a data-toggle="tab" href="#menu8">Update Profile</a></li>
+       
 		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
 		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
 
@@ -71,6 +74,29 @@
 
                 </form>
                 <p style="float: left" id="membershipPriceError"></p>
+            </div>
+
+
+        </div>
+        
+        <!-- **********Update Profile -->
+
+        <div id="menu8" class="tab-pane fade">
+            <h3>Update Profile</h3>
+
+            <div>
+
+                <form action="UpdateAdmin" method="post">
+	<#if firstName?? && (lastName??) && (email??) && (address??)>
+			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
+			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
+			Email<input type="text" value="${email}" name="email" placeholder="email"/>
+			Address<input type="text" value="${address}" name="address" placeholder="address"/>
+			
+         <input class="btn btn-submit" type="submit" value="Update Profile" />
+         </#if>
+         </form>  
+                <p style="float: left" id="UpdateProfileError"></p>
             </div>
 
 
