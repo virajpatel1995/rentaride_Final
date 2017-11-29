@@ -67,7 +67,7 @@
 
                 <form action="UpdateProfile" method="post">
                 
-			<#if firstName?? && (lastName??) && (email??) && (address??) && (credit??) && (expire??)>
+			<#if firstName?? && (lastName??) && (email??) && (credit??) && (expire??)>
 			
 			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
 			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
