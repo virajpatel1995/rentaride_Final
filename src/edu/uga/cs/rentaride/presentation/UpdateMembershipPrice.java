@@ -107,6 +107,7 @@ public class UpdateMembershipPrice
         membershipPrice = req.getParameter( "membershipPrice" );
         lateFee = req.getParameter( "lateFee" );
         String msg = null;
+        
         try{
             double mprice = Double.valueOf(membershipPrice);
             double latefee = Double.valueOf(lateFee);

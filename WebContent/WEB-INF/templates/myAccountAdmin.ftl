@@ -57,12 +57,12 @@
                 <form action="UpdateMembershipPrice" method="post">
                 <#if mprice?? && (latefee??)>
                     Membership Price:
-                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"/> <br>
+                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"onkeypress="return event.charCode >= 48" min="1" /> <br>
                     Late Fee:
-                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"/>
+                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"onkeypress="return event.charCode >= 48" min="1"/>
                 <#else >
-                    Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01"/>
-                    Late Fee:<input type="number" id="lateFee" step="0.01"/>
+                    Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
+                    Late Fee:<input type="number" id="lateFee" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
                 </#if>
                     <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees"/>
 
@@ -85,7 +85,7 @@
                     State:<input name="locationState" type="text" placeholder="State" required="required"><br>
                     Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
 
-                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add/Update Rental
+                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add Rental
                         Location
                     </button>
 
@@ -103,11 +103,11 @@
             <#if rentalLocations??>
                 <#list rentalLocations as rl>
                     <tr>
-                        <td>${rl.getId()}</td>
+                        <td onClick="this.select();" >${rl.getId()}</td>
                         <td>${rl.getName()}</td>
                         <td>${rl.getAddress()}</td>
                         <td>${rl.getCapacity()}</td>
-                        <td><button>Edit</button></td>
+                        <td><button id="editbtn">Edit</button></td>
                     </tr>
                 </#list></table>
 
@@ -204,11 +204,11 @@
                     <input class="btn btn-submit" type="submit" value="Update Type"/>
                 </form>
             </div>
-
         </div>
+        
+        
+        
     </div>
-
-
 </div>
 
 </body>
