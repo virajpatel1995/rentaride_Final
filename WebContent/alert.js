@@ -3,30 +3,30 @@
  */
 
 
-$(document).ready(function () {
-    $('#updateProfile').click(function (event) {
-
-        var fName = $("#fName").val();
-        var lName = $("#lName").val();
-        var email = $("#email").val();
-        var address = $("#address").val();
-        var city = $("#city").val();
-        var state = $("#state").val();
-        var zip = $("#zip").val();
-
-
-        $.post('UpdateProfile', {
-            fName: fName,
-            lName: lName,
-            email: email,
-            address: address,
-            city: city,
-            state: state,
-            zip: zip
-        }, function (responseText) {
-            $('#updatedMsg').text(responseText);
-        });
-    });
+//$(document).ready(function () {
+//    $('#updateProfile').click(function (event) {
+//
+//        var fName = $("#fName").val();
+//        var lName = $("#lName").val();
+//        var email = $("#email").val();
+//        var address = $("#address").val();
+//        var city = $("#city").val();
+//        var state = $("#state").val();
+//        var zip = $("#zip").val();
+//
+//
+//        $.post('UpdateProfile', {
+//            fName: fName,
+//            lName: lName,
+//            email: email,
+//            address: address,
+//            city: city,
+//            state: state,
+//            zip: zip
+//        }, function (responseText) {
+//            $('#updatedMsg').text(responseText);
+//        });
+//    });
 
     $(".editbtn").click(function () {
 
@@ -62,8 +62,41 @@ $(document).ready(function () {
 
         $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit');
     });
-});
 
+    
+    
+    
+
+    $(document).ready(function() {
+        $('#updateProfilebtn').click(function(event) {
+        	
+                var firstName = $('#fName').val();
+                var lastName = $('#lName').val();
+                var email = $('#email').val();
+                var address = $('#address').val();
+                var card = $('#card').val();
+                var expire = $('#expire').val();
+
+               
+                $.post('UpdateProfile', {
+                	fName : firstName,
+                lName :	lastName,
+                	email : email,
+                	address : address,
+                	card : card,
+                	expire : expire
+                	
+                
+                }, function(responseText) {
+                        $('#UpdateProfileError').text(responseText);
+                 });
+         });
+    });   
+    
+    
+    
+    
+    
 
 
 
