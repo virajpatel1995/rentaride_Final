@@ -146,7 +146,8 @@ public class UpdateVehicle
 
         try{
             mileage = Integer.valueOf(mileageS);
-            if (maintenanceS.equals("True")) maintenance = true;
+            String Test = "True";
+            if (maintenanceS.equalsIgnoreCase(Test)) maintenance = true;
             vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintenance);
         }catch(Exception e) {
         	e.printStackTrace();

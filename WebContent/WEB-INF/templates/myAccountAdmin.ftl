@@ -34,11 +34,15 @@
         <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
-        <li><a data-toggle="tab" href="#menu3">Add Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
-        <li><a data-toggle="tab" href="#menu6">Update Profile</a></li>
-        
+
+        <li><a data-toggle="tab" href="#menu8">Update Profile</a></li>
+       
+		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
+		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+
 
     </ul>
 
@@ -77,7 +81,7 @@
         
         <!-- **********Update Profile -->
 
-        <div id="menu6" class="tab-pane fade">
+        <div id="menu8" class="tab-pane fade">
             <h3>Update Profile</h3>
 
             <div>
@@ -190,7 +194,7 @@
                     Mileage:<input type="text" name="mileage" placeholder="mileage"/>
                     Tag:<input type="text" name="tag" placeholder="tag"/><br>
                     Location:<input type="text" name="location" placeholder="location"/>
-                    Maintenance:<input type="text" name="type" placeholder="maintenance"/><br><br>
+                    Maintenance:<input type="text" name="maintenance" placeholder="maintenance"/><br><br>
                     <input class="btn btn-submit" type="submit" value="Update Vehicle"/>
                     <div style="float:center" id="updateVehicleMsg"></div>
                 </form>
@@ -232,6 +236,53 @@
         </div>
         
         
+        
+        <!-- ******HOURLY RENTAL PRICE**************** -->
+        <div id="menu6" class="tab-pane fade">
+            <h3>Set and Update Hourly Price</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+        <!-- ******CUSTOMERS**************** -->
+        <div id="menu7" class="tab-pane fade">
+            <h3>Customers</h3>
+
+            <div class="container">
+
+                <form action="UpdateHourlyPrice" method="post">
+
+            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
+         <input class="btn btn-submit" type="submit" value="Set|Update" />
+         </form> 
+         
+            </div>
+
+
+        </div>
+         
+        
+        
+        
+        
+       
         
     </div>
 </div>
