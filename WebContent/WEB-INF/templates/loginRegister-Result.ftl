@@ -59,17 +59,7 @@
 
 
 
-
-
-
-
-
-
-
-<h2><tt>${registerMessage}</tt></h2>
-
-
-
+<h3><tt>${registerMessage}</tt></h3>
 
 <div class="container white z-depth-2">
     <ul class="tabs teal">
@@ -199,6 +189,7 @@
             </div>
         </form>
     </div>
+
 </div>
 </body>
 </html>
