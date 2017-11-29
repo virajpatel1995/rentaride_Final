@@ -30,3 +30,19 @@ $(document).ready(function() {
 });
 
 
+
+
+$('#editbtn').click(function() {
+	var $this = $(this);
+	var tds = $this.closest('tr').find('td').filter(function() {
+		return $(this).find('.editbtn').length === 0;
+	});
+	if ($this.html() === 'Edit') {
+		$this.html('Save');
+		tds.prop('contenteditable', true);
+	} else {
+		$this.html('Edit');
+		tds.prop('contenteditable', false);
+	}
+});
+
