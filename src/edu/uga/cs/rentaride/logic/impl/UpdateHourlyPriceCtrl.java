@@ -49,10 +49,13 @@ public class UpdateHourlyPriceCtrl {
         	hps= objectLayer.findHourlyPrice(modelPrice);
         	if(hps.size() > 0){
         		price = hps.get(0);
+        		price.setVehicleType(vehicleType1);
+            	price.setMaxHours(maxHours);
+            	price.setPrice(hourlyPrice);
         	}
-        	price.setVehicleType(vehicleType1);
-        	price.setMaxHours(maxHours);
-        	price.setPrice(hourlyPrice);
+        	else {
+        		price = objectLayer.createHourlyPrice(maxHours, hourlyPrice, vehicleType1);
+        	}
         	objectLayer.storeHourlyPrice(price);
         	return price.getId();
         }
