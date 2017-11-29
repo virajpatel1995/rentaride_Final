@@ -72,20 +72,20 @@ h5
 <h4 style = "text-align:center;">${message}</h4>
 
 <div class="container white z-depth-2">
+
 	<ul class="tabs teal">
 		<li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
 		<li class="tab col s3"><a class="white-text" href="#register">register</a></li>
 	</ul>
 	<div id="login" class="col s12">
+	<!-- ************************************************************************************************ -->
 		<form class="col s12" method="post" action="Login">
 			<div class="form-container">
 				<h3 class="teal-text">Login</h3>
 				<div class="row">
 					<div class="input-field col s12">
 						<input name="username"  type="text" required="required">
-
-						<!--   <input name="username" id="email" type="email" class="validate"> -->
-						<label >username</label>
+						<label for="user_name">username</label>
 					</div>
 				</div>
 				<div class="row">
@@ -100,9 +100,12 @@ h5
 					<br>
 					<br>
 					<a href="resetPassword.html">Forgotten password?</a>
+					
 				</div>
 			</div>
 		</form>
+	<!-- ************************************************************************************************ -->
+		
 	</div>
 	
 	<!-- ******************Register******************************************* -->
