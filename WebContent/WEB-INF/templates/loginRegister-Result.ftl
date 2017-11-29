@@ -168,8 +168,7 @@
                         <label>Credit Card Number</label>
                     </div>
                     <div class="input-field col s4">
-                        <input name="expDate" type="text">
-                        <label>Expiration Date</label>
+                        <input name="expDate" type="date">
                     </div>
                     <div class="input-field col s4">
                         <input name="licenseNumber" type="text">
