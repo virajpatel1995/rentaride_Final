@@ -94,7 +94,7 @@ public class UpdateProfile
         lName = req.getParameter( "lName" );
         email = req.getParameter( "email" );
         address = req.getParameter( "address" );
-        creditCardNum = req.getParameter("credit");
+        creditCardNum = req.getParameter("card");
         expirationDate = req.getParameter("expire");
         String msg = null;
 

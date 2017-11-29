@@ -49,9 +49,10 @@ public class UpdateCustomerCtrl {
             customer.setAddress(address);
             customer.setCreditCardNumber(card);
             try {
-            customer.setCreditCardExpiration(new SimpleDateFormat("dd-mm-yyy").parse(expire));
+            customer.setCreditCardExpiration(new SimpleDateFormat("MM-yyyy").parse(expire));
             }catch(ParseException e) {
-            		throw new RARException("Date not valid for this Customer: "+ expire);
+                System.out.println("Date format parsing is wrong");
+                throw new RARException("Date not valid for this Customer: "+ expire);
            }
             objectLayer.storeCustomer(customer);
             return customer.getId();
