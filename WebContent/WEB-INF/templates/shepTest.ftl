@@ -49,9 +49,10 @@
          <input class="btn btn-submit" type="submit" value="Cancel Membership" />
          </form> 
          
-<form action="CancelReservation" method="post">
-		 Reservation ID<input type="text" name="reservationID" placeholder="Reservation ID"/>
-         <input class="btn btn-submit" type="submit" value="Cancel Reservation" />
+<form action="PlaceReservation" method="post">
+		 Reservation ID<input type="text" name="res" placeholder="Reservation ID"/>
+		 Tag Number<input type="text" name="tag" placeholder="Tag Number"/>
+         <input class="btn btn-submit" type="submit" value="Place Reservation" />
          </form> 
 </body>
 </html>
