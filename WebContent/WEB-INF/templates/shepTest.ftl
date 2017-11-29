@@ -49,9 +49,9 @@
          <input class="btn btn-submit" type="submit" value="Cancel Membership" />
          </form> 
          
-<form action="ReturnVehicle" method="post">
-		 Vehicle ID<input type="text" name="VehicleID" placeholder="Vehicle ID"/>
-         <input class="btn btn-submit" type="submit" value="Return Vehicle" />
+<form action="CancelReservation" method="post">
+		 Reservation ID<input type="text" name="reservationID" placeholder="Reservation ID"/>
+         <input class="btn btn-submit" type="submit" value="Cancel Reservation" />
          </form> 
 </body>
 </html>

@@ -23,9 +23,9 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("CancelMembership")
+@WebServlet("CancelReservation")
 
-public class CancelMembership
+public class CancelReservation
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -54,6 +54,7 @@ public class CancelMembership
 
         Template       resultTemplate = null;
         BufferedWriter toClient = null;
+        String		   reservation = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
@@ -106,12 +107,16 @@ public class CancelMembership
         		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
-            try {
-				logicLayer.CancelMembership(user);
-			} catch (RARException e1) {
-				e1.printStackTrace();
-			}
+        // Get the form parameters
+        //
+        reservation = req.getParameter( "reservationID" );
 
+        try{
+           logicLayer.CancelReservation(reservation);
+
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
 
 
         try {
