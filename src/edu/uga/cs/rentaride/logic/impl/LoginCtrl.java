@@ -44,6 +44,7 @@ public class LoginCtrl
         }
         
         if(user.getUserStatus() == UserStatus.CANCELLED) throw new RARException("User is Cancelled");
+        if(user.getUserStatus() == UserStatus.TERMINATED) throw new RARException("User is Terminated");
         session.setUser(user);
         ssid = SessionManager.storeSession(session);
 

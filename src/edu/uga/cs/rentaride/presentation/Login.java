@@ -124,7 +124,17 @@ public class Login
                     toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
                     res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
         			
-        		}else {
+        		}else
+        			if(e.getMessage().equals("User is Terminated")) {
+
+                        resultTemplateName = "loginRegister.ftl";
+                        msg = "An administrator has terminated your account \\(>w<)/";
+                        resultTemplate = cfg.getTemplate( resultTemplateName );
+                        toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
+                        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+            			
+        		}
+        		else {
             resultTemplateName = "loginRegister.ftl";
             msg = "Invalid username or Password";
             resultTemplate = cfg.getTemplate( resultTemplateName );
