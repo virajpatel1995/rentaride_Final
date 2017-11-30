@@ -71,7 +71,7 @@ public class CancelMembership
             throw new ServletException(
                     "Can't load template in: " + templateDir + ": " + e.toString());
         }
-
+        
         
         httpSession = req.getSession();
         if( httpSession != null ) {
@@ -85,6 +85,15 @@ public class CancelMembership
                     return; 
                 }
                 logicLayer = session.getLogicLayer();
+                if( logicLayer == null ) {
+                		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+                    return;
+                }
+                    try {
+        				logicLayer.CancelMembership(user);
+        			} catch (RARException e1) {
+        				e1.printStackTrace();
+        			}
                 try {
                     logicLayer.logout( ssid );
                     httpSession.removeAttribute("ssid");
@@ -113,16 +122,7 @@ public class CancelMembership
 
 
 
-        logicLayer = session.getLogicLayer();
-        if( logicLayer == null ) {
-        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return;
-        }
-            try {
-				logicLayer.CancelMembership(user);
-			} catch (RARException e1) {
-				e1.printStackTrace();
-			}
+        
 
             root.put("message", "You have Cancelled your membership from Rent A Ride");
 

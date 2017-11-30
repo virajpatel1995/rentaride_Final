@@ -22,6 +22,7 @@ private ObjectLayer objectLayer = null;
         Customer 		   customer  = null;
         Customer                modelCustomer = null;
         List<Customer>         customers= null;
+        List<Reservation>		reservations = null;
 
         // check if a club with this name already exists (name is unique)
         modelCustomer = objectLayer.createCustomer();
@@ -29,6 +30,12 @@ private ObjectLayer objectLayer = null;
         customers = objectLayer.findCustomer( modelCustomer );
         if(customers.size()<1) throw new RARException("Customer does not exists");
         customer = customers.get(0);
+        reservations = customer.getReservations();
+        if(reservations.size()<1){
+	        for(int i = 0; i<reservations.size(); i++ ){
+	        	objectLayer.cancelReservation(reservations.get(i));
+	        }
+        }
         customer.setUserStatus(UserStatus.TERMINATED);
 		objectLayer.storeCustomer(customer);
         

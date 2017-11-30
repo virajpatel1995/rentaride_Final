@@ -53,9 +53,12 @@ public class RentalManager {
 			else
 				stmt = (java.sql.PreparedStatement) conn.prepareStatement(updateRentalSql);
 		
-			if(rental.getPickupTime() != null)
-					stmt.setDate(1,new java.sql.Date(rental.getPickupTime().getTime()));
-			else
+			if(rental.getPickupTime() != null) {
+
+				java.util.Date d = rental.getPickupTime();
+				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
+					//stmt.setDate(1,new java.sql.Date(rental.getPickupTime().getTime()));
+			}else
 					stmt.setNull(1,  java.sql.Types.DATE);
 			
 			if(rental.getReturnTime() != null)
@@ -141,6 +144,8 @@ public class RentalManager {
 							condition.append( " and" );
 						condition.append( " charges = '" + rental.getCharges() + "'" );
 					}
+					
+					if(rental.getReservation() != null)
 					if( rental.getReservation().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );

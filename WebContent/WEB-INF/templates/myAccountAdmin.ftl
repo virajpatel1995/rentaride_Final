@@ -34,14 +34,16 @@
         <li class="active"><a data-toggle="tab" href="#home">MyAccount</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
-        <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
-        <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
-        <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
+        <li><a data-toggle="tab" href="#menu3">Create | Update Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu5">Create | Update Vehicle Type</a></li>
 
         <li><a data-toggle="tab" href="#menu8">Update Profile</a></li>
        
 		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
 		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+		<li><a data-toggle="tab" href="#menu9">Reservations</a></li>
+		<li><a data-toggle="tab" href="#menu10">View Comments</a></li>
+
 
 
     </ul>
@@ -110,9 +112,11 @@
 
         </div>
 
-        <!-- ********ADD | Update Location************** -->
+        <!-- ********Create | Update Location************** -->
         <div id="menu2" class="tab-pane fade">
-            <h3> Add|Update Rental Location</h3>
+        
+            <h3> Create Rental Location</h3>
+            
             <div class="container">
 
                 <form action="CreateRentalLocation" method="post">
@@ -156,7 +160,7 @@
 
         </div>
 
-        <!-- ********ADD VEHICLE************** -->
+        <!-- ********CREATE | UPDATE VEHICLE************** -->
         <div id="menu3" class="tab-pane fade">
             <h3>Add Vehicle</h3>
             <div class="container">
@@ -230,29 +234,11 @@
 
         </div>
 
-        <!-- ******UPDATE VEHICLE**************** -->
-        <div id="menu4" class="tab-pane fade">
-            <h3>Update Vehicle</h3>
-
-            <div class="container">
-
-                <form action="UpdateVehicle" method="post">
-                    Mileage:<input type="text" name="mileage" placeholder="mileage"/>
-                    Tag:<input type="text" name="tag" placeholder="tag"/><br>
-                    Location:<input type="text" name="location" placeholder="location"/>
-                    Maintenance:<input type="text" name="maintenance" placeholder="maintenance"/><br><br>
-                    <input class="btn btn-submit" type="submit" value="Update Vehicle"/>
-                    <div style="float:center" id="updateVehicleMsg"></div>
-                </form>
-            </div>
-
-
-        </div>
-
+       
 
         <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
         <div id="menu5" class="tab-pane fade">
-            <h3>Add | Update Vehicle</h3>
+            <h3>Create | Update Vehicle</h3>
 
             <div class="container">
 
@@ -355,6 +341,78 @@
 
         </div>
          
+        
+        <!-- ******RESERVATIONS**************** -->
+        <div id="menu9" class="tab-pane fade">
+            <h3>Current Reservations</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Pickup</b></td>
+                        <td><b>Length</b></td>
+                        <td><b>Canceled</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Location</b></td>
+                        <td><b>Vehicle Type</b></td>
+                        
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            <td>${v.getRegistrationTag()}</td>
+                            <td>${v.getRentalLocation().getName()}</td>
+                            <td>${v.getVehicleType().getName()}</td>
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+            </div>
+        </div>
+        
+        
+        <!-- ******VIEW COMMENTS**************** -->
+        <div id="menu10" class="tab-pane fade">
+            <h3>Comments</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td><b>Comment Date</b></td>
+                        <td><b>Comment</b></td>
+                        
+                        
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
         
         
         
