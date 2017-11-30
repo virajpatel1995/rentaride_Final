@@ -96,15 +96,15 @@
 
                 <form action="UpdateAdmin" method="post">
 	<#if firstName?? && (lastName??) && (email??) && (address??)>
-			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
-			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
-			Email<input type="text" value="${email}" name="email" placeholder="email"/>
-			Address<input type="text" value="${address}" name="address" placeholder="address"/>
+			First Name<input type="text" value="${firstName}" id="fName" name="fName" placeholder="fristName"/>
+			Last Name<input type="text" value="${lastName}" id="lName" name="lName" placeholder="lastName"/>
+			Email<input type="text" value="${email}" id="email" name="email" placeholder="email"/>
+			Address<input type="text" value="${address}" id="address" name="address" placeholder="address"/>
 			
-         <input class="btn btn-submit" type="submit" value="Update Profile" />
+         <input class="btn btn-submit" id="updateAdminProfile" type="button" value="Update Profile" />
          </#if>
          </form>  
-                <p style="float: left" id="UpdateProfileError"></p>
+                <p style="float: left" id="UpdateProfileErrorAdmin"></p>
             </div>
 
 
@@ -140,11 +140,11 @@
             <#if rentalLocations??>
                 <#list rentalLocations as rl>
                     <tr>
-                        <td onClick="this.select();" >${rl.getId()}</td>
+                        <td>${rl.getId()}</td>
                         <td>${rl.getName()}</td>
                         <td>${rl.getAddress()}</td>
                         <td>${rl.getCapacity()}</td>
-                        <td><button id="editbtn">Edit</button></td>
+                        <td><button class="editbtn">Edit</button></td>
                     </tr>
                 </#list></table>
 

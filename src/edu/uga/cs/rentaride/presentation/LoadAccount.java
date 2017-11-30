@@ -4,10 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -132,7 +130,9 @@ public class LoadAccount extends HttpServlet {
     		root.put("email", user.getEmail());
     		root.put("address", user.getAddress());
     		root.put("card", ((Customer) user).getCreditCardNumber());
-    		root.put("expire", ((Customer) user).getCreditCardExpiration());
+    		Date date = ((Customer) user).getCreditCardExpiration();
+    		String sdate = new SimpleDateFormat("MM-yyyy").format(date);
+    		root.put("expire", sdate);
         }
         // init the template
         try {

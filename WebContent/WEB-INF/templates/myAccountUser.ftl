@@ -11,7 +11,8 @@
   <link rel="stylesheet" type="text/css" href="style/slider.css">
   <link rel="stylesheet" type="text/css" href="style/mystyle.css">
   	<script src="membershipPrice.js"></script>
-  	
+  	<script src="alert.js"></script>
+
 </head>
 
 <body>
@@ -66,20 +67,31 @@
             <div>
 
                 <form action="UpdateProfile" method="post">
-                
-			<#if firstName?? && (lastName??) && (email??) && (credit??) && (expire??)>
-			
-			First Name<input type="text" value="${firstName}" name="fName" placeholder="fristName"/>
-			Last Name<input type="text" value="${lastName}" name="lName" placeholder="lastName"/>
-			Email<input type="text" value="${email}" name="email" placeholder="email"/>
-			Address<input type="text" value="${address}" name="address" placeholder="address"/>
-			Credit Card Number<input type="text" value="${credit}" name="credit" placeholder="Credit Card #"/>
-			Expire Date <input type="date" value="${expire}" name="expire"/>
 
-         <input class="btn btn-submit" type="submit" value="Update Profile" />
+			<#if firstName??>
+			First Name<input type="text" id="fName" value="${firstName}" name="fName" placeholder="fristName"/>
          </#if>
-         </form>  
-                <p style="float: left" id="UpdateProfileError"></p>
+			<#if lastName??>
+			Last Name<input type="text" id="lName" value="${lastName}" name="lName" placeholder="lastName"/>
+         </#if>
+			<#if email??>
+			Email<input type="text" id="email" value="${email}" name="email" placeholder="email"/>
+         </#if>
+
+			<#if address??>
+			Address<input type="text" id="address" value="${address}" name="address" placeholder="address"/>
+         </#if>
+			<#if card??>
+			Credit Card Number<input type="text" id="card" value="${card}" name="credit" placeholder="Credit Card #"/>
+         </#if>
+			<#if expire??>
+			Expire Date <input type="text" id="expire" value="${expire}" name="expire"/>
+         </#if>
+
+         <input id="updateProfilebtn" class="btn btn-submit" type="button" value="Update Profile" />
+         <#--</#if>-->
+         </form>
+                <p style="float: left color:Red" id="UpdateProfileError"></p>
             </div>
 
 
