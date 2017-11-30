@@ -377,6 +377,61 @@ float: right;
     
 }
 
+
+.reservationBtn {
+    background-color: #ff6861; /* red */
+    border: none;
+    color: white;
+    padding: 15px 72px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    
+}
+
+
+
+
+
+
+.rentLook {
+    background-color: #323232; /* red */
+    border: none;
+    color: white;
+    padding: 15px 72px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    
+    
+}
+
+.lookTitle {
+    background-color: #ff6861; /* red */
+    border: none;
+    color: white;
+    padding: 15px 202px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    
+    
+}
+
+
+
+
+
+
+
 .searchbtn{
 	background-color: #ff6861; /* red */
 	border: none;

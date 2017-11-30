@@ -23,14 +23,14 @@ import freemarker.template.TemplateException;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("CancelMembership")
+@WebServlet("TerminateMembership")
 
-public class CancelMembership
+public class TerminateMembership
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
     static  String         templateDir = "WEB-INF/templates";
-    static  String         resultTemplateName = "index.html";
+    static  String         resultTemplateName = "index.ftl";
 
     private Configuration  cfg; 
 
@@ -56,11 +56,10 @@ public class CancelMembership
         BufferedWriter toClient = null;
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
-        Session        session = null;
+        Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        User user = null;
 
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
@@ -72,34 +71,6 @@ public class CancelMembership
                     "Can't load template in: " + templateDir + ": " + e.toString());
         }
 
-        
-        httpSession = req.getSession();
-        if( httpSession != null ) {
-            ssid = (String) httpSession.getAttribute( "ssid" );
-            if( ssid != null ) {
-                System.out.println( "Already have ssid: " + ssid );
-                session = SessionManager.getSessionById( ssid );
-                user = session.getUser();
-                if( session == null ) {
-                    RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-                    return; 
-                }
-                logicLayer = session.getLogicLayer();
-                try {
-                    logicLayer.logout( ssid );
-                    httpSession.removeAttribute("ssid");
-                    httpSession.invalidate();
-                    System.out.println( "Invalidated http session" );
-                }
-                catch( RARException e ) {
-                    e.printStackTrace();
-                }
-            }
-            else
-                System.out.println( "ssid is null" );
-        }
-        else
-            System.out.println( "No http session" );
         // Prepare the HTTP response:
         // - Use the charset of template for the output
         // - Use text/html MIME-type
@@ -112,19 +83,37 @@ public class CancelMembership
 
 
 
+        // Session Tracking
+        httpSession = req.getSession();
+        ssid = (String) httpSession.getAttribute("ssid");
+        if (ssid != null) {
+            System.out.println("Already have ssid: " + ssid);
+            session = SessionManager.getSessionById(ssid);
+            System.out.println("Connection: " + session.getConnection());
+        } else
+            System.out.println("ssid is null");
+
+        session = SessionManager.getSessionById(ssid);
+        if(session == null){
+            RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
+            return;
+        }
+        User user = session.getUser();
+        root.put("username", user.getUserName());
 
         logicLayer = session.getLogicLayer();
         if( logicLayer == null ) {
         		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
             return;
         }
+        String customerUser = req.getParameter( "customerUser" );
             try {
-				logicLayer.CancelMembership(user);
+				logicLayer.TerminateMembership(customerUser);
 			} catch (RARException e1) {
 				e1.printStackTrace();
 			}
 
-            root.put("message", "You have Cancelled your membership from Rent A Ride");
+
 
         try {
             resultTemplate.process( root, toClient );

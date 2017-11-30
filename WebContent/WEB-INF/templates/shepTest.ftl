@@ -49,10 +49,27 @@
          <input class="btn btn-submit" type="submit" value="Cancel Membership" />
          </form> 
          
-<form action="PlaceReservation" method="post">
+<form action="PlaceRental" method="post">
 		 Reservation ID<input type="text" name="res" placeholder="Reservation ID"/>
 		 Tag Number<input type="text" name="tag" placeholder="Tag Number"/>
          <input class="btn btn-submit" type="submit" value="Place Reservation" />
+         </form> 
+         
+         <form action="CancelReservation" method="post">
+		 Reservation ID<input type="text" name="reservationID" placeholder="Reservation ID"/>
+         <input class="btn btn-submit" type="submit" value="Cancel Reservation" />
+         </form> 
+
+  <form action="PlaceReservation" method="post">
+		 Pickup Time<input type="text" name="time" placeholder="Time"/>
+		 Duration<input type="text" name="dur" placeholder="Duration"/>
+		 Rental Location ID<input type="text" name="loc" placeholder="Location ID"/>
+		 Vehicle Type ID<input type="text" name="type" placeholder="Vehicle Type ID"/>
+         <input class="btn btn-submit" type="submit" value="Place Reservation" />
+         </form>   
+ <form action="TerminateMembership" method="post">
+ 		Customer Username<input type="text" name="customerUser" placeholder="Customer Username"/>
+         <input class="btn btn-submit" type="submit" value="Terminate Membership" />
          </form> 
 </body>
 </html>

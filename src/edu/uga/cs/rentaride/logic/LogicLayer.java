@@ -53,4 +53,7 @@ public interface LogicLayer
     RentalLocation getRentalLocationByName(String localRentalLocation) throws RARException;
 
     void updateVehicle(Vehicle vehicle) throws RARException;
+
+	public long TerminateMembership(String userID) throws RARException;
+	public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException ;
 }

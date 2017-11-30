@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("PlaceReservation")
+@WebServlet("PlaceRental")
 
-public class PlaceReservation
+public class PlaceRental
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -61,11 +61,9 @@ public class PlaceReservation
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        String time = null;
-        String duration = null;
-        String location = null;
-        String vehicleType = null;
-        long reservationId = 0;
+        String reservationIdS = null;
+        String vehicleTag = null;
+        long rentalId = 0;
 
         
        
@@ -123,22 +121,20 @@ public class PlaceReservation
         String msg = null;
         
         
-
-        time = req.getParameter("time");
-        duration = req.getParameter("dur");
-        location = req.getParameter("loc");
-        vehicleType =req.getParameter("type");
+        
+        reservationIdS =req.getParameter("res");
+        vehicleTag = req.getParameter("tag");
         
         try{
             
         	
-        	reservationId = logicLayer.placeReservation(time, duration, location, vehicleType, session.getUser().getUserName());
+        	rentalId = logicLayer.placeRental(reservationIdS, vehicleTag);
             
             
             
-            msg = "Your Reservation has been successfully placed";
+            msg = "Your Rental has been successfully placed";
         }catch(Exception e) {
-            msg = "Unable to place Reservation. See log.";
+            msg = "Unable to place Rental. See log.";
             e.printStackTrace();
         }
        
