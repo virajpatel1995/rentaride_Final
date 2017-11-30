@@ -112,7 +112,7 @@ public class CancelMembership
 				e1.printStackTrace();
 			}
 
-
+            root.put("message", "You have been logged out from Rent A Ride");
 
         try {
             resultTemplate.process( root, toClient );
