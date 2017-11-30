@@ -258,4 +258,11 @@ public class LogicLayerImpl
 			CancelReservationCtrl ctrlCancelReservation = new CancelReservationCtrl(objectLayer);
 			return ctrlCancelReservation.cancelReservation(res);
 		}
+		
+		@Override
+		public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException {
+			PlaceReservationCtrl ctrlPlaceReservation = new PlaceReservationCtrl(objectLayer);
+			return ctrlPlaceReservation.placeReservation(time, dur, loc, type, uName);
+		}
+		
 }

@@ -69,9 +69,11 @@ public class ReservationManager {
 			else
 				stmt = (java.sql.PreparedStatement) conn.prepareStatement(updateReservationSql);
 		
-			if(reservation.getPickupTime() != null)
-				stmt.setDate(1,new java.sql.Date(reservation.getPickupTime().getTime()));
-			else
+			if(reservation.getPickupTime() != null) {
+				java.util.Date d = reservation.getPickupTime();
+				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
+				//stmt.setDate(1,new java.sql.Date(reservation.getPickupTime().getTime()));
+			}else
 				throw new RARException("ResevrationManager.save: can't save a Reservation: Pickup Time undefined");
 
 			if(reservation.getLength() > 0)
