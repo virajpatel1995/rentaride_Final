@@ -52,7 +52,7 @@
 <form action="PlaceRental" method="post">
 		 Reservation ID<input type="text" name="res" placeholder="Reservation ID"/>
 		 Tag Number<input type="text" name="tag" placeholder="Tag Number"/>
-         <input class="btn btn-submit" type="submit" value="Place Reservation" />
+         <input class="btn btn-submit" type="submit" value="Place Rental" />
          </form> 
          
          <form action="CancelReservation" method="post">
