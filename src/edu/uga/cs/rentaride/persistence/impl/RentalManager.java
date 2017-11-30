@@ -144,15 +144,13 @@ public class RentalManager {
 							condition.append( " and" );
 						condition.append( " charges = '" + rental.getCharges() + "'" );
 					}
-					System.out.println(rental.getReservation().getId());
+					
 					if(rental.getReservation() != null)
 					if( rental.getReservation().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
-						System.out.println(rental.getReservation().getId());
 						condition.append( " reservationid = '" + rental.getReservation().getId() + "'" );
 					}
-					System.out.println(rental.getReservation().getId());
 
 					if(rental.getVehicle() != null)
 					if( rental.getVehicle().getId() >= 0 ) {

@@ -306,32 +306,29 @@
                 <table class="table table-inverse">
                     <tr>
                         <td><b>Id</b></td>
-                        <td><b>Make</b></td>
-                        <td><b>Model</b></td>
-                        <td><b>Year</b></td>
-                        <td><b>Mileage</b></td>
-                        <td><b>Tag</b></td>
-                        <td><b>Last Serviced</b></td>
+                        <td><b>First Name</b></td>
+                        <td><b>Last Name</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Address</b></td>
+                        <td><b>Join Date</b></td>
+                        <td><b>Expire Date</b></td>
                         <td><b>Status</b></td>
-                        <td><b>Condition</b></td>
-                        <td><b>Rental Location</b></td>
-                        <td><b>Type</b></td>
+                        <td><b>Action</b></td>
                     </tr>
-                <#if vehicleList??>
-                    <#list vehicleList as v>
+                <#if customerList??>
+                    <#list customerList as c>
                         <tr>
-                            <td>${v.getId()}</td>
-                            <td>${v.getMake()}</td>
-                            <td>${v.getModel()}</td>
-                            <td>${v.getYear()}</td>
-                            <td>${v.getMileage()}</td>
-                            <td>${v.getRegistrationTag()}</td>
-                            <td>${v.getLastServiced()}</td>
-                            <td>${v.getStatus()}</td>
-                            <td>${v.getCondition()}</td>
-                            <td>${v.getRentalLocation().getName()}</td>
-                            <td>${v.getVehicleType().getName()}</td>
-                            <td><button class="editVehicle">Edit</button></td>
+                            <td>${c.getId()}</td>
+                            <td>${c.getFirstName()}</td>
+                            <td>${c.getLastName()}</td>
+                            <td>${c.getUserName()}</td>
+                            <td>${c.getEmail()}</td>
+                            <td>${c.getAddress()}</td>
+                            <td>${c.getCreatedDate()}</td>
+                            <td>${c.getMemberUntil()}</td>
+                            <td>${c.getUserStatus()}</td>
+                            <td><button class="terminateCustomer">Terminate</button></td>
                         </tr>
 
                     </#list>

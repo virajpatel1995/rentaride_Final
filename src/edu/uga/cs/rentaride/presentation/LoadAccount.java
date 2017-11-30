@@ -117,6 +117,9 @@ public class LoadAccount extends HttpServlet {
                 List<Vehicle> vehicleList = logicLayer.getAllVehicle();
                 root.put("vehicleList", vehicleList);
 
+                List<Customer> customerList = logicLayer.getAllCustomer();
+                root.put("customerList",customerList );
+
             } catch (RARException e) {
                 e.printStackTrace();
             }

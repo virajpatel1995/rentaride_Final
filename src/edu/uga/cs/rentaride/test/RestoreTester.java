@@ -78,9 +78,9 @@ public class RestoreTester  {
         List<Rental> rentals = persistence.restoreRental(rental);
         printRentalList(rentals);
 
-//        reservation.setLength(5);
-//        List<Reservation> reservations = persistence.restoreReservation(null);
-//        printReservationList(reservations);
+        reservation.setLength(5);
+        List<Reservation> reservations = persistence.restoreReservation(null);
+        printReservationList(reservations);
 
 //        Vehicle vehicle = new VehicleImpl();
 //        vehicle.setYear(2015);
