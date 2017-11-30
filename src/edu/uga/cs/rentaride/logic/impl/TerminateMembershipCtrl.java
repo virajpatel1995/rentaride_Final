@@ -31,7 +31,7 @@ private ObjectLayer objectLayer = null;
         if(customers.size()<1) throw new RARException("Customer does not exists");
         customer = customers.get(0);
         reservations = customer.getReservations();
-        if(reservations.size()<1){
+        if(reservations.size()>=1){
 	        for(int i = 0; i<reservations.size(); i++ ){
 	        	objectLayer.cancelReservation(reservations.get(i));
 	        }
