@@ -48,4 +48,5 @@ public interface LogicLayer
     void updateRentalLocation(RentalLocation rl) throws RARException;
 	public long CancelReservation(String res) throws RARException;
 	public long placeRental(String reservationIdS, String vehicleTag) throws RARException;
+	public long TerminateMembership(String userID) throws RARException;
 }

@@ -258,4 +258,10 @@ public class LogicLayerImpl
 			CancelReservationCtrl ctrlCancelReservation = new CancelReservationCtrl(objectLayer);
 			return ctrlCancelReservation.cancelReservation(res);
 		}
+
+		@Override
+		public long TerminateMembership(String customerUser) throws RARException {
+			TerminateMembershipCtrl ctrlTerminateMembership = new TerminateMembershipCtrl(objectLayer);
+			return ctrlTerminateMembership.TerminateMembership(customerUser);
+		}
 }
