@@ -41,6 +41,8 @@
        
 		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
 		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+		<li><a data-toggle="tab" href="#menu9">Reservations</a></li>
+
 
 
     </ul>
@@ -341,6 +343,51 @@
 
         </div>
          
+        
+        <!-- ******RESERVATIONS**************** -->
+        <div id="menu9" class="tab-pane fade">
+            <h3>Current Reservations</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Pickup</b></td>
+                        <td><b>Length</b></td>
+                        <td><b>Canceled</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Location</b></td>
+                        <td><b>Vehicle Type</b></td>
+                        
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            <td>${v.getRegistrationTag()}</td>
+                            <td>${v.getRentalLocation().getName()}</td>
+                            <td>${v.getVehicleType().getName()}</td>
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+         
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
