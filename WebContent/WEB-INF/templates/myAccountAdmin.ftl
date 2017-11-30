@@ -350,23 +350,29 @@
 
                 <table class="table table-inverse">
                     <tr>
-                        <td><b>Pickup</b></td>
-                        <td><b>Length</b></td>
-                        <td><b>Canceled</b></td>
-                        <td><b>Username</b></td>
+                        <td><b>Id</b></td>
+                        <td><b>Pickup Time</b></td>
+                        <td><b>Duration(hr)</b></td>
+                        <td><b>Cancelled</b></td>
+                        <td><b>Customer</b></td>
                         <td><b>Location</b></td>
                         <td><b>Vehicle Type</b></td>
-                        
+                        <#--<td><b>Action</b></td>-->
+
                     </tr>
-                <#if vehicleList??>
-                    <#list vehicleList as v>
+                <#if reservationList??>
+                    <#list reservationList as r>
                         <tr>
-                            <td>${v.getModel()}</td>
-                            <td>${v.getYear()}</td>
-                            <td>${v.getMileage()}</td>
-                            <td>${v.getRegistrationTag()}</td>
-                            <td>${v.getRentalLocation().getName()}</td>
-                            <td>${v.getVehicleType().getName()}</td>
+                            <td>${r.getId()}</td>
+                            <td>${r.getPickupTime()}</td>
+                            <td>${r.getLength()}</td>
+                            <td>${r.getCanceledStr()}</td>
+                            <td>${r.getCustomer().getFirstName() + " " + r.getCustomer().getFirstName()}</td>
+                            <td>${r.getRentalLocation().getName()}</td>
+                            <td>${r.getVehicleType().getName()}</td>
+                            <#--<td><button class="cancalReservation">Cancel</button></td>-->
+
+
                         </tr>
 
                     </#list>
@@ -385,19 +391,21 @@
 
                 <table class="table table-inverse">
                     <tr>
-                        <td><b>Username</b></td>
-                        <td><b>Comment Date</b></td>
+                        <td><b>Id</b></td>
                         <td><b>Comment</b></td>
-                        
+                        <td><b>Date</b></td>
+                        <td><b>Customer</b></td>
+
                         
                     </tr>
-                <#if vehicleList??>
-                    <#list vehicleList as v>
+                <#if commentList??>
+                    <#list commentList as c>
                         <tr>
-                            <td>${v.getModel()}</td>
-                            <td>${v.getYear()}</td>
-                            <td>${v.getMileage()}</td>
-                            
+                            <td>${c.getId()}</td>
+                            <td>${c.getText()}</td>
+                            <td>${c.getDate()}</td>
+                            <td>${c.getCustomer().getFirstName() + " " +c.getCustomer().getLastName()}</td>
+
                         </tr>
 
                     </#list>

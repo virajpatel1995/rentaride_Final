@@ -58,4 +58,8 @@ public interface LogicLayer
 	public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException ;
 
     List<Customer> getAllCustomer() throws RARException;
+
+    List<Reservation> getAllReservation() throws RARException;
+
+    List<Comment> getAllComment() throws RARException;
 }

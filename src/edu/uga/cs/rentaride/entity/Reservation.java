@@ -80,4 +80,9 @@ public interface Reservation
      */
     public void setRental( Rental rental );
 
+    public boolean getCanceled();
+    public String getCanceledStr();
+
+    public void setCanceled(boolean canceled);
+
 }
