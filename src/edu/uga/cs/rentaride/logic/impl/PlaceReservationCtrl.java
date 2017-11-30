@@ -74,7 +74,7 @@ public class PlaceReservationCtrl {
         }
        
         Reservation reservation = objectLayer.createReservation(pickupTime, Integer.parseInt(dur), vehicleTypes.get(0), rentalLocations.get(0), customers.get(0));
-        		objectLayer.storeReservation( reservation);
+        	objectLayer.storeReservation( reservation);
         return reservation.getId();
     }
 }

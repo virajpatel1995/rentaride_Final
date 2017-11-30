@@ -136,9 +136,9 @@ public class PlaceReservation
             
             
             
-            msg = "Your Rental has been successfully placed";
+            msg = "Your Reservation has been successfully placed";
         }catch(Exception e) {
-            msg = "Unable to place Rental. See log.";
+            msg = "Unable to place Reservation. See log.";
             e.printStackTrace();
         }
        
