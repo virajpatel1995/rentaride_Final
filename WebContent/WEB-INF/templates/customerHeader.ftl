@@ -66,22 +66,10 @@
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Home">Home</button>
 				</form>
 				</li>
-				
-                <#--<li>
-				<form action="LoadPricing" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Pricing">Pricing</button>
-				</form>
-				</li>-->
                 
                 <li>
 				<form action="LoadRentNow" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="RentNow">Rent Now</button>
-				</form>
-				</li>
-                
-                <li>
-				<form action="LoadContact" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Contact">Contact</button>
 				</form>
 				</li>
                 
@@ -103,11 +91,6 @@
 				<li>
 				<form action="LoadJacobTest" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="JacobTest">JacobTest</button>
-				</form>
-				</li>
-				<li>
-				<form action="LoadVirajTest" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="VirajTest">VirajTest</button>
 				</form>
 				</li>
 
