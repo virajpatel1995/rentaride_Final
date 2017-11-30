@@ -258,4 +258,29 @@ public class LogicLayerImpl
 			CancelReservationCtrl ctrlCancelReservation = new CancelReservationCtrl(objectLayer);
 			return ctrlCancelReservation.cancelReservation(res);
 		}
+
+    @Override
+    public List<Vehicle> getAllVehicle() throws RARException {
+        return objectLayer.findVehicle(null);
+    }
+
+    @Override
+    public Vehicle getVehicleById(long vid) throws RARException {
+        Vehicle vehicle = objectLayer.createVehicle();
+        vehicle.setId(vid);
+        return objectLayer.findVehicle(vehicle).get(0);
+
+    }
+
+    @Override
+    public RentalLocation getRentalLocationByName(String rentalLocationName) throws RARException {
+        RentalLocation rentalLocation = objectLayer.createRentalLocation();
+        rentalLocation.setName(rentalLocationName);
+        return objectLayer.findRentalLocation(rentalLocation).get(0);
+    }
+
+    @Override
+    public void updateVehicle(Vehicle vehicle) throws RARException {
+        objectLayer.storeVehicle(vehicle);
+    }
 }

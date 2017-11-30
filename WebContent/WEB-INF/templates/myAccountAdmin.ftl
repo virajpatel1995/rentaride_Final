@@ -136,6 +136,7 @@
                     <td><b>Name</b></td>
                     <td><b>Address</b></td>
                     <td><b>Capacity</b></td>
+                    <td><b>Action</b></td>
                 </tr>
             <#if rentalLocations??>
                 <#list rentalLocations as rl>
@@ -146,9 +147,10 @@
                         <td>${rl.getCapacity()}</td>
                         <td><button class="editbtn">Edit</button></td>
                     </tr>
-                </#list></table>
 
+                </#list>
             </#if>
+            </table>
             </div>
 
 
@@ -187,6 +189,41 @@
                     <div style="float:center" id="createVehicleMsg"></div>
 
                 </form>
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Make</b></td>
+                        <td><b>Model</b></td>
+                        <td><b>Year</b></td>
+                        <td><b>Mileage</b></td>
+                        <td><b>Tag</b></td>
+                        <td><b>Last Serviced</b></td>
+                        <td><b>Status</b></td>
+                        <td><b>Condition</b></td>
+                        <td><b>Rental Location</b></td>
+                        <td><b>Type</b></td>
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getId()}</td>
+                            <td>${v.getMake()}</td>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            <td>${v.getRegistrationTag()}</td>
+                            <td>${v.getLastServiced()}</td>
+                            <td>${v.getStatus()}</td>
+                            <td>${v.getCondition()}</td>
+                            <td>${v.getRentalLocation().getName()}</td>
+                            <td>${v.getVehicleType().getName()}</td>
+                            <td><button class="editVehicle">Edit</button></td>
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
             </div>
 
 
