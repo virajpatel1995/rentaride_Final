@@ -42,6 +42,7 @@
 		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
 		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
 		<li><a data-toggle="tab" href="#menu9">Reservations</a></li>
+		<li><a data-toggle="tab" href="#menu10">View Comments</a></li>
 
 
 
@@ -375,12 +376,39 @@
                 </#if>
                 </table>
 
-         
             </div>
-
-
         </div>
         
+        
+        <!-- ******VIEW COMMENTS**************** -->
+        <div id="menu10" class="tab-pane fade">
+            <h3>Comments</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td><b>Comment Date</b></td>
+                        <td><b>Comment</b></td>
+                        
+                        
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+            </div>
+        </div>
         
         
         
