@@ -65,11 +65,14 @@ public class PlaceReservationCtrl {
         	throw new RARException("A Cystomer with this name does not exists: " + uName);
         
       
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss"); 
+//        DateFormat df = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        time = time.replace("T", " ");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm");
         Date pickupTime;
         try {
             pickupTime = df.parse(time);
         }catch(ParseException e) {
+            e.printStackTrace();
         		pickupTime = new Date();
         }
        

@@ -5,10 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import edu.uga.cs.rentaride.RARException;
-import edu.uga.cs.rentaride.entity.RentARideParams;
-import edu.uga.cs.rentaride.entity.RentalLocation;
-import edu.uga.cs.rentaride.entity.User;
-import edu.uga.cs.rentaride.entity.VehicleType;
+import edu.uga.cs.rentaride.entity.*;
 import edu.uga.cs.rentaride.session.*;
 
 import edu.uga.cs.rentaride.RARException;
@@ -48,6 +45,15 @@ public interface LogicLayer
     void updateRentalLocation(RentalLocation rl) throws RARException;
 	public long CancelReservation(String res) throws RARException;
 	public long placeRental(String reservationIdS, String vehicleTag) throws RARException;
+
+    List<Vehicle> getAllVehicle() throws RARException;
+
+    Vehicle getVehicleById(long vid) throws RARException;
+
+    RentalLocation getRentalLocationByName(String localRentalLocation) throws RARException;
+
+    void updateVehicle(Vehicle vehicle) throws RARException;
+
 	public long TerminateMembership(String userID) throws RARException;
 	public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException ;
 }

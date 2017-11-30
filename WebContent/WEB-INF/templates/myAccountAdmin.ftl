@@ -34,9 +34,8 @@
         <li class="active"><a data-toggle="tab" href="#home">MyAccount</a></li>
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
-        <li><a data-toggle="tab" href="#menu3">Create Vehicle</a></li>
-        <li><a data-toggle="tab" href="#menu4">Update Vehicle</a></li>
-        <li><a data-toggle="tab" href="#menu5">Add | Update Vehicle Type</a></li>
+        <li><a data-toggle="tab" href="#menu3">Create | Update Vehicle</a></li>
+        <li><a data-toggle="tab" href="#menu5">Create | Update Vehicle Type</a></li>
 
         <li><a data-toggle="tab" href="#menu8">Update Profile</a></li>
        
@@ -110,9 +109,11 @@
 
         </div>
 
-        <!-- ********ADD | Update Location************** -->
+        <!-- ********Create | Update Location************** -->
         <div id="menu2" class="tab-pane fade">
-            <h3> Add|Update Rental Location</h3>
+        
+            <h3> Create Rental Location</h3>
+            
             <div class="container">
 
                 <form action="CreateRentalLocation" method="post">
@@ -136,6 +137,7 @@
                     <td><b>Name</b></td>
                     <td><b>Address</b></td>
                     <td><b>Capacity</b></td>
+                    <td><b>Action</b></td>
                 </tr>
             <#if rentalLocations??>
                 <#list rentalLocations as rl>
@@ -146,15 +148,16 @@
                         <td>${rl.getCapacity()}</td>
                         <td><button class="editbtn">Edit</button></td>
                     </tr>
-                </#list></table>
 
+                </#list>
             </#if>
+            </table>
             </div>
 
 
         </div>
 
-        <!-- ********ADD VEHICLE************** -->
+        <!-- ********CREATE | UPDATE VEHICLE************** -->
         <div id="menu3" class="tab-pane fade">
             <h3>Add Vehicle</h3>
             <div class="container">
@@ -187,34 +190,51 @@
                     <div style="float:center" id="createVehicleMsg"></div>
 
                 </form>
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Make</b></td>
+                        <td><b>Model</b></td>
+                        <td><b>Year</b></td>
+                        <td><b>Mileage</b></td>
+                        <td><b>Tag</b></td>
+                        <td><b>Last Serviced</b></td>
+                        <td><b>Status</b></td>
+                        <td><b>Condition</b></td>
+                        <td><b>Rental Location</b></td>
+                        <td><b>Type</b></td>
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getId()}</td>
+                            <td>${v.getMake()}</td>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            <td>${v.getRegistrationTag()}</td>
+                            <td>${v.getLastServiced()}</td>
+                            <td>${v.getStatus()}</td>
+                            <td>${v.getCondition()}</td>
+                            <td>${v.getRentalLocation().getName()}</td>
+                            <td>${v.getVehicleType().getName()}</td>
+                            <td><button class="editVehicle">Edit</button></td>
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
             </div>
 
 
         </div>
 
-        <!-- ******UPDATE VEHICLE**************** -->
-        <div id="menu4" class="tab-pane fade">
-            <h3>Update Vehicle</h3>
-
-            <div class="container">
-
-                <form action="UpdateVehicle" method="post">
-                    Mileage:<input type="text" name="mileage" placeholder="mileage"/>
-                    Tag:<input type="text" name="tag" placeholder="tag"/><br>
-                    Location:<input type="text" name="location" placeholder="location"/>
-                    Maintenance:<input type="text" name="maintenance" placeholder="maintenance"/><br><br>
-                    <input class="btn btn-submit" type="submit" value="Update Vehicle"/>
-                    <div style="float:center" id="updateVehicleMsg"></div>
-                </form>
-            </div>
-
-
-        </div>
-
+       
 
         <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
         <div id="menu5" class="tab-pane fade">
-            <h3>Add | Update Vehicle</h3>
+            <h3>Create | Update Vehicle</h3>
 
             <div class="container">
 
@@ -273,13 +293,41 @@
 
             <div class="container">
 
-                <form action="UpdateHourlyPrice" method="post">
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Make</b></td>
+                        <td><b>Model</b></td>
+                        <td><b>Year</b></td>
+                        <td><b>Mileage</b></td>
+                        <td><b>Tag</b></td>
+                        <td><b>Last Serviced</b></td>
+                        <td><b>Status</b></td>
+                        <td><b>Condition</b></td>
+                        <td><b>Rental Location</b></td>
+                        <td><b>Type</b></td>
+                    </tr>
+                <#if vehicleList??>
+                    <#list vehicleList as v>
+                        <tr>
+                            <td>${v.getId()}</td>
+                            <td>${v.getMake()}</td>
+                            <td>${v.getModel()}</td>
+                            <td>${v.getYear()}</td>
+                            <td>${v.getMileage()}</td>
+                            <td>${v.getRegistrationTag()}</td>
+                            <td>${v.getLastServiced()}</td>
+                            <td>${v.getStatus()}</td>
+                            <td>${v.getCondition()}</td>
+                            <td>${v.getRentalLocation().getName()}</td>
+                            <td>${v.getVehicleType().getName()}</td>
+                            <td><button class="editVehicle">Edit</button></td>
+                        </tr>
 
-            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
-            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
-            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
-         <input class="btn btn-submit" type="submit" value="Set|Update" />
-         </form> 
+                    </#list>
+                </#if>
+                </table>
+
          
             </div>
 
