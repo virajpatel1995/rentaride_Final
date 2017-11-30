@@ -61,9 +61,9 @@ public class RentalManager {
 			}else
 					stmt.setNull(1,  java.sql.Types.DATE);
 			
-			if(rental.getReturnTime() != null)
-				stmt.setDate(2,new java.sql.Date(rental.getReturnTime().getTime()));
-			else
+			//if(rental.getReturnTime() != null)
+			//	stmt.setDate(2,new java.sql.Date(rental.getReturnTime().getTime()));
+			//else
 				stmt.setNull(2,  java.sql.Types.DATE);
 			
 			stmt.setBoolean(3,rental.getLate());
