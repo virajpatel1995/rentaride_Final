@@ -294,6 +294,12 @@ public class LogicLayerImpl
 			PlaceReservationCtrl ctrlPlaceReservation = new PlaceReservationCtrl(objectLayer);
 			return ctrlPlaceReservation.placeReservation(time, dur, loc, type, uName);
 		}
+
+    @Override
+    public List<Customer> getAllCustomer() throws RARException {
+        return objectLayer.findCustomer(null);
+    }
+
 	
 		@Override
 		public List<Reservation> getReservations(String c) throws RARException{
