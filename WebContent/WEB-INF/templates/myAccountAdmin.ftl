@@ -465,6 +465,7 @@
                         <td><b>Comment</b></td>
                         <td><b>Date</b></td>
                         <td><b>Customer</b></td>
+                        <td><b>Rental ID</b></td>
 
                         
                     </tr>
@@ -475,6 +476,7 @@
                             <td>${c.getText()}</td>
                             <td>${c.getDate()}</td>
                             <td>${c.getCustomer().getFirstName() + " " +c.getCustomer().getLastName()}</td>
+                            <td>${c.getRental().getId()}</td>
 
                         </tr>
 
