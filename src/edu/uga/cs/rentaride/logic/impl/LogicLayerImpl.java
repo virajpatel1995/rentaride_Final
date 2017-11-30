@@ -317,4 +317,10 @@ public class LogicLayerImpl
     public List<Comment> getAllComment() throws RARException {
         return objectLayer.findComment(null);
     }
+
+	@Override
+	public long returnRental(String rentalID) throws RARException {
+		ReturnRentalCtrl ctrlReturnRental = new ReturnRentalCtrl(objectLayer);
+		return ctrlReturnRental.returnRental(rentalID);
+	}
 }
