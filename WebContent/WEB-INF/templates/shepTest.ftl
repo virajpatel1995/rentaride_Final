@@ -65,7 +65,6 @@
 		 Duration<input type="text" name="dur" placeholder="Duration"/>
 		 Rental Location ID<input type="text" name="loc" placeholder="Location ID"/>
 		 Vehicle Type ID<input type="text" name="type" placeholder="Vehicle Type ID"/>
-		 Customer ID<input type="text" name="customer" placeholder="Customer ID"/>
          <input class="btn btn-submit" type="submit" value="Place Reservation" />
          </form>   
  <form action="TerminateMembership" method="post">
