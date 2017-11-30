@@ -136,7 +136,7 @@ public class RentalManager {
 						condition.append( " and" );
 					condition.append( " late = '" + rental.getLate() + "'" );
 
-					if( rental.getCharges() >= 0 ) {
+					if( rental.getCharges() > 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " charges = '" + rental.getCharges() + "'" );
@@ -147,11 +147,13 @@ public class RentalManager {
 						condition.append( " reservationid = '" + rental.getReservation().getId() + "'" );
 					}
 
+					if(rental.getVehicle() != null)
 					if( rental.getVehicle().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " vehicleid = '" + rental.getVehicle().getId() + "'" );
 					}
+					if(rental.getCustomer() != null)
 					if( rental.getCustomer().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );

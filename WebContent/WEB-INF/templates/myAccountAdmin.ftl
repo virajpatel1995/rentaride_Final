@@ -174,7 +174,8 @@
                         <option value="${element}">${element}</option>
                     </#list>
                 </select><br>
-                    Vehicle Type:<select name="type">
+                    Vehicle Type:
+                    <select name="type">
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
@@ -290,7 +291,13 @@
 
                 <form action="UpdateHourlyPrice" method="post">
 
-            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Vehicle Type:
+                    <#--<input type="text" name="vehicleType" placeholder="Vehicle Type"/>-->
+                    <select name="vehicleType">
+                    <#list vehicleTypeList as element>
+                        <option value="${element}">${element}</option>
+                    </#list>
+                    </select>
             Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
             Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
          <input class="btn btn-submit" type="submit" value="Set|Update" />
