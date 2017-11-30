@@ -155,7 +155,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 
 	@Override
 	public void storeReservation(Reservation reservation) throws RARException {
-		 persistence.restoreReservation(reservation);
+		 persistence.storeReservation(reservation);
 		
 	}
 
