@@ -288,11 +288,33 @@ public class LogicLayerImpl
 			TerminateMembershipCtrl ctrlTerminateMembership = new TerminateMembershipCtrl(objectLayer);
 			return ctrlTerminateMembership.TerminateMembership(customerUser);
 		}
-		
-		@Override
+
+
+    @Override
 		public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException {
 			PlaceReservationCtrl ctrlPlaceReservation = new PlaceReservationCtrl(objectLayer);
 			return ctrlPlaceReservation.placeReservation(time, dur, loc, type, uName);
 		}
-		
+
+    @Override
+    public List<Customer> getAllCustomer() throws RARException {
+        return objectLayer.findCustomer(null);
+    }
+
+
+		@Override
+		public List<Reservation> getReservations(String c) throws RARException{
+			GetReservationCtrl ctrlGetReservation = new GetReservationCtrl(objectLayer);
+			return ctrlGetReservation.getReservation(c);
+		}
+
+    @Override
+    public List<Reservation> getAllReservation() throws RARException {
+        return objectLayer.findReservation(null);
+    }
+
+    @Override
+    public List<Comment> getAllComment() throws RARException {
+        return objectLayer.findComment(null);
+    }
 }

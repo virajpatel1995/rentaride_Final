@@ -352,6 +352,8 @@ public class ObjectLayerImpl implements ObjectLayer {
 	public void cancelReservation(Reservation res) throws RARException{
 		persistence.cancelReservation(res);
 	}
+	
+	
 
 
 

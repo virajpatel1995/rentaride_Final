@@ -19,7 +19,76 @@
         function myFunction() {
             alert("Added Location Successfully")
         }
+        
+        
+        
+        function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+        
+        
+        
     </script>
+
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+
+
+
+
+
+
+
 
 
 </head>
@@ -41,6 +110,9 @@
        
 		<li><a data-toggle="tab" href="#menu6">Hourly Rental Price</a></li>
 		<li><a data-toggle="tab" href="#menu7">Customers</a></li>
+		<li><a data-toggle="tab" href="#menu9">Reservations</a></li>
+		<li><a data-toggle="tab" href="#menu10">View Comments</a></li>
+
 
 
     </ul>
@@ -175,7 +247,8 @@
                         <option value="${element}">${element}</option>
                     </#list>
                 </select><br>
-                    Vehicle Type:<select name="type">
+                    Vehicle Type:
+                    <select name="type">
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
@@ -273,7 +346,13 @@
 
                 <form action="UpdateHourlyPrice" method="post">
 
-            Vehicle Type: <input type="text" name="vehicleType" placeholder="Vehicle Type"/>
+            Vehicle Type:
+                    <#--<input type="text" name="vehicleType" placeholder="Vehicle Type"/>-->
+                    <select name="vehicleType">
+                    <#list vehicleTypeList as element>
+                        <option value="${element}">${element}</option>
+                    </#list>
+                    </select>
             Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
             Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
          <input class="btn btn-submit" type="submit" value="Set|Update" />
@@ -292,36 +371,34 @@
             <h3>Customers</h3>
 
             <div class="container">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-                <table class="table table-inverse">
+                <table id="myTable" class="table table-inverse">
                     <tr>
                         <td><b>Id</b></td>
-                        <td><b>Make</b></td>
-                        <td><b>Model</b></td>
-                        <td><b>Year</b></td>
-                        <td><b>Mileage</b></td>
-                        <td><b>Tag</b></td>
-                        <td><b>Last Serviced</b></td>
+                        <td><b>First Name</b></td>
+                        <td><b>Last Name</b></td>
+                        <td><b>Username</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Address</b></td>
+                        <td><b>Join Date</b></td>
+                        <td><b>Expire Date</b></td>
                         <td><b>Status</b></td>
-                        <td><b>Condition</b></td>
-                        <td><b>Rental Location</b></td>
-                        <td><b>Type</b></td>
+                        <td><b>Action</b></td>
                     </tr>
-                <#if vehicleList??>
-                    <#list vehicleList as v>
+                <#if customerList??>
+                    <#list customerList as c>
                         <tr>
-                            <td>${v.getId()}</td>
-                            <td>${v.getMake()}</td>
-                            <td>${v.getModel()}</td>
-                            <td>${v.getYear()}</td>
-                            <td>${v.getMileage()}</td>
-                            <td>${v.getRegistrationTag()}</td>
-                            <td>${v.getLastServiced()}</td>
-                            <td>${v.getStatus()}</td>
-                            <td>${v.getCondition()}</td>
-                            <td>${v.getRentalLocation().getName()}</td>
-                            <td>${v.getVehicleType().getName()}</td>
-                            <td><button class="editVehicle">Edit</button></td>
+                            <td>${c.getId()}</td>
+                            <td>${c.getFirstName()}</td>
+                            <td>${c.getLastName()}</td>
+                            <td>${c.getUserName()}</td>
+                            <td>${c.getEmail()}</td>
+                            <td>${c.getAddress()}</td>
+                            <td>${c.getCreatedDate()}</td>
+                            <td>${c.getMemberUntil()}</td>
+                            <td>${c.getUserStatus()}</td>
+                            <td><button class="terminateCustomer">Terminate</button></td>
                         </tr>
 
                     </#list>
@@ -334,6 +411,88 @@
 
         </div>
          
+        
+        <!-- ******RESERVATIONS**************** -->
+        <div id="menu9" class="tab-pane fade">
+            <h3>Current Reservations</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Pickup Time</b></td>
+                        <td><b>Duration(hr)</b></td>
+                        <td><b>Cancelled</b></td>
+                        <td><b>Customer</b></td>
+                        <td><b>Location</b></td>
+                        <td><b>Vehicle Type</b></td>
+                        <#--<td><b>Action</b></td>-->
+
+                    </tr>
+                <#if reservationList??>
+                    <#list reservationList as r>
+                        <tr>
+                            <td>${r.getId()}</td>
+                            <td>${r.getPickupTime()}</td>
+                            <td>${r.getLength()}</td>
+                            <td>${r.getCanceledStr()}</td>
+                            <td>${r.getCustomer().getFirstName() + " " + r.getCustomer().getFirstName()}</td>
+                            <td>${r.getRentalLocation().getName()}</td>
+                            <td>${r.getVehicleType().getName()}</td>
+                            <#--<td><button class="cancalReservation">Cancel</button></td>-->
+
+
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+            </div>
+        </div>
+        
+        
+        <!-- ******VIEW COMMENTS**************** -->
+        <div id="menu10" class="tab-pane fade">
+            <h3>Comments</h3>
+
+            <div class="container">
+
+                <table class="table table-inverse">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Comment</b></td>
+                        <td><b>Date</b></td>
+                        <td><b>Customer</b></td>
+                        <td><b>Rental ID</b></td>
+
+                        
+                    </tr>
+                <#if commentList??>
+                    <#list commentList as c>
+                        <tr>
+                            <td>${c.getId()}</td>
+                            <td>${c.getText()}</td>
+                            <td>${c.getDate()}</td>
+                            <td>${c.getCustomer().getFirstName() + " " +c.getCustomer().getLastName()}</td>
+                            <td>${c.getRental().getId()}</td>
+
+                        </tr>
+
+                    </#list>
+                </#if>
+                </table>
+
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
         
         
         

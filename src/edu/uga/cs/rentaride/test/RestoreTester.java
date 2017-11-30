@@ -10,6 +10,7 @@ import edu.uga.cs.rentaride.persistence.impl.DbUtils;
 import edu.uga.cs.rentaride.persistence.impl.PersistenceLayerImpl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,22 +63,24 @@ public class RestoreTester  {
 //        List<HourlyPrice> hourlyPrices = persistence.restoreHourlyPrice(null);
 //        printPriceList(hourlyPrices);
 
-        RentalLocation rentalLocation = new RentalLocationImpl();
-        rentalLocation.setName("bbbbbb");
-        List<RentalLocation> rentalLocations = persistence.restoreRentalLocation(rentalLocation);
-//        printReservationList(persistence.restoreReservationRentalLocation(rentalLocations.get(0)));
-        printVehicleList(persistence.restoreVehicleRentalLocation(rentalLocations.get(0)));
+//        RentalLocation rentalLocation = new RentalLocationImpl();
+//        rentalLocation.setName("bbbbbb");
+//        List<RentalLocation> rentalLocations = persistence.restoreRentalLocation(rentalLocation);
+////        printReservationList(persistence.restoreReservationRentalLocation(rentalLocations.get(0)));
+//        printVehicleList(persistence.restoreVehicleRentalLocation(rentalLocations.get(0)));
 //        printRentalLocationList(rentalLocations);
 
-//        Rental rental = new RentalImp();
+        Rental rental = new RentalImp();
 //        rental.setId(13);
-//        List<Rental> rentals = persistence.restoreRental(rental);
-//        printRentalList(rentals);
+        Reservation reservation = new ReservationImpl();
+        reservation.setId(1);
+        rental.setReservation(reservation);
+        List<Rental> rentals = persistence.restoreRental(rental);
+        printRentalList(rentals);
 
-//        Reservation reservation = new ReservationImpl();
-//        reservation.setLength(5);
-//        List<Reservation> reservations = persistence.restoreReservation(null);
-//        printReservationList(reservations);
+        reservation.setLength(5);
+        List<Reservation> reservations = persistence.restoreReservation(null);
+        printReservationList(reservations);
 
 //        Vehicle vehicle = new VehicleImpl();
 //        vehicle.setYear(2015);
@@ -89,6 +92,11 @@ public class RestoreTester  {
 //        List<VehicleType> vehicleTypes = persistence.restoreVehicleType(vehicleType);
 //        printVehicleTypeList(vehicleTypes);
 
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void printAdminList(List<Administrator> list) {

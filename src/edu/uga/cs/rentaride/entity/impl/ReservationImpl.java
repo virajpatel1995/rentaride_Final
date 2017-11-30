@@ -18,7 +18,23 @@ public class ReservationImpl extends Persistence implements Reservation {
 	private VehicleType vehicleType;
 	private RentalLocation rentalLocation;
 	private Rental rental;
-	
+	private boolean canceled;
+
+	@Override
+	public boolean getCanceled() {
+		return canceled;
+	}
+
+	@Override
+	public void setCanceled(boolean canceled) {
+		this.canceled = canceled;
+	}
+
+	@Override
+	public String getCanceledStr() {
+		return canceled+"";
+	}
+
 	public ReservationImpl(){
 		super(-1);
 		this.pickupTime = null;
@@ -27,6 +43,7 @@ public class ReservationImpl extends Persistence implements Reservation {
 		this.vehicleType = null;
 		this.rentalLocation = null;
 		this.rental = null;
+		this.canceled = false;
 	}
 
 	public ReservationImpl(Date pickupTime, int length, Customer customer, VehicleType vehicleType, RentalLocation rentalLocation, Rental rental) {
@@ -37,6 +54,7 @@ public class ReservationImpl extends Persistence implements Reservation {
 		this.vehicleType = vehicleType;
 		this.rentalLocation = rentalLocation;
 		this.rental = rental;
+		this.canceled = false;
 	}
 
 	@Override

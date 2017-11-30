@@ -54,17 +54,24 @@ public class PlaceRentalCtrl {
         
         if(!vehicle.getRentalLocation().getName().equals(reservation.getRentalLocation().getName())) throw new RARException("Vehicle is not at the correct Rental Location");
         
-        System.out.println(new Date().getTime());
-        System.out.println(reservation.getPickupTime().getTime());
-        System.out.println(reservation.getPickupTime().getTime()+1800000);
-        System.out.println(reservation.getPickupTime().getTime()-1800000);
+        java.util.Date d = reservation.getPickupTime();
+        System.out.println(d.getTime());
         
-        if((reservation.getPickupTime().getTime()+1800000 < new Date().getTime()) || (reservation.getPickupTime().getTime()-1800000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
         
+        
+        //if((d.getTime() + 1800000 < new Date().getTime()) || (d.getTime()-1800000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
+        
+        
+        Rental               modelRental= null;
+            List<Rental>          rentals= null;
+            modelRental = objectLayer.createRental();
+            modelRental.setReservation(reservation);
+            rentals = objectLayer.findRental(modelRental);
+            if(rentals.size()>0) throw new RARException("Reservation already has rental");
         	Rental rental = objectLayer.createRental();
+        	rental.setReservation(reservation);
         	rental.setCustomer(reservation.getCustomer());
         	rental.setPickupTime(reservation.getPickupTime());
-        	rental.setReservation(reservation);
         	rental.setReturnTime(new Date(reservation.getPickupTime().getTime() + reservation.getLength()));
         	rental.setVehicle(vehicle);
         	vehicle.setStatus(VehicleStatus.INRENTAL);

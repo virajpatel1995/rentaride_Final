@@ -81,7 +81,7 @@ public class ReservationManager {
 			else
 				throw new RARException("ResevrationManager.save: can't save a Reservation: Length undefined");
 			
-			stmt.setBoolean(3, false);;
+			stmt.setBoolean(3, reservation.getCanceled());
 
 			stmt.setLong(4,  reservation.getCustomer().getId());
 			stmt.setLong(5,  reservation.getRentalLocation().getId());

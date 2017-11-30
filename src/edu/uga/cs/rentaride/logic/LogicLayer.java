@@ -14,7 +14,7 @@ import edu.uga.cs.rentaride.RARException;
 public interface LogicLayer
 {
 	
-
+	public List<Reservation> getReservations(String c) throws RARException;
 	public long 				registerAccount ( String fName, String lName, String email, String password, String username, String driverNo, String cardNo, String expDate, String address, String state, String zip ) throws RARException, ParseException;
 	public void               logout( String ssid ) throws RARException;
     public String             login( Session session, String userName, String password ) throws RARException;
@@ -56,4 +56,10 @@ public interface LogicLayer
 
 	public long TerminateMembership(String userID) throws RARException;
 	public long placeReservation(String time, String dur, String loc, String type, String uName) throws RARException ;
+
+    List<Customer> getAllCustomer() throws RARException;
+
+    List<Reservation> getAllReservation() throws RARException;
+
+    List<Comment> getAllComment() throws RARException;
 }
