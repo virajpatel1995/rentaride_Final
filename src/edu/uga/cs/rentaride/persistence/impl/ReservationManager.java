@@ -139,7 +139,7 @@ public class ReservationManager {
 					if( reservation.getPickupTime() != null )
 						condition.append( " pickup = '" + reservation.getPickupTime() + "'" );
 
-					if( reservation.getLength() >= 0 ) {
+					if( reservation.getLength() > 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " length = '" + reservation.getLength() + "'" );
