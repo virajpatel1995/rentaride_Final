@@ -63,6 +63,37 @@ $(document).ready(function () {
     });
 
     /**** UPDATE VEHICLE INFO **/
+$(".terminateCustomer").click(function () {
+        var currentTD = $(this).parents('tr').find('td');
+        // if ($(this).html() == 'Edit') {
+        //     $.each(currentTD, function () {
+        //         if (this.cellIndex != 0) { // make sure id field is not editable
+        //             $(this).prop('contenteditable', true)
+        //         }
+        //     });
+        // } else {
+            var rowInfo = new Array();
+            $.each(currentTD, function () {
+                rowInfo.push($(this).text());
+            });
+
+            var user = rowInfo[3];
+
+            console.log(rowInfo);
+
+            $.post('TerminateMembership', {
+                customerUser :user
+
+
+            }, function (responseText) {
+                $('#rentalLocationMsg').text(responseText);
+            });
+    $(this).html($(this).html() == 'Terminate' ? 'Terminated' : 'Terminate');
+
+
+});
+
+/**** UPDATE VEHICLE INFO **/
 $(".editVehicle").click(function () {
         var currentTD = $(this).parents('tr').find('td');
         if ($(this).html() == 'Edit') {
