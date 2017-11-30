@@ -27,9 +27,9 @@ import edu.uga.cs.rentaride.logic.*;
 
 import edu.uga.cs.rentaride.RARException;
 
-@WebServlet("PlaceReservation")
+@WebServlet("PlaceRental")
 
-public class PlaceReservation
+public class PlaceRental
     extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
@@ -132,9 +132,9 @@ public class PlaceReservation
             
             
             
-            msg = "Your Reservation has been successfully placed";
+            msg = "Your Rental has been successfully placed";
         }catch(Exception e) {
-            msg = "Unable to place reservation. See log.";
+            msg = "Unable to place Rental. See log.";
             e.printStackTrace();
         }
        
