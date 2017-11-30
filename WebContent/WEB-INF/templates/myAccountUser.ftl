@@ -31,7 +31,12 @@
    <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <h3>Welcome</h3>
-            
+         <!--***********CANCEL MEMBERSHIP*********-->   
+         <form action="CancelMembership" method="post">
+         <input class="btn btn-submit" type="submit" value="Cancel Membership" />
+         </form> 
+         
+         
             <div class="tab-pane fade">
             <h3>Welcome to your Account </h3>
         </div>
