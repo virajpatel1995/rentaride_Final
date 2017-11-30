@@ -32,24 +32,35 @@
     padding: 10px;">
     <h1>Make a Reservation</h1>
     <br>
-    Location: <select class="buttonx">
-				  <option value="Tate">TATE</option>
-				  <option value="Mlc">MLC</option>
-				  <option value="Boyd">BOYD</option>
-			 </select>
+    Location:
+
+      <select c name="type" id="rlid">
+          <#if rentalLocations??>
+  <#list rentalLocations as element>
+      <option value="${element}">${element}</option>
+  </#list>
+
+          </#if>
+  </select>
+
     
     
-    Vehicle Type: <select class="buttonx">
-				  <option value=Truck>Volvo</option>
-				  <option value="SUV">Saab</option>
-				  <option value="miniVan">Opel</option>
-			 </select>
+    Vehicle Type:
+
+      <select  name="type" id="vtid">
+  <#if vehicleTypeList??>
+      <#list vehicleTypeList as element>
+          <option value="${element}">${element}</option>
+      </#list>
+
+  </#if>
+  </select>
     
     
-    Pickup Time: <input type="date" id="pickupTime" required="required">
-    Length: <input type="number" id="input-subject" placeholder="# of Hrs" required="required">
+    Pickup Time: <input type="datetime-local" id="pickUpid" required="required">
+    Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required">
      
-  <input class="buttonx"type="submit" value="Submit" id="input-submit">
+  <input class="buttonx" type="submit" value="Submit" id="reservationBtn">
   
     </div>
   

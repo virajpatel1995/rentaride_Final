@@ -124,10 +124,11 @@ public class PlaceReservation
         
         
 
-        time = req.getParameter("time");
-        duration = req.getParameter("dur");
-        location = req.getParameter("loc");
-        vehicleType =req.getParameter("type");
+        time = req.getParameter("pickupTime");
+        System.out.println("pickup Time: " + time);
+        duration = req.getParameter("length");
+        location = req.getParameter("rentalLocation");
+        vehicleType =req.getParameter("vehicleType");
         
         try{
             
