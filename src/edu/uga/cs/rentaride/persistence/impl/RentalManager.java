@@ -139,7 +139,7 @@ public class RentalManager {
 						condition.append( " and" );
 					condition.append( " late = '" + rental.getLate() + "'" );
 
-					if( rental.getCharges() >= 0 ) {
+					if( rental.getCharges() > 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " charges = '" + rental.getCharges() + "'" );
