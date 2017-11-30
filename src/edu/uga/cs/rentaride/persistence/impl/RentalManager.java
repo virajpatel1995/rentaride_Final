@@ -53,9 +53,12 @@ public class RentalManager {
 			else
 				stmt = (java.sql.PreparedStatement) conn.prepareStatement(updateRentalSql);
 		
-			if(rental.getPickupTime() != null)
-					stmt.setDate(1,new java.sql.Date(rental.getPickupTime().getTime()));
-			else
+			if(rental.getPickupTime() != null) {
+
+				java.util.Date d = rental.getPickupTime();
+				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
+					//stmt.setDate(1,new java.sql.Date(rental.getPickupTime().getTime()));
+			}else
 					stmt.setNull(1,  java.sql.Types.DATE);
 			
 			if(rental.getReturnTime() != null)
@@ -136,22 +139,28 @@ public class RentalManager {
 						condition.append( " and" );
 					condition.append( " late = '" + rental.getLate() + "'" );
 
-					if( rental.getCharges() >= 0 ) {
+					if( rental.getCharges() > 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " charges = '" + rental.getCharges() + "'" );
 					}
+					System.out.println(rental.getReservation().getId());
+					if(rental.getReservation() != null)
 					if( rental.getReservation().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
+						System.out.println(rental.getReservation().getId());
 						condition.append( " reservationid = '" + rental.getReservation().getId() + "'" );
 					}
+					System.out.println(rental.getReservation().getId());
 
+					if(rental.getVehicle() != null)
 					if( rental.getVehicle().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
 						condition.append( " vehicleid = '" + rental.getVehicle().getId() + "'" );
 					}
+					if(rental.getCustomer() != null)
 					if( rental.getCustomer().getId() >= 0 ) {
 						if( condition.length() > 0 )
 							condition.append( " and" );
