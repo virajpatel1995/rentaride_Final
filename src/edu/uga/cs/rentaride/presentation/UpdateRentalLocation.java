@@ -45,9 +45,8 @@ public class UpdateRentalLocation extends HttpServlet
 
         public void doPost(HttpServletRequest req, HttpServletResponse res )
                 throws ServletException, IOException
-        { Template       resultTemplate = null;
+        {
             HttpSession    httpSession = null;
-            BufferedWriter toClient = null;
             LogicLayer     logicLayer = null;
             Session        session;
             String         ssid;

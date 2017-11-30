@@ -15,6 +15,8 @@ package edu.uga.cs.rentaride.presentation;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uga.cs.rentaride.entity.User;
+import edu.uga.cs.rentaride.entity.*;
 import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
@@ -73,45 +75,12 @@ public class UpdateVehicle
     public void doPost( HttpServletRequest req, HttpServletResponse res )
             throws ServletException, IOException
     {
-        Template       resultTemplate = null;
-        BufferedWriter toClient = null;
-        
-        String mileageS = null;
-        int mileage = 0;
-        String tag = null;
-        String location = null;
-        String maintenanceS = null;
-        boolean maintenance = false;
-        
         LogicLayer     logicLayer = null;
         HttpSession    httpSession;
         Session        session;
         String         ssid;
         Map<String,Object> root = new HashMap<String,Object>();
         String retMessage = "";
-        long vehicleId = 0;
-
-        // Load templates from the WEB-INF/templates directory of the Web app.
-        //
-        try {
-            resultTemplate = cfg.getTemplate( resultTemplateName );
-        }
-        catch (IOException e) {
-            throw new ServletException(
-                    "Can't load template in: " + templateDir + ": " + e.toString());
-        }
-
-        // Prepare the HTTP response:
-        // - Use the charset of template for the output
-        // - Use text/html MIME-type
-        //
-        toClient = new BufferedWriter(
-                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
-                );
-
-        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-
-
 
         // Session Tracking
         httpSession = req.getSession();
@@ -122,47 +91,100 @@ public class UpdateVehicle
             System.out.println("Connection: " + session.getConnection());
         } else
             System.out.println("ssid is null");
-
         session = SessionManager.getSessionById(ssid);
         if(session == null){
             RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
         }
         User user = session.getUser();
-        root.put("username", user.getUserName());
-
         logicLayer = session.getLogicLayer();
         if( logicLayer == null ) {
-        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+            RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),"LogicLayer is null" );
             return;
         }
+        String vehicleId =  null;
+        String localMake =  null;
+        String localModel =  null;
+        String localYear =  null;
+        String localRegistrationTag =  null;
+        String localMileage =  null;
+        String localLastServiced =  null;
+        String localStatus =  null;
+        String localCondition =  null;
+        String localRentalLocation =  null;
 
-        // Get the form parameters
-        //
-        mileageS = req.getParameter( "mileage" );
-        tag = req.getParameter( "tag" );
-        location = req.getParameter( "location" );
-        maintenanceS = req.getParameter( "maintenance" );
-
+        vehicleId = req.getParameter("pid");
+        localMake = req.getParameter("pMake");
+        localModel = req.getParameter("pModel");
+        localYear = req.getParameter("pYear");
+        localRegistrationTag = req.getParameter("pRegistrationTag");
+        localMileage = req.getParameter("pMileage");
+        localLastServiced = req.getParameter("pLastServiced");
+        localStatus = req.getParameter("pStatus");
+        localCondition = req.getParameter("pCondition");
+        localRentalLocation = req.getParameter("pRentalLocation");
+        System.out.println("Parsing: " +vehicleId +
+                " " + localMake +
+                " " + localModel +
+                " " + localYear +
+                " " + localRegistrationTag +
+                " " + localMileage +
+                " " + localLastServiced +
+                " " + localStatus +
+                " " + localCondition +
+                " " + localRentalLocation
+        );
         try{
-            mileage = Integer.valueOf(mileageS);
-            String Test = "True";
-            if (maintenanceS.equalsIgnoreCase(Test)) maintenance = true;
-            vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintenance);
-        }catch(Exception e) {
-        	e.printStackTrace();
+            long vid = Long.parseLong(vehicleId);
+            Vehicle vehicle = logicLayer.getVehicleById(vid);
+            vehicle.setMake (localMake);
+            vehicle.setModel (localModel);
+            vehicle.setYear (Integer.parseInt(localYear.replace(",","")));
+            vehicle.setRegistrationTag (localRegistrationTag);
+            vehicle.setMileage (Integer.parseInt(localMileage.replace(",","")));
+
+
+            try {
+                vehicle.setLastServiced((new SimpleDateFormat("MMM d,yyyy").parse(localLastServiced)));
+            }catch(ParseException e) {
+                System.out.println("Can't parse this date format: " + localLastServiced);
+                throw new RARException("Date not valid: "+ localLastServiced);
+            }
+
+
+            vehicle.setStatus (VehicleStatus.valueOf(localStatus));
+            vehicle.setCondition (VehicleCondition.valueOf(localCondition));
+            vehicle.setRentalLocation (logicLayer.getRentalLocationByName(localRentalLocation));
+
+            logicLayer.updateVehicle(vehicle);
+            retMessage = "Update successfully";
+        }catch(RARException e) {
+            e.printStackTrace();
+            retMessage = e.toString();
         }
+        res.setContentType("text/plain");
+        res.getWriter().write(retMessage);
 
 
-        try {
-            resultTemplate.process( root, toClient );
-            toClient.flush();
-        } 
-        catch (TemplateException e) {
-            throw new ServletException( "Error while processing FreeMarker template", e);
-        }
-
-        toClient.close();
+//        try{
+//            mileage = Integer.valueOf(mileageS);
+//            String Test = "True";
+//            if (maintenanceS.equalsIgnoreCase(Test)) maintenance = true;
+//            vehicleId = logicLayer.UpdateVehicle(mileage, tag, location, maintenance);
+//        }catch(Exception e) {
+//        	e.printStackTrace();
+//        }
+//
+//
+//        try {
+//            resultTemplate.process( root, toClient );
+//            toClient.flush();
+//        }
+//        catch (TemplateException e) {
+//            throw new ServletException( "Error while processing FreeMarker template", e);
+//        }
+//
+//        toClient.close();
 
   }
 }
