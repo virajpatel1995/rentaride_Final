@@ -6,6 +6,7 @@ import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.Administrator;
 import edu.uga.cs.rentaride.entity.Customer;
 import edu.uga.cs.rentaride.entity.User;
+import edu.uga.cs.rentaride.entity.UserStatus;
 import edu.uga.cs.rentaride.object.ObjectLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
@@ -41,6 +42,8 @@ public class LoginCtrl
         }else {
             throw new RARException("SessionManager.login: Invalid User Name or Password PLZ");
         }
+        
+        if(user.getUserStatus() == UserStatus.CANCELLED) throw new RARException("User is Cancelled");
         session.setUser(user);
         ssid = SessionManager.storeSession(session);
 

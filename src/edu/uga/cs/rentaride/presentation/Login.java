@@ -116,12 +116,21 @@ public class Login
             System.out.println( "Connection: " + session.getConnection() );
         } 
         catch( RARException e) {
+        		if(e.getMessage().equals("User is Cancelled")) {
+
+                    resultTemplateName = "loginRegister.ftl";
+                    msg = "User has cancelled their account";
+                    resultTemplate = cfg.getTemplate( resultTemplateName );
+                    toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
+                    res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+        			
+        		}else {
             resultTemplateName = "loginRegister.ftl";
             msg = "Invalid username or Password";
             resultTemplate = cfg.getTemplate( resultTemplateName );
             toClient = new BufferedWriter( new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() ) );
             res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
-
+        		}
         } catch ( Exception e ) {
             RARError.error( cfg, toClient, e );
         		return;
