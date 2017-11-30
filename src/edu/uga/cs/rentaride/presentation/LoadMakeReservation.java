@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,7 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.uga.cs.rentaride.RARException;
+import edu.uga.cs.rentaride.entity.RentalLocation;
 import edu.uga.cs.rentaride.entity.User;
+import edu.uga.cs.rentaride.entity.VehicleType;
+import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
@@ -74,8 +80,25 @@ public class LoadMakeReservation extends HttpServlet {
             RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
         }
+        LogicLayer logicLayer = session.getLogicLayer();
+
         User user = session.getUser();
         root.put("username", user.getUserName());
+
+        try {
+            List<RentalLocation> rentalLocationList = logicLayer.getAllRentalLocations();
+            List<VehicleType> vehicleTypeList = logicLayer.getAllVehicleTypes();
+            List<String> rlname = new ArrayList<>();
+            List<String> vtname = new ArrayList<>();
+            rentalLocationList.forEach(rentalLocation -> rlname.add(rentalLocation.getName()));
+            vehicleTypeList.forEach(vehicleType -> vtname.add(vehicleType.getName()));
+
+            root.put("rentalLocations", rlname);
+            root.put("vehicleTypeList", vtname);
+        } catch (RARException e) {
+            e.printStackTrace();
+        }
+
 
         // init the template
         try {
