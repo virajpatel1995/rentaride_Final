@@ -137,6 +137,25 @@ $(".editVehicle").click(function () {
         });
     });
 
+    $('#reservationBtn').click(function (event) {
+
+        var rl = $('#rlid').val();
+        var vtype = $('#vtid').val();
+        var putime = $('#pickUpid').val();
+        var length = $('#lengthId').val();
+
+
+        $.post('PlaceReservation', {
+            rentalLocation: rl,
+            vehicleType: vtype,
+            pickupTime: putime,
+            length: length
+
+        }, function (responseText) {
+            $('#UpdateProfileError').text(responseText);
+        });
+    });
+
     //**************Admin profile update
     $('#updateAdminProfile').click(function (event) {
 
