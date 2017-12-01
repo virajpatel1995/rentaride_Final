@@ -109,7 +109,7 @@ public class CancelReservation
         }
         // Get the form parameters
         //
-        reservation = req.getParameter( "reservationID" );
+        reservation = req.getParameter( "rid" );
 
         try{
            logicLayer.CancelReservation(reservation);

@@ -282,14 +282,14 @@
             <div class="container">
 
                 <form action="CreateVehicle" method="post">
-                    <input style="width:150px;" type="text" name="make" placeholder="Make"/>
-                    <input style="width:150px;" type="text" name="model" placeholder="Model"/>
-                    <input style="width:105px;" type="text" name="year" placeholder="Year"/>
-                    <input style="width:105px;" type="text" name="mileage" placeholder="Mileage"/>
-                    <input style="width:75px;" type="text" name="tag" placeholder="Tag #"/>
+                    <input style="width:150px;" type="text" name="make" placeholder="Make" required="required"/>
+                    <input style="width:150px;" type="text" name="model" placeholder="Model" required="required"/>
+                    <input style="width:105px;" type="text" name="year" placeholder="Year" required="required"/>
+                    <input style="width:105px;" type="text" name="mileage" placeholder="Mileage" required="required"/>
+                    <input style="width:75px;" type="text" name="tag" placeholder="Tag #" required="required"/>
                 <#if rentalLocationList?? && (vehicleTypeList ??)>
 
-                    <select class="buttonx" name="location">
+                    <select required class="buttonx" name="location">
                     	<option>-Select Location-</option>
                     <#list rentalLocationList as element>
                    
@@ -297,7 +297,7 @@
                     </#list>
                 </select>
                     
-                    <select class= "buttonx" name="type">
+                    <select required class= "buttonx" name="type">
                      	<option>-Select VehicleType-</option>
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
@@ -368,7 +368,7 @@
 
                 <form action="CreateVehicleType" method="post">
 
-                    <input type="text" name="vehicleType" placeholder="New Vehicle Type"/>
+                    <input type="text" name="vehicleType" placeholder="New Vehicle Type" required="required"/>
                     <button type="submit" name="action" class="btn btn-submit" >Add Vehicle Type</button>
 
                 </form>
@@ -388,7 +388,7 @@
                 <#--<#else >-->
                 <#--<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>-->
                 </#if>
-                       <input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
+                       <input type="text" name="newVehicleType" placeholder="New Vehicle Type" required="required"/>
                         <button type="submit" name="action" class="btn btn-submit">Update Vehicle Type</button>
 
                 </form>
@@ -413,8 +413,8 @@
                         <option value="${element}">${element}</option>
                     </#list>
                     </select>
-            <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
-            <input type="text" name="maxHours" placeholder="Max Hours"/>
+            <input type="text" name="hourlyPrice" placeholder="Hourly Price" required="required"/>
+            <input type="text" name="maxHours" placeholder="Max Hours" required="required"/>
           <button type="submit" name="action" class="btn btn-submit" >Set | Update Price | Hours</button>
 
          </form> 
