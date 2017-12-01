@@ -44,7 +44,7 @@ public class ReturnRentalCtrl {
     	modelRental = objectLayer.createRental();
     	modelRental.setId(rentalIDLong);
     	rentals = objectLayer.findRental(modelRental);
-    	objectLayer.
+    	objectLayer.returnRental(rentals.get(0));
     	
 //        VehicleType 		        vehicleType  = null;
 //        VehicleType                 modelVehicleType = null;
