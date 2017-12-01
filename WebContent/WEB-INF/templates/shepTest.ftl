@@ -71,5 +71,10 @@
  		Customer Username<input type="text" name="customerUser" placeholder="Customer Username"/>
          <input class="btn btn-submit" type="submit" value="Terminate Membership" />
          </form> 
+         
+          <form action="ReturnRental" method="post">
+ 		Rental ID<input type="text" name="rentalID" placeholder="Rental ID"/>
+         <input class="btn btn-submit" type="submit" value="Return Rental" />
+         </form> 
 </body>
 </html>

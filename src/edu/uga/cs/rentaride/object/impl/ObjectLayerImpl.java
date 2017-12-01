@@ -353,7 +353,10 @@ public class ObjectLayerImpl implements ObjectLayer {
 		persistence.cancelReservation(res);
 	}
 	
-	
+	@Override
+	public void returnRental(Rental ren) throws RARException{
+		persistence.returnRental(ren);
+	}
 
 
 
