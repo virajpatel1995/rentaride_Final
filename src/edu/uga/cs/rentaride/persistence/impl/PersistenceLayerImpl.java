@@ -432,4 +432,9 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 		reservationManager.cancel(res);
 	}
 	
+	@Override
+	public void returnRental(Rental ren) throws RARException{
+		rentalManager.returnRental(ren);
+	}
+	
 }
