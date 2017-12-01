@@ -186,6 +186,7 @@ public class ReservationManager {
 					int rentalLocationid;
 					int vehicleTypeid;
 					Reservation reservation1;
+					boolean canceled;
 
 
 					while( rs.next() ) {
@@ -195,7 +196,7 @@ public class ReservationManager {
 						id = rs.getInt(1);
 						pickupDate = rs.getTimestamp(2);
 						length = rs.getInt(3);
-						//skipped cancelled
+						canceled = rs.getBoolean(4);
 						customerid = rs.getInt(5);
 						rentalLocationid = rs.getInt(6);
 						vehicleTypeid = rs.getInt(7);
@@ -220,6 +221,7 @@ public class ReservationManager {
 
 						reservation1 = objectLayer.createReservation(pickupDate, length, modelVehicleType, modelRentalLocation, modelCustomer);
 						reservation1.setId(id);
+						reservation1.setCanceled(canceled);
 
 						reservations.add( reservation1);
 

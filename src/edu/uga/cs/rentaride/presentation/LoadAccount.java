@@ -104,14 +104,14 @@ public class LoadAccount extends HttpServlet {
                 for (RentalLocation rl: rentalLocationList) {
                     rlnames.add(rl.getName());
                 }
-                root.put("rentalLocationList", rlnames);
-                root.put("rentalLocations", rentalLocationList);
                 List<VehicleType> vehicleTypeList = logicLayer.getAllVehicleTypes();
                 List<String> vtnames = new ArrayList<String>();
                 for (VehicleType vt: vehicleTypeList) {
                     vtnames.add(vt.getName());
                 }
                 root.put("rentalLocationList", rlnames);
+                root.put("rentalLocationList", rlnames);
+                root.put("rentalLocations", rentalLocationList);
                 root.put("vehicleTypeList", vtnames);
 
                 List<Vehicle> vehicleList = logicLayer.getAllVehicle();
@@ -138,7 +138,26 @@ public class LoadAccount extends HttpServlet {
                     
         } else if(user instanceof Customer) {
         	resultTemplateName = customerPage;
-        	
+            List<RentalLocation> rentalLocationList = null;
+            try {
+                rentalLocationList = logicLayer.getAllRentalLocations();
+            List<String> rlnames = new ArrayList<String>();
+            for (RentalLocation rl: rentalLocationList) {
+                rlnames.add(rl.getName());
+            }
+            List<VehicleType> vehicleTypeList = logicLayer.getAllVehicleTypes();
+            List<String> vtnames = new ArrayList<String>();
+            for (VehicleType vt: vehicleTypeList) {
+                vtnames.add(vt.getName());
+            }
+            root.put("rentalLocationList", rlnames);
+            root.put("vehicleTypeList", vtnames);
+
+    		List<Reservation> reservationList = logicLayer.getReservations(user.getUserName());
+    		root.put("reservationList",reservationList);
+            } catch (RARException e) {
+                e.printStackTrace();
+            }
         	root.put("firstName", user.getFirstName());
     		root.put("lastName", user.getLastName());
     		root.put("email", user.getEmail());
@@ -147,6 +166,7 @@ public class LoadAccount extends HttpServlet {
     		Date date = ((Customer) user).getCreditCardExpiration();
     		String sdate = new SimpleDateFormat("MM-yyyy").format(date);
     		root.put("expire", sdate);
+
         }
         // init the template
         try {
