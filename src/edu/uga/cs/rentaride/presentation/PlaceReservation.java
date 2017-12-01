@@ -69,32 +69,7 @@ public class PlaceReservation
 
         
        
-        
-        
-        
-        // Load templates from the WEB-INF/templates directory of the Web app.
-        //
-//        try {
-//            resultTemplate = cfg.getTemplate( resultTemplateName );
-//        }
-//        catch (IOException e) {
-//            throw new ServletException(
-//                    "Can't load template in: " + templateDir + ": " + e.toString());
-//        }
-//
-//        // Prepare the HTTP response:
-//        // - Use the charset of template for the output
-//        // - Use text/html MIME-type
-//        //
-//        toClient = new BufferedWriter(
-//                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
-//                );
-//
-//        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
-
-
-        // Session Tracking
         httpSession = req.getSession();
         ssid = (String) httpSession.getAttribute("ssid");
 //        if (ssid != null) {
