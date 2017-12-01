@@ -30,7 +30,7 @@ private ObjectLayer objectLayer = null;
         Reservation                modelReservation = null;
         List<Reservation>          reservations= null;
         modelReservation = objectLayer.createReservation();
-        modelReservation.setId(Integer.parseInt(res));
+        modelReservation.setId(Long.parseLong(res));
         reservations = objectLayer.findReservation(modelReservation);
         if(reservations.size()<1) throw new RARException("Reservation does not exists");
         reservation = reservations.get(0);

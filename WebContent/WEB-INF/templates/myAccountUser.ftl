@@ -82,8 +82,8 @@
     Location:
 
       <select class="buttonx" name="type" id="rlid">
-          <#if rentalLocations??>
-  <#list rentalLocations as element>
+          <#if rentalLocationList??>
+  <#list rentalLocationList as element>
       <option value="${element}">${element}</option>
   </#list>
 
@@ -110,6 +110,36 @@
 <hr>
   
 </form>
+
+      <table class="table table-inverse">
+          <tr>
+              <td><b>Id</b></td>
+              <td><b>Pickup Time</b></td>
+              <td><b>Duration(hr)</b></td>
+              <td><b>Cancelled</b></td>
+              <td><b>Location</b></td>
+              <td><b>Vehicle Type</b></td>
+          <td><b>Action</b></td>
+
+          </tr>
+      <#if reservationList??>
+          <#list reservationList as r>
+              <tr>
+                  <td>${r.getId()}</td>
+                  <td>${r.getPickupTime()}</td>
+                  <td>${r.getLength()}</td>
+                  <td>${r.getCanceledStr()}</td>
+                  <td>${r.getRentalLocation().getName()}</td>
+                  <td>${r.getVehicleType().getName()}</td>
+              <td><button class="cancelReservation">Cancel</button></td>
+              <td><button class="rentReservation">Rent</button></td>
+
+
+              </tr>
+
+          </#list>
+      </#if>
+      </table>
 
 
 

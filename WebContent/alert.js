@@ -62,7 +62,7 @@ $(document).ready(function () {
         $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit');
     });
 
-    /**** UPDATE VEHICLE INFO **/
+    /******************************************************************************* TERMINATE CUSTOMER MEMBERSHIP **/
 $(".terminateCustomer").click(function () {
         var currentTD = $(this).parents('tr').find('td');
         // if ($(this).html() == 'Edit') {
@@ -167,7 +167,7 @@ $(".editVehicle").click(function () {
             $('#UpdateProfileError').text(responseText);
         });
     });
-
+    /******************************************************************************* PLACE RESERVATION **/
     $('#reservationBtn').click(function (event) {
 
         var rl = $('#rlid').val();
@@ -186,8 +186,35 @@ $(".editVehicle").click(function () {
             $('#UpdateProfileError').text(responseText);
         });
     });
+    /******************************************************************************* CANCEL RESERVATION **/
+    $('.cancelReservation').click(function (event) {
 
-    //**************Admin profile update
+        if ($(this).html() == 'Cancel') {
+
+            var currentTD = $(this).parents('tr').find('td');
+            var rowInfo = new Array();
+            $.each(currentTD, function () {
+                rowInfo.push($(this).text());
+            });
+
+            var reservationId = rowInfo[0];
+
+            console.log(rowInfo);
+
+            $.post('CancelReservation', {
+                rid: reservationId
+
+
+            }, function (responseText) {
+                $('#rentalLocationMsg').text(responseText);
+            });
+            $(this).attr("disabled", "disabled");
+        }
+        $(this).html($(this).html() == 'Cancel' ? 'Canceled' : 'Cancel');
+
+    });
+
+    /******************************************************************************* UPDATE ADMIN PROFILE **/
     $('#updateAdminProfile').click(function (event) {
 
         var firstName = $('#fName').val();
