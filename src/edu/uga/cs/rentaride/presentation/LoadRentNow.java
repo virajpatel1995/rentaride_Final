@@ -86,6 +86,22 @@ public class LoadRentNow extends HttpServlet {
         BufferedWriter toClient = new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), resultTemplate.getEncoding()));
         response.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
+        
+        
+        String location = request.getParameter("location");
+        String vt = request.getParameter("vt");
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         try {
             resultTemplate.process(root, toClient);
             toClient.flush();

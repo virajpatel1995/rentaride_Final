@@ -22,7 +22,6 @@
     background: white;
     margin: 20px 3px 0 0;" >
         
-       <h1>About</h1> 
 
         
  <div class="container">
