@@ -59,11 +59,11 @@ public class CommentManager {
 			else
 				throw new RARException("CommentManager.save: can't save an Comment: Text undefined");
 
-			if(comment.getDate() != null)
-				java.util.Date d = comment.getPickupTime();
+			if(comment.getDate() != null) {
+				java.util.Date d = comment.getDate();
 				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
 				//stmt.setDate(2,new java.sql.Date(comment.getDate().getTime()));
-			else
+			}else
 				stmt.setNull(2,  java.sql.Types.DATE);
 			
 			stmt.setLong(3,  comment.getRental().getId());
