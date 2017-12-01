@@ -212,3 +212,21 @@ $(".editVehicle").click(function () {
 
 
 
+
+
+function cancelMembership() {
+    alert("Thank You for being bad Customer! BYE Felicia");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
