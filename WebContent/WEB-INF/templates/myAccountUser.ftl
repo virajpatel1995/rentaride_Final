@@ -22,7 +22,9 @@
   
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">My Account</a></li>
-    <li><a data-toggle="tab" href="#menu1">My Rental</a></li>
+    <li><a data-toggle="tab" href="#menu1">My Rental(s)</a></li>
+        <li><a data-toggle="tab" href="#menu4">My Reservation(s)</a></li>
+
     <li><a data-toggle="tab" href="#menu2">Update Profile</a></li>
     <li><a data-toggle="tab" href="#menu3">Feedback</a></li>
     
@@ -33,7 +35,7 @@
             <h3>Welcome</h3>
          <!--***********CANCEL MEMBERSHIP*********-->   
          <form action="CancelMembership" method="post">
-         <input class="btn btn-submit" type="submit" value="Cancel Membership" />
+         <input class="btn btn-submit" type="submit" value="Cancel Membership"     onclick="cancelMembership()" />
          </form> 
          
          
@@ -65,6 +67,63 @@
         
     </div>
     
+    
+       <!-- **********MAKE | VIEW RESERVATION*********************** --> 
+    
+    <div id="menu4" class="tab-pane fade">
+      <h3>Make Reservations</h3>
+      
+  <div>
+  		
+    		
+
+<form action="LoadMakeReservation" method="post">
+  
+    Location:
+
+      <select class="buttonx" name="type" id="rlid">
+          <#if rentalLocations??>
+  <#list rentalLocations as element>
+      <option value="${element}">${element}</option>
+  </#list>
+
+          </#if>
+  </select>
+
+    
+    
+    Vehicle Type:
+
+      <select class="buttonx" name="type" id="vtid">
+  <#if vehicleTypeList??>
+      <#list vehicleTypeList as element>
+          <option value="${element}">${element}</option>
+      </#list>
+
+  </#if>
+  </select>
+    
+    
+    Pickup Date | Time: <input style="width: 175px;" type="datetime-local" id="pickUpid" required="required"placeholder="11/30/2017 10:30 AM" >
+    Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required">  <br>
+    <button type="submit" name="action" class="btn btn-submit" id="reservationBtn"  >Make Reservation</button>
+<hr>
+  
+</form>
+
+
+
+
+
+
+
+         
+         
+</div>
+        
+        
+    </div>
+    
      <!-- ********Update Profile************** --> 
    <div id="menu2" class="tab-pane fade">
             <h3>Update Profile</h3>
@@ -80,20 +139,21 @@
 			Last Name<input type="text" id="lName" value="${lastName}" name="lName" placeholder="lastName"/>
          </#if>
 			<#if email??>
-			Email<input type="text" id="email" value="${email}" name="email" placeholder="email"/>
+			Email<input style="width:230px;" type="text" id="email" value="${email}" name="email" placeholder="email"/>
          </#if>
 
 			<#if address??>
-			Address<input type="text" id="address" value="${address}" name="address" placeholder="address"/>
+			Address<input style="width:280px;" type="text" id="address" value="${address}" name="address" placeholder="address"/><br>
          </#if>
 			<#if card??>
-			Credit Card Number<input type="text" id="card" value="${card}" name="credit" placeholder="Credit Card #"/>
+			Credit Card Number<input style="width:170px;"type="password" id="card" value="${card}" name="credit" placeholder="Credit Card #"/>
          </#if>
 			<#if expire??>
-			Expire Date <input type="text" id="expire" value="${expire}" name="expire"/>
+			Expire Date <input type="text" id="expire" value="${expire}" name="expire"/><br>
          </#if>
 
          <input id="updateProfilebtn" class="btn btn-submit" type="button" value="Update Profile" />
+
          <#--</#if>-->
          </form>
                 <p style="float: left color:Red" id="UpdateProfileError"></p>
