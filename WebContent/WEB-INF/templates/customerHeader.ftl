@@ -71,15 +71,8 @@
 				<form action="LoadRentNow" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="RentNow">Rent</button>
 				</form>
-				</li>
-                
-               
-				 <li>
-				<form action="LoadMakeReservation" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="Make Reservation">Make Reservation</button>
-				</form>
-				</li>
-				
+				</li>            
+
 				 <li>
 				<form action="LoadAbout" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="About">About</button>

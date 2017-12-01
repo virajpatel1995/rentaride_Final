@@ -241,7 +241,7 @@
                     <input style="width: 70px;" name="locationZip" type="text" placeholder="Zip" required="required">
                     <input style="width: 100px;" name="locationState" type="text" placeholder="State" required="required">
                     <input style="width: 70px;" name="locationCapacity" type="text" placeholder="Capacity" required="required">
-                    <button type="submit" name="action" class="buttonx" onclick="myFunctionx()">Add Rental Location </button>
+                    <button type="submit" name="action" class="btn btn-submit" onclick="myFunctionx()">Add Rental Location </button>
 
 
                     <div style="float: left" id="rentalLocationMsg"></div>
@@ -369,7 +369,7 @@
                 <form action="CreateVehicleType" method="post">
 
                     <input type="text" name="vehicleType" placeholder="New Vehicle Type"/>
-                    <button type="submit" name="action" class="buttonx" >Add Vehicle Type</button>
+                    <button type="submit" name="action" class="btn btn-submit" >Add Vehicle Type</button>
 
                 </form>
 
@@ -389,7 +389,7 @@
                 <#--<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>-->
                 </#if>
                        <input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
-                        <button type="submit" name="action" class="buttonx" >Update Vehicle Type</button>
+                        <button type="submit" name="action" class="btn btn-submit">Update Vehicle Type</button>
 
                 </form>
             </div>
@@ -415,7 +415,7 @@
                     </select>
             <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
             <input type="text" name="maxHours" placeholder="Max Hours"/>
-          <button type="submit" name="action" class="buttonx" >Set | Update Price | Hours</button>
+          <button type="submit" name="action" class="btn btn-submit" >Set | Update Price | Hours</button>
 
          </form> 
          
