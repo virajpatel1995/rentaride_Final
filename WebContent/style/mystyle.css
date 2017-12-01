@@ -100,14 +100,14 @@ margin-bottom: 10px;
 }
 
 input {
-text-align: center;
+text-align: left;
 background-color: whitesmoke;
 border: 2px solid transparent;
 border-radius: 3px;
 font-size: 16px;
 font-weight: 200;
 padding: 10px 0;
-width: 250px;
+width: 150px;
 transition: border .5s;
 }
 
@@ -1252,7 +1252,6 @@ height: 50px;
        -o-transition-duration: 0.8s;
           transition-duration: 0.8s;
 }
-
 
 
 

@@ -16,14 +16,14 @@
 
 
     <script>
-        function myFunction() {
+        function myFunctionx() {
             alert("Added Location Successfully")
         }
         
         
         
         function myFunction() {
-  var input, filter, table, tr, td, i;
+       var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
@@ -39,6 +39,46 @@
     }       
   }
 }
+     
+        
+           function myFunctionS() {
+       var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}        
+              
+                    
+        
+            function myFunctionV() {
+       var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput3");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable3");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}        
+          
         
         
         
@@ -142,7 +182,7 @@
                 <form action="UpdateMembershipPrice" method="post">
                 <#if mprice?? && (latefee??)>
                     Membership Price:
-                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"onkeypress="return event.charCode >= 48" min="1" /> <br>
+                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"onkeypress="return event.charCode >= 48" min="1" />
                     Late Fee:
                     <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"onkeypress="return event.charCode >= 48" min="1"/>
                 <#else >
@@ -167,10 +207,14 @@
 
                 <form action="UpdateAdmin" method="post">
 	<#if firstName?? && (lastName??) && (email??) && (address??)>
-			First Name<input type="text" value="${firstName}" id="fName" name="fName" placeholder="fristName"/>
-			Last Name<input type="text" value="${lastName}" id="lName" name="lName" placeholder="lastName"/>
-			Email<input type="text" value="${email}" id="email" name="email" placeholder="email"/>
-			Address<input type="text" value="${address}" id="address" name="address" placeholder="address"/>
+			First Name
+			<input type="text" value="${firstName}" id="fName" name="fName" placeholder="fristName"/>
+			Last Name
+			<input type="text" value="${lastName}" id="lName" name="lName" placeholder="lastName"/><br>
+			Email
+			<input type="text" value="${email}" id="email" name="email" placeholder="email"/>
+			Address
+			<input style="width:500px;" type="text" value="${address}" id="address" name="address" placeholder="address"/>
 			
          <input class="btn btn-submit" id="updateAdminProfile" type="button" value="Update Profile" />
          </#if>
@@ -189,21 +233,24 @@
             <div class="container">
 
                 <form action="CreateRentalLocation" method="post">
-                    Location Name:<input name="locationName" type="text" placeholder="Name" required="required">
-                    Address:<input name="locationAddress" type="text" placeholder="Address" required="required"> <br>
-                    Zip:<input name="locationZip" type="text" placeholder="ZipCode" required="required">
-                    State:<input name="locationState" type="text" placeholder="State" required="required"><br>
-                    Capacity:<input name="locationCapacity" type="text" placeholder="Capacity" required="required">
-
-                    <button type="submit" name="action" class="buttonx" onclick="myFunction()">Add Rental
-                        Location
-                    </button>
+                
+                   
+                    
+                    <input name="locationName" type="text" placeholder="Location Name" required="required">
+                    <input name="locationAddress" type="text" placeholder="Address" required="required">
+                    <input style="width: 70px;" name="locationZip" type="text" placeholder="Zip" required="required">
+                    <input style="width: 100px;" name="locationState" type="text" placeholder="State" required="required">
+                    <input style="width: 70px;" name="locationCapacity" type="text" placeholder="Capacity" required="required">
+                    <button type="submit" name="action" class="buttonx" onclick="myFunctionx()">Add Rental Location </button>
 
 
                     <div style="float: left" id="rentalLocationMsg"></div>
                 </form>
+                
+                <hr>
+          Search:  <input type="text" id="myInput2" onkeyup="myFunctionS()" placeholder="Search for names.." title="Type in a Location name">
 
-            <table class="table table-inverse">
+            <table id="myTable2" class="table table-inverse">
                 <tr>
                     <td><b>Id</b></td>
                     <td><b>Name</b></td>
@@ -235,26 +282,29 @@
             <div class="container">
 
                 <form action="CreateVehicle" method="post">
-                    Make:<input type="text" name="make" placeholder="make"/>
-                    Model:<input type="text" name="model" placeholder="model"/> <br>
-                    Year:<input type="text" name="year" placeholder="year"/>
-                    Mileage:<input type="text" name="mileage" placeholder="mileage"/><br>
-                    Tag:<input type="text" name="tag" placeholder="tag"/>
+                    <input style="width:150px;" type="text" name="make" placeholder="Make"/>
+                    <input style="width:150px;" type="text" name="model" placeholder="Model"/>
+                    <input style="width:105px;" type="text" name="year" placeholder="Year"/>
+                    <input style="width:105px;" type="text" name="mileage" placeholder="Mileage"/>
+                    <input style="width:75px;" type="text" name="tag" placeholder="Tag #"/>
                 <#if rentalLocationList?? && (vehicleTypeList ??)>
 
-                    Location:<select name="location">
+                    <select class="buttonx" name="location">
+                    	<option>-Select Location-</option>
                     <#list rentalLocationList as element>
+                   
                         <option value="${element}">${element}</option>
                     </#list>
-                </select><br>
-                    Vehicle Type:
-                    <select name="type">
+                </select>
+                    
+                    <select class= "buttonx" name="type">
+                     	<option>-Select VehicleType-</option>
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
                 </select>
                 <#else>
-                    Location:<input type="text" name="location" placeholder="location"/><br>
+                    <input type="text" name="location" placeholder="Location"/>
                     Type:<input type="text" name="type" placeholder="type"/>
 
                 </#if>
@@ -264,7 +314,12 @@
 
                 </form>
 
-                <table class="table table-inverse">
+
+ 					<hr>
+          Search:  <input type="text" id="myInput3" onkeyup="myFunctionV()" placeholder="Search for Vehicle.." title="Type in a Location name">
+          
+          
+                <table id="myTable3" class="table table-inverse">
                     <tr>
                         <td><b>Id</b></td>
                         <td><b>Make</b></td>
@@ -305,24 +360,27 @@
 
        
 
-        <!-- ******ADD | UPDATE VEHICLE TYPE**************** -->
+        <!-- ******CREATE | UPDATE VEHICLE TYPE**************** -->
         <div id="menu5" class="tab-pane fade">
-            <h3>Create | Update Vehicle</h3>
+            <h3>Create Vehicle Type</h3>
 
             <div class="container">
 
                 <form action="CreateVehicleType" method="post">
 
-                    New Vehicle Type:<input type="text" name="vehicleType" placeholder="Vehicle Type"/>
-                    <input class="btn btn-submit" type="submit" value="Add Type"/>
+                    <input type="text" name="vehicleType" placeholder="New Vehicle Type"/>
+                    <button type="submit" name="action" class="buttonx" >Add Vehicle Type</button>
+
                 </form>
 
+			<hr>
+			            <h3>Update Vehicle Type</h3>
 
                 <form action="UpdateVehicleType" method="post">
 
-                    Old Vehicle Type:
                 <#if vehicleTypeList ??>
-                    <select name="oldVehicleType">
+                    <select class="buttonx" name="oldVehicleType">
+                    <option>-Old Vehicle Type-</option>
                         <#list vehicleTypeList as element>
                             <option value="${element}">${element}</option>
                         </#list>
@@ -330,8 +388,9 @@
                 <#--<#else >-->
                 <#--<input type="text" name="oldVehicleType" placeholder="Old Vehicle Type"/>-->
                 </#if>
-                    New Vehicle Type:<input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
-                    <input class="btn btn-submit" type="submit" value="Update Type"/>
+                       <input type="text" name="newVehicleType" placeholder="New Vehicle Type"/>
+                        <button type="submit" name="action" class="buttonx" >Update Vehicle Type</button>
+
                 </form>
             </div>
         </div>
@@ -348,14 +407,16 @@
 
             Vehicle Type:
                     <#--<input type="text" name="vehicleType" placeholder="Vehicle Type"/>-->
-                    <select name="vehicleType">
+                    <select class="buttonx" name="vehicleType">
+                    <option>-Select Vehicle Type-</option>
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
                     </select>
-            Hourly Price: <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
-            Max Hours Available: <input type="text" name="maxHours" placeholder="Max Hours"/>
-         <input class="btn btn-submit" type="submit" value="Set|Update" />
+            <input type="text" name="hourlyPrice" placeholder="Hourly Price"/>
+            <input type="text" name="maxHours" placeholder="Max Hours"/>
+          <button type="submit" name="action" class="buttonx" >Set | Update Price | Hours</button>
+
          </form> 
          
             </div>
