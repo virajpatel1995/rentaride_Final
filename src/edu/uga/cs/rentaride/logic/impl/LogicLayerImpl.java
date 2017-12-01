@@ -319,8 +319,8 @@ public class LogicLayerImpl
     }
 
 	@Override
-	public long returnRental(String rentalID) throws RARException {
+	public long returnRental(long rentalIDLong) throws RARException {
 		ReturnRentalCtrl ctrlReturnRental = new ReturnRentalCtrl(objectLayer);
-		return ctrlReturnRental.returnRental(rentalID);
+		return ctrlReturnRental.returnRental(rentalIDLong);
 	}
 }

@@ -34,7 +34,7 @@ public class ReturnRental
 {
     private static final long serialVersionUID = 1L;
     static  String         templateDir = "WEB-INF/templates";
-    static  String         resultTemplateName = "index.ftl";
+   // static  String         resultTemplateName = "index.ftl";
 
     private Configuration  cfg; 
 
@@ -67,35 +67,35 @@ public class ReturnRental
         
         // Load templates from the WEB-INF/templates directory of the Web app.
         //
-        try {
-            resultTemplate = cfg.getTemplate( resultTemplateName );
-        }
-        catch (IOException e) {
-            throw new ServletException(
-                    "Can't load template in: " + templateDir + ": " + e.toString());
-        }
-
-        // Prepare the HTTP response:
-        // - Use the charset of template for the output
-        // - Use text/html MIME-type
-        //
-        toClient = new BufferedWriter(
-                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
-                );
-
-        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
+//        try {
+//            resultTemplate = cfg.getTemplate( resultTemplateName );
+//        }
+//        catch (IOException e) {
+//            throw new ServletException(
+//                    "Can't load template in: " + templateDir + ": " + e.toString());
+//        }
+//
+//        // Prepare the HTTP response:
+//        // - Use the charset of template for the output
+//        // - Use text/html MIME-type
+//        //
+//        toClient = new BufferedWriter(
+//                new OutputStreamWriter( res.getOutputStream(), resultTemplate.getEncoding() )
+//                );
+//
+//        res.setContentType("text/html; charset=" + resultTemplate.getEncoding());
 
 
 
         // Session Tracking
         httpSession = req.getSession();
         ssid = (String) httpSession.getAttribute("ssid");
-        if (ssid != null) {
-            System.out.println("Already have ssid: " + ssid);
-            session = SessionManager.getSessionById(ssid);
-            System.out.println("Connection: " + session.getConnection());
-        } else
-            System.out.println("ssid is null");
+//        if (ssid != null) {
+//            System.out.println("Already have ssid: " + ssid);
+//            session = SessionManager.getSessionById(ssid);
+//            System.out.println("Connection: " + session.getConnection());
+//        } else
+//            System.out.println("ssid is null");
         
         session = SessionManager.getSessionById(ssid);
         if(session == null){
@@ -103,25 +103,27 @@ public class ReturnRental
             return;
         }
         logicLayer = session.getLogicLayer();
-        User user = session.getUser();
-        root.put("username", user.getUserName());
-
-        if( logicLayer == null ) {
-        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
-            return;
-        }
+//        User user = session.getUser();
+//        root.put("username", user.getUserName());
+//
+//        if( logicLayer == null ) {
+//        		RARError.error( cfg, toClient, "Session expired or illegal; please log in" );
+//            return;
+//        }
 
         // Get the form parameters
         //
-        String msg = null;
+        
         
         
         
         rentalID = req.getParameter("rentalID");
+        String msg = null;
+        long rentalIDLong = Long.valueOf(rentalID);
         
         try{
             
-        	id = logicLayer.returnRental(rentalID);
+        	id = logicLayer.returnRental(rentalIDLong);
             
             msg = "Your Rental has been successfully Returned";
         }catch(Exception e) {
