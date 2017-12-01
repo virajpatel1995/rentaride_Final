@@ -223,8 +223,8 @@ public class RentalManager {
  *  columnIndex need to match column index in database
  */
 						id = rs.getInt(1);
-						pickupDate = rs.getDate(2);
-						returnDate = rs.getDate(3);
+						pickupDate = rs.getTimestamp(2);
+						returnDate = rs.getTimestamp(3);
 						late = rs.getBoolean(4);
 						charges = rs.getInt(5);
 						customerid = rs.getInt(6);

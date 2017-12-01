@@ -55,11 +55,13 @@ public class PlaceRentalCtrl {
         if(!vehicle.getRentalLocation().getName().equals(reservation.getRentalLocation().getName())) throw new RARException("Vehicle is not at the correct Rental Location");
         if(!(vehicle.getStatus() ==VehicleStatus.INLOCATION))throw new RARException("Vehicle is currently in rental");
         
+        
         java.util.Date d = reservation.getPickupTime();
+        System.out.println(new Date().getTime());
+        System.out.println(d.getTime());
         
         
-        
-        if((d.getTime() + 864000000 < new Date().getTime()) || (d.getTime() > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
+        if((d.getTime() + 1800000 < new Date().getTime()) || (d.getTime() - 1800000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
         
         
         Rental               modelRental= null;

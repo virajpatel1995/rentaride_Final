@@ -31,6 +31,7 @@ private ObjectLayer objectLayer = null;
         
 
         if( rentals.size() > 0 ) {
+        		
 
     			Comment modelComment = objectLayer.createComment();
             modelComment.setRental(rentals.get(0));
