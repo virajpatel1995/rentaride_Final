@@ -27,10 +27,12 @@
  <div class="container">
      <br>
     
-  <h1>It's time to Rent a Car</h1>
+  <h1>Vehicles Man!!!!!!</h1>
   
   </div>
 </div>
+
+
      
 
 
@@ -42,6 +44,7 @@
 					 Designed by <a href="http://www.webdomus.net/">Team 10 </a> 
 				</div>
 			</div>
+
 
 <script type="text/javascript" src="source/bootstrap-3.3.6-dist/js/jquery.js"></script>
 <script type="text/javascript" src="source/js/isotope.js"></script>

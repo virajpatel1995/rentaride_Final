@@ -27,10 +27,11 @@
  <div class="container">
      <br>
     
-  <h1>It's time to Rent a Car</h1>
+  <h1>Locations dude!</h1>
   
   </div>
 </div>
+
      
 
 
