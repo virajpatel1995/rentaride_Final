@@ -354,7 +354,7 @@ public class ObjectLayerImpl implements ObjectLayer {
 	}
 	
 	@Override
-	public void retrunRental(Rental ren) throws RARException{
+	public void returnRental(Rental ren) throws RARException{
 		persistence.returnRental(ren);
 	}
 
