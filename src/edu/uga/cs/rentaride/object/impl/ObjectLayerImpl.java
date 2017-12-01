@@ -358,6 +358,10 @@ public class ObjectLayerImpl implements ObjectLayer {
 		persistence.returnRental(ren);
 	}
 
+	@Override
+	public void setLate(Rental ren) throws RARException{
+		persistence.setLate(ren);
+	}
 
 
 	

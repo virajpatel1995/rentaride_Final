@@ -48,11 +48,30 @@ public class ReturnRentalCtrl {
     	if( !(rentals.size() > 0)) {
     		throw new RARException("A Rental with this ID does not exist: " + rentalID);
     	}
-    	objectLayer.returnRental(rentals.get(0));
+    	
+    rental = rentals.get(0);
+    	
+    boolean late = false;
+    long t1 = rental.getPickupTime().getTime();
+    long t2 = new Date().getTime();
+    long charges = ((t2-t1)/3600000)*rental.getVehicle().getVehicleType().getHourlyPrices().get(0).getPrice();
+    if((t2-t1)/3600000 > rental.getVehicle().getVehicleType().getHourlyPrices().get(0).getMaxHours()) {
+    		late = true;
+    		charges += (t2-t1)/3600000 *objectLayer.findRentARideParams().getLateFee();
+    }
+    		
+    
+    	rental.setCharges((int)charges);
+    	objectLayer.storeRental(rental);
+    	
+    	objectLayer.setLate(rental);
+    	objectLayer.returnRental(rental);
     	
     	Vehicle vehicle = rental.getVehicle();
     	vehicle.setStatus(VehicleStatus.INLOCATION);
     	objectLayer.storeVehicle(vehicle);
+    	
+    	
        
     	return rental.getId();
 
