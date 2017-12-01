@@ -14,6 +14,9 @@ import edu.uga.cs.rentaride.entity.RentalLocation;
 import edu.uga.cs.rentaride.entity.Reservation;
 import edu.uga.cs.rentaride.entity.Vehicle;
 import edu.uga.cs.rentaride.entity.VehicleType;
+import edu.uga.cs.rentaride.entity.impl.HourlyPriceImpl;
+import edu.uga.cs.rentaride.entity.impl.RentalImp;
+import edu.uga.cs.rentaride.entity.impl.ReservationImpl;
 import edu.uga.cs.rentaride.persistence.PersistenceLayer;
 import edu.uga.cs.rentaride.object.ObjectLayer;
 
@@ -213,7 +216,9 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 
 	@Override
 	public List<Reservation> restoreCustomerReservation(Customer customer) throws RARException {
-		return customer.getReservations();
+		Reservation reservation = new ReservationImpl();
+		reservation.setCustomer(customer);
+		return reservationManager.restore(reservation);
 	}
 
 	@Override
@@ -340,7 +345,9 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 
 	@Override
 	public List<HourlyPrice> restoreVehicleTypeHourlyPrice(VehicleType vehicleType) throws RARException {
-		return vehicleType.getHourlyPrices();
+		HourlyPrice hourlyPrice = new HourlyPriceImpl();
+		hourlyPrice.setVehicleType(vehicleType);
+		return hourlyPriceManager.restore(hourlyPrice);
 	}
 
 	@Override
@@ -410,7 +417,9 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 
 	@Override
 	public List<Rental> restoreVehicleRental(Vehicle vehicle) throws RARException {
-		return vehicle.getRentals();
+		Rental rental = new RentalImp();
+		rental.setVehicle(vehicle);
+		return rentalManager.restore(rental);
 	}
 
 	@Override
