@@ -436,5 +436,8 @@ public class PersistenceLayerImpl implements PersistenceLayer {
 	public void returnRental(Rental ren) throws RARException{
 		rentalManager.returnRental(ren);
 	}
-	
+	@Override
+	public void setLate(Rental ren) throws RARException{
+		rentalManager.setLate(ren);
+	}
 }

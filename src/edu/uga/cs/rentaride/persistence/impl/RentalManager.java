@@ -45,6 +45,24 @@ public class RentalManager {
 		}
 	}
 	
+	public void setLate(Rental ren) throws RARException{
+		String update = "update rental set late = 1 where id = ?";
+		java.sql.PreparedStatement stmt = null;
+		int inscnt;
+		long reservationId;
+		try {
+		stmt = (java.sql.PreparedStatement) conn.prepareStatement(update);
+		
+		
+		stmt.setLong(1, ren.getId());
+		inscnt = stmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+			throw new RARException("RentalManager.save: Failed to save a Rental: " + e);
+	
+		}
+	}
+	
 	public void store(Rental rental) throws RARException{
 		String insertRentalSql = "insert into rental (pickup, dropoff, late, charges, reservationid, vehicleid, userid) values ( ?, ?, ?, ?, ?, ?, ? )";
 		String updateRentalSql = "update rental  set  pickup = ?, dropoff = ?, late = ?, charges = ?, reservationid = ?, vehicleid = ?, userid = ? where id = ?";
