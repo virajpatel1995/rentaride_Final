@@ -193,7 +193,7 @@ public class ReservationManager {
  *  columnIndex need to match column index in database
  */
 						id = rs.getInt(1);
-						pickupDate = rs.getDate(2);
+						pickupDate = rs.getTimestamp(2);
 						length = rs.getInt(3);
 						//skipped cancelled
 						customerid = rs.getInt(5);

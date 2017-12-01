@@ -91,11 +91,7 @@
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="ShepTest">ShepTest</button>
 				</form>
 				</li>
-				<li>
-				<form action="LoadJacobTest" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="JacobTest">JacobTest</button>
-				</form>
-				</li>
+				
 
 			</ul>
 		</div>
