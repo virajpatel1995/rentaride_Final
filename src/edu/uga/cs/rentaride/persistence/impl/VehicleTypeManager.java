@@ -177,8 +177,6 @@ public class VehicleTypeManager {
 		
 	}//delete
 
-	public List<HourlyPrice> restoreByHourlyPrice(){
 
-	}
 	
 }//VehicleTypeManager
