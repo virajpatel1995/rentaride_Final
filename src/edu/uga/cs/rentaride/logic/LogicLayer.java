@@ -62,5 +62,5 @@ public interface LogicLayer
     List<Reservation> getAllReservation() throws RARException;
 
     List<Comment> getAllComment() throws RARException;
-	public long returnRental(String rentalID) throws RARException;
+	public long returnRental(long rentalIDLong) throws RARException;
 }

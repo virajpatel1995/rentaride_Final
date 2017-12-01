@@ -34,19 +34,18 @@ public class ReturnRentalCtrl {
         this.objectLayer = objectModel;
     }
     
-    public long returnRental( String rentalID)
+    public long returnRental( long rentalIDLong)
             throws RARException
     { 
     	Rental						rental = null;
     	Rental						modelRental = null;
     	List<Rental>				rentals = null;
-    	long 						rentalIDLong = Long.parseLong(rentalID);
     	// check if a club with this name already exists (name is unique)
     	modelRental = objectLayer.createRental();
     	modelRental.setId(rentalIDLong);
     	rentals = objectLayer.findRental(modelRental);
     	if( !(rentals.size() > 0)) {
-    		throw new RARException("A Rental with this ID does not exist: " + rentalID);
+    		throw new RARException("A Rental with this ID does not exist: " + rentalIDLong);
     	}
     	
     rental = rentals.get(0);
