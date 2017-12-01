@@ -1,5 +1,6 @@
 package edu.uga.cs.rentaride.persistence.impl;
 
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,7 +60,9 @@ public class CommentManager {
 				throw new RARException("CommentManager.save: can't save an Comment: Text undefined");
 
 			if(comment.getDate() != null)
-				stmt.setDate(2,new java.sql.Date(comment.getDate().getTime()));
+				java.util.Date d = comment.getPickupTime();
+				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
+				//stmt.setDate(2,new java.sql.Date(comment.getDate().getTime()));
 			else
 				stmt.setNull(2,  java.sql.Types.DATE);
 			
