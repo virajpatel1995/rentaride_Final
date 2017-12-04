@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.uga.cs.rentaride.RARException;
 import edu.uga.cs.rentaride.entity.User;
+import edu.uga.cs.rentaride.entity.Vehicle;
+import edu.uga.cs.rentaride.entity.VehicleStatus;
+import edu.uga.cs.rentaride.logic.LogicLayer;
 import edu.uga.cs.rentaride.session.Session;
 import edu.uga.cs.rentaride.session.SessionManager;
 import freemarker.template.Configuration;
@@ -74,8 +79,10 @@ public class LoadRentNow extends HttpServlet {
             RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8")),"Session expired or illegal; please log in" );
             return;
         }
+        LogicLayer logicLayer = session.getLogicLayer();
         User user = session.getUser();
         root.put("username", user.getUserName());
+
 
         // init the template
         try {
@@ -88,20 +95,30 @@ public class LoadRentNow extends HttpServlet {
 
         
         
-        String location = request.getParameter("location");
+        String location = request.getParameter("rl");
         String vt = request.getParameter("vt");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        String resid= request.getParameter("rid");
+
+
+        System.out.println(location);
+        System.out.println(vt);
+
+        try {
+            List<Vehicle> vehicleList = logicLayer.getVehicleByLocationAndType(location, vt);
+            for (int i = 0; i < vehicleList.size(); i++) {
+                if(vehicleList.get(i).getStatus()== VehicleStatus.INRENTAL) {
+                    vehicleList.remove(i);
+                    i--;
+                }
+            }
+            root.put("vehicleList", vehicleList);
+            root.put("rid", resid);
+        } catch (RARException e) {
+            e.printStackTrace();
+            RARError.error(cfg, new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8")), "Session expired or illegal; please log in");
+        }
+
+
         try {
             resultTemplate.process(root, toClient);
             toClient.flush();

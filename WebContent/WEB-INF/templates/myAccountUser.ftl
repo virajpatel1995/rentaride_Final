@@ -124,7 +124,9 @@
           </tr>
       <#if reservationList??>
           <#list reservationList as r>
+
               <tr>
+          <form action="LoadRentNow" method="post">
                   <td>${r.getId()}</td>
                   <td>${r.getPickupTime()}</td>
                   <td>${r.getLength()}</td>
@@ -132,7 +134,12 @@
                   <td>${r.getRentalLocation().getName()}</td>
                   <td>${r.getVehicleType().getName()}</td>
               <td><button class="cancelReservation">Cancel</button></td>
-              <td><button class="rentReservation">Rent</button></td>
+              <td><button >Rent</button></td>
+              <td><input type="hidden" value="${r.getRentalLocation().getName()}" name="rl"/>
+              <td><input type="hidden" value="${r.getVehicleType().getName()}" name="vt"/>
+              <td><input type="hidden" value="${r.getId()}" name="rid"/>
+
+          </form>
 
 
               </tr>
