@@ -28,7 +28,8 @@
      <br>
      <br>
   <h1>Amigo ERROR! Go to Different Page Dude.</h1>
-  
+	 <p>${reason}</p>
+
 </div>
 
         
