@@ -234,6 +234,41 @@ $(".editVehicle").click(function () {
             $('#UpdateProfileErrorAdmin').text(responseText);
         });
     });
+
+
+    /******************************************************************************* Rent RESERVATION **/
+    $('.rentReservation').click(function (event) {
+
+        if ($(this).html() == 'Rent') {
+
+            var currentTD = $(this).parents('tr').find('td');
+            var rowInfo = new Array();
+            $.each(currentTD, function () {
+                rowInfo.push($(this).text());
+            });
+
+            var Location = rowInfo[4];
+            var vehicleType = rowInfo[5];
+
+            console.log(rowInfo);
+
+            $.post('LoadRentNow', {
+                location: Location,
+                vt: vehicleType
+
+            }, function (responseText) {
+                $('#rentalLocationMsg').text(responseText);
+            });
+            $(this).attr("disabled", "disabled");
+        }
+        $(this).html($(this).html() == 'Rent' ? 'Rented' : 'Rent');
+
+    });
+
+
+
+
+
 });
     
 
@@ -245,38 +280,6 @@ function cancelMembership() {
     alert("Thank You for being bad Customer! BYE Felicia");
 }
 
-
-
-
-
-/******************************************************************************* Rent RESERVATION **/
-$('.rentReservation').click(function (event) {
-
-    if ($(this).html() == 'Rent') {
-
-        var currentTD = $(this).parents('tr').find('td');
-        var rowInfo = new Array();
-        $.each(currentTD, function () {
-            rowInfo.push($(this).text());
-        });
-
-        var Location = rowInfo[4];
-        var vehicleType = rowInfo[5];
-
-        console.log(rowInfo);
-
-        $.post('LoadRentNow', {
-            location: Location,
-            vt: vehicleType
-
-        }, function (responseText) {
-            $('#rentalLocationMsg').text(responseText);
-        });
-        $(this).attr("disabled", "disabled");
-    }
-    $(this).html($(this).html() == 'Rent' ? 'Rented' : 'Rent');
-
-});
 
 
 
