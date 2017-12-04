@@ -29,7 +29,7 @@ public class Logout
     private static final long serialVersionUID = 1L;
     
     static  String  templateDir = "WEB-INF/templates";
-    static  String  resultTemplateName = "loginRegister.ftl";
+    static  String  resultTemplateName = "index.html";
 
     private Configuration  cfg; 
 
