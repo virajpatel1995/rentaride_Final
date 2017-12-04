@@ -29,6 +29,111 @@
     
   <h1>It's time to Rent a Car</h1>
   
+  
+  
+  <!-- **********MAKE | VIEW RESERVATION*********************** --> 
+    
+    <div id="menu4" class="tab-pane fade">
+      <h3>Make Reservations</h3>
+      
+  <div>
+  		
+    		
+
+<form action="LoadMakeReservation" method="post">
+  
+    Location:
+
+      <select class="buttonx" name="type" id="rlid">
+          <#if rentalLocationList??>
+  <#list rentalLocationList as element>
+      <option value="${element}">${element}</option>
+  </#list>
+
+          </#if>
+  </select>
+
+    
+    
+    Vehicle Type:
+
+      <select class="buttonx" name="type" id="vtid">
+  <#if vehicleTypeList??>
+      <#list vehicleTypeList as element>
+          <option value="${element}">${element}</option>
+      </#list>
+
+  </#if>
+  </select>
+    
+    
+    Pickup Date | Time: <input style="width: 210px;" type="datetime-local" id="pickUpid" required="required"placeholder="11/30/2017 10:30 AM" >
+    Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required">  <br>
+    <button type="submit" name="action" class="btn btn-submit" id="reservationBtn"  >Make Reservation</button>
+<hr>
+  
+</form>
+
+      <table class="table table-inverse">
+          <tr>
+              <td><b>Id</b></td>
+              <td><b>Pickup Time</b></td>
+              <td><b>Duration(hr)</b></td>
+              <td><b>Cancelled</b></td>
+              <td><b>Location</b></td>
+              <td><b>Vehicle Type</b></td>
+          <td><b>Action</b></td>
+
+          </tr>
+      <#if reservationList??>
+          <#list reservationList as r>
+              <tr>
+                  <td>${r.getId()}</td>
+                  <td>${r.getPickupTime()}</td>
+                  <td>${r.getLength()}</td>
+                  <td>${r.getCanceledStr()}</td>
+                  <td>${r.getRentalLocation().getName()}</td>
+                  <td>${r.getVehicleType().getName()}</td>
+              <td><button class="cancelReservation">Cancel</button></td>
+              <td><button class="rentReservation">Rent</button></td>
+
+
+              </tr>
+
+          </#list>
+      </#if>
+      </table>
+
+
+
+
+
+
+
+         
+         
+</div>
+        
+        
+    </div>
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </div>
 </div>
      

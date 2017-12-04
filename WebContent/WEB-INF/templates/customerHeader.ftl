@@ -67,17 +67,6 @@
 				</form>
 				</li>
                 
-                <li>
-				<form action="LoadRentNow" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="RentNow">Rent</button>
-				</form>
-				</li>            
-
-				 <li>
-				<form action="LoadAbout" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="About">About</button>
-				</form>
-				</li>
 				<li>
 				<form action="LoadVehiclePage" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="LoadVehiclePage">Vehicles</button>
@@ -86,6 +75,12 @@
 				<li>
 				<form action="LoadLocationPage" method="get">
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="LoadLocationPage">Locations</button>
+				</form>
+				</li>
+				
+				 <li>
+				<form action="LoadAbout" method="get">
+					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="About">About</button>
 				</form>
 				</li>
 				<li>

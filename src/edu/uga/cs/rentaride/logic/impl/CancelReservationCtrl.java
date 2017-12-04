@@ -35,8 +35,18 @@ private ObjectLayer objectLayer = null;
         if(reservations.size()<1) throw new RARException("Reservation does not exists");
         reservation = reservations.get(0);
         
-        objectLayer.cancelReservation(reservation);
+        java.util.Date d = new Date();
         
+        if(d.getTime() > reservation.getPickupTime().getTime()  +3600000) {
+        	
+            long charges = objectLayer.findRentARideParams().getLateFee();
+            //Charge Credit Card with charges
+            throw new RARException("Your card has been charged for cancelling one hour past the acceptable time.");
+        
+        }else {
+        
+        objectLayer.cancelReservation(reservation);
+        }
         return reservation.getId();
         
 

@@ -63,7 +63,7 @@ public class ReturnRentalCtrl {
     	rental.setCharges((int)charges);
     	objectLayer.storeRental(rental);
     	
-    	objectLayer.setLate(rental);
+    if(late)	objectLayer.setLate(rental);
     	objectLayer.returnRental(rental);
     	
     	Vehicle vehicle = rental.getVehicle();
