@@ -99,7 +99,7 @@ public class ResetPassword extends HttpServlet
             try {
                 User user = logicLayer.checkUser(username, firstName, lastName );
                 if (user == null) { //username and email must be match
-                    msg = "Invalid username or email";
+                    msg = "Invalid Username, First Name, or Last Name!";
                 } else {
                     logicLayer.updatePassword(password, user);
                     msg = "Successfully reset password";
