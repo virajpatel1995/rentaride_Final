@@ -182,9 +182,9 @@
                 <form action="UpdateMembershipPrice" method="post">
                 <#if mprice?? && (latefee??)>
                     Membership Price:
-                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01"onkeypress="return event.charCode >= 48" min="1" />
+                    <input id="membershipPrice" onClick="this.select();" type="number" value=${mprice} step="0.01" onkeypress="return event.charCode >= 48" min="1"  />
                     Late Fee:
-                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01"onkeypress="return event.charCode >= 48" min="1"/>
+                    <input id="lateFee" type="number" onClick="this.select();" value=${latefee} step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
                 <#else >
                     Membership Price:<input type="number" id="membershipPrice" placeholder="price" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
                     Late Fee:<input type="number" id="lateFee" step="0.01" onkeypress="return event.charCode >= 48" min="1"/>
@@ -413,8 +413,9 @@
                         <option value="${element}">${element}</option>
                     </#list>
                     </select>
-            <input type="text" name="hourlyPrice" placeholder="Hourly Price" required="required"/>
-            <input type="text" name="maxHours" placeholder="Max Hours" required="required"/>
+            <input type="number" min="1" name="hourlyPrice" placeholder="Hourly Price" required="required"/>
+            <input type="number" min="1" max="72" name="maxHours" placeholder="Max Hours" required="required"/>
+            
           <button type="submit" name="action" class="btn btn-submit" >Set | Update Price | Hours</button>
 
          </form> 
