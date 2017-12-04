@@ -61,7 +61,7 @@ public class PlaceRentalCtrl {
         System.out.println(d.getTime());
         
         
-        if((d.getTime() + 1800000 < new Date().getTime()) || (d.getTime() - 1800000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
+        if((d.getTime() + 18000000 < new Date().getTime()) || (d.getTime() - 18000000 > new Date().getTime())) throw new RARException("Pick up isout of acceptable time frame.");
         
         
         Rental               modelRental= null;
