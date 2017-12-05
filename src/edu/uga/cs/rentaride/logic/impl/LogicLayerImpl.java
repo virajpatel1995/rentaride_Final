@@ -336,4 +336,13 @@ public class LogicLayerImpl
 
         return objectLayer.findVehicle(vehicle);
     }
+
+    @Override
+    public List<Rental> getRentalByCustomer(String userName) throws RARException {
+        Rental rental = objectLayer.createRental();
+        Customer customer = objectLayer.createCustomer();
+        customer.setUserName(userName);
+        rental.setCustomer(objectLayer.findCustomer(customer).get(0));
+        return objectLayer.findRental(rental);
+    }
 }

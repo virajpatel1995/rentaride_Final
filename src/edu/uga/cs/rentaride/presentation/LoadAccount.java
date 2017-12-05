@@ -158,7 +158,14 @@ public class LoadAccount extends HttpServlet {
             } catch (RARException e) {
                 e.printStackTrace();
             }
-        	root.put("firstName", user.getFirstName());
+
+            try {
+                List<Rental> rentalList = logicLayer.getRentalByCustomer(user.getUserName());
+                root.put("rentalList", rentalList);
+            } catch (RARException e) {
+                e.printStackTrace();
+            }
+            root.put("firstName", user.getFirstName());
     		root.put("lastName", user.getLastName());
     		root.put("email", user.getEmail());
     		root.put("address", user.getAddress());
