@@ -236,6 +236,31 @@ $(".editVehicle").click(function () {
     });
 
 
+    
+    
+    
+    /******************************************************************************* Retun Rental **/
+
+    
+    
+    
+    
+    $('#return').click(function (event) {
+
+        var rentalID = $('#rentalID').val();
+       
+
+        $.post('ReturnRental', {
+            rentalID: rentalID
+
+
+        }, function (responseText) {
+            $('#returnE').text(responseText);
+        });
+    });
+    
+    
+    
     /******************************************************************************* Rent RESERVATION **/
     $('.rentReservation').click(function (event) {
 
