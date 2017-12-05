@@ -22,7 +22,7 @@
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">My Account</a></li>
-        <li><a data-toggle="tab" href="#menu7">My Rental(s)</a></li>
+        <li><a data-toggle="tab" href="#menu1">My Rental(s)</a></li>
 
         <li><a data-toggle="tab" href="#menu4">My Reservation(s)</a></li>
 
@@ -45,7 +45,6 @@
             </div>
         </div>
 
-   </div>
     
     
     
@@ -55,18 +54,58 @@
     <div id="menu1" class="tab-pane fade">
       <h3>My Rental</h3>
       
-  <div>
-  		
-    		<form action="UpdateMembershipPrice" method="post">
-  
-            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" step="0.01" /> <br>       
-            Late Fee:<input id="lateFee" type="number" onClick="this.select();" step="0.01" />
-            <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
-            
-         </form>
-         <p style="float: left" id="membershipPriceError"></p>
-</div>
-        
+   <#--Needs to be in rental-->
+            <table class="table table-inverse">
+                <tr>
+                    <td><b>ID</b></td>
+                    <td><b>Location</b></td>
+                    <td><b>Address</b></td>
+                    <td><b>Tag #</b></td>
+                    <td><b>Year</b></td>
+                    <td><b>Make</b></td>
+                    <td><b>Model</b></td>
+                    <td><b>Pick Up Time</b></td>
+                    <td><b>Drop Off time</b></td>
+
+
+                </tr>
+
+        <#if rentalList ??>
+            <#list rentalList as r>
+
+                <tr>
+                    <form action="ReturnRental" method="post">
+                        <td>${r.getId()}</td>
+                        <td>${r.getReservation().getRentalLocation().getName()}</td>
+                        <td>${r.getReservation().getRentalLocation().getAddress()}</td>
+                        <td>${r.getVehicle().getRegistrationTag()}</td>
+                        <td>${r.getVehicle().getYear()}</td>
+                        <td>${r.getVehicle().getMake()}</td>
+                        <td>${r.getVehicle().getModel()}</td>
+                        <td>${r.getPickupTime()}</td>
+                        <#if r.getReturnTime() ??>
+                        <td>${r.getReturnTime()}</td>
+                        <#else>
+                        <td><p>null</p></td>
+                        </#if>
+
+
+                        <td>
+                            <button>Return</button>
+                        </td>
+
+                        <td><input type="hidden" value="${r.getId()}" name="rentalID"/>
+
+                    </form>
+
+
+                </tr>
+
+            </#list>
+        </#if>
+            </table>
+
+            <#--Needs to be in rental-->
         
     </div>
     
@@ -223,58 +262,7 @@
                 </form>
             </div>
 
-            <#--Needs to be in rental-->
-            <table class="table table-inverse">
-                <tr>
-                    <td><b>ID</b></td>
-                    <td><b>Location</b></td>
-                    <td><b>Address</b></td>
-                    <td><b>Tag #</b></td>
-                    <td><b>Year</b></td>
-                    <td><b>Make</b></td>
-                    <td><b>Model</b></td>
-                    <td><b>Pick Up Time</b></td>
-                    <td><b>Drop Off time</b></td>
-
-
-                </tr>
-
-        <#if rentalList ??>
-            <#list rentalList as r>
-
-                <tr>
-                    <form action="ReturnRental" method="post">
-                        <td>${r.getId()}</td>
-                        <td>${r.getReservation().getRentalLocation().getName()}</td>
-                        <td>${r.getReservation().getRentalLocation().getAddress()}</td>
-                        <td>${r.getVehicle().getRegistrationTag()}</td>
-                        <td>${r.getVehicle().getYear()}</td>
-                        <td>${r.getVehicle().getMake()}</td>
-                        <td>${r.getVehicle().getModel()}</td>
-                        <td>${r.getPickupTime()}</td>
-                        <#if r.getReturnTime() ??>
-                        <td>${r.getReturnTime()}</td>
-                        <#else>
-                        <td><p>null</p></td>
-                        </#if>
-
-
-                        <td>
-                            <button>Return</button>
-                        </td>
-
-                        <td><input type="hidden" value="${r.getId()}" name="rentalID"/>
-
-                    </form>
-
-
-                </tr>
-
-            </#list>
-        </#if>
-            </table>
-
-            <#--Needs to be in rental-->
+           
         </div>
 
 

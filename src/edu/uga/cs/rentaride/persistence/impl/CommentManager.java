@@ -61,7 +61,7 @@ public class CommentManager {
 
 			if(comment.getDate() != null) {
 				java.util.Date d = comment.getDate();
-				stmt.setTimestamp(1, new java.sql.Timestamp(d.getTime()));
+				stmt.setTimestamp(2, new java.sql.Timestamp(d.getTime()));
 				//stmt.setDate(2,new java.sql.Date(comment.getDate().getTime()));
 			}else
 				stmt.setNull(2,  java.sql.Types.DATE);
