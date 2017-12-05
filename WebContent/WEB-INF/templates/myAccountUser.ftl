@@ -104,7 +104,7 @@
   </select>
     
     
-    Pickup Date | Time: <input style="width: 210px;" type="datetime-local" id="pickUpid" required="required"placeholder="11/30/2017 10:30 AM" >
+    Pickup Date | Time: <input style="width: 210px;" type="datetime-local" id="pickUpid" required="required" placeholder="11/30/2017 10:30 AM" >
     Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required">  <br>
     <button type="submit" name="action" class="btn btn-submit" id="reservationBtn"  >Make Reservation</button>
 <hr>
@@ -170,7 +170,7 @@
                 <form action="UpdateProfile" method="post">
 
 			<#if firstName??>
-			First Name<input type="text" id="fName" value="${firstName}" name="fName" placeholder="fristName"/>
+			First Name<input type="text" id="fName" value="${firstName}" name="fName" placeholder="fristName" required/>
          </#if>
 			<#if lastName??>
 			Last Name<input type="text" id="lName" value="${lastName}" name="lName" placeholder="lastName"/>

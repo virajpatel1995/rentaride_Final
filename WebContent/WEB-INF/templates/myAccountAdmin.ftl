@@ -241,7 +241,7 @@
                     <input style="width: 70px;" name="locationZip" type="text" placeholder="Zip" required="required">
                     <input style="width: 100px;" name="locationState" type="text" placeholder="State" required="required">
                     <input style="width: 70px;" name="locationCapacity" type="text" placeholder="Capacity" required="required">
-                    <button type="submit" name="action" class="btn btn-submit" onclick="myFunctionx()">Add Rental Location </button>
+                    <button type="submit" name="action" class="btn btn-submit">Add Rental Location </button>
 
 
                     <div style="float: left" id="rentalLocationMsg"></div>
@@ -262,7 +262,7 @@
                 <#list rentalLocations as rl>
                     <tr>
                         <td>${rl.getId()}</td>
-                        <td>${rl.getName()}</td>
+                        <td required>${rl.getName()}</td>
                         <td>${rl.getAddress()}</td>
                         <td>${rl.getCapacity()}</td>
                         <td><button class="editbtn">Edit</button></td>
@@ -284,13 +284,13 @@
                 <form action="CreateVehicle" method="post">
                     <input style="width:150px;" type="text" name="make" placeholder="Make" required="required"/>
                     <input style="width:150px;" type="text" name="model" placeholder="Model" required="required"/>
-                    <input style="width:105px;" type="text" name="year" placeholder="Year" required="required"/>
-                    <input style="width:105px;" type="text" name="mileage" placeholder="Mileage" required="required"/>
+                    <input style="width:105px;" type="text" name="year" placeholder="Year" required="required" onkeypress="return event.charCode >= 48" min="1"/>
+                    <input style="width:105px;" type="text" name="mileage" placeholder="Mileage" required="required" onkeypress="return event.charCode >= 48" min="1"/>
                     <input style="width:75px;" type="text" name="tag" placeholder="Tag #" required="required"/>
                 <#if rentalLocationList?? && (vehicleTypeList ??)>
 
                     <select required class="buttonx" name="location">
-                    	<option>-Select Location-</option>
+                    	<option value="">-Select Location-</option>
                     <#list rentalLocationList as element>
                    
                         <option value="${element}">${element}</option>
@@ -298,7 +298,7 @@
                 </select>
                     
                     <select required class= "buttonx" name="type">
-                     	<option>-Select VehicleType-</option>
+                     	<option value="">-Select VehicleType-</option>
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
@@ -379,8 +379,8 @@
                 <form action="UpdateVehicleType" method="post">
 
                 <#if vehicleTypeList ??>
-                    <select class="buttonx" name="oldVehicleType">
-                    <option>-Old Vehicle Type-</option>
+                    <select required class="buttonx" name="oldVehicleType">
+                    <option value="">-Old Vehicle Type-</option>
                         <#list vehicleTypeList as element>
                             <option value="${element}">${element}</option>
                         </#list>
@@ -407,14 +407,14 @@
 
             Vehicle Type:
                     <#--<input type="text" name="vehicleType" placeholder="Vehicle Type"/>-->
-                    <select class="buttonx" name="vehicleType">
-                    <option>-Select Vehicle Type-</option>
+                    <select required class="buttonx" name="vehicleType">
+                    <option value="">-Select Vehicle Type-</option>
                     <#list vehicleTypeList as element>
                         <option value="${element}">${element}</option>
                     </#list>
                     </select>
-            <input type="number" min="1" name="hourlyPrice" placeholder="Hourly Price" required="required"/>
-            <input type="number" min="1" max="72" name="maxHours" placeholder="Max Hours" required="required"/>
+            <input type="number"  name="hourlyPrice" placeholder="Hourly Price" required="required" onkeypress="return event.charCode >= 48" min="1"/>
+            <input type="number"  name="maxHours" placeholder="Max Hours" required="required" onkeypress="return event.charCode >= 48" min="1"/>
             
           <button type="submit" name="action" class="btn btn-submit" >Set | Update Price | Hours</button>
 
