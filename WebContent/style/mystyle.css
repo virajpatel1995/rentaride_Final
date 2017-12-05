@@ -362,6 +362,27 @@ float: right;
 /*------------------------- Start Carousel --------------------*/
 
 
+.welcome{
+	
+	float:right;
+	background-color: #ff6861;
+	padding-right:190px;
+	font-size:18px;
+	color:white;
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
 .buttonx {
     background-color: #ff6861; /* red */
     border: none;
@@ -376,6 +397,30 @@ float: right;
     border-radius: 8px;
     
 }
+
+
+.buttonz {
+    background-color: #ff6861; /* red */
+    border: none;
+    color: white;
+    padding: 15px 42px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    
+}
+
+
+
+
+
+
+
+
 
 
 .reservationBtn {

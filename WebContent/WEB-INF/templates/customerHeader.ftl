@@ -18,16 +18,16 @@
 
 
 <#if username ??>
- welcome ${username}
+ <p class="welcome"> Welcome ${username}</p>
 			<ul class="logreg">
 				<li>
 					<form action="Logout" method="get">
-						<button type="submit" name="Logout"> Logout</button>
+						<button class="buttonz" type="submit" name="Logout"> Logout</button>
 					</form>
 				</li>
 				<li>
                     <form action="LoadAccount" method="post">
-                        <button type="submit" name="Account"> Account</button>
+                        <button class="buttonz" type="submit" name="Account"> Account</button>
                     </form>
 				</li>
 			</ul>
