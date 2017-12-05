@@ -141,7 +141,9 @@
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">MyAccount</a></li>
+        
         <li><a data-toggle="tab" href="#menu1">Membership Price | Late Fees</a></li>
+        
         <li><a data-toggle="tab" href="#menu2">Rental Location</a></li>
         <li><a data-toggle="tab" href="#menu3">Create | Update Vehicle</a></li>
         <li><a data-toggle="tab" href="#menu5">Create | Update Vehicle Type</a></li>
