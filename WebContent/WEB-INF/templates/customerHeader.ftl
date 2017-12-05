@@ -83,11 +83,7 @@
 					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="About">About</button>
 				</form>
 				</li>
-				<li>
-				<form action="LoadShepTest" method="get">
-					<button type="submit" style="border:none; background-color:inherit; padding-right:15px; cursor:pointer;"name="ShepTest">ShepTest</button>
-				</form>
-				</li>
+				
 			</ul>
 		</div>
 	</nav>
