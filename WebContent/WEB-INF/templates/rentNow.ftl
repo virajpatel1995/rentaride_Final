@@ -69,13 +69,18 @@
                     <td>${v.getCondition()}</td>
                     <td>${v.getRentalLocation().getName()}</td>
                     <td>${v.getVehicleType().getName()}</td>
+                    
                     <td>
                         <button id="rentNow" class="editVehicle">Rent Now</button>
+
                     </td>
+                    
+                  
                         <td><input id="res" type="hidden" value="${rid}" name="res"/>
                         <td><input id="tag" type="hidden" value="${v.getRegistrationTag()}" name="tag"/>
                     </form>
                 </tr>
+                      <div style="float:center" id="rentError"></div>
 
             </#list>
         </#if>
@@ -83,7 +88,6 @@
 
         <#if msg??>
             <p>${msg}</p>
-                                <div style="float:center" id="rentError"></div>
      
         </#if>
 

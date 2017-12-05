@@ -131,7 +131,7 @@ public class PlaceRental
             msg = "Your Rental has been successfully placed";
         }catch(Exception e) {
             msg = "Unable to place Rental. See log.";
-            RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),msg);
+           // RARError.error( cfg, new BufferedWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8")),msg);
 
             e.printStackTrace();
         }
