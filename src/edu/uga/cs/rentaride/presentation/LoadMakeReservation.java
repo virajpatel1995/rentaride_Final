@@ -35,7 +35,7 @@ public class LoadMakeReservation extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Configuration cfg;
     static String templateDir = "/WEB-INF/templates";
-    String destination = "reservation.ftl";
+    String destination = "myAccountUser.ftl";
 
 
 
