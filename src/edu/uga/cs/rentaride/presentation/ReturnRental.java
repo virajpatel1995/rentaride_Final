@@ -132,6 +132,7 @@ public class ReturnRental
         }
        
 
+
         res.setContentType("text/plain");
         res.getWriter().write(msg);
 

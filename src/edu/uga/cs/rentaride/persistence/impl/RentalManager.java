@@ -172,9 +172,9 @@ public class RentalManager {
 						condition.append( " dropoff = '" + rental.getReturnTime() + "'" );
 					}
 
-					if( condition.length() > 0 )
-						condition.append( " and" );
-					condition.append( " late = '" + rental.getLate() + "'" );
+//					if( condition.length() > 0 )
+//						condition.append( " and" );
+//					condition.append( " late = '" + rental.getLate() + "'" );
 
 					if( rental.getCharges() > 0 ) {
 						if( condition.length() > 0 )
@@ -245,9 +245,9 @@ public class RentalManager {
 						returnDate = rs.getTimestamp(3);
 						late = rs.getBoolean(4);
 						charges = rs.getInt(5);
-						customerid = rs.getInt(6);
-						reservationid= rs.getInt(7);
-						vehicleid = rs.getInt(8);
+						reservationid= rs.getInt(6);
+						vehicleid = rs.getInt(7);
+						customerid = rs.getInt(8);
 						commentid = rs.getInt(9);
 						commentText= rs.getString(10);
 						cdate= rs.getDate(11);
@@ -270,7 +270,10 @@ public class RentalManager {
 
 
 						rental1 = objectLayer.createRental(pickupDate, modelReservation, modelVehicle);
+						rental1.setReturnTime(returnDate);
 						rental1.setId(id);
+						rental1.setCharges(charges);
+						rental1.setLate(late);
 
 						Comment comment = objectLayer.createComment(commentText, cdate, rental1, rental1.getCustomer());
 						comment.setId(commentid);

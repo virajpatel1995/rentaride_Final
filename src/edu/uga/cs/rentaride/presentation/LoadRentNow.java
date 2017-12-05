@@ -105,6 +105,9 @@ public class LoadRentNow extends HttpServlet {
 
         try {
             List<Vehicle> vehicleList = logicLayer.getVehicleByLocationAndType(location, vt);
+            if (vehicleList.size() == 0) {
+                logicLayer.getVehicleByLocationAndType("", vt);
+            }
             for (int i = 0; i < vehicleList.size(); i++) {
                 if(vehicleList.get(i).getStatus()== VehicleStatus.INRENTAL) {
                     vehicleList.remove(i);

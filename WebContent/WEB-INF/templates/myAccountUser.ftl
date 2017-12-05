@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="style/slider.css">
-  <link rel="stylesheet" type="text/css" href="style/mystyle.css">
-  	<script src="membershipPrice.js"></script>
-  	<script src="alert.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="source/bootstrap-3.3.6-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="source/font-awesome-4.5.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="style/slider.css">
+    <link rel="stylesheet" type="text/css" href="style/mystyle.css">
+    <script src="membershipPrice.js"></script>
+    <script src="alert.js"></script>
 
 </head>
 
@@ -19,29 +19,32 @@
 <#include "customerHeader.ftl">
 
 <div class="container">
-  
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">My Account</a></li>
-    <li><a data-toggle="tab" href="#menu1">My Rental(s)</a></li>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">My Account</a></li>
+        <li><a data-toggle="tab" href="#menu7">My Rental(s)</a></li>
+
         <li><a data-toggle="tab" href="#menu4">My Reservation(s)</a></li>
 
-    <li><a data-toggle="tab" href="#menu2">Update Profile</a></li>
-    <li><a data-toggle="tab" href="#menu3">Feedback</a></li>
-    
-  </ul>
+        <li><a data-toggle="tab" href="#menu2">Update Profile</a></li>
+        <li><a data-toggle="tab" href="#menu3">Feedback</a></li>
 
-   <div class="tab-content">
+    </ul>
+
+    <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <h3>Welcome</h3>
-         <!--***********CANCEL MEMBERSHIP*********-->   
-         <form action="CancelMembership" method="post">
-         <input class="btn btn-submit" type="submit" value="Cancel Membership"     onclick="cancelMembership()" />
-         </form> 
-         
-         
+            <!--***********CANCEL MEMBERSHIP*********-->
+            <form action="CancelMembership" method="post">
+                <input class="btn btn-submit" type="submit" value="Cancel Membership" onclick="cancelMembership()"/>
+            </form>
+
+
             <div class="tab-pane fade">
-            <h3>Welcome to your Account </h3>
+                <h3>Welcome to your Account </h3>
+            </div>
         </div>
+
    </div>
     
     
@@ -169,60 +172,113 @@
 
                 <form action="UpdateProfile" method="post">
 
-			<#if firstName??>
-			First Name<input type="text" id="fName" value="${firstName}" name="fName" placeholder="fristName" required/>
-         </#if>
-			<#if lastName??>
-			Last Name<input type="text" id="lName" value="${lastName}" name="lName" placeholder="lastName"/>
-         </#if>
-			<#if email??>
-			Email<input style="width:230px;" type="text" id="email" value="${email}" name="email" placeholder="email"/>
-         </#if>
+                <#if firstName??>
+                    First Name<input type="text" id="fName" value="${firstName}" name="fName" placeholder="fristName"/>
+                </#if>
+                <#if lastName??>
+                    Last Name<input type="text" id="lName" value="${lastName}" name="lName" placeholder="lastName"/>
+                </#if>
+                <#if email??>
+                    Email<input style="width:230px;" type="text" id="email" value="${email}" name="email"
+                                placeholder="email"/>
+                </#if>
 
-			<#if address??>
-			Address<input style="width:280px;" type="text" id="address" value="${address}" name="address" placeholder="address"/><br>
-         </#if>
-			<#if card??>
-			Credit Card Number<input style="width:170px;"type="password" id="card" value="${card}" name="credit" placeholder="Credit Card #"/>
-         </#if>
-			<#if expire??>
-			Expire Date <input type="text" id="expire" value="${expire}" name="expire"/><br>
-         </#if>
+                <#if address??>
+                    Address<input style="width:280px;" type="text" id="address" value="${address}" name="address"
+                                  placeholder="address"/><br>
+                </#if>
+                <#if card??>
+                    Credit Card Number<input style="width:170px;" type="password" id="card" value="${card}"
+                                             name="credit" placeholder="Credit Card #"/>
+                </#if>
+                <#if expire??>
+                    Expire Date <input type="text" id="expire" value="${expire}" name="expire"/><br>
+                </#if>
 
-         <input id="updateProfilebtn" class="btn btn-submit" type="button" value="Update Profile" />
+                    <input id="updateProfilebtn" class="btn btn-submit" type="button" value="Update Profile"/>
 
-         <#--</#if>-->
-         </form>
+                <#--</#if>-->
+                </form>
+
                 <p style="float: left color:Red" id="UpdateProfileError"></p>
             </div>
 
 
         </div>
- 
- 
-    
-     <!-- ********FEEDBACK************** --> 
-    <div id="menu3" class="tab-pane fade">
-      <h3>Feedback</h3>
-        <div class="container">
-      
-      <form action="CreateComment" method="post">
-            Rental ID:<input type="text" name="rental" placeholder="rental ID"/> <br>
-            Comment:<input type="text" name="comment" placeholder="Comment"/>
-           
-         <input class="btn btn-submit" type="submit" value="Comment" />
-         
-                 	<div style="float:center" id="createVehicleMsg"></div>
-         
-         </form>   
-      </div>
- 
+
+
+        <!-- ********FEEDBACK************** -->
+        <div id="menu3" class="tab-pane fade">
+            <h3>Feedback</h3>
+            <div class="container">
+
+                <form action="CreateComment" method="post">
+                    Rental ID:<input type="text" name="rental" placeholder="rental ID"/> <br>
+                    Comment:<input type="text" name="comment" placeholder="Comment"/>
+
+                    <input class="btn btn-submit" type="submit" value="Comment"/>
+
+                    <div style="float:center" id="createVehicleMsg"></div>
+
+                </form>
+            </div>
+
+            <#--Needs to be in rental-->
+            <table class="table table-inverse">
+                <tr>
+                    <td><b>ID</b></td>
+                    <td><b>Location</b></td>
+                    <td><b>Address</b></td>
+                    <td><b>Tag #</b></td>
+                    <td><b>Year</b></td>
+                    <td><b>Make</b></td>
+                    <td><b>Model</b></td>
+                    <td><b>Pick Up Time</b></td>
+                    <td><b>Drop Off time</b></td>
+
+
+                </tr>
+
+        <#if rentalList ??>
+            <#list rentalList as r>
+
+                <tr>
+                    <form action="ReturnRental" method="post">
+                        <td>${r.getId()}</td>
+                        <td>${r.getReservation().getRentalLocation().getName()}</td>
+                        <td>${r.getReservation().getRentalLocation().getAddress()}</td>
+                        <td>${r.getVehicle().getRegistrationTag()}</td>
+                        <td>${r.getVehicle().getYear()}</td>
+                        <td>${r.getVehicle().getMake()}</td>
+                        <td>${r.getVehicle().getModel()}</td>
+                        <td>${r.getPickupTime()}</td>
+                        <#if r.getReturnTime() ??>
+                        <td>${r.getReturnTime()}</td>
+                        <#else>
+                        <td><p>null</p></td>
+                        </#if>
+
+
+                        <td>
+                            <button>Return</button>
+                        </td>
+
+                        <td><input type="hidden" value="${r.getId()}" name="rentalID"/>
+
+                    </form>
+
+
+                </tr>
+
+            </#list>
+        </#if>
+            </table>
+
+            <#--Needs to be in rental-->
+        </div>
+
+
     </div>
-    
-         
-
-
-  </div>
 </div>
 
 </body>
