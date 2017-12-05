@@ -45,121 +45,127 @@
             </div>
         </div>
 
+   </div>
+    
+    
+    
+    
+   <!-- **********MY RENTAL*********************** --> 
+    
+    <div id="menu1" class="tab-pane fade">
+      <h3>My Rental</h3>
+      
+  <div>
+  		
+    		<form action="UpdateMembershipPrice" method="post">
+  
+            Membership Price:<input id="membershipPrice"  onClick="this.select();" type="number" step="0.01" /> <br>       
+            Late Fee:<input id="lateFee" type="number" onClick="this.select();" step="0.01" />
+            <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees" />
+            
+         </form>
+         <p style="float: left" id="membershipPriceError"></p>
+</div>
+        
+        
+    </div>
+    
+    
+       <!-- **********MAKE | VIEW RESERVATION*********************** --> 
+    
+    <div id="menu4" class="tab-pane fade">
+      <h3>Make Reservations</h3>
+      
+  <div>
+  		
+    		
 
-        <!-- **********MY RENTAL*********************** -->
+<form action="LoadMakeReservation" method="post">
+  
+    Location:
 
-        <div id="menu7" class="tab-pane fade">
-            <h3>My Rental</h3>
+      <select class="buttonx" name="type" id="rlid">
+          <#if rentalLocationList??>
+  <#list rentalLocationList as element>
+      <option value="${element}">${element}</option>
+  </#list>
 
-            <div>
+          </#if>
+  </select>
 
-                <form action="UpdateMembershipPrice" method="post">
+    
+    
+    Vehicle Type:
 
-                    Membership Price:<input id="membershipPrice" onClick="this.select();" type="number" step="0.01"/>
-                    <br>
-                    Late Fee:<input id="lateFee" type="number" onClick="this.select();" step="0.01"/>
-                    <input id="submitPrice" class="btn btn-submit" type="button" value="Set/Update Fees"/>
+      <select class="buttonx" name="type" id="vtid">
+  <#if vehicleTypeList??>
+      <#list vehicleTypeList as element>
+          <option value="${element}">${element}</option>
+      </#list>
 
-                </form>
-                <p style="float: left" id="membershipPriceError"></p>
-            </div>
+  </#if>
+  </select>
+    
+    
+    Pickup Date | Time: <input style="width: 210px;" type="datetime-local" id="pickUpid" required="required" placeholder="11/30/2017 10:30 AM" >
+    Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required">  <br>
+    <button type="submit" name="action" class="btn btn-submit" id="reservationBtn"  >Make Reservation</button>
+<hr>
+  
+</form>
 
+      <table class="table table-inverse">
+          <tr>
+              <td><b>Id</b></td>
+              <td><b>Pickup Time</b></td>
+              <td><b>Duration(hr)</b></td>
+              <td><b>Cancelled</b></td>
+              <td><b>Location</b></td>
+              <td><b>Vehicle Type</b></td>
+          <td><b>Action</b></td>
 
-        </div>
+          </tr>
+      <#if reservationList??>
+          <#list reservationList as r>
 
+              <tr>
+          <form action="LoadRentNow" method="post">
+                  <td>${r.getId()}</td>
+                  <td>${r.getPickupTime()}</td>
+                  <td>${r.getLength()}</td>
+                  <td>${r.getCanceledStr()}</td>
+                  <td>${r.getRentalLocation().getName()}</td>
+                  <td>${r.getVehicleType().getName()}</td>
+              <td><button class="cancelReservation">Cancel</button></td>
+              <td><button >Rent</button></td>
+              <td><input type="hidden" value="${r.getRentalLocation().getName()}" name="rl"/>
+              <td><input type="hidden" value="${r.getVehicleType().getName()}" name="vt"/>
+              <td><input type="hidden" value="${r.getId()}" name="rid"/>
 
-        <!-- **********MAKE | VIEW RESERVATION*********************** -->
-
-        <div id="menu4" class="tab-pane fade">
-            <h3>Make Reservations</h3>
-
-            <div>
-
-
-                <form action="LoadMakeReservation" method="post">
-
-                    Location:
-
-                    <select class="buttonx" name="type" id="rlid">
-                    <#if rentalLocationList??>
-                        <#list rentalLocationList as element>
-                            <option value="${element}">${element}</option>
-                        </#list>
-
-                    </#if>
-                    </select>
-
-
-                    Vehicle Type:
-
-                    <select class="buttonx" name="type" id="vtid">
-                    <#if vehicleTypeList??>
-                        <#list vehicleTypeList as element>
-                            <option value="${element}">${element}</option>
-                        </#list>
-
-                    </#if>
-                    </select>
-
-
-                    Pickup Date | Time: <input style="width: 210px;" type="datetime-local" id="pickUpid"
-                                               required="required" placeholder="11/30/2017 10:30 AM">
-                    Length: <input type="number" id="lengthId" placeholder="# of Hrs" required="required"> <br>
-                    <button type="submit" name="action" class="btn btn-submit" id="reservationBtn">Make Reservation
-                    </button>
-                    <hr>
-
-                </form>
-
-                <table class="table table-inverse">
-                    <tr>
-                        <td><b>Id</b></td>
-                        <td><b>Pickup Time</b></td>
-                        <td><b>Duration(hr)</b></td>
-                        <td><b>Cancelled</b></td>
-                        <td><b>Location</b></td>
-                        <td><b>Vehicle Type</b></td>
-                        <td><b>Action</b></td>
-
-                    </tr>
-                <#if reservationList??>
-                    <#list reservationList as r>
-
-                        <tr>
-                            <form action="LoadRentNow" method="post">
-                                <td>${r.getId()}</td>
-                                <td>${r.getPickupTime()}</td>
-                                <td>${r.getLength()}</td>
-                                <td>${r.getCanceledStr()}</td>
-                                <td>${r.getRentalLocation().getName()}</td>
-                                <td>${r.getVehicleType().getName()}</td>
-                                <td>
-                                    <button class="cancelReservation">Cancel</button>
-                                </td>
-                                <td>
-                                    <button>Rent</button>
-                                </td>
-                                <td><input type="hidden" value="${r.getRentalLocation().getName()}" name="rl"/>
-                                <td><input type="hidden" value="${r.getVehicleType().getName()}" name="vt"/>
-                                <td><input type="hidden" value="${r.getId()}" name="rid"/>
-
-                            </form>
-
-
-                        </tr>
-
-                    </#list>
-                </#if>
-                </table>
+          </form>
 
 
-            </div>
+              </tr>
+
+          </#list>
+      </#if>
+      </table>
 
 
-        </div>
 
-        <!-- ********Update Profile************** -->
-        <div id="menu2" class="tab-pane fade">
+
+
+
+
+         
+         
+</div>
+        
+        
+    </div>
+    
+     <!-- ********Update Profile************** --> 
+   <div id="menu2" class="tab-pane fade">
             <h3>Update Profile</h3>
 
             <div>
@@ -193,6 +199,7 @@
 
                 <#--</#if>-->
                 </form>
+
                 <p style="float: left color:Red" id="UpdateProfileError"></p>
             </div>
 

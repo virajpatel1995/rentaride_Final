@@ -72,8 +72,8 @@
                 <h3 class="teal-text">Login</h3>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="username" id="email" type="email" class="validate">
-                        <label for="email">username</label>
+                        <input name="username" id="email" type="text" class="validate">
+                        <label>username</label>
                     </div>
                 </div>
                 <div class="row">
