@@ -38,6 +38,8 @@ public interface Rental
      * @return the late status of this rental
      */
     public boolean getLate();
+
+    public void setLate(boolean late);
     
     /** Return the charges applied to this rental.
      * @return the charges applied to this rental

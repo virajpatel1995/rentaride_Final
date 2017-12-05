@@ -326,14 +326,26 @@ public class LogicLayerImpl
 
     @Override
     public List<Vehicle> getVehicleByLocationAndType(String location, String vt) throws RARException {
+
         Vehicle vehicle = objectLayer.createVehicle();
-        RentalLocation rentalLocation = objectLayer.createRentalLocation();
-        rentalLocation.setName(location);
-        vehicle.setRentalLocation(objectLayer.findRentalLocation(rentalLocation).get(0));
+        if(!location.isEmpty()) {
+            RentalLocation rentalLocation = objectLayer.createRentalLocation();
+            rentalLocation.setName(location);
+            vehicle.setRentalLocation(objectLayer.findRentalLocation(rentalLocation).get(0));
+        }
         VehicleType vehicleType = objectLayer.createVehicleType();
         vehicleType.setName(vt);
         vehicle.setVehicleType(objectLayer.findVehicleType(vehicleType).get(0));
 
         return objectLayer.findVehicle(vehicle);
+    }
+
+    @Override
+    public List<Rental> getRentalByCustomer(String userName) throws RARException {
+        Rental rental = objectLayer.createRental();
+        Customer customer = objectLayer.createCustomer();
+        customer.setUserName(userName);
+        rental.setCustomer(objectLayer.findCustomer(customer).get(0));
+        return objectLayer.findRental(rental);
     }
 }

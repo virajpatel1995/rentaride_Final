@@ -142,4 +142,8 @@ public class RentalImp extends Persistence implements Rental {
 		
 	}
 
+	@Override
+	public void setLate(boolean late) {
+		this.late = late;
+	}
 }

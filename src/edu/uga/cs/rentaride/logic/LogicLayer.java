@@ -65,4 +65,6 @@ public interface LogicLayer
 	public long returnRental(long rentalIDLong) throws RARException;
 
     List<Vehicle> getVehicleByLocationAndType(String location, String vt) throws RARException;
+
+    List<Rental> getRentalByCustomer(String userName) throws RARException;
 }
