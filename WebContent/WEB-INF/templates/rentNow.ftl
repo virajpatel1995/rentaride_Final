@@ -30,7 +30,7 @@
     </div>
 
 
-    <!-- **********MAKE | VIEW RESERVATION*********************** -->
+    <!-- **********RENT FROM RESERVATION*********************** -->
 
 <#--<div id="menu4" class="tab-pane fade">-->
 <#--<h3>Rent A Car</h3>-->
@@ -70,10 +70,10 @@
                     <td>${v.getRentalLocation().getName()}</td>
                     <td>${v.getVehicleType().getName()}</td>
                     <td>
-                        <button class="editVehicle">Rent Now</button>
+                        <button id="rentNow" class="editVehicle">Rent Now</button>
                     </td>
-                        <td><input type="hidden" value="${rid}" name="res"/>
-                        <td><input type="hidden" value="${v.getRegistrationTag()}" name="tag"/>
+                        <td><input id="res" type="hidden" value="${rid}" name="res"/>
+                        <td><input id="tag" type="hidden" value="${v.getRegistrationTag()}" name="tag"/>
                     </form>
                 </tr>
 
@@ -83,7 +83,12 @@
 
         <#if msg??>
             <p>${msg}</p>
+                                <div style="float:center" id="rentError"></div>
+     
         </#if>
+
+
+
 
     </div>
 

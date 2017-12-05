@@ -259,6 +259,29 @@ $(".editVehicle").click(function () {
         });
     });
     
+ /******************************************************************************* Rent Reservation **/
+
+    
+    
+    
+    
+    $('#rentNow').click(function (event) {
+
+        var res = $('#res').val();
+        var tag = $('#tag').val();
+
+        
+       
+
+        $.post('PlaceRental', {
+        		res:res,
+        		tag:tag
+
+        }, function (responseText) {
+            $('#rentError').text(responseText);
+        });
+    });
+    
     
     
     /******************************************************************************* Rent RESERVATION **/
