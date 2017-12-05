@@ -91,13 +91,15 @@
 
 
                         <td>
-                            <button>Return</button>
+                            <input id="return"  type="button" value="Return"/>
+
                         </td>
 
-                        <td><input type="hidden" value="${r.getId()}" name="rentalID"/>
+                        <td><input id= "rentalID" type="hidden" value="${r.getId()}" name="rentalID"/>
 
                     </form>
 
+                    <div style="float:center" id="returnE"></div>
 
                 </tr>
 
